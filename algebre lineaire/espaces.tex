@@ -1,0 +1,1573 @@
+\chapter{Espaces vectoriels}
+
+Dans ce chapitre nous allons introduire les espaces vectoriels.  L'approche que nous allons suivre
+va être plus mathématiquement rigoureuse que d'habitude, dans le but d'illustrer le niveau de
+détails qu'un mathématicien doit utiliser pour bâtir des preuves formelles.  De plus, nous
+allons introduire essentiellement toute la matière dans une seule section fournissant
+un \textbf{résumé} du chapitre, sans
+fournir un seul exemple autre que l'exemple initial.
+ Ceci nous permettra de nous concentrer sur le cheminement
+logique des diverses définitions. Par la suite, nous reverrons chaque concept que nous
+illustrerons de divers exemples.  Ce type de présentation, basée uniquement sur
+des définitions et des théorèmes, sans fournir d'exemples, est une façon de faire
+qui est habituellement utilisée en mathématiques avancées.  C'est une
+façon concise de faire les choses ... mais qui demande un niveau d'abstraction très
+élevé.  
+
+
+
+Avant de présenter ce résumé en détails \ldots nous allons, en premier, faire un résumé du résumé!
+
+\section{Introduction: le résumé du résumé}
+
+Dans la section suivante, nous allons commencer par définir un ensemble $V$ d'éléments 
+qui obéissent à 10 axiomes basés sur une définition d'addition de ces éléments 
+entre eux ou de multiplication par des nombres.  
+Après avoir défini quelques termes supplémentaires, nous verrons qu'il y a 
+une relation des différents éléments de $V$ qui fait en sorte que l'on peut en choisir un nombre $n$ fixe
+qui peuvent être combinés pour obtenir \textit{tous} les autres éléments de $V$, chaque élément
+étant obtenu par une combinaison unique.  Chaque combinaison unique est caractérisée
+par $n$ nombres; on peut écrire ces $n$ nombres dans une matrice $n\times 1$, c'est-à-dire
+un vecteur.  Ainsi, chaque élément de $V$ est associé de façon unique à un vecteur.
+Pour cette raison, nous appellerons les éléments de $V$ des \textit{vecteurs}.  Quant à $V$,
+on dira que c'est un espace \textit{vectoriel}
+
+
+\section{Introduction: le résumé}
+
+Nous commençons par la définition d'un \definition{espace vectoriel}.
+
+\begin{defini}
+Un \textbf{espace vectoriel} est un ensemble $V$ d'objets appelés \textit{vecteurs}, sur lesquels on définit
+deux opérations, soit \textit{l'addition} ainsi que \textit{la multiplication par un scalaire}, et pour lequel
+les axiomes suivant sont satisfaits pour tous les vecteurs $\mat{u}, \mat{v}, \mat{w}$ dans $V$
+et pour tous les scalaires $\alpha, \beta \in \BBK$.
+\begin{enumerate}
+\item La somme de $\mat{u}$ et $\mat{v}$, dénotée par  $\mat{u}+\mat{v}$, est dans $V$.
+\item $\mat{u} + \mat{v} = \mat{v} + \mat{u}$
+\item $ (\mat{u} + \mat{v}) + \mat{w} = \mat{u} + (\mat{v} + \mat{w})$
+\item Il existe dans $V$ un \textbf{vecteur nul}, dénoté par $\zero$, tel que $\mat{u} + \zero = \mat{u}$.
+\item Pour chaque $\mat{u}$ dans $V$, il existe un vecteur $-\mat{u}$ dans $V$ tel que
+$\mat{u} + (-\mat{u}) = \zero$.
+\item La multiplication de $\mat{u}$ par un scalaire $\alpha$ est dénotée par $\alpha\mat{u}$ et est dans $V$.
+\item $\alpha(\mat{u} + \mat{v}) = \alpha\mat{u} + \alpha\mat{v}$
+\item $ (\alpha + \beta)\mat{u} = \alpha\mat{u} + \beta\mat{u}$
+\item $\alpha(\beta\mat{u}) = (\alpha\beta)\mat{u}$
+\item $1\mat{u} = \mat{u}$
+\end{enumerate}
+\end{defini}
+
+Par exemple, soit $P_2(t)$ l'ensemble des polynômes réels du deuxième degré, et soit $\mat{u}, \mat{v}, \mat{w}$ trois polynômes de cet ensemble, $\mat{u}, \mat{v}, \mat{w} \in P_2(t)$.  De façon plus explicite, nous avons 
+\begin{eqnarray*}
+\mat{u} &=& a_0 + a_1t + a_2 t^2 \\
+\mat{v} &=& b_0 + b_1t + b_2 t^2 \\
+\mat{w} &=& c_0 + c_1t + c_2 t^2 \\
+&& \mbox{avec}\quad a_i, b_i, c_i \in \BBR \quad\forall i
+\end{eqnarray*}
+
+
+Soit également $\alpha, \beta$, qui apparaissent dans la définition d'un espace vectoriel, également des réels.
+On peut alors facilement vérifier que les 10 axiomes qui définissent un espace vectoriel sont satisfaits
+par les polynômes réels du deuxième degré.   Par conséquent, $P_2(t)$ constitue un
+espace vectoriel et chaque polynôme qui appartient à cet ensemble est un \definition{vecteur}.
+Ces vecteurs ne ressemblent pas aux vecteurs auxquels vous êtes habitués et qu'on
+représente par une flèche dans le plan ou dans l'espace.
+
+\begin{exerciceC}
+Démontrez que chacun des 10 axiomes dans la définition d'un espace vectoriel est satisfait
+par l'ensemble $P_2(t)$.
+\end{exerciceC}
+
+Ayant défini un espace vectoriel, on étend la définition à une partie de cet espace
+qu'on désignera sous le nom de \textbf{sous-espace vectoriel}.
+
+\begin{defini}
+Soit $W$ un \textit{sous-ensemble} d'un espace vectoriel $V$.  
+On appelera $W$ un \Definition{sous-espace vectoriel}\footnote{On omet parfois le mot \textit{vectoriel}
+pour simplement écrire \Definition{sous-espace} pour signifier la même chose.} de $V$ si
+les trois propriétés suivantes sont satisfaites:
+\begin{enumerate}
+\item Le vecteur zéro de $V$ est dans $W$.
+\item $W$ est fermé pour l'addition; $\mat{u}, \mat{w} \in W \Rightarrow \mat{u} + \mat{w} \in W$.
+\item $W$ est fermé pour la multiplication par un scalaire: $\mat{w}\in W \Rightarrow k\mat{w}\in W$ pour $k\in \BBK$,
+l'ensemble de scalaires utilisés pour la définition de $V$.
+\end{enumerate}
+\end{defini}
+On peut facilement vérifier qu'un sous-ensemble $W$ de $V$ qui satisfait les trois propriétés mentionnées dans la définition ci-dessus est un espace vectoriel.
+
+On introduit maintenant une autre définition, celle d'une \textbf{combinaison linéaire}.
+\begin{defini}
+Soit $V$ un espace vectoriel sur le corps $\BBK$ et soient les vecteurs $\mat{v}_1,\mat{v}_2, \ldots, \mat{v}_n \in V$.
+Un vecteur quelconque de la forme 
+\[
+a_1 \mat{v}_1 + a_2 \mat{v}_2 + \ldots + a_n \mat{v}_n \qquad \mbox{avec} \quad a_i \in \BBK
+\]
+est appelé une \Definition{combinaison linéaire} des vecteurs $\mat{v}_1,\mat{v}_2, \ldots, \mat{v}_n$
+\end{defini}
+
+À partir de ces définitions, on peut démontrer le théorème suivant.
+\begin{theo}
+Soit $S$ un sous-ensemble non-vide d'un espace vectoriel $V$.  L'ensemble de toutes les combinaisons linéaires
+des vecteurs de $S$, dénotée par $\Vect(S)$, est un sous-espace vectoriel de $V$ contenant $S$.  De plus, si
+$W$ est un autre sous-espace vectoriel de $V$ contenant $S$, alors $\Vect(S)\subseteq W$.
+\end{theo}
+Nous fournirons une démonstration plus tard.   Ce qui est à retenir pour l'instant est la définition de $\Vect(S)$.
+Nous introduisons deux autres définitions.
+
+\begin{defini}
+Soit $V$ un espace vectoriel sur le corps $\BBK$. 
+Les vecteurs $\mat{v}_1, \ldots, \mat{v}_n \in V$ sont dits \Definition{linéairement dépendants} s'il existe des scalaires
+$k_1, \ldots, k_n \in \BBK$ dont au moins un est différent de zéro tels que
+\[
+k_1 \mat{v}_1 + \ldots + k_n \mat{v}_n = 0
+\]
+Autrement, on dit que ces vecteurs sont \Definition{linéairement indépendants}.
+\end{defini}
+
+\begin{defini}
+La dimension d'un espace vectoriel $V$ est $n$ ($\dim V = n$) s'il existe $n$ vecteurs linéairement \textbf{indépendants},
+$\mat{e}_1, \ldots, \mat{e}_n$ qui engendrent $V$, c'est-à-dire $\Vect(\{\mat{e}_1, \ldots, \mat{e}_n\}) = V$.
+L'ensemble $\{\mat{e}_1, \ldots, \mat{e}_n\}$ est appelé une \Definition{base} de $V$.
+\end{defini}
+
+À partir de ces diverses définitions, il est possible de démontrer la validité du
+\definition{théorème de l'unicité de la représentation}.
+\begin{theo}
+Soit $B = \{\mat{e}_1, \ldots, \mat{e}_n\}$ une base pour l'espace vectoriel $V$. 
+Alors, pour chaque vecteur $\mat{v}$ dans $V$, il existe un ensemble unique de
+scalaires, $a_1, \ldots, a_n$ tel que 
+\[
+\mat{v} = a_1 \mat{e}_1 + \ldots + a_n \mat{e}_n
+\]
+\end{theo}
+Ayant démontré que, pour chaque vecteur dans $V$ avec une base donnée $B$,
+il existe un ensemble unique de scalaire, nous utilisons ceci pour définir
+les \definition{coordonnées}.
+\begin{defini}
+Soit $B = \{\mat{e}_1, \ldots, \mat{e}_n\}$ une base pour l'espace vectoriel $V$, 
+et $\mat{v}$ un vecteur quelconque de $V$.
+Les \Definition{coordonnées de $\mat{v}$ par rapport à la base $B$} sont les scalaires
+$a_1, \ldots, a_n$ tels que
+\[
+\mat{v} = a_1 \mat{e}_1 + \ldots + a_n \mat{e}_n
+\]
+\end{defini}
+Avec cette définition, on utilise la notation $[\mat{v}]_B$ pour représenter la
+\definition{matrice des coordonnées}\footnote{Puisqu'il s'agit d'une matrice de taille $n\times 1$,
+on dit parfois qu'il s'agit du \textbf{vecteur des coordonnées}.} de $\mat{v}$ (par rapport à la base $B$):
+\[
+[\mat{v}]_B = \begin{bmatrix}
+a_1 \\
+\vdots \\
+a_n
+\end{bmatrix}
+\]
+
+\textbf{Ceci est un résultat très important}: on vient d'établir une correspondance une-à-une entre tout
+vecteur de $V$ (de dimension $n$) et un vecteur correspondant de $\BBK^n$, où on aura habituellement $\BBK = \BBR$.
+On dit qu'un espace vectoriel $V$ de dimension $n$ défini sur le corps $\BBK$ 
+est isomorphe\footnote{Le mot \textit{isomorphe} signifie \textit{ayant la même forme}.} à $\BBK^n$.
+Puisqu'on a habituellement $\BBK = \BBR$, et puisqu'on vient d'établir une correspondance entre
+les \textit{éléments} d'un espace \textit{vectoriel} $V$ et les \textit{vecteurs} de $\BBR^n$, on peut donc
+comprendre pourquoi on a choisit d'utiliser le terme \textit{vecteur} comme synonyme d'élément de $V$
+et qu'on utilise l'adjectif \textit{vectoriel} pour caractériser ce même espace.
+
+
+\section{Définition d'un espace vectoriel}
+
+Dans la section précédente, nous avons fait un survol rapide des concepts importants
+de ce chapitre, y compris la définition d'un espace vectoriel. 
+Nous allons maintenant revoir le tout de façon plus détaillée, en commençant avec
+une définition d'un espace vectoriel où l'on donne un nom aux différents axiomes.
+\begin{defini}
+Un \textbf{espace vectoriel} est un ensemble $V$ d'objets appelés \textit{vecteurs}, sur lesquels on définit
+deux opérations, soit \textit{l'addition} ainsi que \textit{la multiplication par un scalaire}, et pour lequel
+les axiomes suivant sont satisfaits pour tous les vecteurs $\mat{u}, \mat{v}, \mat{w}$ dans $V$
+et pour tous les scalaires $\alpha, \beta \in \BBK$.
+\begin{enumerate}
+\item Fermeture sous l'addition: $\mat{u}+\mat{v}\in V$.
+\item Commutativité de l'addition: $\mat{u} + \mat{v} = \mat{v} + \mat{u}$
+\item Associativité de l'addition: $ (\mat{u} + \mat{v}) + \mat{w} = \mat{u} + (\mat{v} + \mat{w})$
+\item Existence d'un élément neutre de l'addition: $\exists\zero\in V:  \mat{u} + \zero = \mat{u}$.
+\item Existence d'un inverse additif: $\forall \mat{u}\in V\quad \exists-\mat{u}\in V: \mat{u} + (-\mat{u}) = \zero$.
+\item Fermeture sous la multiplication: $\alpha\mat{u} \in V$.
+\item Distributivité sur l'addition de vecteurs: $\alpha(\mat{u} + \mat{v}) = \alpha\mat{u} + \alpha\mat{v}$
+\item Distributivité de l'addition de scalaires: $ (\alpha + \beta)\mat{u} = \alpha\mat{u} + \beta\mat{u}$
+\item Associativité de la multiplication de scalaires: $\alpha(\beta\mat{u}) = (\alpha\beta)\mat{u}$
+\item Élément neutre de la multiplication par un scalaire: $1\mat{u} = \mat{u}$
+\end{enumerate}
+\end{defini}
+
+Il est important de noter que nous n'avons pas défini de multiplication d'un vecteur par un autre: ceci n'est
+pas une propriété requise pour avoir un espace vectoriel.
+\textbf{Important: } notez la distinction de la notation entre le chiffre (scalaire) zéro, 0, et le vecteur nul $\zero$.
+
+Dans ce qui suit, nous allons habituellement supposer que $\BBK=\BBR$ est l'ensemble des scalaires qui est sous-entendu lorsqu'on
+considère la multiplication d'un vecteur par un scalaire; techniquement, ceci veut dire qu'on se limite seulement
+aux \textit{espaces vectoriels \textbf{réels}}.
+
+À partir de ces axiomes, on peut prouver rigoureusement des propriétés qui sont évidentes.
+\begin{theo}
+Soit $V$ un espace vectoriel et $\alpha$ un réel.  Les propriétés suivantes peuvent être démontrées.
+\partexercice{a} $\zero + \mat{u} = \mat{u}$.
+\partexercice{b} $-\mat{u} + \mat{u} = \zero$.
+\proof
+\partexercice{a}
+\[
+\begin{matrix}[rcll]
+\mat{u} + \zero &=& \mat{u} & \explain{élément neutre de l'addition; axiome 4} \\
+\zero + \mat{u}&=& \mat{u} & \explain{commutativité de l'addition; axiome 2}\\
+&&& \cqfd
+\end{matrix}
+\]
+
+\partexercice{b}
+\[
+\begin{matrix}[rcll]
+\mat{u} + (-\mat{u})  &=& \zero & \explain{inverse additif; axiome 5} \\
+-\mat{u} + \mat{u}&=& \zero & \explain{commutativité de l'addition; axiome 2}\\
+&&& \cqfd
+\end{matrix}
+\]
+\end{theo}
+
+\begin{theo}
+Soit $V$ un espace vectoriel et $\alpha$ un réel.  Les propriétés suivantes sont satisfaites:
+\parttheorem{a} $0\mat{u} = \zero$.
+\parttheorem{b} $\alpha\zero = \zero$.
+\parttheorem{c} $(-1)\mat{u} = -\mat{u}$.
+\parttheorem{d} Si $\alpha\mat{u} = \zero$ alors soit $\alpha=0$ ou $\mat{u}=\zero$.
+\proof
+\parttheorem{a}
+\[
+\begin{matrix}[rcll]
+0\mat{u} &=& [0+0]\mat{u} & \explain{0 = 0+0 dans $\BBR$} \\
+0\mat{u}&=& 0\mat{u} + 0\mat{u} & \explain{distributivité de l'addition de scalaire; axiome 8}\\
+0\mat{u} + (-0\mat{u})&=& [0\mat{u} + 0\mat{u}] + (-0\mat{u})  & \explain{addition de $-0\mat{u}$ de chaque côté.}\\
+0\mat{u} + (-0\mat{u})&=& 0\mat{u} + [ 0\mat{u} + (-0\mat{u})] & \explain{associativité de l'addition; axiome 3}\\
+\zero &=&  0\mat{u} +\zero &\explain{inverse additif; axiome 5} \\
+\zero &=& 0\mat{u} &\explain{élément neutre de l'addition; axiome 4}\\
+&&& \cqfd
+\end{matrix}
+\]
+Les autres démonstrations sont laissées sous forme d'exercice.
+\end{theo}
+
+\begin{exerciceC}
+Soit $V$ un espace vectoriel et $\alpha$ un réel. Dans ce qui suit, on démontre que $\alpha\zero = \zero$ 
+où $\zero \in V$.
+\[
+\begin{matrix}[rcll]
+\alpha\zero &=& \alpha(\zero + \zero) & \explain{par l'axiome \_\_} \\
+\alpha\zero&=& \alpha\zero + \alpha\zero& \explain{par l'axiome \_\_ }\\
+\alpha\zero + (-\alpha\zero) &=& [\alpha\zero + \alpha\zero] + (-\alpha\zero)  & \explain{addition de $(-\alpha\zero)$ de chaque côté.}\\
+\alpha\zero + (-\alpha\zero) &=& \alpha\zero + [(\alpha\zero) + (-\alpha\zero)]  & \explain{par l'axiome \_\_}\\
+\zero &=&  \alpha\zero + \zero&\explain{par l'axiome \_\_} \\
+\zero &=& \alpha\zero &\explain{par l'axiome \_\_}\\
+&&& \cqfd
+\end{matrix}
+\]
+Déterminez quel axiome a été utilisé dans chaque cas.
+\end{exerciceC}
+\begin{exerciceC}
+Soit $V$ un espace vectoriel et $\alpha$ un réel. Démontrez que $(-1)\mat{u} = -\mat{u}$.
+\suggestion{Démontrez en premier que $\mat{u} + (-1\mat{u}) = \zero$.}
+\end{exerciceC}
+\begin{exerciceC}
+Soit $V$ un espace vectoriel et $\alpha$ un réel. Démontrez que si $\alpha\mat{u} = \zero$ alors soit $\alpha=0$ ou $\mat{u}=\zero$.
+\end{exerciceC}
+\begin{exerciceC}
+Soit $V$ un espace vectoriel. Démontrez que $-\mat{u}$ est \textit{l'unique vecteur} dans $V$
+tel que $\mat{u} + (-\mat{u}) = \zero$.
+\end{exerciceC}
+\begin{exerciceB}
+Démontrez que l'ensemble des matrices $m\times n$ ayant des coefficients réels, et qui sont multipliés par des scalaires (également réels) est un espace vectoriel.  Pour faire cette démonstration, vous devez prouvez que chaque axiome est satisfait, basé sur les différentes définitions et les théorèmes pertinents.\label{mat-esp-vec}
+\end{exerciceB}
+
+On note que le résultat de l'\refexercice{mat-esp-vec} implique que les \textit{vecteurs} habituels de $\BBR^n$ (soit les matrices $n\times 1$ ou $1\times n$) forment un espace vectoriel comme on s'y attendait.
+
+\begin{exerciceC}
+Démontrez que l'ensemble des fonctions sur les nombres réels est un espace vectoriel.  Pour faire cette démonstration, vous devez prouvez que chaque axiome est satisfait, basé sur les différentes définitions et les théorèmes pertinents. Soit les fonctions $f, g \in V$ et le scalaire $k\in \BBR$; l'addition de fonction est définie de la façon suivante:
+\[
+(f+g)(x) = f(x) + g(x) \qquad \forall x \in \BBR
+\]
+et la multiplication par un scalaire est:
+\[
+(kf)(x) = k f(x) \qquad \forall x \in \BBR
+\]
+\end{exerciceC}
+\begin{exerciceC}
+Soit l'ensemble $V$ de tous les couples de nombres réels:
+\[
+V = \{(x, y) \quad ; x, y \in \BBR\}
+\]
+Démontrez, dans chacun des cas suivants, que $V$ n'est pas un espace vectoriel si l'on définit l'addition dans $V$ et la multiplication par un scalaire $k$ de la façon suivante:
+\partexercice{a} $(a,b) + (c,d) = (a+c, b+d)$ et $k(a,b) = (ka, b)$.
+\partexercice{b} $(a,b) + (c,d) = (a, b)$ et $k(a,b) = (ka, kb)$.
+\partexercice{c} $(a,b) + (c,d) = (a+c, b+d)$ et $k(a,b) = (k^2a, k^2b)$.
+
+\suggestion: dans chacun des cas, il suffit de démontrer que l'un des axiomes n'est pas satisfait.
+\end{exerciceC}
+
+\section{Sous-espace vectoriel}
+\begin{defini}
+Soit $W$ un \textit{sous-ensemble} d'un espace vectoriel $V$.  
+On appelera $W$ un \Definition{sous-espace vectoriel}\footnote{On omet parfois le mot \textit{vectoriel}
+pour simplement écrire \Definition{sous-espace} pour signifier la même chose.} de $V$ si
+les trois propriétés suivantes sont satisfaites:
+\begin{enumerate}
+\item Le vecteur zéro de $V$ est dans $W$.
+\item $W$ est fermé pour l'addition: $\mat{u}, \mat{w} \in W \Rightarrow \mat{u} + \mat{w} \in W$.
+\item $W$ est fermé pour la multiplication par un scalaire: $\mat{w}\in W \Rightarrow k\mat{w}\in W$ pour $k\in \BBK$,
+l'ensemble de scalaires utilisés pour la définition de $V$.
+\end{enumerate}
+\end{defini}
+On peut facilement vérifier qu'un sous-ensemble $W$ de $V$ qui satisfait les trois propriétés mentionnées dans la définition ci-dessus est un espace vectoriel.
+
+Pour tout espace vectoriel $V$, il existe deux sous-espaces vectoriels triviaux: le sous-ensemble contenant seulement le vecteur nul, $\{\zero\}$, appelé \textit{sous-espace nul}, ainsi que \textit{sous-espace total}, constitué de l'espace $V$ lui-même
+
+\begin{exemple}
+\partexemple{a} Est-ce que $\BBR^2$ est un sous-espace de $\BBR^3$?
+\partexemple{b} Est-ce que l'ensemble des vecteurs $W$ dont la dernière composante est nulle
+\[
+W = \left\{ \begin{pmatrix}
+a\\
+b\\
+0
+\end{pmatrix}: a, b \in \BBR\right\}
+\]
+est un sous-espace de $\BBR^3$?
+\partexemple{c} Est-ce que $P_1(t)$, l'ensemble des polynômes du premier degré est un sous-espace de $P_2(t)$?
+\solution
+\partexemple{a} Non, les éléments de $\BBR^2$ sont des matrices ayant deux coefficients alors
+que ceux de $\BBR^3$ en ont trois; les éléments de $\BBR^2$ ne sont pas des vecteurs de $\BBR^3$.
+\partexemple{b} Oui, on peut vérifier que les éléments de $W$ sont des éléments de $\BBR^3$, que $W$ contient
+l'élément nul, qu'il est fermé sous l'addition et la multiplication par un scalaire.  En fait, au lieu de faire la démonstration
+séparée de la fermeture sous l'addition et la multiplication par un scalaire, on peut combiner les deux et vérifier
+que toute combinaison de vecteurs de la forme $\alpha\mat{v} + \beta\mat{u} \in W$
+\[
+\alpha  \begin{pmatrix}
+a\\
+b\\
+0
+\end{pmatrix}
++ \beta  \begin{pmatrix}
+c\\
+d\\
+0
+\end{pmatrix}
+=
+ \begin{pmatrix}
+\alpha a + \beta c\\
+\alpha b + \beta d\\
+0
+\end{pmatrix} 
+=
+ \begin{pmatrix}
+e\\
+f\\
+0
+\end{pmatrix}
+\in W
+\]
+\partexemple{c} Oui, on peut vérifier que les éléments de $P_1(t)$ sont des éléments de $P_2(t)$, que $P_(t)$ contient
+l'élément nul, qu'il est fermé sous l'addition et la multiplication par un scalaire.
+\end{exemple}
+\begin{exerciceC}
+Est-ce que l'ensemble des monômes $at, a\in \BBR$ est un sous-espace de $P_2(t)$?
+\end{exerciceC}
+\begin{exerciceC}
+Soit $U$ et $W$ deux sous-espaces d'un espace vectoriel $V$.  Est-ce que leur intersection,
+$U \cap W$, est un sous-espace?
+\end{exerciceC}
+\begin{exerciceC}
+L'ensemble des matrices $2\times 2$ à coefficients réels forme un espace vectoriel.  Est-ce que l'ensemble
+des matrices $2\times 2$ symétriques à coefficients réels forme un sous-espace?
+\end{exerciceC}
+\begin{exerciceC}
+L'ensemble des matrices $2\times 2$ à coefficients réels forme un espace vectoriel.  Est-ce que l'ensemble
+des matrices $2\times 2$ anti-symétriques à coefficients réels forme un sous-espace?
+\end{exerciceC}
+\begin{exerciceC}
+L'ensemble des matrices $2\times 2$ à coefficients réels forme un espace vectoriel.  Est-ce que l'ensemble
+des matrices $2\times 2$ telles que $\mat{A}^2 = \mat{A}$ forme un sous-espace?  \suggestion{Considérez les
+matrices $I$ et $2I$.}
+\end{exerciceC}
+\begin{exerciceC}
+Si $m$ et $b$ sont deux constantes réelles, est-ce qu'il est possible que l'ensemble
+\[
+\left\{ \begin{pmatrix}[c]
+x \\
+mx+b
+\end{pmatrix}
+, x\in\BBR \right\}
+\]
+soit un sous-espace de $\BBR^2$?   Justifiez votre réponse.
+\end{exerciceC}
+
+\section{Combinaisons linéaires}
+
+\begin{defini}
+Soit $V$ un espace vectoriel sur le corps $\BBK$ et soient les vecteurs $\mat{v}_1,\mat{v}_2, \ldots, \mat{v}_n \in V$.
+Un vecteur quelconque de la forme 
+\[
+a_1 \mat{v}_1 + a_2 \mat{v}_2 + \ldots + a_n \mat{v}_n \qquad \mbox{avec} \quad a_i \in \BBK
+\]
+est appelé une \Definition{combinaison linéaire} des vecteurs $\mat{v}_1,\mat{v}_2, \ldots, \mat{v}_n$
+\end{defini}
+
+\begin{exemple}
+Soient les matrices 
+\[
+\mat{v}_1 = \begin{pmatrix}
+1 & 0 \\
+0 & 0
+\end{pmatrix}
+\qquad\qquad
+\mat{v}_2 = \begin{pmatrix}
+0 & 1 \\
+0 & 0
+\end{pmatrix}
+\qquad\qquad
+\mat{v}_3 = \begin{pmatrix}
+0 & 0 \\
+1 & 0
+\end{pmatrix}
+\]
+qui sont trois vecteurs de l'espace vectoriel des matrices $2\times 2$.  La
+matrice $\displaystyle \matM = \begin{pmatrix}
+2 & 3 \\
+4 & 0
+\end{pmatrix}
+$
+est une combinaison linéaire de ces trois vecteurs
+\[
+M = 2\mat{v}_1 + 3 \mat{v}_2 + 4\mat{v}_3
+\]
+\end{exemple}
+
+\begin{exemple}
+Écrire le vecteur $ \mat{v} = (1, -2)$ comme une combinaison linéaire des vecteurs 
+$\mat{e}_1 = \transp{(1, 1)}$ et $\mat{e}_2 = \transp{(1, 2)}$.
+\solution
+Nous voulons écrire $\mat{v}$ sous la forme $\mat{v} = x\mat{e}_1 + y\mat{e}_2$,
+avec $x$ et $y$ deux scalaires à déterminer.  Ceci nous donne donc deux équations:
+\[
+\begin{matrix}
+x &+& y &=& 1 \\
+x &+& 2y &=& -2
+\end{matrix}
+\]
+Nous écrivons la matrice augmentée de ce système et la transformons sous une forme
+échelonnée réduite pour trouver la solution.
+\[
+\begin{matrix}
+    &&\begin{bmatrix}[rr|r]
+    1 & 1 & 1 \\
+    1 & 2 & -2
+    \end{bmatrix} \\[25pt]
+    L_2 - L_1 \rightarrow L_2 &\Rightarrow &
+    \begin{bmatrix}[rr|r]
+    1 & 1 & 1 \\
+    0 & 1 & -3
+    \end{bmatrix} \\[25pt]
+     L_1 - L_2 \rightarrow L_1 &\Rightarrow &
+    \begin{bmatrix}[rr|r]
+    1 & 0 & 4 \\
+    0 & 1 & -3
+    \end{bmatrix}
+\end{matrix}
+\]
+Nous avons donc $x,y = 4,-3$, et  $\mat{v} = 4\mat{e}_1 -3\mat{e}_2$
+\end{exemple}
+
+\begin{exerciceC}
+Écrire le vecteur $ \mat{v} = \transp{(1, -2, 5)}$ comme une combinaison linéaire des vecteurs 
+$\mat{e}_1 = \transp{(1, 1, 1)}$, $\mat{e}_2 = \transp{(1, 2, 3)}$ et $\mat{e}_3 = \transp{(2, -1, 1)}$.
+\end{exerciceC}
+\begin{exerciceC}
+Pour quelle valeur de $c$ le vecteur $\mat{v} = \transp{(1, c, -8)}$ de $\BBR^3$ est-il une
+combinaison linéaire des vecteurs $\mat{u} = \transp{(3, 0, 2)}$ et $\mat{w} = \transp{(2, -1, -5)}$?
+\end{exerciceC}
+\begin{exerciceC}
+Écrire le polynôme réel $-3 + 4t + t^2$ comme une combinaison linéaire des polynômes
+$\mat{p}_1 = 5 -2t + t^2, \mat{p}_2 = 3t - 2t^2$ et $\mat{p}_3 = 3+t$.
+\end{exerciceC}
+
+\section{Générateurs}
+Comme nous l'avons vu, il est possible d'exprimer un vecteur comme une combinaison linéaire d'autres vecteurs.
+En fait, si on prend un ensemble quelconque de vecteurs et qu'on considère toute les combinaisons linéaires possibles
+de ces vecteurs, on obtient un espace vectoriel comme le théorème suivant le démontre.
+\begin{theo}
+Soit $S$ un sous-ensemble non-vide d'un espace vectoriel $V$.  
+\begin{enumerate}
+\item L'ensemble de toutes les combinaisons linéaires
+des vecteurs de $S$, dénotée par $\Vect(S)$, est un sous-espace vectoriel de $V$ contenant $S$.  
+\item Si
+$W$ est un autre sous-espace vectoriel de $V$ contenant $S$, alors $\Vect(S)\subseteq W$.
+\end{enumerate}
+\proof
+Puisque $S$ est non-vide, il doit contenir au moins un vecteur que nous dénotons par $\mat{v}$.  
+Parmi les combinaisons linéaires qui incluent ce vecteur, on a $0\mat{v} = \zero$. 
+ Ainsi, $\zero\in \Vect(S)$ ce qui est une des
+trois conditions qu'on doit avoir pour que $\Vect(S)$ soit un sous-espace vectoriel.
+
+De façon plus générale, nous aurons $\mat{v}_1,\mat{v}_2, \ldots, \mat{v}_n \in S$ où il est possible que $n=1$. Parmi les combinaisons linéaires possibles de ces vecteurs on retrouve $1 \mat{v}_j \quad \forall j$ et donc 
+tous les vecteurs de $S$ sont inclus dans $\Vect(S)$.
+
+Considérons les deux vecteurs suivants qui sont des combinaisons linéaires des vecteurs de $S$ et donc
+des éléments de $\Vect(S)$:
+\[ 
+    \mat{u} = a_1\mat{v}_1 + a_2 \mat{v}_2 + \ldots + a_n \mat{v}_n \qquad \mbox{et} \qquad 
+    \mat{w} = b_1\mat{v}_1 + b_2 \mat{v}_2 + \ldots + b_n \mat{v}_n
+\]
+
+Nous avons:
+\[
+    \mat{u} + \mat{w} = (a_1 + b_1)\mat{v}_1 + (a_2 + b_2) \mat{v}_2 + \ldots + (a_n+ b_n) \mat{v}_n 
+\]
+et donc $(\mat{u} + \mat{w} ) \in \Vect(S)$, c'est-à-dire que $\Vect(S)$ est fermé sous l'addition ce qui
+est la deuxième condition requise pour que $\Vect(S)$ soit un sous-espace vectoriel.
+De plus
+\[
+ k \mat{u} = ka_1\mat{v}_1 + ka_2 \mat{v}_2 + \ldots + ka_n \mat{v}_n
+ \]
+est une autre combinaison linéaire des vecteurs de $S$ 
+et donc $k\mat{u} \in \Vect(S)$, c'est-à-dire que  $\Vect(S)$ est fermé sous la multiplication par un scalaire ce qui
+est la troisième et dernière condition requise pour que $\Vect(S)$ soit un sous-espace vectoriel.  $\Vect(S)$ est donc un sous-espace vectoriel de $V$.
+
+Pour ce qui est de la deuxième partie de ce théorème, supposons que $W$ soit un sous-espace de $V$ qui contient $S$.
+En utilisant le même raisonnement que ci-dessus, on peut démontrer que $\Vect(S)$ est un sous-espace de $W$, et
+donc que $\Vect(S)\subseteq W$.
+\end{theo}
+Une autre façon d'exprimer la deuxième partie du théorème précédent est de dire que $\Vect(S)$ est le plus petit
+sous-espace de $V$ contenant $S$.  
+
+On dit de $\Vect(S)$ qu'il est le \definition{sous-espace engendré} par $S$.
+Par convention, on considère que $\Vect(\{\}) = \{\zero\}$.
+
+Étant donné un sous-espace $W$ de $V$, un \definition{ensemble générateur} de $W$ est
+un ensemble $\{\mat{v}_1, \ldots, \mat{v}_n\}$ de vecteurs de $W$ tels que
+$W = \Vect(\{\mat{v}_1, \ldots, \mat{v}_n\})$.
+\begin{exemple}\label{exemple:lin-dep}
+$\displaystyle
+\left\{ \begin{pmatrix}
+1 \\
+0 \\
+0
+\end{pmatrix},
+\begin{pmatrix}
+0\\
+1\\
+0
+\end{pmatrix},
+\begin{pmatrix}
+1\\
+1\\
+0
+\end{pmatrix}
+\right\}
+$
+est un ensemble générateur pour le sous-espace $\displaystyle \left\{ \begin{pmatrix}
+a \\
+b\\
+0
+\end{pmatrix}:
+a, b \in\BBR\right\}
+$
+de $\BBR^3$.  À noter qu'il ne s'agit pas du plus petit ensemble générateur pour ce sous-espace.
+\end{exemple}
+\begin{exemple}
+Quelle condition doivent $a, b, c$ satisfaire pour que le vecteur $\transp{(a, b, c)} \in\BBR^3$ appartienne
+à l'espace engendré par $\mat{u} = \transp{(2, 1, 0)}, \mat{v}=\transp{(3, 0, 2)}, \mat{w}=\transp{(3, 3, -2)}$?
+\solution
+Écrivons le vecteur $\transp{(a, b, c)}$ comme une combinaison linéaire des trois autres vecteurs:
+\[
+\begin{pmatrix}
+a\\
+b\\
+c
+\end{pmatrix}
+=
+x\begin{pmatrix}
+2\\
+1\\
+0
+\end{pmatrix}
++ y\begin{pmatrix}
+3\\
+0\\
+2
+\end{pmatrix}
++ z \begin{pmatrix}
+3\\
+3\\
+-2
+\end{pmatrix}
+=
+\begin{pmatrix}
+2x + 3y + 3z\\
+x + 3z\\
+2y - 2z
+\end{pmatrix}
+\]
+Nous écrivons la matrice augmentée équivalente et nous utilisons l'élimination de Gauss-Jordan pour
+trouver la condition recherchée.
+\[
+\begin{matrix}[rcl]
+&& \begin{bmatrix}[rrr|r]
+2 & 3 & 3 & a\\
+1 & 0 & 3 & b \\
+0 & 2 & -2 & c
+\end{bmatrix} \\[20pt]
+\begin{matrix}
+L_1 \leftrightarrow L_2 \\
+\frac{1}{2}L_3 \rightarrow L_3
+\end{matrix}
+&\Rightarrow&
+\begin{bmatrix}[rrr|r]
+1 & 0 & 3 & b\\
+2 & 3 & 3 & a \\
+0 & 1 & -1 & \frac{1}{2}c
+\end{bmatrix} \\[20pt]
+L_2 - 2 L_1 \rightarrow L_2
+&\Rightarrow&
+\begin{bmatrix}[rrr|r]
+1 & 0 & 3 & b\\
+0 & 3 & -3 & a-2b \\
+0 & 1 & -1 & \frac{1}{2}c
+\end{bmatrix} \\[20pt]
+L_3 - \frac{1}{3}L_2 \rightarrow L_3
+&\Rightarrow&
+\begin{bmatrix}[rrr|r]
+1 & 0 & 3 & b\\
+0 & 3 & -3 & a-2b \\
+0 & 0 & 0 & \frac{1}{2}c -\frac{1}{3}(a-2b)
+\end{bmatrix} \\[20pt]
+\end{matrix}
+\]
+Nous voyons donc que la troisième variable ($z$) est une variable libre et que nous devons avoir
+$0 =  \frac{1}{2}c -\frac{1}{3}(a-2b)$ que l'on peut récrire $0=3c-2a+4b$.  Notez que ce ne sont
+donc pas tous les vecteurs de $\BBR^3$ qui peuvent être engendrés par $\mat{u}, \mat{v}, \mat{w}$,
+mais seulement un sous-espace.
+\end{exemple}
+\begin{exerciceC}
+Montrez que les vecteurs $\mat{u} = \transp{(1, 2, 3)}, \mat{v}=\transp{(0, 1, 2)}, \mat{w}=\transp{(0, 0, 1)}$
+engendrent $\BBR^3$.
+\end{exerciceC}
+\begin{exerciceC}
+Soit l'ensemble $S = \left\{\transp{(1, 2, 0)}, \transp{(0, 1, 0)}\right\}$.  Montrez que 
+$\Vect(S)$ est le sous-ensemble $\left\{\transp{(a, b, 0)}; a, b \in \BBR\right\}$ de $\BBR^3$.
+\end{exerciceC}
+
+\newpage
+\section{Dépendance et indépendance linéaire}
+
+\begin{defini}
+Soit $V$ un espace vectoriel sur le corps $\BBK$. 
+Les vecteurs $\mat{v}_1, \ldots, \mat{v}_n \in V$ sont dits \Definition{linéairement dépendants} s'il existe des scalaires
+$k_1, \ldots, k_n \in \BBK$ dont au moins un est différent de zéro tels que
+\[
+k_1 \mat{v}_1 + \ldots + k_n \mat{v}_n = \zero
+\]
+Autrement, on dit que ces vecteurs sont \Definition{linéairement indépendants}.
+\end{defini}
+Si des vecteurs $\mat{v}_1, \ldots, \mat{v}_n$ sont linéairement dépendants, 
+on dit que l'ensemble $\{\mat{v}_1, \ldots, \mat{v}_n\}$ est un \definition{ensemble dépendant}; 
+de la même façon, si de tels vecteurs sont linéairement indépendants, on dira de leur
+ensemble qu'il s'agit d'un \definition{ensemble indépendant}.
+
+\subsection{Que veut-on dire par dépendance linéaire?}
+Supposons que l'on ait des vecteurs qui soient linéairement
+dépendants; c'est-à-dire qu'il existe une solution à l'équation
+\[
+k_1 \mat{v}_1 + \ldots + k_n \mat{v}_n = \zero
+\]
+avec au moins un des $k_i$ qui est différent de zéro.
+Puisqu'on peut diviser par zéro sans problèmes, faisons
+ceci:
+\[
+\frac{k_1}{k_i} \mat{v}_1 + \ldots + \mat{v}_i + \ldots + \frac{k_n}{k_i} \mat{v}_n = \zero
+\]
+Ceci veut dire qu'on peut donc écrire le vecteur $\mat{v}_i$
+comme une combinaison linéaire des autres vecteurs:
+\[
+\mat{v}_i = -\frac{k_1}{k_i} \mat{v}_1 + \ldots 
+\]
+Si on a des vecteurs linéairement indépendants, alors
+tous les $k_i$ sont zéro et on ne peut pas diviser
+l'équation par un d'entre eux pour exprimer un
+des vecteurs comme une combinaison linéaire des autres
+vecteurs.
+
+
+\begin{exemple}
+Dans l'exemple \ref{exemple:lin-dep}, les trois vecteurs ne sont pas linéairement indépendants.
+Par exemple, il est facile de vérifier que
+\[
+\begin{pmatrix}
+1\\
+1\\
+0
+\end{pmatrix}
+=
+\begin{pmatrix}
+1\\
+0\\
+0
+\end{pmatrix}
++
+\begin{pmatrix}
+0\\
+1\\
+0
+\end{pmatrix}
+\]
+\end{exemple}
+\begin{exemple}
+Soit $P_3$ l'espace des polynômes réels de degré $\leq$ 3. Déterminez si $\mat{p}_1, \mat{p}_2, \mat{p}_3 \in P_3$ sont
+linéairement dépendants ou linéairement indépendants si
+\begin{eqnarray*}
+\mat{p}_1 &=& 1 + 5t -3t^2 + t^3 \\
+\mat{p}_2 &=& 2 + 8t -t^2 + t^3 \\
+\mat{p}_3 &=& 5 + 9t -4t^2 + 2t^3
+\end{eqnarray*}
+\solution
+Écrivons une combinaison linéaire de ces trois polynômes que nous égalons au polynôme nul:
+\[
+x\mat{p}_1 + y\mat{p}_2 + z\mat{p}_3 = \zero
+\]
+Ce faisant, on obtient les quatre équations suivantes:
+\[
+\begin{matrix}[rrrrrrrl]
+x &+& 2y &+& 5z &=& 0 & \explain{pour les termes constants}\\
+5x &+& 8y &+& 9z &=& 0& \explain{pour les termes en $t$}\\
+-3x &-& y &-& 4z &=& 0& \explain{pour les termes en $t^2$}\\
+x &+& y &+& 2z &=& 0& \explain{pour les termes en $t^3$}
+\end{matrix}
+\]
+On peut écrire la matrice augmentée correspondante et résoudre ce système.
+\[
+\begin{matrix}[rcl]
+&& \begin{bmatrix}[rrr|r]
+1 & 2 & 5 & 0 \\
+5 & 8 & 9 & 0 \\
+-3 & -1 & -4 & 0 \\
+1 & 1 & 2 & 0
+\end{bmatrix} \\[20pt]
+\begin{matrix}
+L_2 - 5L_1 \rightarrow L_2 \\
+L_2 + 3L_1 \rightarrow L_3 \\
+L_4 - L_1 \rightarrow L_4
+\end{matrix}
+&\Rightarrow&
+\begin{bmatrix}[rrr|r]
+1 & 2 & 5 & 0 \\
+0 & -2 & -16 & 0 \\
+0 & 5 & 11 & 0 \\
+0 & -1 & -3 & 0
+\end{bmatrix} \\[20pt]
+-\frac{1}{8}L_2 \rightarrow L_2
+&\Rightarrow&
+\begin{bmatrix}[rrr|r]
+1 & 2 & 5 & 0 \\
+0 & 1 & 8 & 0 \\
+0 & 5 & 11 & 0 \\
+0 & -1 & -3 & 0
+\end{bmatrix} \\[20pt]
+\begin{matrix}
+L_3 - 5L_2 \rightarrow L_3 \\
+L_4 + L_2 \rightarrow L_2
+\end{matrix}
+&\Rightarrow&
+\begin{bmatrix}[rrr|r]
+1 & 2 & 5 & 0 \\
+0 & 1 & 8 & 0 \\
+0 & 0 & 29 & 0 \\
+0 & 0 & 5 & 0
+\end{bmatrix}
+\end{matrix}
+\]
+De cette dernière matrice, on obtient $z=0$, ce qui nous permet ensuite d'obtenir $y=0$ et $x=0$.
+Seule la solution triviale étant permise, les vecteurs sont linéairement indépendants.
+\end{exemple}
+\begin{exerciceC}
+Soit $P_3$ l'espace des polynômes réels de degré $\leq$ 3. Déterminez si $\mat{p}_1, \mat{p}_2, \mat{p}_3 \in P_3$ sont
+linéairement dépendants ou linéairement indépendants si
+\begin{eqnarray*}
+\mat{p}_1 &=& 3 - 2t + 4t^2 + t^3 \\
+\mat{p}_2 &=& 4 - t + 6t^2 + t^3 \\
+\mat{p}_3 &=& 7 -8 t + 8t^2 + 3t^3
+\end{eqnarray*}
+\end{exerciceC}
+\begin{exerciceC}
+Soit $V$ l'espace vectoriel des matrices réelles $2\times2$. Déterminez si les matrices $\matA, \matB, \matC$ sont dépendantes si:
+ \partexercice{a} $\displaystyle
+ \matA = \begin{pmatrix}
+ 1 & 1 \\
+ 1 & 1
+ \end{pmatrix},
+ \qquad
+ \matB = \begin{pmatrix}
+ 1 & 0 \\
+ 0 & 1
+ \end{pmatrix}, \qquad
+ \matC = \begin{pmatrix}
+ 1 & 1 \\
+ 0 & 0
+ \end{pmatrix}
+ $
+  \partexercice{b} $\displaystyle
+ \matA = \begin{pmatrix}
+ 1 & 2 \\
+ 3 & 1
+ \end{pmatrix},
+ \qquad
+ \matB = \begin{pmatrix}
+ 3 & -1 \\
+ 2 & 2
+ \end{pmatrix}, \qquad
+ \matC = \begin{pmatrix}
+ 1 & -5 \\
+ -4 & 0
+ \end{pmatrix}
+ $
+\end{exerciceC}
+\begin{exerciceC}
+Soient $\mat{u}, \mat{v}, \mat{w}$ des vecteurs indépendants. Montrez que
+$\mat{a}=\mat{u}+\mat{v}$, $\mat{b} = \mat{u}-\mat{v}$ et $\mat{c} = \mat{u} - 2\mat{v} + \mat{w}$
+sont aussi trois vecteurs indépendants.
+\end{exerciceC}
+\begin{exerciceC}
+Prouvez que tout ensemble de vecteurs comprenant le vecteur nul, $\zero$, est linéairement dépendant.
+\end{exerciceC}
+\begin{exerciceC}
+Prouvez que les vecteurs non nuls $\mat{v}_1, \ldots, \mat{v}_n$ sont linéairement dépendants si et seulement si
+au moins l'un d'entre eux, $\mat{v}_i$ est une combinaison linéaire des autres:
+\[
+v_i = \sum_{j\neq i} k_j \mat{v}_j
+\]
+\end{exerciceC}
+\begin{exerciceC}
+Prouvez qu'un ensemble contenant un sous-ensemble dépendant est lui-même dépendant.
+\end{exerciceC}
+\begin{exerciceC}
+Prouvez qu'un sous-ensemble quelconque d'un ensemble indépendant est un sous-ensemble indépendant.
+\end{exerciceC}
+
+
+
+\section{Base et dimension}
+
+\begin{defini}
+La dimension d'un espace vectoriel $V$ est $n$ ($\dim V = n$) s'il existe $n$ vecteurs linéairement \textbf{indépendants},
+$\mat{e}_1, \ldots, \mat{e}_n$ qui engendrent $V$, c'est-à-dire $\Vect(\{\mat{e}_1, \ldots, \mat{e}_n\}) = V$.
+L'ensemble $\{\mat{e}_1, \ldots, \mat{e}_n\}$ est appelé une \Definition{base} de $V$.
+\end{defini}
+\begin{exemple}
+Une base pour $\BBR^3$ est donnée par 
+\[
+\left\{ \begin{pmatrix}
+1\\0 \\0
+\end{pmatrix},
+\begin{pmatrix}
+0 \\ 1 \\0
+\end{pmatrix},
+\begin{pmatrix}
+0 \\ 0 \\1
+\end{pmatrix}
+\right\}
+\]
+Donc, $\dim \BBR^3 = 3$ 
+\end{exemple}
+\begin{exemple}
+Déterminez si les vecteurs suivants forment une base de l'espace vectoriel $\BBR^3$.
+\partexemple{a} $\transp{(1, 1, 1)}$ et $\transp{(1, 2, 3)}$
+\partexemple{b} $\transp{(1, 1, 2)}, \transp{(1, 2, 5)}$ et $\transp{(5, 3, 4)}$
+\solution
+\partexemple{a} Non, car une base de $\BBR^3$ doit être un ensemble de 3 éléments puisque $\dim\BBR^3 = 3$.
+\partexemple{b}
+Nous avons 3 vecteurs pour un espace à trois dimensions: 
+ces vecteurs forment une base si et seulement si ils sont indépendants.  
+Dénotons les vecteurs par 
+\begin{eqnarray*}
+\mat{u} =  \transp{(1, 1, 2)}\\
+\mat{v} =  \transp{(1, 2, 5)}\\
+\mat{w} =  \transp{(5, 3, 4)}
+\end{eqnarray*}
+
+Si les vecteurs sont linéairement indépendants, alors la seule solution du système d'équations linéaires défini par
+\[
+x\mat{u} + y\mat{v} + z\mat{w} = 0
+\]
+est $x=y=z=0$.  Pour trouver la ou les solutions de ce système, nous écrivons la matrice augmentée correspondante:
+	\[
+	\begin{bmatrix}[rrr|r]
+		1 &1& 5 & 0\\
+		1 &2& 3& 0\\
+		2 & 5 & 4 & 0
+	\end{bmatrix}
+	\]
+On peut résoudre ceci de la façon suivante:
+\[
+\begin{matrix}[rcl]
+\begin{matrix}
+L_2 - L_1 \rightarrow L_2 \\
+L_3 -2L_1 \rightarrow L_3
+\end{matrix}& \Rightarrow& \begin{bmatrix}[rrr|r]
+		1 &1& 2 & 0\\
+		0 &1& -2& 0\\
+		0 & 3 & -6 & 0
+	\end{bmatrix} \\[25pt]
+L_3 - 3 L_2 \leftrightarrow L_3
+&\Rightarrow&
+\begin{bmatrix}[rrr|r]
+		1 &1& 2 & 0\\
+		0 &1& -2& 0\\
+		0 & 0 & 0 & 0
+	\end{bmatrix}
+\end{matrix}
+\]	
+et on peut voir qu'on a une matrice échelonnée avec une
+ligne nulle: le système a donc une infinité de solutions
+et les vecteurs ne sont pas linéairement indépendants. 
+Par conséquent, ces vecteur ne forment pas une base
+pour $\BBR^3$.
+
+Ce résultat aurait pu être obtenu d'une autre façon. 
+
+
+Premièrement, on note que
+lorsqu'on fait des opérations élémentaires sur les
+lignes d'une matrice, on se trouve à faire des combinaisons
+linéaires de ces lignes.   Deuxièmement, si des vecteurs
+sont linéairement dépendants, ceci veut dire qu'on peut
+exprimer au moins un des vecteurs comme une combinaison
+linéaire des autres.  En soustrayant cette combinaison
+linéaire du vecteur lui-même, on obtient le vecteur nul.
+Ceci suggère donc de mettre plutôt les vecteurs
+dans les lignes d'une matrice et de faire des opérations
+élémentaires sur les lignes de cette matrice: si on
+obtient une ligne nulle, alors les vecteurs sont linéairement dépendants.
+Si on peut mettre cette matrice sous une forme échelonnée
+sans lignes nulles, alors les vecteurs sont linéairement
+indépendants.  Utilisons cette approche par comparaison
+avec ce que nous avons fait ci-dessus:
+\[
+\begin{matrix}[rcl]
+&& \begin{pmatrix}
+1 & 1 & 2 \\
+1 & 2 & 5 \\
+5 & 3 & 4
+\end{pmatrix} \\[25pt]
+\begin{matrix}
+L_2 - L_1 \rightarrow L_2 \\
+L_3 -5L_1 \rightarrow L_3
+\end{matrix}
+&\Rightarrow&
+\begin{pmatrix}
+1 & 1 & 2 \\
+0 & 1 & 3 \\
+0 & -2 & -6
+\end{pmatrix} \\[25pt]
+L_3 + 2L_2 \rightarrow L_3
+&\Rightarrow&
+\begin{pmatrix}
+1 & 1 & 2 \\
+0 & 1 & 3 \\
+0 & 0 & 0
+\end{pmatrix}
+\end{matrix}
+\]
+Comme l'une de lignes de la matrice échelonnée est nulle, cela veut dire qu'un des vecteurs pouvait être exprimé
+comme une combinaison linéaire des deux autres; ces trois vecteurs sont donc dépendants (comme on l'avait déjà démontré)
+et ne forment pas une base de $\BBR^3$.
+\end{exemple}
+\begin{exerciceC}
+Déterminez si les vecteurs suivants forment une base de l'espace vectoriel $\BBR^3$.
+\partexercice{a} $\transp{(1, 1, 1)}, \transp{(1, 2, 3)}$ et $\transp{(2, -1, 1)}$
+\partexercice{b} $\transp{(1, 1, 1)}, \transp{(1, 2, 3)}, \transp{(2, -1, 1)}$ et $\transp{(0, 0, 1)}$
+\end{exerciceC}
+\begin{exerciceC}
+Soit $V$ l'espace vectoriel des matrices symétriques $2\times2$ à coefficients réels.
+Quelle est la dimension de cet espace?  Écrivez une base pour cet espace.
+\end{exerciceC}
+
+\begin{exemple}
+Soit le système d'équations linéaires
+\[
+\left\{ \begin{matrix}
+x &=& 1\\
+y &=& 2
+\end{matrix}\right.
+\]
+Quelle est la dimension de l'espace des solutions?  S'agit-il d'un espace vectoriel?
+\solution
+La solution unique de ce système est un point dans $\BBR^2$;
+la dimension de cet espace est donc 0.  Ce point peut être représenté par un vecteur unique
+qui n'est pas le vecteur nul; par conséquent, ce n'est pas un espace vectoriel.
+\end{exemple}
+\begin{exemple}
+Soit l'équation linéaire
+\[
+x + y = b
+\]
+Quelle est la dimension de l'espace des solutions?  S'agit-il d'un espace vectoriel?
+\solution
+Ceci est l'équation d'une droite; l'espace des solutions est donc de dimension 1.
+
+Si on paramétrise la variable $y$ par un nombre réel $t$, on peut écrire une solution générale sous forme vectorielle comme étant:
+\[
+\begin{pmatrix}
+x \\ y
+\end{pmatrix}
+= \begin{pmatrix}
+b-t \\
+t
+\end{pmatrix}
+=
+\begin{pmatrix}
+b\\0
+\end{pmatrix}
++ \begin{pmatrix}
+-t \\ t
+\end{pmatrix}
+\]
+Pour que ceci soit un espace vectoriel, il faut que le vecteur nul appartienne à l'espace des solutions, 
+ce qui est possible seulement si $b=0$.  Dans ce cas, l'espace des solutions sera engendré par le vecteur
+\[
+\begin{pmatrix}
+-1 \\ 1
+\end{pmatrix}
+\]
+\end{exemple}
+Dans les exemples précédents, on note que, pour que l'espace des solutions soit un espace vectoriel,
+il faut que l'on ait un système d'équations linéaires \textbf{homogène}. 
+\begin{exemple}
+Trouvez une base et la dimension de l'espace $W$ des solutions du système homogène:
+\[
+\left\{
+\begin{matrix}[rrrrrrrrrrr]
+v &+& 2w &-& x &+& 2y &+& 3z &=& 0\\
+2v &+& 4w &&  &+& 5y &+&  4z &=& 0\\
+3v &+& 6w &+& x &+& 8y &+&  5z &=& 0
+\end{matrix}
+\right.
+\]
+\solution
+Écrivons la matrice augmentée du système et amenons-là sous une forme
+échelonnée réduite.
+\[
+\begin{matrix}
+\begin{bmatrix}[rrrrr|r]
+1 & 2 & -1 & 2 & 3 & 0 \\
+2 & 4 & 0 & 5 & 4 & 0 \\
+3 & 6 & 1 & 8 & 5 & 0
+\end{bmatrix}
+&\quad \Rightarrow
+\begin{matrix}
+L_2 - 2L_1 \rightarrow L_2 \\
+L_3 - 3L_1 \rightarrow L_3
+\end{matrix}
+\Rightarrow
+\quad&
+\begin{bmatrix}[rrrrr|r]
+1 & 2 & -1 & 2 & 3 & 0 \\
+0 & 0 &  2 & 1 & -2 & 0 \\
+0 & 0 &  4 & 2 & -4 & 0
+\end{bmatrix}\\[15pt]
+& L_3 - 2L_2 \rightarrow L_3 &
+\begin{bmatrix}[rrrrr|r]
+1 & 2 & -1 & 2 & 3 & 0 \\
+0 & 0 &  2 & 1 & -2 & 0 \\
+0 & 0 &  0 & 0 & 0 & 0
+\end{bmatrix}\\[15pt]
+& \frac12 L_2 \rightarrow L_2 &
+\begin{bmatrix}[rrrrr|r]
+1 & 2 & -1 & 2 & 3 & 0 \\
+0 & 0 &  1 & \frac12 & -1 & 0 \\
+0 & 0 &  0 & 0 & 0 & 0
+\end{bmatrix}\\[15pt]
+& L_1 + L_2 \rightarrow L_1 &
+\begin{bmatrix}[rrrrr|r]
+1 & 2 & 0 & 2\frac12 & 2 & 0 \\
+0 & 0 &  1 & \frac12 & -1 & 0 \\
+0 & 0 &  0 & 0 & 0 & 0
+\end{bmatrix}\\[15pt]
+\end{matrix}
+\]
+Nous avons 3 variables libres ($w, y, z$) que nous pouvons paramétriser par 3 nombres
+réels ($r,s,t$): la dimension de l'espace des solutions est donc 3.  Si on écrit
+les équations linéaires correspondant à la matrice réduite en utilisant les variables
+libres, nous aurons
+\[
+\left\{
+\begin{matrix}[rrrrrrr]
+v &=& -2r &-& 2\frac12 s &-& 2t \\
+x &=& &-& \frac12 s &+& t
+\end{matrix}
+\right.
+\]
+L'espace des solutions sera constitué de vecteurs de la forme
+\[
+\begin{pmatrix}
+v \\ w \\ x \\ y \\ z
+\end{pmatrix}
+=
+\begin{pmatrix}[c]
+-2r-2\frac12 s -2t \\ r \\ -\frac12s + t \\ s \\ t
+\end{pmatrix}
+\]
+Pour obtenir une base, la façon la plus simple est de donner la valeur 1 à tour de rôle à chacune des variables 
+libres et zéro aux autres, de la façon suivante:
+\[
+\left\{
+\begin{pmatrix}
+-2 \\ 1 \\ 0 \\ 0 \\ 0
+\end{pmatrix},
+\begin{pmatrix}
+-2\frac12 \\ 0 \\ -\frac12 \\ 1 \\ 0
+\end{pmatrix},
+\begin{pmatrix}
+-2 \\ 0 \\ 1 \\ 0 \\ 1
+\end{pmatrix}
+\right\}
+\]
+\end{exemple}
+
+
+
+\begin{exerciceC}
+Trouvez une base et la dimension de l'espace $W$ des solutions de chacun des systèmes homogènes suivants.
+\partexercice{a} $\displaystyle \left\{
+\begin{matrix}
+x &+& 3y &+& 2z &=& 0 \\
+x &+& 5y &+& z &=& 0 \\
+3x &+& 5y &+& 8z &=& 0
+\end{matrix}\right.
+$
+\partexercice{b} $\displaystyle\left\{
+\begin{matrix}
+x &-& 2y &+& 7z &=& 0 \\
+2x &+& 3y &-& 2z &=& 0 \\
+2x &-& y &+& z &=& 0
+\end{matrix}\right.
+$
+\end{exerciceC}
+\begin{exerciceC}
+Soit $P$ l'espace engendré par les polynômes
+\begin{eqnarray*}
+\mat{u} &=& 1 - 2t + 2t^2 + t^3 \\
+\mat{v} &=& 4 - t +3t^2 + t^3 \\
+\mat{w} &=& 7 + 7t -t^2 -2t^3
+\end{eqnarray*}
+Trouvez une base et la dimension de $P$.
+\end{exerciceC}
+
+\medskip
+Il est important de biens comprendre la différence entre les questions où l'on demande 
+de déterminer la dimension d'un espace engendré par des vecteurs (ou de déterminer si
+un groupe de vecteurs engendrent un espace particulier comme $\BBR^3$) et les questions où
+l'on demande de trouver la dimension de l'espace des solutions d'un système d'équations linéaires.
+Nous allons considérer un exemple très simple, soit celui où on a les
+vecteurs suivants dans  $\BBR^3$:
+\[
+\mat{v}_1 = \begin{pmatrix}
+1 \\ 0 \\ 0
+\end{pmatrix}
+\qquad\mbox{,}\qquad
+\mat{v}_2 = \begin{pmatrix}
+0 \\ 1 \\ 0
+\end{pmatrix}
+\qquad\mbox{et}\qquad
+\mat{v}_3 = \begin{pmatrix}
+1 \\ 1 \\ 0
+\end{pmatrix}
+\]
+Sans faire aucun calculs, on peut tout de suite conclure que ces trois vecteurs ne peuvent
+pas engendrer $\BBR^3$ parce qu'on ne peut pas trouver de combinaisons linéaires telles
+que la troisième composante des vecteurs sera différente de zéro.
+
+Alternativement, on observe que $\mat{v}_3 = \mat{v}_1 + \mat{v}_2$ et donc qu'on n'a
+que 2 vecteurs linéairement indépendants alors qu'on a besoin de trois vecteurs
+linéairement indépendants pour engendrer  $\BBR^3$.
+
+Supposons que l'on veuille démontrer que l'on
+n'a pas 3 vecteurs linéairement indépendants de la façon habituelle (lorsque les
+valeurs numériques sont telles que la solution n'est pas évidente); on écrira
+\[
+x \mat{v}_1 + y\mat{v}_2 + z\mat{v}_3 = \zero
+\]
+ce qui nous donne le système d'équations:
+\[
+x\begin{pmatrix}
+1 \\ 0 \\ 0
+\end{pmatrix} + y \begin{pmatrix}
+0 \\ 1 \\ 0
+\end{pmatrix} + z \begin{pmatrix}
+1 \\ 1 \\ 0
+\end{pmatrix} = \begin{pmatrix}
+0 \\ 0 \\ 0
+\end{pmatrix}\Rightarrow
+ \left\{
+\begin{matrix}
+x &&  &+& z &=& 0 \\
+ && y &+& z &=& 0 \\
+ &&  && 0 &=& 0
+\end{matrix}\right.
+\]
+On voit tout de suite que la matrice augmentée sous sa forme réduite aura une ligne nulle:
+\[
+\begin{bmatrix}[rrr|r]
+1 & 0 & 1 & 0 \\
+0 & 1 & 1 & 0 \\
+0 & 0 & 0 & 0
+\end{bmatrix}
+\]
+d'où l'on conclut que les 3 vecteurs n'étaient pas linéairement indépendants.
+Également, puisque la matrice augmentée sous sa forme réduite a deux lignes
+non-nulles, on en conclut qu'on avait deux vecteurs linéairement indépendants, 
+ce qu'on savait déjà; ces deux vecteurs engendreront donc un espace vectoriel
+à deux dimensions (le plan $xy$ dans ce cas-ci).
+
+Revenons au système d'équations ci-dessus et supposons que l'on demande quelle sera
+la dimension de l'espace des \textbf{solutions}.  On note que la troisième variable
+est une variable libre qu'on peut paramétriser par $t$, que l'on aura
+\[
+\begin{matrix}
+x &=& -t \\
+y &=& -t
+\end{matrix}
+\]
+ et que l'espace des solutions
+peut être écrit comme:
+\[
+t\begin{pmatrix}
+-1 \\
+-1 \\
+1
+\end{pmatrix}
+\]
+Comme on n'a qu'un paramètre de libre, la dimension de l'espace des solutions sera
+égale à 1.  Une base pour cet espace vectoriel peut être choisie en fixant la valeur
+du paramètre $t$; par exemple, on peut choisir $t=-1$ et obtenir la base:
+\[
+\left\{\begin{pmatrix}
+1 \\ 1 \\ -1
+\end{pmatrix}
+\right\}
+\]
+
+
+\section{Coordonnées}
+Avant de définir ce qu'on entend par \definition{coordonnées}, nous considérons
+le \definition{théorème de l'unicité de la représentation}.
+\begin{theo}
+Soit $B = \{\mat{e}_1, \ldots, \mat{e}_n\}$ une base pour l'espace vectoriel $V$. 
+Alors, pour chaque vecteur $\mat{v}$ dans $V$, il existe un ensemble unique de
+scalaires, $a_1, \ldots, a_n$ tel que 
+\[
+\mat{v} = a_1 \mat{e}_1 + \ldots + a_n \mat{e}_n
+\]
+\proof
+Puisque $B$ est une base, par définition tout vecteur $\mat{v}$ peut être exprimé
+par une telle combinaison linéaire.
+Supposons que $\mat{v}$ puisse être exprimé par une autre combinaison linéaire:
+\[
+\mat{v} = b_1 \mat{e}_1 + \ldots + b_n \mat{e}_n
+\]
+Si l'on soustrait l'une de l'autre ces deux expressions, on obtient
+\[
+0 = \mat{v} - \mat{v} = (a_1 - b_1) \mat{e}_1 + \ldots + (a_n - b_n)\mat{e}_n
+\]
+Puisque les $\mat{e}_i$ forment une base, ils sont linéairement indépendants; 
+donc, par définition les coefficients de cette dernière équation sont tous zéros:
+\[
+a_i - b_i = 0 \qquad \forall i
+\]
+et donc la décomposition de $\mat{v}$ en une composition linéaire des $\mat{e}_i$ existe et elle est unique.
+\end{theo}
+
+Ayant démontré que, pour chaque vecteur dans $V$ avec une base donnée $B$,
+il existe un ensemble unique de scalaire, nous utilisons ceci pour définir
+les \definition{coordonnées}.
+
+\begin{defini}
+Soit $B = \{\mat{e}_1, \ldots, \mat{e}_n\}$ une base pour l'espace vectoriel $V$, 
+et $\mat{v}$ un vecteur quelconque de $V$.
+Les \Definition{coordonnées de $\mat{v}$ par rapport à la base $B$} sont les scalaires
+$a_1, \ldots, a_n$ tels que
+\[
+\mat{v} = a_1 \mat{e}_1 + \ldots + a_n \mat{e}_n
+\]
+\end{defini}
+
+Avec cette définition, on utilise la notation $[\mat{v}]_B$ pour représenter la
+\definition{matrice des coordonnées}\footnote{Puisqu'il s'agit d'une matrice de taille $n\times 1$,
+on dit parfois qu'il s'agit du \textbf{vecteur des coordonnées}.} de $\mat{v}$ (par rapport à la base $B$):
+$\displaystyle
+[\mat{v}]_B = \begin{bmatrix}
+a_1 \\
+\vdots \\
+a_n
+\end{bmatrix}
+$
+
+\begin{exemple}
+ Trouvez les coordonnées de $\mat{v} = \transp{(2, 3, 4)} $ par rapport à la base $B = \{ \mat{e}_1, \mat{e}_2, \mat{e}_3\}$ de
+$\BBR^3$ si:
+\partexemple{a} $\displaystyle
+\mat{e}_1 = \begin{pmatrix}
+1\\0\\0
+\end{pmatrix}, \qquad
+\mat{e}_2 = \begin{pmatrix}
+0\\1\\0
+\end{pmatrix}, \qquad
+\mat{e}_3 = \begin{pmatrix}
+0\\0\\1
+\end{pmatrix}
+$
+\partexemple{b}
+$\displaystyle
+\mat{e}_1 = \begin{pmatrix}
+1\\0\\0
+\end{pmatrix}, \qquad
+\mat{e}_2 = \begin{pmatrix}
+1\\1\\0
+\end{pmatrix}, \qquad
+\mat{e}_3 = \begin{pmatrix}
+1\\1\\1
+\end{pmatrix}
+$
+\solution
+\partexemple{a}  Cet exemple est trivial puisque $B$ est la base \Definition{canonique}. 
+Procédons quand même comme si ce n'était pas le cas.
+ On veut trouver $x, y, z$ tels que $\mat{v} = x\mat{e}_1 + y\mat{e}_2 + z\mat{e}_3$.  
+ Ceci nous donne
+\[
+\begin{pmatrix}
+2\\
+3\\
+4
+\end{pmatrix}
+=
+x\begin{pmatrix}
+1\\0\\0
+\end{pmatrix}
++ 
+y\begin{pmatrix}
+0\\1\\0
+\end{pmatrix}
++ z \begin{pmatrix}
+0 \\0 \\1
+\end{pmatrix}
+=
+\begin{pmatrix}
+x\\y\\z
+\end{pmatrix}
+\]
+d'où l'on obtient $x=2, y=3, z=4$ et donc $\displaystyle [\mat{v}]_B = \begin{bmatrix}
+2\\3\\4
+\end{bmatrix}
+$
+\partexemple{b}  On veut trouver $x, y, z$ tels que $\mat{v} = x\mat{e}_1 + y\mat{e}_2 + z\mat{e}_3$.  Ceci nous
+donne
+\[
+\begin{pmatrix}
+2\\
+3\\
+4
+\end{pmatrix}
+=
+x\begin{pmatrix}
+1\\0\\0
+\end{pmatrix}
++ 
+y\begin{pmatrix}
+1\\1\\0
+\end{pmatrix}
++ z \begin{pmatrix}
+1 \\1\\1
+\end{pmatrix}
+=
+\begin{pmatrix}
+x+y+z\\y+z\\z
+\end{pmatrix}
+\]
+d'où l'on obtient $z=4$, puis, en substituant dans $3=y+z$, on trouve $y=-1$, et ensuite $2=x+y+z = x + (-1+4)$ ce qui nous
+donne $x=-1$, et donc
+$\displaystyle
+[\mat{v}]_B = \begin{bmatrix}
+-1\\-1\\4
+\end{bmatrix}
+$
+\end{exemple}
+\begin{exerciceC}
+Soit $V$ l'espace des matrices symétriques réelles $2\times2$. Trouvez le vecteur des coordonnées
+de la matrice
+\[
+\matA = \begin{pmatrix}
+a & b\\
+b & c
+\end{pmatrix}
+\]
+par rapport à la base
+\[
+B = \left\{     
+\begin{pmatrix}
+2 & 1 \\
+1 & 3
+\end{pmatrix}, \quad
+\begin{pmatrix}
+1 & -2 \\
+-2 & 1
+\end{pmatrix}, \quad
+\begin{pmatrix}
+4 & -1 \\
+-1 & 5
+\end{pmatrix}
+\right\}
+\]
+\end{exerciceC}
+\begin{exerciceC}
+Soit $V$ l'espace des matrices réelles $2\times2$. Trouvez le vecteur des coordonnées
+de la matrice
+\[
+\matA = \begin{pmatrix}
+2 & 3\\
+4 & 7
+\end{pmatrix}
+\]
+par rapport à la base
+\[
+B = \left\{     
+\begin{pmatrix}
+1 & 1 \\
+1 & 1
+\end{pmatrix}, \quad
+\begin{pmatrix}
+0 & -1 \\
+1 & 0
+\end{pmatrix}, \quad
+\begin{pmatrix}
+1 & -1 \\
+0 & 0
+\end{pmatrix}, \quad
+\begin{pmatrix}
+1 & 0 \\
+0 & 0
+\end{pmatrix}
+\right\}
+\]
+\end{exerciceC}
+
+\medskip
+Finalement, pour tout espace vectoriel, il existe une base \textit{naturelle}; on appelle cette base la \textbf{base canonique}
+\medskip
+
+\begin{defini}
+La \Definition{base canonique} est la base telle que, pour tout vecteur $\mat{v}$, les coordonnées de $\mat{v}$
+sont données par les composantes mêmes (coefficients) qui constituent $\mat{v}$.  
+\end{defini}
+\begin{exemple}
+\partexemple{a} La base canonique de $\BBR^2$ est l'ensemble des deux vecteurs suivants:
+\[
+\mat{e}_1 = \begin{pmatrix}
+1 \\ 0
+\end{pmatrix}, \qquad
+\mat{e}_2 = \begin{pmatrix}
+0 \\ 1
+\end{pmatrix}
+\]
+\partexemple{b} La base canonique des matrice $2\times 2$ est l'ensemble des matrices suivantes:
+\[
+\mat{e}_1 = \begin{pmatrix}
+1 & 0 \\
+0 & 0
+\end{pmatrix}, \qquad
+\mat{e}_2 = \begin{pmatrix}
+0 & 1 \\
+0 & 0
+\end{pmatrix}, \qquad
+\mat{e}_3 = \begin{pmatrix}
+0 & 0 \\
+1 & 0
+\end{pmatrix}, \qquad
+\mat{e}_4 = \begin{pmatrix}
+0 & 0 \\
+0 & 1
+\end{pmatrix}
+\]
+\partexemple{c} La base canonique des polynômes du deuxième degré, $P_2(t)$ est l'ensemble des monômes suivants:
+$
+\mat{e}_1 = 1, \qquad \mat{e}_2 = t, \qquad \mat{e}_3 = t^2
+$
+\end{exemple}
+\bigskip
+
+\begin{TwoCol}
+\section{Exercices divers}
+
+\begin{exercice}
+L'ensemble des matrices $n\times n$ à coefficients réels forme un espace vectoriel.  Est-ce que l'ensemble
+des matrices $n\times n$ à coefficients réels dont la trace est égale à zéro forme un sous-espace?
+\end{exercice}
+\begin{exercice}
+L'ensemble des matrices $2\times 2$ à coefficients réels forme un espace vectoriel.  Est-ce que l'ensemble
+des matrices $2\times 2$ à coefficients réels dont le déterminant est égal à zéro forme un sous-espace?
+Le déterminant d'une matrice $\matA_{2\times 2}$ est $a_{11}a_{22} - a_{12}a_{21}$.
+\end{exercice}
+
+\end{TwoCol}
+
+\hrule
+
+\begin{TwoCol}
+\begin{small}
+Après avoir préparé la première version de ce manuel, 
+j'ai lu la deuxième édition d'un manuel\footnote{W. Keith Nicholson,
+\textit{Elementary Linear Algebra}} utilisé pour un cours d'introduction 
+à l'algèbre linéaire dans plusieurs autres universités, pour des étudiants de toutes 
+les disciplines y compris ceux qui se dirigent en mathématiques Dans la préface de
+ce manuel, quelques phrases 
+m'ont frappé et je crois qu'elles pourraient servir à vous encourager. 
+Je vais les citer telles qu'elles sont écrites (en anglais):
+
+
+\textit{
+Every teacher of linear algebra knows that the students "hit the wall"
+ when the notion of an abstract vector space is introduced.  
+ One reason for this is that they are coping simultaneously with two new ideas: 
+ the concept of an abstract structure, and mastering difficult notions like spanning, 
+ independence, and linear transformations. 
+  This double jeopardy is difficult to deal with for students, even the most talented ones. }
+
+
+
+On pourrait traduire comme suit:  
+
+\textit{
+Chaque enseignant d'algèbre linéaire sait que les étudiants "frappent un mur" 
+lorsque la notion d'espace vectoriel abstrait est introduite. 
+ Une raison pour ceci est qu'ils ont à composer simultanément avec deux nouvelles idées: 
+ le concept d'une structure abstraite, et d'apprendre à maitriser des notions difficiles 
+ tels que la génération d'un espace à partir d'une base, l'indépendance linéaire et 
+ les transformations linéaires.  
+ Composer avec ce double défi est difficile pour les étudiants, même pour les plus talentueux.}
+
+L'auteur du livre en question a choisi, comme plusieurs autres auteurs de livres semblables, 
+de mettre ce matériel à la toute fin du livre. 
+ Lorsque j'ai pensé à l'organisation du cours, j'ai choisi délibérément d'organiser 
+ la présentation pour introduire ces concepts le plus tôt possible, justement parce que 
+ ces concepts étaient les plus difficiles. 
+  Ainsi, vous aurez plus de temps pour absorber la matière et l'intégrer avec le reste du cours. 
+  Vous aurez également l'occasion de répondre à des questions sur ce sujet lors d'un test,  qui vous servira de préparation pour l'examen final.    
+  Vous verrez que d'avoir 4 ou 5 semaines pour absorber des concepts tels que les transformations linéaires,
+ les espaces vectoriels, etc., les rend beaucoup moins intimidants que si vous les rencontriez seulement une semaine avant l'examen final.
+
+Plus tard, j'ai pu constater que les éditions plus récentes du livre de Nicholson introduisaient
+les espaces vectoriels plus tôt, ce que j'ai pris comme une indication que l'approche que j'avais choisie 
+était la bonne.
+
+\end{small}
+\end{TwoCol}

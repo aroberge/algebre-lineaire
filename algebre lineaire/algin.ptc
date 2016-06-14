@@ -1,0 +1,187 @@
+\ttl@starttoc {chapters@1}
+\changetocdepth {2}
+\select@language {french}
+\ttl@stoptoc {chapters@1}
+\ttl@starttoc {chapters@2}
+\ttl@stoptoc {chapters@2}
+\ttl@starttoc {chapters@3}
+\contentsline {chapter}{Pr\IeC {\'e}face}{vi}{chapter*.2}
+\contentsline {section}{Autres ressources}{vi}{section*.3}
+\contentsline {section}{Remerciements}{vii}{section*.4}
+\contentsline {section}{Note sur l'utilisation des couleurs}{vii}{section*.5}
+\ttl@stoptoc {chapters@3}
+\ttl@starttoc {chapters@4}
+\contentsline {chapter}{\chapternumberline {1}Revue et introduction}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}Les ensembles}{1}{section.1.1}
+\contentsline {subsection}{\numberline {1.1.1}Les nombre r\IeC {\'e}els}{2}{subsection.1.1.1}
+\contentsline {subsection}{\numberline {1.1.2}Les nombres complexes}{3}{subsection.1.1.2}
+\contentsline {section}{\numberline {1.2}Les matrices}{4}{section.1.2}
+\contentsline {subsection}{\numberline {1.2.1}D\IeC {\'e}finition et notation}{4}{subsection.1.2.1}
+\contentsline {subsection}{\numberline {1.2.2}\IeC {\'E}galit\IeC {\'e} de matrices}{6}{subsection.1.2.2}
+\contentsline {subsection}{\numberline {1.2.3}Addition de matrices}{6}{subsection.1.2.3}
+\contentsline {subsection}{\numberline {1.2.4}Multiplication par un scalaire}{7}{subsection.1.2.4}
+\contentsline {subsection}{\numberline {1.2.5}Soustraction de matrices}{8}{subsection.1.2.5}
+\contentsline {subsection}{\numberline {1.2.6}Propri\IeC {\'e}t\IeC {\'e}s diverses de l'addition}{8}{subsection.1.2.6}
+\contentsline {subsection}{\numberline {1.2.7}Multiplication}{10}{subsection.1.2.7}
+\contentsline {section}{\numberline {1.3}Les vecteurs dans $\mathbb {R}^2$}{17}{section.1.3}
+\contentsline {subsection}{\numberline {1.3.1}G\IeC {\'e}n\IeC {\'e}ralisation \IeC {\`a} $\mathbb {R}^n$}{18}{subsection.1.3.1}
+\contentsline {section}{\numberline {1.4}Les \IeC {\'e}quations lin\IeC {\'e}aires}{18}{section.1.4}
+\contentsline {section}{\numberline {1.5}Syst\IeC {\`e}mes d'\IeC {\'e}quations lin\IeC {\'e}aires}{20}{section.1.5}
+\contentsline {subsection}{\numberline {1.5.1}Exemple trivial}{21}{subsection.1.5.1}
+\contentsline {section}{\numberline {1.6}Syst\IeC {\`e}mes d'\IeC {\'e}quations lin\IeC {\'e}aires: quatre interpr\IeC {\'e}tations}{23}{section.1.6}
+\contentsline {subsection}{\numberline {1.6.1}Interpr\IeC {\'e}tation g\IeC {\'e}om\IeC {\'e}trique}{23}{subsection.1.6.1}
+\contentsline {subsection}{\numberline {1.6.2}\IeC {\'E}quation matricielle}{24}{subsection.1.6.2}
+\contentsline {subsection}{\numberline {1.6.3}Combinaison lin\IeC {\'e}aire}{24}{subsection.1.6.3}
+\contentsline {subsection}{\numberline {1.6.4}Transformation lin\IeC {\'e}aire}{25}{subsection.1.6.4}
+\ttl@stoptoc {chapters@4}
+\ttl@starttoc {chapters@5}
+\contentsline {chapter}{\chapternumberline {2}Matrices}{26}{chapter.2}
+\contentsline {section}{\numberline {2.1}Matrice triangulaire}{26}{section.2.1}
+\contentsline {section}{\numberline {2.2}Trace d'une matrice}{27}{section.2.2}
+\contentsline {section}{\numberline {2.3}Transpos\IeC {\'e}e d'une matrice}{27}{section.2.3}
+\contentsline {section}{\numberline {2.4}Sym\IeC {\'e}trie et anti-sym\IeC {\'e}trie}{28}{section.2.4}
+\contentsline {section}{\numberline {2.5}Transpos\IeC {\'e}e d'un produit}{29}{section.2.5}
+\contentsline {section}{\numberline {2.6}Matrices complexes}{30}{section.2.6}
+\contentsline {subsection}{\numberline {2.6.1}Matrices hermitiennes et transconjugu\IeC {\'e}es}{31}{subsection.2.6.1}
+\contentsline {section}{\numberline {2.7}Puissance d'une matrice carr\IeC {\'e}e}{32}{section.2.7}
+\contentsline {section}{\numberline {2.8}Trace d'un produit et commutateur}{33}{section.2.8}
+\contentsline {section}{\numberline {2.9}Multiplication de matrices par blocs}{34}{section.2.9}
+\contentsline {section}{\numberline {2.10}Exercices divers}{35}{section.2.10}
+\ttl@stoptoc {chapters@5}
+\ttl@starttoc {chapters@6}
+\contentsline {chapter}{\chapternumberline {3}Syst\IeC {\`e}mes d'\IeC {\'e}quations lin\IeC {\'e}aires}{37}{chapter.3}
+\contentsline {section}{\numberline {3.1}Introduction}{37}{section.3.1}
+\contentsline {section}{\numberline {3.2}\IeC {\'E}limination de Gauss-Jordan}{37}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Notation matricielle et matrices augment\IeC {\'e}es}{40}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Formes \IeC {\'e}chelonn\IeC {\'e}es}{41}{subsection.3.2.2}
+\contentsline {subsection}{\numberline {3.2.3}Syst\IeC {\`e}mes consistant et inconsistant}{44}{subsection.3.2.3}
+\contentsline {subsection}{\numberline {3.2.4}Exemples et exercices divers}{46}{subsection.3.2.4}
+\contentsline {section}{\numberline {3.3}Rang}{52}{section.3.3}
+\contentsline {section}{\numberline {3.4}Nombre de solutions d'un syst\IeC {\`e}me d'\IeC {\'e}quations lin\IeC {\'e}aires}{54}{section.3.4}
+\contentsline {section}{\numberline {3.5}Syst\IeC {\`e}mes homog\IeC {\`e}nes}{55}{section.3.5}
+\contentsline {section}{\numberline {3.6}Exercices divers}{59}{section.3.6}
+\ttl@stoptoc {chapters@6}
+\ttl@starttoc {chapters@7}
+\contentsline {chapter}{\chapternumberline {4}Inverse d'une matrice carr\IeC {\'e}e}{61}{chapter.4}
+\contentsline {section}{\numberline {4.1}Introduction}{61}{section.4.1}
+\contentsline {section}{\numberline {4.2}L'inverse d'une matrice $2\times 2$}{65}{section.4.2}
+\contentsline {section}{\numberline {4.3}Matrices \IeC {\'e}l\IeC {\'e}mentaires}{66}{section.4.3}
+\contentsline {section}{\numberline {4.4}Sur l'existence d'un inverse}{68}{section.4.4}
+\contentsline {section}{\numberline {4.5}Algorithme pour trouver un inverse}{70}{section.4.5}
+\contentsline {section}{\numberline {4.6}Exercices divers}{72}{section.4.6}
+\ttl@stoptoc {chapters@7}
+\ttl@starttoc {chapters@8}
+\contentsline {chapter}{\chapternumberline {5}Espaces vectoriels}{73}{chapter.5}
+\contentsline {section}{\numberline {5.1}Introduction: le r\IeC {\'e}sum\IeC {\'e} du r\IeC {\'e}sum\IeC {\'e}}{73}{section.5.1}
+\contentsline {section}{\numberline {5.2}Introduction: le r\IeC {\'e}sum\IeC {\'e}}{74}{section.5.2}
+\contentsline {section}{\numberline {5.3}D\IeC {\'e}finition d'un espace vectoriel}{77}{section.5.3}
+\contentsline {section}{\numberline {5.4}Sous-espace vectoriel}{80}{section.5.4}
+\contentsline {section}{\numberline {5.5}Combinaisons lin\IeC {\'e}aires}{81}{section.5.5}
+\contentsline {section}{\numberline {5.6}G\IeC {\'e}n\IeC {\'e}rateurs}{83}{section.5.6}
+\contentsline {section}{\numberline {5.7}D\IeC {\'e}pendance et ind\IeC {\'e}pendance lin\IeC {\'e}aire}{86}{section.5.7}
+\contentsline {subsection}{\numberline {5.7.1}Que veut-on dire par d\IeC {\'e}pendance lin\IeC {\'e}aire?}{86}{subsection.5.7.1}
+\contentsline {section}{\numberline {5.8}Base et dimension}{88}{section.5.8}
+\contentsline {section}{\numberline {5.9}Coordonn\IeC {\'e}es}{94}{section.5.9}
+\contentsline {section}{\numberline {5.10}Exercices divers}{97}{section.5.10}
+\ttl@stoptoc {chapters@8}
+\ttl@starttoc {chapters@9}
+\contentsline {chapter}{\chapternumberline {6}Transformations lin\IeC {\'e}aires}{98}{chapter.6}
+\contentsline {section}{\numberline {6.1}Introduction}{98}{section.6.1}
+\contentsline {section}{\numberline {6.2}Transformation du plan}{100}{section.6.2}
+\contentsline {subsection}{\numberline {6.2.1}Changements d'\IeC {\'e}chelle: dilatation et contraction}{101}{subsection.6.2.1}
+\contentsline {subsection}{\numberline {6.2.2}Cisaillement}{101}{subsection.6.2.2}
+\contentsline {subsection}{\numberline {6.2.3}Rotation}{102}{subsection.6.2.3}
+\contentsline {subsection}{\numberline {6.2.4}R\IeC {\'e}flexion}{102}{subsection.6.2.4}
+\contentsline {subsection}{\numberline {6.2.5}Combinaison de transformations}{102}{subsection.6.2.5}
+\contentsline {subsection}{\numberline {6.2.6}Projections}{104}{subsection.6.2.6}
+\contentsline {section}{\numberline {6.3}Translations}{104}{section.6.3}
+\contentsline {section}{\numberline {6.4}Exercices divers}{105}{section.6.4}
+\ttl@stoptoc {chapters@9}
+\ttl@starttoc {chapters@10}
+\contentsline {chapter}{\chapternumberline {7}D\IeC {\'e}terminants}{107}{chapter.7}
+\contentsline {section}{\numberline {7.1}Mineur et cofacteur}{107}{section.7.1}
+\contentsline {section}{\numberline {7.2}Le d\IeC {\'e}terminant}{109}{section.7.2}
+\contentsline {subsection}{\numberline {7.2.1}Les matrices $2\times 2$}{110}{subsection.7.2.1}
+\contentsline {subsection}{\numberline {7.2.2}Deux exemples de matrice de taille sup\IeC {\'e}rieure}{111}{subsection.7.2.2}
+\contentsline {section}{\numberline {7.3}Propri\IeC {\'e}t\IeC {\'e}s des d\IeC {\'e}terminants}{112}{section.7.3}
+\contentsline {subsection}{\numberline {7.3.1}Matrices diagonales et triangulaires}{112}{subsection.7.3.1}
+\contentsline {subsection}{\numberline {7.3.2}Matrice ayant une colonne ou une ligne nulle}{113}{subsection.7.3.2}
+\contentsline {subsection}{\numberline {7.3.3}Transpos\IeC {\'e}e}{113}{subsection.7.3.3}
+\contentsline {subsection}{\numberline {7.3.4}Matrice \IeC {\'e}l\IeC {\'e}mentaires}{114}{subsection.7.3.4}
+\contentsline {subsection}{\numberline {7.3.5}D\IeC {\'e}terminant, produit de matrices et inverse}{116}{subsection.7.3.5}
+\contentsline {subsection}{\numberline {7.3.6}Op\IeC {\'e}rations \IeC {\'e}l\IeC {\'e}mentaires sur les lignes}{118}{subsection.7.3.6}
+\contentsline {section}{\numberline {7.4}R\IeC {\`e}gle de Cramer}{121}{section.7.4}
+\contentsline {subsection}{\numberline {7.4.1}Inverse d'une matrice}{123}{subsection.7.4.1}
+\contentsline {section}{\numberline {7.5}Interpr\IeC {\'e}tation g\IeC {\'e}om\IeC {\'e}trique des d\IeC {\'e}terminants}{125}{section.7.5}
+\contentsline {subsection}{\numberline {7.5.1}Transformations lin\IeC {\'e}aires}{126}{subsection.7.5.1}
+\contentsline {subsection}{\numberline {7.5.2}Dimensions sup\IeC {\'e}rieures \IeC {\`a} deux}{127}{subsection.7.5.2}
+\contentsline {section}{\numberline {7.6}Exercices divers}{127}{section.7.6}
+\ttl@stoptoc {chapters@10}
+\ttl@starttoc {chapters@11}
+\contentsline {chapter}{\chapternumberline {8}Vecteurs propres et valeurs propres}{129}{chapter.8}
+\contentsline {section}{\numberline {8.1}Introduction}{129}{section.8.1}
+\contentsline {section}{\numberline {8.2}Polyn\IeC {\^o}me caract\IeC {\'e}ristique}{131}{section.8.2}
+\contentsline {section}{\numberline {8.3}Diagonalisation}{135}{section.8.3}
+\contentsline {section}{\numberline {8.4}Diagonalisation: un exemple d\IeC {\'e}taill\IeC {\'e}}{139}{section.8.4}
+\contentsline {section}{\numberline {8.5}Exercices divers}{143}{section.8.5}
+\ttl@stoptoc {chapters@11}
+\ttl@starttoc {chapters@12}
+\contentsline {chapter}{\chapternumberline {9}Produit scalaire et orthogonalit\IeC {\'e}}{144}{chapter.9}
+\contentsline {section}{\numberline {9.1}Introduction}{144}{section.9.1}
+\contentsline {subsection}{\numberline {9.1.1}Exemples}{147}{subsection.9.1.1}
+\contentsline {section}{\numberline {9.2}Orthogonalit\IeC {\'e}}{148}{section.9.2}
+\ttl@stoptoc {chapters@12}
+\ttl@starttoc {chapters@13}
+\contentsline {chapter}{\chapternumberline {10}G\IeC {\'e}ometrie vectorielle}{155}{chapter.10}
+\contentsline {section}{\numberline {10.1}Notation utilis\IeC {\'e}e dans ce chapitre}{155}{section.10.1}
+\contentsline {section}{\numberline {10.2}Produit scalaire}{156}{section.10.2}
+\contentsline {section}{\numberline {10.3}Produit vectoriel}{156}{section.10.3}
+\contentsline {subsection}{\numberline {10.3.1}Interpr\IeC {\'e}tation g\IeC {\'e}om\IeC {\'e}trique de la norme du produit vectoriel}{160}{subsection.10.3.1}
+\contentsline {section}{\numberline {10.4}\IeC {\'E}quation param\IeC {\'e}trique d'une droite}{161}{section.10.4}
+\contentsline {subsection}{\numberline {10.4.1}Sous-espace vectoriel \IeC {\`a} une dimension}{161}{subsection.10.4.1}
+\contentsline {subsection}{\numberline {10.4.2}Droite dans l'espace euclidien \IeC {\`a} trois dimensions}{162}{subsection.10.4.2}
+\contentsline {section}{\numberline {10.5}Distance d'un point \IeC {\`a} une droite}{164}{section.10.5}
+\contentsline {section}{\numberline {10.6}\IeC {\'E}quation d'un plan}{166}{section.10.6}
+\contentsline {section}{\numberline {10.7}Distance d'un point \IeC {\`a} un plan}{168}{section.10.7}
+\ttl@stoptoc {chapters@13}
+\ttl@starttoc {chapters@14}
+\contentsline {chapter}{\chapternumberline {11}Applications diverses}{171}{chapter.11}
+\contentsline {section}{\numberline {11.1}\IeC {\'E}quilibrage des r\IeC {\'e}actions chimiques}{171}{section.11.1}
+\contentsline {subsection}{\numberline {11.1.1}Combustion incompl\IeC {\`e}te}{173}{subsection.11.1.1}
+\contentsline {section}{\numberline {11.2}Courbes dans le plan}{174}{section.11.2}
+\contentsline {subsection}{\numberline {11.2.1}\IeC {\'E}quation d'une droite dans le plan}{174}{subsection.11.2.1}
+\contentsline {subsection}{\numberline {11.2.2}\IeC {\'E}quation d'un cercle dans le plan}{175}{subsection.11.2.2}
+\contentsline {subsection}{\numberline {11.2.3}Mouvement des corps c\IeC {\'e}lestes}{177}{subsection.11.2.3}
+\contentsline {section}{\numberline {11.3}S\IeC {\'e}rie de Fourier}{178}{section.11.3}
+\contentsline {subsection}{\numberline {11.3.1}\IeC {\'E}quations diff\IeC {\'e}rentielles}{179}{subsection.11.3.1}
+\contentsline {subsection}{\numberline {11.3.2}Application \IeC {\`a} la musique}{180}{subsection.11.3.2}
+\contentsline {section}{\numberline {11.4}Suite de Fibonacci}{180}{section.11.4}
+\contentsline {section}{\numberline {11.5}Dynamique des populations}{182}{section.11.5}
+\contentsline {section}{\numberline {11.6}Visages propres}{185}{section.11.6}
+\contentsline {section}{\numberline {11.7}R\IeC {\'e}gression lin\IeC {\'e}aire}{188}{section.11.7}
+\contentsline {subsection}{\numberline {11.7.1}G\IeC {\'e}n\IeC {\'e}ralisation \IeC {\`a} d'autres types de courbes}{192}{subsection.11.7.1}
+\ttl@stoptoc {chapters@14}
+\ttl@starttoc {chapters@15}
+\contentsline {appendix}{\chapternumberline {A}D\IeC {\'e}finitions et propri\IeC {\'e}t\IeC {\'e}s utiles}{194}{appendix.A}
+\contentsline {section}{\numberline {A.1}D\IeC {\'e}finitions des scalaires}{194}{section.A.1}
+\contentsline {section}{\numberline {A.2}Propri\IeC {\'e}t\IeC {\'e}s des scalaires ($\mathbb {R}$ ou $\mathbb {C}$)}{194}{section.A.2}
+\contentsline {section}{\numberline {A.3}D\IeC {\'e}finitions des matrices}{195}{section.A.3}
+\contentsline {section}{\numberline {A.4}Propri\IeC {\'e}t\IeC {\'e}s des matrices}{196}{section.A.4}
+\contentsline {section}{\numberline {A.5}D\IeC {\'e}finition d'un espace vectoriel}{197}{section.A.5}
+\contentsline {section}{\numberline {A.6}Propri\IeC {\'e}t\IeC {\'e}s des espaces vectoriels}{197}{section.A.6}
+\contentsline {section}{\numberline {A.7}D\IeC {\'e}finition des d\IeC {\'e}terminants}{197}{section.A.7}
+\contentsline {section}{\numberline {A.8}Propri\IeC {\'e}t\IeC {\'e}s des d\IeC {\'e}terminants}{198}{section.A.8}
+\contentsline {section}{\numberline {A.9}Vecteurs et valeurs propres}{198}{section.A.9}
+\contentsline {section}{\numberline {A.10}Produit scalaire}{198}{section.A.10}
+\contentsline {section}{\numberline {A.11}G\IeC {\'e}om\IeC {\'e}trie vectorielle}{199}{section.A.11}
+\ttl@stoptoc {chapters@15}
+\ttl@starttoc {chapters@16}
+\contentsline {appendix}{\chapternumberline {B}R\IeC {\'e}f\IeC {\'e}rences}{200}{appendix.B}
+\contentsline {section}{\numberline {B.1}Source des images}{200}{section.B.1}
+\ttl@stoptoc {chapters@16}
+\ttl@starttoc {chapters@17}
+\contentsline {appendix}{\chapternumberline {C}Licence {\fontencoding {U}\fontfamily {ccicons}\fontseries {m}\fontshape {n}\selectfont \ignorespaces \char 0}{\fontencoding {U}\fontfamily {ccicons}\fontseries {m}\fontshape {n}\selectfont \ignorespaces \char 1}{\fontencoding {U}\fontfamily {ccicons}\fontseries {m}\fontshape {n}\selectfont \ignorespaces \char 4}{\fontencoding {U}\fontfamily {ccicons}\fontseries {m}\fontshape {n}\selectfont \ignorespaces \char 2}}{201}{appendix.C}
+\ttl@stoptoc {chapters@17}
+\ttl@starttoc {chapters@18}
+\contentsline {chapter}{Index}{202}{section*.6}
+\contentsfinish 

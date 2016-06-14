@@ -1,0 +1,336 @@
+%%%%%%%%%%%%  Packages  %%%%%%%%%%%%%%%%%%%%%%%
+%%%  default French language settings
+\usepackage[utf8]{inputenc}			% enable input of accented letters
+\usepackage[T1]{fontenc}				% related to above
+\usepackage[french]{babel}			% French language support
+\usepackage{translator}				% same
+	\uselanguage{French}
+	\languagepath{French}
+	\frenchbsetup{IndentFirst=false,FrenchFootnotes=false}  % modified from defaults
+
+\usepackage{mdframed}	
+\usepackage{graphicx}
+%\usepackage{ltxkeyx}
+\RequirePackage{ltxkeys}
+\usepackage{hyphenat}				% I use it to prevent hyphenation of table of contents items
+\usepackage{xcolor}                                	% color definitions
+\usepackage{amssymb,amsmath,amsthm}   % For better support of math
+\usepackage{thmtools,mathtools}                  %
+%\usepackage{titletoc}				% more flexibility for toc
+\usepackage{multicol}				% for multicolumn output
+\usepackage{adjmulticol}				% for changing margins midpage ... works beautifully
+\usepackage{ccicons}				% creative commons icons
+\usepackage{longtable,array}			% for multiline aligned math stuff ... at least,that's how I plan to use it
+\usepackage{caption}				% to change the look of captions
+\usepackage{tikz}					% for drawing figures
+
+\usepackage{url}					% to typeset urls 
+
+
+
+%% for testing
+\usepackage{lipsum}
+
+\newcolumntype{C}{>{$\displaystyle}c<{$}} 
+\newcolumntype{L}{>{$\displaystyle}l<{$}} 
+\newcolumntype{R}{>{$\displaystyle}r<{$}}
+
+%%%%%%%%%%%%%%%  Custom changes %%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%% page layout dimensions for memoir
+\setstocksize{11in}{8.5in}
+\settrimmedsize{\stockheight}{\stockwidth}{*}
+\settypeblocksize{9.0in}{5in}{*}
+\setlrmargins{0.75in}{*}{*}
+\setulmargins{1.0in}{*}{*}
+\setheadfoot{30pt}{26pt}
+\setheaderspaces{*}{30pt}{*}
+\setmarginnotes{0.2in}{1.8in}{0.2in}
+\checkandfixthelayout
+%
+
+%%% colors definitions
+\definecolor{MainRed}{rgb}{.600,.100,.100}
+\definecolor{GoldDecoration}{RGB}{169,121,69}
+\definecolor{ExerciceCouleur}{rgb}{0, 0.1, 0.6}
+
+%%%%% Exemple
+\definecolor{ExempleCouleur}{rgb}{0.1, 0.4, 0.1}
+\newcommand{\solution}{\textcolor{ExempleCouleur}{{\textbf{\smallskip \\ \fbox{Solution} }}}\smallskip}
+\newcommand{\partexemple}[1]{\par\noindent\textcolor{ExempleCouleur}{{\textbf{(#1) }}}}
+
+\newcounter{exemplecount}[section]
+\newcommand{\exemplecount}{\refstepcounter{exemplecount}Exemple \theexemplecount}
+\renewcommand*\theexemplecount{\thesection.\arabic{exemplecount}}
+
+\newenvironment{exemple}{\sffamily\color{ExempleCouleur}\noindent %
+\textbf{\smallskip \\ \fbox{\exemplecount}}\small}{\par\medskip}
+
+%%% Exercice
+\newcounter{exercicecount}[chapter]
+\newcommand{\exercicecount}{\refstepcounter{exercicecount}Exercice \theexemplecount}
+\renewcommand*\theexercicecount{\thechapter.\arabic{exercicecount}}
+
+\newenvironment{exercice}{\noindent %
+\textbf{\smallskip \\ \textcolor{ExerciceCouleur}{\exercicecount}}\small}{\par\medskip}
+
+% exercice surrounded by both top and bottom blue line
+\newenvironment{exerciceB}{\par\noindent\textcolor{ExerciceCouleur}{\hrulefill}\\ %
+\textbf{\smallskip\textcolor{ExerciceCouleur}{\exercicecount}}\small}%
+{\par\noindent\textcolor{ExerciceCouleur}{\hrulefill}\par\medskip}
+
+% exercice followed by both bottom blue line
+\newenvironment{exerciceL}{\par\noindent %
+\textbf{\smallskip\textcolor{ExerciceCouleur}{\exercicecount}}\small}%
+{\par\noindent\textcolor{ExerciceCouleur}{\hrulefill}\par\medskip}
+%%%%%%%%%%%
+
+
+\numberwithin{equation}{section}
+\renewcommand\thesubsection{\thechapter\thesection.\alph{subsection})}
+% colored equation number - using color and mathtools packages
+\definecolor{EqNoCol}{rgb}{0.6, 0, 0}
+\newtagform{ColEqNo}[\bfseries\textcolor{EqNoCol}]{\textcolor{EqNoCol}{[}}{\textcolor{EqNoCol}{]}}  % use [ ]  instead of ( )
+\usetagform{ColEqNo}  % activate it
+% Note: referencing an equation via \eqref preserves this new colored format
+
+
+
+\DeclareCaptionFormat{redformat}{{\color{MainRed}#1} \footnotesize #3}
+\captionsetup{format=redformat}
+
+
+\declaretheorem[numberwithin=chapter,name=Th\'eor\`eme]{theorem}
+
+
+%\newtheoremstyle{exercice}% name
+%{0pt}% Space above
+%{1cm}% Space below
+%{}% Body font
+%{}% Indent amount
+%{\bfseries\color{ExerciceCouleur}}% Theorem head font
+%{:}% Punctuation after theorem head
+%{.5em}% Space after theorem head
+%{}% Theorem head spec (can be left empty, meaning `normal')
+%\theoremstyle{exercice}
+%\newtheorem{exercice}{Exercice}[chapter]
+
+\newcommand{\partexercice}[1]{\textcolor{ExerciceCouleur}{{\bfseries\smallskip \\ \mbox{(#1)} }}}
+
+\newcommand{\reponse}{\textcolor{ExerciceCouleur}{{\textbf{\smallskip \\ Réponse : }}}}
+\newcommand{\suggestion}{\textcolor{ExerciceCouleur}{{\textbf{\smallskip \\ Suggestion : }}}}
+\newcommand{\refexemple}[1]{\textcolor{ExempleCouleur}{{exemple \ref{#1}}}}
+\newcommand{\refexercice}[1]{\textcolor{ExerciceCouleur}{{exercice \ref{#1}}}}
+
+
+
+%% coloured chapter font in toc
+%\let\oldcftchapterfont=\cftchapterfont
+%\renewcommand{\cftchapterfont}{\color{MainRed}\oldcftchapterfont}
+% and in the text
+\setsecheadstyle{\color{MainRed}\large\bfseries}
+
+\copypagestyle{myheadings}{headings}
+\makeevenhead{myheadings}{\thepage}{}{\color{MainRed}\leftmark}
+\makeoddhead{myheadings}{\color{MainRed}\rightmark}{}{\thepage}
+
+
+
+
+%%%%%%
+% augmented matrix from http://tex.stackexchange.com/questions/2233/whats-the-best-way-make-an-augmented-coefficient-matrix
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols r]{%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{#1}}
+\makeatother
+
+
+
+\newlength{\extrawidth}
+\setlength{\extrawidth}{\marginparsep}
+\addtolength{\extrawidth}{\marginparwidth}
+\addtolength{\extrawidth}{1cm}
+\setlength{\columnsep}{1cm}
+
+\newenvironment{widematter}{\strictpagecheck\begin{adjustwidth*}{-\extrawidth}{0in}\small}{\end{adjustwidth*}}
+
+\newenvironment{TwoCol}{\small\begin{adjmulticols}{2}{0in}{-2in}}{\end{adjmulticols}}
+
+\newcommand{\sidenote}[1]{\marginpar{\footnotesize #1}}
+
+
+%% adapted from BlueBox style, pp:43-44
+% http://mirror.csclub.uwaterloo.ca/CTAN/info/latex-samples/MemoirChapStyles/MemoirChapStyles.pdf
+% with modifications from http://tex.stackexchange.com/questions/49864/automatically-adjusting-size-of-a-box-based-on-other-content
+% and others...
+\newcommand{\RedBarLength}{3em}
+
+\newsavebox{\ChpNumBox}
+\newsavebox{\ChpContBox}
+\makeatletter                                              % temporarily redefines @ as a normal character to modify LaTeX macros
+%
+\newcommand*{\thickhrulefill}{%
+  \leavevmode\leaders\hrule height 3\p@ \hfill \kern \z@}
+%
+\newcommand*\BuildChpNum[3]{%
+  \begin{tabular}[t]{@{}c@{}}
+    \makebox[0pt][c]{#1\strut} \\[.5ex]
+    \colorbox{MainRed}{%
+      \rule[-\RedBarLength-(#3)]{0pt}{0pt}%
+      \rule{1ex}{0pt}\color{white}#2\strut
+      \rule{1ex}{0pt}}%
+  \end{tabular}}
+%
+\makechapterstyle{BoxedChapNum}{%
+  \renewcommand{\chapnamefont}{\large\scshape}
+  \setlength{\beforechapskip}{-30pt}
+  \setlength{\midchapskip}{10pt}
+  \setlength{\afterchapskip}{30pt}
+  \renewcommand{\printchaptername}{}
+  \renewcommand{\chapternamenum}{}
+  \renewcommand{\printchapternum}{%
+    \startcontents[chapters]
+    \sbox{\ChpContBox}{%
+      \parbox{\linewidth}{%
+        \printcontents[chapters]{}{1}{\color{MainRed}}%
+      }}%
+    \sbox{\ChpNumBox}{%
+      \BuildChpNum{\color{GoldDecoration}\bfseries\chapnamefont\@chapapp}%
+      {\chapnumfont\thechapter}%
+      {\ht\ChpContBox+\dp\ChpContBox}%
+    }}
+  \renewcommand{\printchapternonum}{%
+    \startcontents[chapters]
+    \sbox{\ChpContBox}{%
+      \parbox{\linewidth}{%
+        \printcontents[chapters]{}{1}{\color{MainRed}}%
+      }}%
+    \sbox{\ChpNumBox}{%
+      \BuildChpNum{\chapnamefont\vphantom{\@chapapp}}%
+      {\chapnumfont\hphantom{\thechapter}}%
+      {\ht\ChpContBox+\dp\ChpContBox}%
+    }}
+  \renewcommand{\afterchapternum}{}
+  \renewcommand{\printchaptertitle}[1]{%
+    \usebox{\ChpNumBox}\hfill
+    \parbox[t]{\hsize-\wd\ChpNumBox-1em}{%
+      \raggedright\vspace{\midchapskip}%
+        {\color{GoldDecoration}\thickhrulefill}\\[10pt]
+      {\chaptitlefont\LARGE\textcolor{MainRed}{\nohyphens{##1}}}\par\vspace*{10pt}
+      \printcontents[chapters]{}{1}{\color{MainRed}}%
+    }}%
+}                 % end of \makechapterstyle{BoxedChapNum}
+\makeatother                				% restores @ as an active character
+
+%%%%%% use the newly defined style
+\chapterstyle{BoxedChapNum}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%                Non-standard commands and symbols
+\newcommand{\BBZ}{\mathbb{Z}}
+\newcommand{\BBR}{\mathbb{R}}
+\newcommand{\BBN}{\mathbb{N}}
+\newcommand{\BBC}{\mathbb{C}}
+\newcommand{\rang}{\text{rang}}
+\newcommand{\etc}{{\em etc.\/}}
+\newcommand{\bra}[1]{\langle #1 |}
+\newcommand{\ket}[1]{| #1 \rangle}
+\newcommand{\braket}[2]{\langle #1 | #2 \rangle}
+\newcommand{\ppp}{\hphantom{+}}
+
+
+\newcommand{\notation}[1]{\marginpar{\bfseries \footnotesize #1}\index{#1}}
+\newcommand{\definition}[1]{{\bfseries #1}\notation{#1}}
+
+
+% adapted from http://tex.stackexchange.com/questions/35825/pretty-table-of-contents/35835
+
+% a modification of the leftbar environment defined by the framed package
+% will be used to place a vertical colored bar separating the page number and the
+% title in chapter entries
+\renewenvironment{leftbar}{%
+  \def\FrameCommand{\textcolor{GoldDecoration}{\vrule width 2pt depth 6pt}\hspace*{15pt}}%
+  \MakeFramed{\advance\hsize-\width\FrameRestore}}%
+ {\endMakeFramed}
+
+% a command to circle the part numbers
+\newcommand\Circle[1]{\tikz[overlay,remember picture] 
+  \node[draw=GoldDecoration,circle, text width=18pt,line width=1pt,align=center] {#1};}
+
+% redefinition of the name of the ToC  %%% not needed in my ``red block style''
+%\renewcommand\printtoctitle[1]{\HUGE\sffamily\bfseries#1}
+
+\makeatletter
+% redefinitions for part entries
+\renewcommand\cftpartfont{\Huge\sffamily\bfseries\hfill}
+\renewcommand\partnumberline[1]{%
+    \hbox to \textwidth{\hss\Circle{\textcolor{GoldDecoration}{#1}}\hss}%
+  \vskip3.5ex\par\hfill\color{MainRed}}
+\renewcommand*\cftpartformatpnum[1]{\hfill}
+\renewcommand\cftpartafterpnum{\vskip1ex}
+
+% redefinitions for chapter entries
+\renewcommand\chapternumberline[1]{\mbox{\small\chaptername~#1}\par\noindent\Large}
+\renewcommand\cftchapterfont{\sffamily}
+\cftsetindents{chapter}{0pt}{0em}
+\renewcommand\cftchapterpagefont{\Huge\sffamily\bfseries\color{MainRed}}
+
+\newcommand*{\l@mychap}[3]{%
+  \def\@chapapp@head{#3}\vskip1ex%
+  \par\noindent\begin{minipage}{\textwidth}%
+  \parbox{4.5em}{%
+    \hfill{\cftchapterpagefont#2}%
+  }\hspace*{1.5em}%
+  \parbox{\dimexpr\textwidth-4.5em-15pt\relax}{%
+    \leftbar{\color{MainRed}\cftchapterfont#1}\hspace{1sp}\endleftbar%
+  }%
+  \end{minipage}\par%
+}
+
+\renewcommand*{\l@chapter}[2]{%
+  \l@mychap{#1}{#2}{\@chapapp~}%
+}
+
+\renewcommand*{\l@appendix}[2]{%
+  \l@mychap{#1}{#2}{\appendixname}%
+}
+
+%\renewcommand*{\l@appendix}[2]{%
+%  \l@mychap{#1}{#2}{\cftappendixname}}
+
+% redefinitions for section entries
+\renewcommand\cftsectionfont{\sffamily}
+\renewcommand\cftsectionpagefont{\sffamily\itshape\color{MainRed}}
+\renewcommand\cftsectionleader{\nobreak}
+\renewcommand\cftsectiondotsep{\cftnodots}
+\renewcommand\cftsectionafterpnum{\hspace*{\fill}}
+\setlength\cftsectionnumwidth{12em}
+\cftsetindents{section}{6em}{3em}
+\renewcommand\cftsectionformatpnum[1]{%
+  \hskip1em\hbox to \@pnumwidth{{\cftsectionpagefont #1\hfill}}}
+\makeatother
+
+% include after the change above
+\usepackage{titletoc}				% more flexibility for toc
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% formatting mini-table of contents at the beginning of each chapter
+%%% so that the leading dots and page numbers are in black
+%%% based on package titletoc 
+\titlecontents{section} % set formatting for \section -
+                        % \subsection must be formatted separately 
+[10em]                 % adjust left margin
+{\sffamily}             % font formatting
+{\contentslabel{3em}} % section label and offset
+{}
+{\color{black}\titlerule*[1pc]{.}\contentspage}
+
+
+
+\marginparmargin{outer}   % ensure proper positioning of marginpar ... 
+\strictpagechecktrue          % ... this one, for the page

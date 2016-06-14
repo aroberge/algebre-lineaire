@@ -1,0 +1,766 @@
+\chapter{Matrices}
+Les matrices sont des objets mathématiques qui sont essentiels dans
+l'étude de l'algèbre linéaire, en plus d'être utiles dans un grand
+nombre de domaines.  Nous avons déjà revu quelques propriétés
+des matrices dans le chapitre précédent. Dans ce chapitre, nous allons présenter
+quelques définitions et quelques autres propriétés, 
+en terminant avec la multiplication par blocs qui sera utilisée dans les chapitres suivants.
+
+\section{Matrice triangulaire}
+
+Une \definition{matrice triangulaire supérieure} est une matrice carrée dont
+tous les coefficients \textbf{sous la diagonale}, $a_{ij}, i > j$, sont zéros. Par exemple:
+\newcommand{\zb}{{\color{blue}0}}
+\[
+\begin{pmatrix}
+\mathbf{5} & 4 & 7 & 3 & 9\\
+\zb & \mathbf{2} & 1 & 5 & 6 \\
+\zb & \zb & \mathbf{1} & 4 & 8 \\
+\zb & \zb & \zb & \mathbf{4} & 7 \\
+\zb & \zb & \zb & \zb & \mathbf{3}
+\end{pmatrix}
+\]
+
+Une \definition{matrice triangulaire inférieure} est une matrice dont
+tous les coefficients \textbf{au-dessus} de la diagonale, $a_{ij}, i < j$, sont zéros.
+Par exemple
+\[
+\begin{pmatrix}
+\mathbf{2} & \zb &\zb & \zb &\zb\\
+3 & \mathbf{0} &\zb &\zb & \zb \\
+4 & 8 & \mathbf{6} & \zb & \zb \\
+0 & 9 & 3 & \mathbf{3} & \zb \\
+7 & 1 & 6 & 4 & \mathbf{4}
+\end{pmatrix}
+\]
+On note que d'autres coefficients peuvent être zéros tout en satisfaisant la définition
+d'une matrice triangulaire.
+Une matrice diagonale est donc à la fois une matrice triangulaire \textit{supérieure} et une
+matrice triangulaire \textit{inférieure}.
+
+\pagebreak
+\section{Trace d'une matrice}
+\begin{defini}
+Si $\matA$ est une matrice carrée, alors la somme des coefficients sur sa
+diagonale principale est appelée la \Definition{trace} de $\matA$ et
+est dénotée par $\tr(\matA)$:
+\[
+\tr(\matA_{n\times n}) = \sum_{i=1}^n a_{ii}
+\]
+\end{defini}
+
+\begin{exerciceB}
+Vérifiez que les traces des deux matrices triangulaires mentionnées précédemment sont égales.
+\end{exerciceB}
+
+\begin{theo}
+    Soit $\matA$ et $\matB$ deux matrices $n\times n$ et $c$ un scalaire.  Alors:
+    \parttheorem{a} $\tr(\matA+\matB) = \tr(\matA) + \tr(\matB)$
+    \parttheorem{b} $\tr(c\matA) = c\tr(\matA)$
+    \proof
+    \parttheorem{a} $\displaystyle
+    \tr(\matA+\matB) = \sum_{i=1}^n (a_{ii} + b_{ii})
+    = \sum_{i=1}^n a_{ii} + \sum_{i=1}^n b_{ii} = \tr(\matA) + \tr(\matB)
+    $
+    \parttheorem{b} $\displaystyle \tr(c\matA) = \sum_{i=1}^n (c a_{ii})
+    = c\sum_{i=1}^n a_{ii} = c\tr(\matA)$ \cqfd
+\end{theo}
+
+
+\section{Transposée d'une matrice}
+\begin{defini}
+Soit une matrice $\matA_{m\times n}$; sa \Definition{transposée}, dénotée par $\transp{\matA}$,
+est la matrice $n\times m$ obtenue en interchangeant les colonnes avec
+les lignes de $\matA$.  Donc, si $\matA = [a_{ij}]$ alors $\transp{\matA} = [a_{ji}]$.
+\end{defini}
+
+\begin{exemple}
+    Quelle est la transposée de la matrice $\displaystyle 
+    \matA = \begin{pmatrix}
+        2 & 3 & 4 \\
+        0 & 1 & 5
+        \end{pmatrix}
+    $
+    \solution
+    \[
+    \transp{\matA} = \begin{pmatrix}
+                2 & 0\\
+                3 & 1 \\
+                4 & 5
+        \end{pmatrix}
+    \]
+\end{exemple}
+
+Le théorème suivant résume quelques propriétés de la transposée d'une matrice.
+
+\begin{theo}
+    Soit $\matA=[a_{ij}]$ et $\matB = [b_{ij}]$ deux matrices $m\times n$, $\matC = [c_{ij}]$ une
+    matrice carrée ($n\times n$) et $k$ un scalaire.  Alors:
+    \parttheorem{a} $\transp{(\transp{\matA})} = \matA$
+    \parttheorem{b} $\transp{(\matA+\matB)} = \transp{\matA} + \transp{\matB}$
+    \parttheorem{c} $ \transp{(c\matA)} = c \transp{\matA}$
+    \parttheorem{d} $ \tr(\transp{\matC}) = \tr(\matC)$
+    \proof
+    \parttheorem{a} $\transp{(\transp{\matA})} = \transp{(\transp{[a_{ij}]})} = \transp{(a_{ji})} = (a_{ij}) = \matA$
+    \parttheorem{b} Écrivons $c_{ij} = a_{ij} + b_{ij}$; alors \\ \hspace*{1pt}\hfill $\transp{(\matA+\matB)} = \transp{[a_{ij} + b_{ij}]}
+        = \transp{[c_{ij}]} = [c_{ji}] = [a_{ji} + b_{ji}] = [a_{ji}] + [b_{ji}] = \transp{\matA} + \transp{\matB}$
+    \parttheorem{c} $ \transp{(c\matA)} = \transp{[c a_{ij}]} = \transp{[d_{ij}]} = [d_{ji}] = [ca_{ji}] = c [a_{ji}] = c \transp{\matA}$
+    \parttheorem{d} $ \displaystyle\tr(\transp{\matC}) = \sum_{i=1}^n c_{ii} = \tr(\matC)$ \cqfd
+\end{theo}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Symétrie et anti-symétrie}
+
+Une \definition{matrice symétrique}  $\mat{S}$ est une matrice carrée telle que $\transp{\mat{S}} = \mat{S}$.
+Une \definition{matrice anti-symétrique}\footnote{En anglais, on utilise le terme \textit{skew-symmetric}.}  $\matA$ est une matrice carrée telle que $\transp{\matA} = -\matA$.
+Par exemple, la matrice suivante est une matrice symétrique
+\[
+\begin{pmatrix}
+1 & 2 & 3 \\
+2 & 4 & 5 \\
+3 & 5 & 6
+\end{pmatrix}
+\]
+alors que la matrice suivante est une matrice anti-symétrique.
+\[
+\begin{pmatrix}
+0 & 2 & 3\\
+-2 & 0 & 5 \\
+-3 & -5 & 0
+\end{pmatrix}
+\]
+
+\begin{exemple}
+\partexemple{a} Démontrez que, pour n'importe quelle matrice carrée $\matM$, la matrice $\mat{S} = \frac{1}{2}(\matM + \transp{\matM})$ est symétrique et que la matrice $\matA=\frac{1}{2}(\matM - \transp{\matM})$ est anti-symétrique.
+\partexemple{b} Démontrez que si $\matM$ est une matrice carrée, alors on peut écrire $\matM = \mat{S} + \matA$ où $\mat{S}$ est une matrice symétrique
+et $\matA$ est une matrice anti-symétrique.
+\partexemple{c} Démontrez qu'il n'y a qu'une seule façon d'écrire une matrice $\matM$ comme la somme d'une matrice symétrique et 
+d'une matrice anti-symétrique.
+
+\solution
+\partexemple{a}Tout d'abord, on se rappelle que la transposée d'une somme de matrices est égale 
+à la somme des transposées. De plus, si on prend la transposée de la transposée d'une matrice, on retrouve
+la matrice originale.  Utilisant ceci, nous avons:
+\[
+	\transp{\mat{S}} = \frac{1}{2}\transp{(\matM + \transp{\matM})} = \frac{1}{2}(\transp{\matM} + \matM) = \mat{S}
+\]
+	$\mat{S}$ est donc une matrice symétrique.  De plus
+\[
+\transp{\matA} = \frac{1}{2}\transp{(\matM - \transp{\matM})} = \frac{1}{2}(\transp{\matM} - \matM) = -\matA
+\]
+$\matA$ est donc une matrice anti-symétrique.
+Voici un exemple concret :
+\[
+\matM = \begin{pmatrix}
+2 & 4 \\ 6 & 8
+\end{pmatrix}
+\qquad\qquad
+\transp{\matM} = \begin{pmatrix}
+2 & 6 \\ 4 & 8
+\end{pmatrix}
+\qquad\qquad
+\mat{S} = \begin{pmatrix}
+2 & 5 \\ 5 & 8
+\end{pmatrix}
+\qquad\qquad
+\matA = \begin{pmatrix}
+0 & -1 \\ 1 & 0
+\end{pmatrix}
+\qquad\qquad
+\]
+\partexemple{b}  On vérifie facilement que, si on additionne $\matA$ et $\mat{S}$ tel que définis 
+ de façon générale ci-dessus, on retrouve $\matM$.
+\partexemple{c} Supposons qu'il existe deux autres matrices, $\matA'$ et $\mat{S}'$ telles que $\matM = \mat{S}' + \matA'$.  On aurait donc
+$\matA + \mat{S} = \matA' + \mat{S}'$ que l'on peut réécrire comme $\mat{S}-\mat{S}' = \matA'-\matA$. 
+ On peut facilement vérifier que la somme (ou la différence) de deux matrices [anti-] symétriques est une matrice 
+ [anti-] symétrique. 
+Le côté gauche de l'égalité est donc une matrice symétrique et le côté droit est une matrice anti-symétrique. 
+La seule matrice qui est à la fois symétrique et anti-symétrique est la matrice nulle, $\zero$. 
+Donc, $\mat{S}=\mat{S}'$ et $\matA=\matA'$: il n'y a qu'une seule façon de décomposer une matrice quelconque 
+comme la somme d'une matrice symétrique et d'une matrice anti-symétrique.
+\end{exemple}
+
+
+ \section{Transposée d'un produit}
+En plus des propriétés semblables à celles des nombres, les matrices ont d'autres propriétés intéressantes.  Par exemple, nous avons vu le concept de transposée d'une matrice.  Le théorème suivant démontre comment obtenir la transposée d'un produit matriciel.
+
+\begin{theo}
+Soit les matrices $\matA_{m\times n}$ et $\matB_{n\times p}$; alors
+$\transp{(\matA\matB)} = \transp{\matB}\transp{\matA}$.
+\proof
+La manipulation d'indices peut être mélangeante lorsqu'on n'est pas habitué.  Pour cette raison, nous allons utiliser une façon
+détournée où nous allons définir trois matrices ($\matC, \matD, \matE$) qui vont nous permettre de
+mieux suivre ce qui se passe.   Nous écrivons donc:
+\[
+\begin{matrix}[rcl]
+\matA\matB = \matC \qquad&\Rightarrow& [\matA\matB]_{ji} =\displaystyle\sum_k a_{jk}b_{ki}= c_{ji} \\
+\transp{\matA} = \matD  \qquad&\Rightarrow\qquad& d_{jk} = a_{kj}  \qquad\explain{ $\forall j, k$}\\
+\transp{\matB} = \matE  \qquad&\Rightarrow\qquad& e_{ki} = b_{ik} \qquad\explain{ $\forall i, k$}\\
+\end{matrix}
+\]
+Nous avons donc
+\[
+\begin{matrix}[rcll]
+\left[\transp{\matB}\transp{\matA}\right]_{ij} &=& \left[\matE\matD\right]_{ij} \\
+	&=& \displaystyle \sum_k e_{ik} d_{kj} \\
+	&=& \displaystyle \sum_k b_{ki} a_{jk} \\
+	&=& \displaystyle \sum_k a_{jk} b_{ki} &\qquad\explain{commutativité de la multiplication des scalaires}\\
+	&=& [\matA\matB]_{ji} \\
+	&=& [\matC]_{ji} \\
+	&=& \left[\transp{\matC}\right]_{ij} \\
+	&=&\left[ \transp{\left(\matA\matB\right)}\right]_{ij}
+\end{matrix}
+\]
+\cqfd
+\end{theo}
+
+\begin{exemple}
+    Soit $\matA$ une matrice quelconque.  Démontrez que $\matA\transp{\matA}$ et $\transp{\matA}\matA$ sont des matrices symétriques.
+    \solution
+    En premier on note que, peu importe la taille de $\matA$, les produits $\matA\transp{\matA}$ et $\transp{\matA}\matA$ sont bien
+    définis et sont en fait des matrices carrées: $\matA_{n\times p}\transp{\matA}_{p \times n} = \matC_{n\times n}$
+    et $\transp{\matA}\matA = \matD_{p\times p}$. 
+    On a:\\ $\transp{(\matA\transp{\matA})} = \transp{(\transp{\matA})} \transp{\matA} = \matA\transp{\matA}$, et donc $\matA\transp{\matA}$ est une matrice symétrique.
+    Similairement,\\ $\transp{(\transp{\matA}\matA)} = \transp{\matA}\transp{(\transp{\matA})}  = \transp{\matA}\matA$, et donc $\transp{\matA}\matA$ est une matrice symétrique.
+\end{exemple}
+
+\section{Matrices complexes}
+
+Dans la plupart des cas que vous allez rencontrer dans vos études, 
+les coefficients des matrices seront tous réels. 
+Cependant, dans certains domaines, comme la mécanique quantique, on utilise des matrices
+ayant des coefficients complexes.
+
+\subsection{Matrices hermitiennes et transconjuguées}
+Si $\matA$ dénote une matrice, on dénote sa conjuguée par $\overline{\matA}$.  Par exemple, les
+deux matrices ci-dessous sont des matrices conjuguées:
+\[
+\matB = 
+\begin{pmatrix}[cc]
+1-i & i \\
+4 & 5-2i
+\end{pmatrix}
+\qquad \qquad \overline{\matB}=
+\begin{pmatrix}[cc]
+1+i & -i \\
+4 & 5+2i
+\end{pmatrix}
+\]
+Il est évident que si $\matA$ est réelle\footnote{Une matrice réelle est une matrice qui n'a que
+des coefficients réels.}, on doit avoir $\overline{\matA} = \matA$.
+
+La transposée de la conjuguée d'une matrice est dénoté par $\matA^* = \transp{(\overline{\matA})}$.
+Si on a $\matA^* = \matA$, on dit que la matrice est \definition{hermitienne}.
+Si on a $\matA^* = -\matA$, on dit que la matrice est \definition{transconjuguée}\footnote{En anglais, on utilise le terme
+\textit{skew-hermitian}}.
+
+Les coefficients d'une matrice hermitienne doivent satisfaire $a_{ij} = \overline{a_{ji}}$, et donc les coefficients sur
+la diagonale doivent être des réels.
+
+\begin{exerciceC}
+Si $\matA = \displaystyle \begin{pmatrix}[cc]
+1+i & 2+3i \\
+i & 2-i
+\end{pmatrix}$ trouvez
+\partexercice{a} $\overline{\matA}$
+\partexercice{b} $\matA^*$
+\end{exerciceC}
+\begin{exerciceC}
+Parmi les matrices suivantes:
+\[
+\matA = \begin{pmatrix}[cc]
+0 & i \\
+-i & 0
+\end{pmatrix}
+\qquad
+\matB = \begin{pmatrix}
+0 & 0 \\
+0 & 0
+\end{pmatrix}
+\qquad
+\matC = \begin{pmatrix}[cc]
+1 & 2+i \\
+-2-i & 3
+\end{pmatrix}
+\]
+\[
+\matD = \begin{pmatrix}[cc]
+2 &3+4i \\
+3-4i & 4
+\end{pmatrix}
+\qquad
+\matE = \begin{pmatrix}
+1 & 3 \\
+-3 & 2
+\end{pmatrix}
+\qquad
+\mat{F} = \begin{pmatrix}[cc]
+0 & 2+i \\
+-2+i & 0
+\end{pmatrix}
+\]
+\[
+\mat{G} = \begin{pmatrix}[ccc]
+0 & 3+2i & 2i \\
+3+2i & 0 & 1+i \\
+2i & 1+i & 0
+\end{pmatrix}
+\qquad
+\mat{H} = \begin{pmatrix}[ccc]
+0 & 2& 2-i \\
+-2 & 0 & -3i \\
+-2-i & -3i & 0
+\end{pmatrix}
+\]
+\partexercice{a} Lesquelles sont des matrices hermitiennes.
+\partexercice{b} Lesquelles sont des matrices transconjuguées.
+\end{exerciceC}
+\begin{exerciceC}
+Démontrez que $(\matA^*)^* = \matA$.
+\end{exerciceC}
+\begin{exerciceC}
+Démontrez que $(\matA+\matB)^* = \matA^* + \matB^*$.
+\end{exerciceC}
+\begin{exerciceC}
+Démontrez que les coefficients sur la diagonale d'une matrice transconjuguée
+sont soit zéro ou soit des nombres purement imaginaires (c'est-à-dire sans
+partie réelle).
+\end{exerciceC}
+\begin{exerciceC}
+Démontrez que, si $z\in\BBC$, alors $(z\matA)^* = \overline{z}\matA^*$
+\end{exerciceC}
+\begin{exerciceC}
+Démontrez que, pour une matrice carrée $\matA$,  $\matA\matA^* = (\matA\matA^*)^*$.
+N.B. Pour toutes les démonstrations, vous pouvez supposer que les résultats mentionnés
+dans les exercices précédents sont vrais, ce qui permet souvent de faire des démonstrations
+beaucoup plus courtes.
+\end{exerciceC}
+\begin{exerciceC}
+Démontrez que, pour une matrice carrée $\matA$,  \\
+$\matA+\matA^* = (\matA+\matA^*)^*$
+\end{exerciceC}
+\begin{exerciceC}
+Démontrez que, pour une matrice carrée $\matA$, \\
+ $\matA-\matA^* = -(\matA-\matA^*)^*$
+\end{exerciceC}
+\begin{exerciceC}
+Démontrez que n'importe quelle matrice carrée peut être exprimée comme la somme
+d'une matrice hermitienne et d'une matrice transconjuguée.
+\suggestion Vous pouvez vous inspirer de la démonstration d'un exemple précédent sur les
+matrices symétriques et anti-symétriques.
+\end{exerciceC}
+\begin{exerciceC}
+Démontrez que toute matrice hermitienne peut être exprimée comme une somme $\matA + \matB i$
+où $\matA$ est une matrice symétrique réelle et $\matB$ est une matrice réelle anti-symétrique.
+\end{exerciceC}
+\begin{exerciceC}
+Démontrez que toute matrice transconjuguée peut être exprimée comme une somme $\matA + \matB i$
+où $\matA$ est une matrice anti-symétrique réelle et $\matB$ est une matrice réelle symétrique.
+\end{exerciceC}
+
+
+ \section{Puissance d'une matrice carrée}
+ 
+ Pour les matrices carrées, on peut définir la puissance d'une matrice de la façon suivante.  Soit
+ une matrice $\matA_{n \times n}$:
+ \begin{itemize}
+ \item[$\bullet$] $\matA^0 = \matI_n$
+ \item[$\bullet$] $\matA^1 = \matA$
+  \item[$\bullet$] Pour $k\geq 2$, $\matA^k = (\matA^{k-1}) \matA$, où on se limite aux valeurs entières pour $k$.
+ \end{itemize}
+ Avec cette définition, on peut vérifier facilement que $\matA^{s+t} = \matA^s \matA^t$ et que
+ $(\matA^s)^t = \matA^{st}$.
+ 
+ \section{Trace d'un produit et commutateur}
+ Nous avons déjà vu la \textbf{trace} d'une matrice plus tôt; nous allons bientôt vérifier une propriété de la
+ trace d'un produit de matrices.  Auparavant, nous définissons le \definition{commutateur} de deux matrices
+ $\matA$ et $\matB$ comme étant la différence des produits $\matA\matB$ et $\matB\matA$.  On dénote le commutateur de la
+ façon suivante: $[\cdot, \cdot]$, c'est-à-dire:
+ \[
+ [\matA,\matB] = \matA\matB - \matB\matA
+ \]
+ L'exemple
+ \footnote{Le commutateur de deux matrices est une opération mathématique qui n'est essentiellement pas
+ utilisée en algèbre linéaire.  Par contre, c'est une opération qui est utilisée souvent en mécanique
+ quantique et mène aux relations d'incertitudes de Heisenberg.  Un exemple qui peut sembler
+ contredire l'exemple donné dans les texte est le suivant.  Si on dénote par $\mathbf{q}$ l'opérateur matriciel
+ correspondant à la coordonnée d'une position, et par $\mathbf{p}$, sa quantité de mouvement, on observe alors que
+ $\displaystyle [\mathbf{q}, \mathbf{p}] = i\hbar \mathbf{\matI}$ où $\mathbf{\matI}$ est la matrice identité. 
+ La raison pour laquelle ceci est possible est que les matrices en question sont des matrices infinies; la
+ démonstration que nous avons dérivée dans le texte est uniquement pour des matrices finies.}
+ suivant utilise la trace et le commutateur.
+ \begin{exemple}
+     Soit $\matA$ et $\matB$ deux matrices $n\times n$.
+     \partexemple{a} Démontrez que $\tr{(\matA\matB)} = \tr{(\matB\matA)}$.
+     \partexemple{b} Démontrez que $[\matA,\matB] = \matI_n$ est impossible.
+     \solution
+     \partexemple{a} Rappelons que la trace est donnée par $\tr{\matC} = \displaystyle\sum_{i=1}^n c_{ii}$.  
+     Nous avons donc
+     \[
+     \tr{(\matA\matB)} = \sum_{i=1}^n \left(\sum_{k=1}^n {\color{ExerciceCouleur} a_{ik} b_{ki}}\right) 
+     = \sum_{i=1}^n \sum_{k=1}^n {\color{ExerciceCouleur}b_{ki} a_{ik}}
+     = \sum_{k=1}^n \left(\sum_{i=1}^n b_{ki} a_{ik}\right)
+     = \tr{(\matB\matA)}
+    \]     
+     où on a  interchangé l'ordre des sommation dans l'avant-dernier terme de l'égalité.
+     
+     \partexemple{b} Supposons que  $[\matA,\matB] = \matI_n$ soit vrai.  Puisque $\tr{(\matA\matB)} = \tr{(\matB\matA)}$, nous avons
+     \[
+     0 = \tr{(\matA\matB)} - \tr{(\matB\matA)} = \tr{(\matA\matB - \matB\matA)} = \tr{\matI_n}
+     \]
+     Mais, comme on peut facilement le vérifier, $\tr{\matI_n} = n$, et on obtient la contradiction $0=n$.
+ \end{exemple}    
+ 
+ \begin{exerciceB}
+ Démontrez que $ \tr{(\matA\matB\matC)} = \tr{(\matC\matA\matB)} = \tr{(\matB\matC\matA)}$.
+ 
+ On pourrait également démontrer que 
+ \begin{eqnarray*}
+\tr{(\matA_1 \matA_2 \matA_3 \ldots \matA_p)} &=& \tr{(\matA_p \matA_1 \matA_2 \matA_3 \ldots \matA_{p-1})} \\
+& =& \tr{(\matA_q \ldots \matA_{p-1} \matA_p \matA_1 \matA_2 \ldots \matA_{q-1})}
+ \end{eqnarray*}
+ mais vous n'avez pas à le faire.
+ \end{exerciceB}
+ 
+ \section{Multiplication de matrices par blocs}
+ 
+ Il est parfois utile de partitionner des matrices en blocs, où chaque bloc
+ peut être vu comme étant une sous-matrice.  
+ Par exemple, si nous avons deux matrices, $\matA$ et $\matB$ qui peuvent être partitionnées en blocs
+ de façon compatible, le produit $\matA\matB$ peut être calculé en considérant
+ chaque bloc comme un coefficient.  
+ Nous avons déjà vu ceci dans un cas particulier, à l'équation \refeq{eq:mult}, où on a représenté
+ des matrices soit comme une collection de lignes ou une collection de colonnes.
+ Nous allons démontrer ceci avec des blocs de formes différentes à l'aide de l'exemple numérique suivant, 
+ sans en faire la démonstration générale qui est laissée au lecteur.
+
+Soit les matrices suivantes:
+\[
+\matA = \begin{pmatrix}
+1 & -1 & 7 & 8 & 0 \\
+3 & 2 & 5 & 6 & 7 \\
+1 & 3 & -1 & -2 & -3
+\end{pmatrix},
+\qquad
+\matB = \begin{pmatrix}
+-2 & 0\\
+5 & 8\\
+1 & 1\\
+2 & 0\\
+-4 & 6
+\end{pmatrix}
+ \]
+ 
+Nous pouvons facilement vérifier que le produit est donné par
+\[
+\matA\matB = \begin{pmatrix}
+16 & -1\\
+-7 & 63 \\
+20 & 5
+\end{pmatrix} 
+ \]
+ Nous pouvons calculer ce produit différemment.  Supposons que
+ nous partitionnons les deux matrices en blocs de la façon suivante:
+
+% graphics adapted from http://tex.stackexchange.com/questions/52689/problems-using-left-in-array-environment
+
+\[
+  \matA =
+    \left(
+    \begin{array}{r@{\hspace{.2cm}}c@{}rrr@{\hspace{.5cm}}r@{}rrl}
+       \multirow{2}{*}{$\matA_1 \left\{\vphantom{\begin{array}{c}1\\2\end{array}}\right.$} 
+                                &\tikzmark{left1}   & 1   & -1  & 7                     &\tikzmark{left3}   &  8 & 0  &
+                                \multirow{2}{*}{$\left.\vphantom{\begin{array}{c}1\\2\end{array}}\right\} \matA_2$} \\
+                                &                   & 3   & 2 & 5\tikzmark{right1}    &                   &6 & 7 \tikzmark{right3}   & \\[5pt]
+        \matA_3 \{     &\tikzmark{left2}   & 1  & 3 & -1 \tikzmark{right2}    &\tikzmark{left4}   & -2 & -3  \tikzmark{right4}  &\}\matA_4 \\[5pt]
+        
+      \end{array}
+    \right)
+\DrawBox[thick,green,fill=green,fill opacity=0.03]{left1}{right1}
+\DrawBox[thick,blue,fill=blue,fill opacity=0.03]{left2}{right2}
+\DrawBox[thick,red,fill=red,fill opacity=0.03]{left3}{right3}
+\DrawBox[thick,purple,fill=purple,fill opacity=0.03]{left4}{right4}
+\]
+
+
+\[
+  \matB =
+    \left(
+    \begin{array}{r@{\hspace{.2cm}}c@{}rr@{\hspace{.5cm}}r@{}l}
+       \multirow{3}{*}{$\matB_1 \left\{\vphantom{\begin{array}{c}1\\2\\3\end{array}}\right.$} 
+                                &\tikzmark{bleft1}   & -2   & 0      \\    
+                                & & 5 & 8 \\             
+                                &                   & 1   & 1 \tikzmark{bright1}    &                   \\[5pt]
+      \multirow{2}{*}{$\matB_2 \left\{\vphantom{\begin{array}{c}1\\2\end{array}}\right.$} 
+                                &\tikzmark{bleft2}   & 2   & 0      \\                 
+                                &                   & -4   & 6 \tikzmark{bright2}    &                   
+      \end{array}
+    \right)
+\DrawBox[thick,orange,fill=orange,fill opacity=0.03]{bleft1}{bright1}
+\DrawBox[thick,yellow,fill=yellow,fill opacity=0.03]{bleft2}{bright2} 
+\]
+ 
+ Le produit peut alors être écrit comme:
+ \[
+ \matA\matB = \begin{pmatrix}
+ \matA_1 & \matA_2 \\
+ \matA_3 & \matA_4
+ \end{pmatrix}
+ \begin{pmatrix}
+ \matB_1\\ \matB_2
+ \end{pmatrix}
+ = \begin{pmatrix}
+ \matA_1\matB_1 + \matA_2 \matB_2\\
+ \matA_3\matB_1 + \matA_4 \matB_2
+ \end{pmatrix}
+ \]
+ Nous avons
+ \[
+ \matA_1\matB_1 = \begin{pmatrix}
+ 1 & -1 & 7 \\
+ 3 & 2 & 5
+ \end{pmatrix}
+ \begin{pmatrix}
+ -2 & 0 \\
+ 5 & 8 \\
+ 1 & 1
+ \end{pmatrix}
+ =
+ \begin{pmatrix}
+ 0 & -1 \\
+ 9 & 21
+ \end{pmatrix}
+ \]
+ \[
+ \matA_2\matB_2 = \begin{pmatrix}
+ 8 & 0 \\
+ 6 & 7
+ \end{pmatrix}
+ \begin{pmatrix}
+ 2 & 0 \\
+ -4 & 6
+ \end{pmatrix}
+ = \begin{pmatrix}
+ 16 & 0 \\
+ -16 & 42
+ \end{pmatrix}
+ \]
+ et donc
+ \[
+ \matA_1\matB_1 + \matA_2\matB_2 = 
+ \begin{pmatrix}
+  0 & -1 \\
+ 9 & 21
+ \end{pmatrix}
+ +
+ \begin{pmatrix}
+ 16 & 0 \\
+ -16 & 42
+ \end{pmatrix}
+ = \begin{pmatrix}
+ 16 & -1 \\
+7 & 63
+ \end{pmatrix}
+ \]
+ Nous avons également
+ \[
+ \matA_3\matB_1 = \begin{pmatrix}
+ 1 & 3 & -1
+ \end{pmatrix}
+  \begin{pmatrix}
+ -2 & 0 \\
+ 5 & 8 \\
+ 1 & 1
+ \end{pmatrix}
+ = \begin{pmatrix}
+ 12 & 23
+ \end{pmatrix}
+ \]
+ et
+ \[
+ \matA_4 \matB_2 =
+ \begin{pmatrix}
+ -2 & -3
+ \end{pmatrix}
+  \begin{pmatrix}
+ 2 & 0 \\
+ -4 & 6
+ \end{pmatrix}
+ = \begin{pmatrix}
+ 8 & -18
+ \end{pmatrix}
+ \]
+ ce qui donne
+ \[
+ \matA_3\matB_1 + \matA_4\matB_2 = 
+ \begin{pmatrix}
+ 12 & 23
+ \end{pmatrix} + 
+ \begin{pmatrix}
+ 8 & -18
+ \end{pmatrix}
+ = \begin{pmatrix}
+ 20 & 5
+ \end{pmatrix}
+ \]
+ Ainsi,
+  \[
+ \matA\matB = \begin{pmatrix}
+ \matA_1 & \matA_2 \\
+ \matA_3 & \matA_4
+ \end{pmatrix}
+ \begin{pmatrix}
+ \matB_1 & \matB_2
+ \end{pmatrix}
+ = \begin{pmatrix}
+ \matA_1\matB_1 + \matA_2 \matB_2\\
+\matA_3\matB_1 + \matA_4 \matB_2
+ \end{pmatrix}
+ = \begin{pmatrix}
+ 16 & -1 \\
+7 & 63\\
+20 & 5
+ \end{pmatrix}
+ \]
+ qui est le même résultat que nous avions obtenu auparavant.
+ 
+\begin{TwoCol}
+\section{Exercices divers}
+ 
+ \begin{exercice}
+ Pour chacune des matrices suivantes:
+ \[
+ \matA = \begin{pmatrix}
+ 2 & 3 & 4 \\
+ 3 & 0 & 1 \\
+ 4 & 1 & 5
+ \end{pmatrix}
+ \qquad
+ \matB = \begin{pmatrix}
+ 0 & -3 & 4 \\
+ 3 & 0 & -4 \\
+ -4 & 4 & 0
+ \end{pmatrix}
+\]
+\[
+ \matC = \begin{pmatrix}
+ 2 & 3 & 4 \\
+ 3 & 0 & 1 \\
+ -4 & 4 & 0
+ \end{pmatrix}
+ \]
+ \partexercice{a} Calculez la transposée.
+ \partexercice{b} Calculez la trace.
+ \partexercice{c} Calculez le carré.
+ \partexercice{d} Déterminez si la matrice est symétrique ou anti-symétrique (justifiez votre réponse).  
+ Si la matrice n'est ni symétrique, ni anti-symétrique, écrivez-la comme une somme de deux matrices,
+ l'une symétrique et l'autre anti-symétrique.
+ \end{exercice}
+ 
+  \begin{exercice}
+ Soit les matrices suivantes:
+ \[
+ \matA = \begin{pmatrix}
+ 2 & 3 & 4 \\
+ 3 & 0 & 1 \\
+ 4 & 1 & 5
+ \end{pmatrix}
+ \qquad
+ \matB = \begin{pmatrix}
+ 1 & 7 & 4 \\
+ 3 & 0 & 1 \\
+ -4 & 4 & 3
+ \end{pmatrix}
+ \]
+ Calculez le commutateur $[\matA, \matB]$.
+ \end{exercice}
+ 
+ \begin{exercice}
+ Soit les matrices suivantes:
+ \[
+ \matA = \begin{pmatrix}
+ 2 & 3 & 4 \\
+ 3 & 0 & 1 \\
+ 4 & 1 & 5
+ \end{pmatrix}
+ \qquad
+ \matB = \begin{pmatrix}
+ 1 & 7 & 4 \\
+ 3 & 0 & 1 \\
+ -4 & 4 & 3
+ \end{pmatrix}
+ \]
+ Partitionnez-les en quatre blocs compatibles avec, pour chaque matrice, un des blocs correspondant à
+ une matrice $2\times 2$, et évaluez le produit en multipliant par blocs.
+ \end{exercice}
+ 
+ \begin{exercice}
+ Déterminez les deux nombres, $s$ et $t$ qui font en sorte que la matrice suivante soit symétrique.
+ \[
+ \matA = \begin{pmatrix}
+ 2 & s & t \\
+ 2s & 0 & s+t \\
+ 3 & 3 & t
+ \end{pmatrix}
+ \]
+ \end{exercice}
+ 
+ \begin{exercice}
+Déterminez $\matA$:
+\[
+\matA = 3 \transp{\begin{pmatrix}
+2 & 1\\
+-1 & 0
+\end{pmatrix}}
+- 2 \begin{pmatrix}
+1 & -1 \\
+2 & 3
+\end{pmatrix}
+\] 
+\end{exercice} 
+ 
+ 
+ \begin{exercice}
+ On dit d'une matrice $\matA$ qu'elle est \textbf{idempotente} si  $\matA^2 = \matA$.
+ \partexercice{a} Montrez que la matrice $\matA$ suivante est idempotente.
+ \[
+ A = \frac{1}{2}\begin{pmatrix}
+ 1 & 1 \\
+ 1 & 1
+ \end{pmatrix}
+ \]
+ \partexercice{b} Montrez que si $\matB$ est idempotente, alors la matrice $(I-\matB)$ est également idempotente.
+ \end{exercice}
+ 
+ \begin{exercice}
+ Le but de cet exercice est de démontrer que certaines identités pour la multiplication de deux nombres
+ ne sont pas valides lorsqu'on multiplie des matrices.
+ Soit les matrices suivantes:
+ \[
+ \matA = \begin{pmatrix}
+ 2 & -4 \\
+ 1 & 3
+ \end{pmatrix}
+ \qquad
+ \matB = \begin{pmatrix}
+ 3 & 2 \\
+ -1 & 5
+ \end{pmatrix}
+ \]
+Comparez $(\matA\matB)^2$ et $\matA^2\matB^2$.
+ \end{exercice}
+ 
+ \begin{exercice}
+ Démontrez que $\tr{(\matA\transp{\matA})}$ est la somme des carrés de tous les coefficients de $\matA$.
+ \end{exercice}
+ 
+  \begin{exercice}
+ Démontrez que $\matA\matB=\matB\matA$ si et seulement si $\transp{\matA}\transp{\matB} = \transp{\matB}\transp{\matA}$.
+ \end{exercice}
+ 
+   \begin{exercice}
+ Soit $\matA$ et $\matB$ deux matrices symétriques.  Démontrez que $\matA\matB$ sera symétrique si et seulement si
+ $\matA\matB = \matB\matA$. 
+ \end{exercice}
+ 
+ \end{TwoCol}

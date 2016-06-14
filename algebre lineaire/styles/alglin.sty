@@ -1,0 +1,420 @@
+%%%%%%%%%%%%  Packages  %%%%%%%%%%%%%%%%%%%%%%%
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{naturalnames}{hyperref}
+%%%  default French language settings
+\usepackage[utf8]{inputenc}			% enable input of accented letters
+\usepackage[T1]{fontenc}				% related to above
+\usepackage[french]{babel}			% French language support
+\usepackage{translator}				% same
+	\uselanguage{French}
+	\languagepath{French}
+	\frenchbsetup{IndentFirst=false,FrenchFootnotes=false}  % modified from defaults
+
+\usepackage{mdframed}
+\usepackage{graphicx}
+\RequirePackage{ltxkeys}   %%% Needed???
+\usepackage{hyphenat}				% I use it to prevent hyphenation of table of contents items
+\usepackage{xcolor}                                	% color definitions
+\usepackage{amssymb,amsmath}   % For better support of math
+\usepackage{mathtools}                  %
+\usepackage{multicol}				% for multicolumn output
+\usepackage{adjmulticol}				% for changing margins midpage ... works beautifully
+\usepackage{ccicons}				% creative commons icons
+\usepackage{longtable,array}			% for multiline aligned math stuff ... at least,that's how I plan to use it
+\usepackage[hypcap=false]{caption}				% to change the look of captions
+\usepackage{tikz}					% for drawing figures
+\usetikzlibrary{matrix,arrows,decorations.pathmorphing}
+\usetikzlibrary{patterns,backgrounds}
+\usetikzlibrary{calc}            % for block matrix example
+\usepackage{multirow}      % for block matrix example
+\usepackage[version=3]{mhchem}  % chemistry
+\usepackage{dsfont}
+
+\usepackage{url}					% to typeset urls
+\usepackage{etex}         % to prevent errors with tikz allocating registers (?)
+
+
+\usepackage{lmodern}    % slightly nicer fonts
+\usepackage[french,color=green!40]{todonotes}
+%\usepackage{hyperref}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newcolumntype{C}{>{$\displaystyle}c<{$}}
+\newcolumntype{L}{>{$\displaystyle}l<{$}}
+\newcolumntype{R}{>{$\displaystyle}r<{$}}
+
+%%%%%%%%%%%%%%%  Custom changes %%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%% page layout dimensions for memoir
+\setstocksize{11in}{8.5in}
+\settrimmedsize{\stockheight}{\stockwidth}{*}
+\settypeblocksize{9.0in}{5in}{*}
+\setlrmargins{0.75in}{*}{*}
+\setulmargins{1.0in}{*}{*}
+\setheadfoot{30pt}{26pt}
+\setheaderspaces{*}{30pt}{*}
+\setmarginnotes{0.2in}{1.8in}{0.1in}
+\checkandfixthelayout
+%
+
+%%% colors definitions
+\definecolor{MainRed}{rgb}{.600,.100,.100}
+\definecolor{GoldDecoration}{RGB}{169,121,69}
+\definecolor{ExerciceCouleur}{rgb}{0, 0.1, 0.6}
+\definecolor{ExempleCouleur}{rgb}{0.1, 0.4, 0.1}
+
+
+\newcommand{\myvspace}{\medskip\vspace{\glueexpr\baselineskip + 0pt plus 20pt minus 15pt\relax}}
+
+%%%%% Définitions
+
+\mdfdefinestyle{DefinitionStyle}{innertopmargin=5pt,linewidth=4pt,linecolor=MainRed,outermargin=-2in,backgroundcolor=blue!3,rightmargin=-2in}
+\newcounter{definitioncount}[section]
+\renewcommand*\thedefinitioncount{\thesection.\arabic{definitioncount}}
+\newenvironment{defini}{\refstepcounter{definitioncount}\myvspace \begin{mdframed}[style=DefinitionStyle]%
+\raisebox{4pt}[0pt][-5pt]{\hspace{-14pt}\fcolorbox{MainRed}{MainRed}%
+{\bfseries \large\textcolor{white}{$\quad$Définition \thedefinitioncount $\quad$}}}\\}%
+{\end{mdframed}\myvspace}
+
+%%%%% Théorèmes
+\newcommand{\cqfd}{\hfill\textcolor{blue!40}{\begingroup
+\everymath{\scriptstyle}
+CQFD
+\endgroup}}
+
+\mdfdefinestyle{TheoremeStyle}{innertopmargin=5pt,linewidth=4pt,linecolor=brown!20,outermargin=-2in,backgroundcolor=brown!3,rightmargin=-2in}
+\newcounter{theoremcount}[section]
+\renewcommand*\thetheoremcount{\thesection.\arabic{theoremcount}}
+\newenvironment{theo}{\refstepcounter{theoremcount}\myvspace \begin{mdframed}[style=TheoremeStyle]%
+\raisebox{4pt}[0pt][-5pt]{\hspace{-14pt}\fcolorbox{brown!20}{brown!20}%
+{\bfseries \large$\quad$Théorème \thetheoremcount $\quad$}}\\}%
+{\end{mdframed}\myvspace}
+
+\newcommand{\parttheorem}[1]{\textcolor{ExerciceCouleur}{{\bfseries\smallskip \\ \mbox{\upshape(#1)} }}}
+
+\newcommand{\proof}{\sffamily\textbf{\medskip \\ \noindent \color{ExerciceCouleur} Démonstration: }}
+\newcommand{\explain}[1]{\mbox{\tiny\sffamily\upshape\color{ExerciceCouleur} #1}}
+%%%%% Exemple
+
+
+\mdfdefinestyle{ExempleStyle}{innertopmargin=5pt,linewidth=4pt,linecolor=green!20,outermargin=-2in,backgroundcolor=green!3,rightmargin=-2in}
+\newcounter{exemplecount}[section]
+\renewcommand*\theexemplecount{\thesection.\arabic{exemplecount}}
+\newenvironment{exemple}{\refstepcounter{exemplecount}\myvspace \begin{mdframed}[style=ExempleStyle]%
+\raisebox{4pt}[0pt][-5pt]{\hspace{-14pt}\fcolorbox{green!20}{green!20}%
+{\bfseries \large$\quad$Exemple \theexemplecount $\quad$}}\\}%
+{\end{mdframed}\myvspace}
+
+\newcommand{\partexemple}[1]{\par\noindent\textcolor{ExempleCouleur}{{\textbf{(#1) }}}}
+
+\newcommand{\solution}{\sffamily\textbf{\myvspace \\ \noindent \color{ExempleCouleur} Solution: \nopagebreak}}
+
+%%\newcounter{exemplecount}[section]
+%%\newcommand{\exemplecount}{\refstepcounter{exemplecount}Exemple \theexemplecount}
+%%\renewcommand*\theexemplecount{\thesection.\arabic{exemplecount}}
+%%
+%%\newenvironment{exemple}{\setlength{\parindent}{0pt}\color{ExempleCouleur}\sffamily\noindent %
+%%\textbf{\medskip \\ \textcolor{ExempleCouleur}{\fbox{\exemplecount}}}\small}{\par\medskip}
+%%
+%%\newcommand{\solution}{\textbf{\smallskip \\ \noindent Solution: }\slshape}
+%%\newcommand{\partexemple}[1]{\par\noindent\textcolor{ExempleCouleur}{{\textbf{(#1) }}}}
+
+%%% Exercice
+
+\mdfdefinestyle{ExerciseStyle}{innertopmargin=5pt,linewidth=0pt,backgroundcolor=blue!5}
+
+
+\newcounter{exercicecount}[chapter]
+\renewcommand*\theexercicecount{\thechapter.\arabic{exercicecount}}
+
+\newenvironment{exercice}{\refstepcounter{exercicecount}\noindent %
+\textbf{\smallskip \\ \textcolor{ExerciceCouleur}{Exercice \theexercicecount}}\small}{\par}
+
+%% in text, isolated "boxed" exercise
+\newenvironment{exerciceB}{\refstepcounter{exercicecount}\begin{mdframed}[style=ExerciseStyle]%
+\textbf{\smallskip \\ \textcolor{ExerciceCouleur}{Exercice \theexercicecount}}\small}%
+{\end{mdframed}\myvspace}
+
+% in text, multiple "continuously boxed" exercise
+\newenvironment{exerciceC}{\refstepcounter{exercicecount}\begin{mdframed}[style=ExerciseStyle]%
+\textbf{\smallskip \\ \textcolor{ExerciceCouleur}{Exercice \theexercicecount}}\small}%
+{\end{mdframed}}
+
+% exercice surrounded by both top and bottom blue line
+%
+%\newenvironment{exerciceB}{\refstepcounter{exercicecount}\noindent\textcolor{ExerciceCouleur}{\myvspace\hrulefill\nopagebreak}%
+%\textbf{\smallskip \\ \textcolor{ExerciceCouleur}{Exercice \theexercicecount}}\small}%
+%{\par\noindent\textcolor{ExerciceCouleur}\hrulefill\nopagebreak\par\myvspace}
+
+% exercice followed by a bottom blue line
+%\newenvironment{exerciceL}{\refstepcounter{exercicecount}%
+%\noindent %
+%\textbf{\textcolor{ExerciceCouleur}{Exercice \theexercicecount}}\small}
+%{\par\noindent\textcolor{ExerciceCouleur}{\hrulefill\nopagebreak}\par\myvspace}
+
+%%% Equation numbers
+\numberwithin{equation}{section}
+% colored equation number - using color and mathtools packages
+\definecolor{EqNoCol}{rgb}{0.6, 0, 0}
+\newtagform{ColEqNo}[\bfseries\textcolor{EqNoCol}]{\textcolor{EqNoCol}{[}}{\textcolor{EqNoCol}{]}}  % use [ ]  instead of ( )
+\usetagform{ColEqNo}  % activate it
+% Note: referencing an equation via \eqref preserves this new colored format
+
+
+\DeclareCaptionFormat{redformat}{{\color{MainRed}#1}  #3}
+\captionsetup{format=redformat,font=footnotesize}
+
+\newcommand{\partexercice}[1]{\textcolor{ExerciceCouleur}{{\bfseries\smallskip \\ \mbox{(#1)} }}}
+\newcommand{\reponse}{\textcolor{ExerciceCouleur}{{\textbf{\smallskip \\ Réponse : }}}}
+\newcommand{\suggestion}[1]{\textcolor{ExerciceCouleur}{\tiny\smallskip \\ Suggestion : }{\tiny #1}}
+\newcommand{\refexemple}[1]{\textcolor{ExempleCouleur}{{exemple \ref{#1}}}}
+\newcommand{\refexercice}[1]{\textcolor{ExerciceCouleur}{{exercice \ref{#1}}}}
+\newcommand{\reftheo}[1]{théorème \ref{#1}}
+
+
+% Colored section, subsections, as well as
+% chapter and section name in the head - included for completeness
+\setsecheadstyle{\color{MainRed}\large\bfseries}
+\setsubsecheadstyle{\color{MainRed}\bfseries}
+\copypagestyle{myheadings}{headings}
+\makeevenhead{myheadings}{\thepage}{}{\color{MainRed}\leftmark}
+\makeoddhead{myheadings}{\color{MainRed}\rightmark}{}{\thepage}
+
+
+%%%%%%
+% augmented matrix from http://tex.stackexchange.com/questions/2233/whats-the-best-way-make-an-augmented-coefficient-matrix
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols r]{%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{#1}}
+\makeatother
+
+
+\setlength{\columnsep}{0.8cm}
+\newenvironment{widematter}{\strictpagecheck\begin{adjustwidth*}{-\extrawidth}{0in}\small}{\end{adjustwidth*}}
+\newenvironment{TwoCol}{\small\begin{adjmulticols}{2}{0in}{-2in}}{\end{adjmulticols}}
+
+\newcommand{\sidenote}[1]{\marginpar{\footnotesize #1}}
+
+
+%% RedBox style -- adapted from BlueBox style, pp:43-44
+% http://mirror.csclub.uwaterloo.ca/CTAN/info/latex-samples/MemoirChapStyles/MemoirChapStyles.pdf
+% with modifications from
+% http://tex.stackexchange.com/questions/49864/automatically-adjusting-size-of-a-box-based-on-other-content
+% and others modifications of my own
+\newcommand{\RedBarLength}{3em}
+
+\newsavebox{\ChpNumBox}
+\newsavebox{\ChpContBox}
+\makeatletter
+\newcommand*{\thickhrulefill}{%
+  \leavevmode\leaders\hrule height 3\p@ \hfill \kern \z@}
+\newcommand*\BuildChpNum[3]{%
+  \begin{tabular}[t]{@{}c@{}}
+    \makebox[0pt][c]{#1\strut} \\[.5ex]
+    \colorbox{MainRed}{%
+      \rule[-\RedBarLength-(#3)]{0pt}{0pt}%
+      \rule{1ex}{0pt}\color{white}#2\strut
+      \rule{1ex}{0pt}}%
+  \end{tabular}}
+\makechapterstyle{BoxedChapNum}{%
+  \renewcommand{\chapnamefont}{\large\scshape}
+  \setlength{\beforechapskip}{-30pt}
+  \setlength{\midchapskip}{10pt}
+  \setlength{\afterchapskip}{30pt}
+  \renewcommand{\printchaptername}{}
+  \renewcommand{\chapternamenum}{}
+  \renewcommand{\printchapternum}{%
+    \startcontents[chapters]
+    \sbox{\ChpContBox}{%
+      \parbox{\linewidth}{%
+        \printcontents[chapters]{}{1}{}%
+      }}%
+    \sbox{\ChpNumBox}{%
+      \BuildChpNum{\color{GoldDecoration}\bfseries\chapnamefont\@chapapp}%
+      {\chapnumfont\thechapter}%
+      {\ht\ChpContBox+\dp\ChpContBox}%
+    }}
+  \renewcommand{\printchapternonum}{%
+    \startcontents[chapters]
+    \sbox{\ChpContBox}{%
+      \parbox{\linewidth}{%
+        %\printcontents[chapters]{}{1}{}%  Useless?
+      }}%
+    \sbox{\ChpNumBox}{%
+      \BuildChpNum{\chapnamefont\vphantom{\@chapapp}}%
+      {\chapnumfont\hphantom{\thechapter}}%
+      {\ht\ChpContBox+\dp\ChpContBox}%
+    }}
+  \renewcommand{\afterchapternum}{}
+  \renewcommand{\printchaptertitle}[1]{%
+    \usebox{\ChpNumBox}\hfill
+    \parbox[t]{\hsize-\wd\ChpNumBox-1em}{%
+      \raggedright\vspace{\midchapskip}%
+        {\color{GoldDecoration}\thickhrulefill}\\[10pt]
+      {\chaptitlefont\LARGE\textcolor{MainRed}{\nohyphens{##1}}}\par\vspace*{10pt}
+      % changing color of mini-toc
+      \renewcommand\cftsectionpagefont{\sffamily\color{black}}
+      \renewcommand\cftsubsectionpagefont{\sffamily\footnotesize\itshape\color{MainRed}}
+      \renewcommand\cftsectionfont{\sffamily\color{MainRed}}
+      \renewcommand\cftsubsectionfont{\sffamily\footnotesize\itshape\color{black}}
+      \printcontents[chapters]{}{1}{\contentsmargin{-5em}}%
+    }}%
+}
+\makeatother
+
+%%%%%% use the newly defined style
+\chapterstyle{BoxedChapNum}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%                Non-standard commands and symbols
+\newcommand{\BBZ}{\mathbb{Z}}
+\newcommand{\BBR}{\mathbb{R}}
+\newcommand{\BBN}{\mathbb{N}}
+\newcommand{\BBC}{\mathbb{C}}
+\newcommand{\BBK}{\mathbb{K}}
+\newcommand{\etc}{{\em etc.\/}}
+\newcommand{\bra}[1]{\langle #1 |}
+\newcommand{\ket}[1]{| #1 \rangle}
+\newcommand{\braket}[2]{\langle #1 | #2 \rangle}
+\newcommand{\ppp}{\hphantom{+}}
+\newcommand{\zero}{\mbox{\textsf{\textbf{{0}}}}}
+
+\newcommand{\vect}[1]{\vec{\boldsymbol{#1}}}
+\newcommand{\iunit}{\vect{\imath}}
+\newcommand{\junit}{\vect{\jmath}}
+\newcommand{\kunit}{\vect{k}}
+
+\providecommand{\abs}[1]{\lvert#1\rvert}
+\providecommand{\norm}[1]{\lVert#1\rVert}
+
+\newcommand{\mat}[1]{\boldsymbol{#1}}
+\newcommand{\matA}{\mat{A}}
+\newcommand{\matB}{\mat{B}}
+\newcommand{\matC}{\mat{C}}
+\newcommand{\matD}{\mat{D}}
+\newcommand{\matE}{\mat{E}}
+\newcommand{\matI}{\mat{I}}
+\newcommand{\matM}{\mat{M}}
+\newcommand{\matX}{\mat{X}}
+\newcommand{\matY}{\mat{Y}}
+\newcommand{\matZ}{\mat{Z}}
+
+\DeclareMathOperator{\tr}{Tr}
+\DeclareMathOperator{\rang}{rg}
+\DeclareMathOperator{\Vect}{Vect}
+\DeclareMathOperator{\Cof}{Cof}
+\DeclareMathOperator{\adj}{adj}
+
+\usepackage{relsize}
+\newcommand{\transp}[1]{#1^{\mathsmaller \top}}
+
+\newcommand{\notation}[1]{\marginpar{\bfseries \color{ExerciceCouleur} \footnotesize #1}\index{#1}}
+\newcommand{\definition}[1]{{\bfseries #1}\notation{#1}}
+\newcommand{\Definition}[1]{{\bfseries #1}\index{#1}}
+
+%%% Pretty ToC
+%%%%% adapted from http://tex.stackexchange.com/questions/35825/pretty-table-of-contents/35835
+% a modification of the leftbar environment defined by the framed package
+% will be used to place a vertical colored bar separating the page number and the
+% title in chapter entries
+\renewenvironment{leftbar}{%
+  \def\FrameCommand{\textcolor{GoldDecoration}{\vrule width 2pt depth 6pt}\hspace*{15pt}}%
+  \MakeFramed{\advance\hsize-\width\FrameRestore}}%
+ {\endMakeFramed}
+
+\makeatletter
+
+% redefinitions for chapter entries
+\renewcommand\chapternumberline[1]{\mbox{\small\@chapapp~#1}\par\noindent\Large}
+\renewcommand\cftchapterfont{\sffamily}
+\cftsetindents{chapter}{0pt}{0em}
+\renewcommand\cftchapterpagefont{\Huge\sffamily\bfseries\color{MainRed}}
+
+\newcommand*{\l@mychap}[3]{%
+  \def\@chapapp{\color{MainRed}#3}
+  \vskip1ex%
+  \par\noindent\begin{minipage}{\textwidth}%
+  \parbox{4.5em}{%
+    \hfill{\cftchapterpagefont#2}%
+  }\hspace*{1.5em}%
+  \parbox{\dimexpr\textwidth-4.5em-15pt\relax}{%
+  		% \vphantom below included to make the leftbar taller for unnamed chapters
+    \leftbar\vphantom{a}\cftchapterfont{\color{MainRed}#1}\hspace{1sp}\endleftbar%
+  }%
+  \end{minipage}\par%
+}
+\renewcommand*{\l@chapter}[2]{%
+  \l@mychap{#1}{#2}{\chaptername}%
+}
+\renewcommand*{\l@appendix}[2]{%
+  \l@mychap{#1}{#2}{\appendixname}%
+}
+
+% redefinitions for section entries
+\renewcommand\cftsectionfont{\sffamily\color{MainRed}}
+\renewcommand\cftsectionpagefont{\sffamily\itshape\color{MainRed}}
+\renewcommand\cftsectionleader{\nobreak}
+\renewcommand\cftsectiondotsep{\cftnodots}
+\renewcommand\cftsectionafterpnum{\hspace*{\fill}}
+\setlength\cftsectionnumwidth{12em}
+\cftsetindents{section}{7.6em}{3em}
+\renewcommand\cftsectionformatpnum[1]{%
+  \hskip1em\hbox to \@pnumwidth{{\cftsectionpagefont #1\hfill}}}
+
+% redefinitions for subsection entries
+\renewcommand\cftsubsectionfont{\sffamily\footnotesize\itshape\color{black}}
+\renewcommand\cftsubsectionpagefont{\sffamily\footnotesize\itshape\color{black}}
+\renewcommand\cftsubsectionleader{\nobreak}
+\renewcommand\cftsubsectiondotsep{\cftnodots}
+\renewcommand\cftsubsectionafterpnum{\hspace*{\fill}}
+\setlength\cftsubsectionnumwidth{14em}
+\cftsetindents{subsection}{10.5em}{3em}
+\renewcommand\cftsubsectionformatpnum[1]{%
+  \hskip1em\hbox to \@pnumwidth{{\cftsubsectionpagefont #1\hfill}}}
+
+\makeatother
+
+%%%% End of Pretty ToC
+
+\settocdepth{subsection}
+\setsecnumdepth{subsection}
+%\renewcommand\thesubsection{\thesection.\alph{subsection})}
+
+% include after the change above
+% explanation found on: http://tex.stackexchange.com/questions/51351/modifying-mini-toc-content
+%
+\usepackage{titletoc}
+\makeatletter  % making titletoc aware of the existence of l@appendix
+\let\ttl@savel@appendix\l@appendix
+    \def\l@appendix{\let\ttl@savel@chapter\ttl@savel@appendix\ttl@lselect{chapter}}
+    \makeatother
+
+
+\marginparmargin{outer}   % ensure proper positioning of marginpar ...
+\strictpagechecktrue          % ... this one, for the page
+
+\nouppercaseheads    %
+\pagestyle{myheadings}
+
+\allowdisplaybreaks % displayed equations can be split across page boundaries ?
+
+%%%%%%%% for block matrix example; adapted from
+%% http://tex.stackexchange.com/questions/52689/problems-using-left-in-array-environment
+
+\newcommand{\DrawBox}[3][]{%
+    \tikz[overlay,remember picture]{
+        \coordinate (RightPoint) at (#3.east);
+    \draw[red,#1]
+      ($(#2)+(-.5em,.9em)$) rectangle
+      ($(RightPoint)+(0.2em,-0.3em)$);}
+}
+%
+%%%%% turn off active character ";" introduced by babel to ensure that
+%%% tikz works properly
+\newcommand{\tikzmark}[1]{\shorthandoff{;}\tikz[overlay,remember picture] \node (#1) {};\shorthandon{;}}

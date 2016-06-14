@@ -1,0 +1,153 @@
+\documentclass[11pt]{article}
+\textwidth=6in
+\textheight=9.5in
+\topmargin=-1in
+\headheight=0.5in
+
+\hoffset  -.85in
+
+\usepackage[utf8]{inputenc}			% enable input of accented letters
+\usepackage[T1]{fontenc}				% related to above
+\usepackage[french]{babel}			% French language support
+\usepackage{translator}				% same
+	\uselanguage{French}
+	\languagepath{French}
+
+\usepackage{url}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\lhead{}
+\rhead{}
+\chead{\bfseries MATH 1253 Introduction à l'algèbre linéaire -- automne 2014}
+\lfoot{}
+\cfoot{}
+\rfoot{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\begin{document}
+
+\noindent\textbf{Professeur: } André Roberge \\
+\textbf{Adresse courriel: } Andre.Roberge@usainteanne.ca\\
+\textbf{Site du cours: } \url{moodle.usainteanne.ca} \\
+\textbf{Horaire des cours:} Lundis et jeudis, de 10h à 11h30 {\tiny [voir ci-dessous]} \\
+\textbf{Manuel de cours:} \textit{Introduction à l'algèbre linéaire} en format pdf.
+
+\paragraph*{Description} 
+
+{\small
+\textit{MATH 1253: Introduction à l'algèbre linéaire}
+Revue des opérations de base sur les matrices (addition, soustraction et multiplication) et sur la résolution de simples systèmes d'équations linéaires.  Méthode d'élimination de Gauss-Jordan.  Matrice inverse. Déterminants. Espaces et sous-espaces vectoriels, base et dimension.  Espaces euclidiens. Vecteurs propres et valeurs propres.  Transformations linéaires et applications diverses.
+}
+
+\paragraph*{Note sur le plagiat} Ce cours adhère à la politique de l'Université
+Sainte-Anne en matière d'honnêteté intellectuelle.
+Les règlements en matière de plagiat et de tricherie seront appliqués à la lettre.
+Les étudiants sont invités à lire attentivement l'article 26 de l'annuaire universitaire.
+
+\paragraph*{Horaire des cours} Selon la grille horaire préparée, les cours sont donnés en principe 
+par vidéo-conférence les lundis et jeudis, de 10h à 11h30.  
+Cependant, il est possible que, sauf pour
+les deux tests, vous n'ayez jamais à vous présenter en classe aux heures prévues.
+
+En effet, j'utilise un modèle de \textit{classe inversée}, où les heures de classe prévues à l'horaire sont utilisées comme heures de consultation (individuelle ou en groupe) sur rendez-vous\footnote{Notez que si personne ne prend rendez-vous à l'avance, je ne serai pas disponible par vidéoconférence.
+}, alors
+que les classes traditionnelles sont remplacées par de courtes vidéos disponibles.
+   En raison de cette approche,
+vous serez libre d'agencer votre horaire comme il vous plaira.  
+De plus, ceci vous permettra de revoir
+plusieurs fois les points jugés plus difficiles à comprendre, puisque les vidéos seront disponibles sur demande.
+
+
+\paragraph*{Utilisation de moodle}  Tout le matériel pour le cours (manuel, vidéos, etc.) est disponible via la plate-forme moodle. 
+Je vous encourage à utiliser le forum de discussion pour soit poser vos questions, répondre aux questions de vos collègues
+(ce qui est une bonne façon d'approfondir son apprentissage de la matière), ou faire des commentaires sur le manuel ou les vidéos.
+Je vous encourage \textbf{fortement} à vérifier le site du cours à chaque jour pour voir s'il y a des nouveautés.
+
+\paragraph*{Devoirs} Il y aura des devoirs à remettre à chaque semaine, le mercredi avant midi. 
+Ces devoirs doivent être remis à la réception, à l'attention de Jason Saulnier, facilitateur.
+ Tout devoir remis en retard recevra une note de zéro.   
+ Veuillez noter que la quantité de travail requis ne sera pas nécessairement uniforme d'une semaine à une autre.  
+ Puisque vous aurez accès au matériel requis bien avant d'avoir à remettre un devoir,
+  je vous encourage fortement à prendre de l'avance sur l'horaire prévu pour la remise des devoirs.  
+  La liste des problèmes à faire pour chaque devoir sera mise à jour sous peu.
+
+{\bf Vous devriez faire vos devoirs individuellement, autrement c'est un cas de plagiat.}  Cela dit, je vous encourage fortement à discuter entre vous des exemples du manuel ou
+du matériel présenté sous forme de vidéos.   Si vous avez des questions, posez-les soit dans le forum de discussion pour que
+les réponses fournies puissent être utilisées par tout le monde, ou par courriel pour avoir une réponse individuelle (habituellement fournie très rapidement).
+
+\paragraph*{Détermination de la note finale} En plus des devoirs, il y aura deux tests et un examen final dans ce cours.
+
+En premier, le calcul de la note se fait avec une pondération relative de 15 pour le premier test,
+de 20 pour le deuxième test, et de 50 pour l'examen final -- donc pour un total de 85 qui ne tient
+pas compte des devoirs.  La note est
+convertie en pourcentage; \textbf{si ce résultat est inférieur à 50\%, l'étudiant reçoit la note E pour le cours.}
+
+\marginpar{
+\begin{tabular}{|l|l|}
+\hline \rule{0pt}{0pt} A+ & 94 -- 100 \\   % adjust up to 4 marks lower i.e. 90 -- 100
+\hline \rule{0pt}{0pt} A & 87 -- 94\\     % adjust up to 3 marks lower i.e. 85 -- ...
+\hline \rule{0pt}{0pt} A- & 82 -- 87 \\    % from here on, adjust up to 2 marks lower i.e. 80 - ...
+\hline \rule{0pt}{0pt} B+ & 78 -- 82 \\    % 76 -
+\hline \rule{0pt}{0pt} B & 74 -- 78 \\     % 72-
+\hline \rule{0pt}{0pt} B- & 71 -- 74\\    % 70-
+\hline \rule{0pt}{0pt} C+ & 67 -- 71 \\   % do not adjust the threshold from here on 
+\hline \rule{0pt}{0pt} C & 63 -- 67 \\ 
+\hline \rule{0pt}{0pt} C- & 59 -- 63\\ 
+\hline \rule{0pt}{0pt} D & 50 -- 59 \\ 
+\hline \rule{0pt}{0pt} E &  $<50$\\ 
+\hline 
+\end{tabular} 
+}
+
+Si le résultat précédent est égal ou supérieur à 50\%, le calcul de la note est fait d'une autre
+façon en tenant compte des résultats des devoirs auxquels est attribué une pondération relative de 15,
+en ayant toujours une pondération relative de 15 pour le premier test, 20 pour le deuxième et 50 pour le troisième.
+Pour chaque étudiant, sur une base individuelle, la méthode qui mène à la note en pourcentage la plus élevée est
+celle qui est utilisée. Par la suite, la note en
+pourcentage est convertie en note alphabétique selon le tableau qui apparait dans la marge.
+\footnote{Il peut arriver que des notes soient majorées vers le haut si je juge que faire autrement serait injuste. Par exemple, supposons que
+les deux notes les plus hautes obtenues dans le cours sont 94 \% et 92\% et que les
+autres étudiants ont obtenus des notes beaucoup plus basse; dans ce cas, les deux étudiants
+qui auraient obtenu les plus hautes notes auraient, à toutes fins pratiques, démontré une
+maîtrise semblable de la matière et l'étudiant(e) qui
+aurait obtenu une note de 92\% verrait sa note convertie à A+.}
+
+{\small
+\paragraph*{Dates importantes:}
+\begin{center}
+\begin{tabular}{|l|l|}
+\hline \rule{0pt}{0pt}  jeudi 4 sept. & première classe  \\ 
+\hline \rule{0pt}{0pt}  mercredi 10 sept. &  Devoir 1: chapitre 1\\ 
+\hline \rule{0pt}{0pt}  mercredi 17 sept. &  Devoir 2, chapitre 2\\ 
+\hline \rule{0pt}{0pt}  mercredi 24 sept. &  Devoir 3, chapitre 3\\ 
+\hline \rule{0pt}{0pt}  mercredi 1 oct. &  Devoir 4, chapitre 4\\
+\hline \rule{0pt}{0pt}  mercredi 8 oct. &  Devoir 5, chapitre 5\\
+\hline \rule{0pt}{0pt}  jeudi 16 oct. &  Test, chapitres 1 -- 4 \\ 
+\hline \rule{0pt}{0pt} 20 au 24 oct.&  Semaine d'étude et de consultation\\ 
+\hline \rule{0pt}{0pt}  mercredi 29 oct. &  Devoir 6, chapitres 5 et 6\\
+\hline \rule{0pt}{0pt}  mercredi 5 nov. &  Devoir 7, chapitre 7\\ 
+\hline \rule{0pt}{0pt}  mercredi 12 nov. &  Devoir 8, chapitre 8\\ 
+\hline \rule{0pt}{0pt}  jeudi 20 nov. &  chapitres 1 -- 8\\ 
+\hline \rule{0pt}{0pt}  mercredi 26 nov. &  Devoir 9, chapitre 9\\ 
+\hline \rule{0pt}{0pt}  mercredi 3 déc. &  Devoir 10, simulation d'un examen final  \\ 
+\hline \rule{0pt}{0pt} 12 au 18 déc. &  Examen final, date exacte à déterminer\\ 
+\hline 
+\end{tabular} 
+\end{center}
+}
+
+\paragraph*{Ressources supplémentaires: } Le manuel gratuit est, en principe, la seule ressource requise pour apprendre la matière.
+Les leçons vidéos sont une autre façon de présenter le même matériel. Vous ne devriez pas avoir besoin d'utiliser d'autre matériel.\footnote{
+Pour ceux qui tiennent absolument à dépenser de l'argent pour acheter un  livre, je vous suggère le livre d'algèbre linéaire de  David Lay
+que vous pourrez trouver dans une librairie en ligne (Chapters ou Amazon) au coût approximatif de 110\$.}
+
+Si vous pensez autrement, je vous encourage à faire une recherche pour \textit{algèbre linéaire} dans la base de données 
+de la bibliothèque Louis R. Comeau.  Vous y verrez une quinzaine de livres sur le sujet qui sont essentiellement au même niveau
+que le cours.  Il existe également toute une gamme de ressources disponibles sur Internet; en particulier, le site \url{KhanAcademy.org}
+contient toute une collection de vidéos sur plusieurs sujets dont l'algèbre linéaire.  Ce site a servi en partie d'inspiration
+pour la production des vidéos du cours MATH 1253.
+
+
+
+\end{document}

@@ -1,0 +1,78 @@
+%%%%%
+%%  Adapted from the LaTeX solution on 
+%     http://tex.stackexchange.com/questions/35815/how-to-make-continuous-but-breakable-vertical-rule-along-left-side-of-paragrap
+%
+% CAVEATS: 
+%  footnotes and marginpar notes do not seem to be compatible with this.
+%%%%%
+
+\RequirePackage{ltxkeys}
+\cptloadpackages{%
+  framed;graphicx;xcolor
+}
+
+
+
+
+
+
+%\ltxkeys@declarekeys[FTB]{ruledtxtblk}[ftb@]{%
+%  cmd/title/Exemple;
+%  cmd/leftgap/0em;
+%  cmd/topruleskip/-1em;
+%  cmd/framerule/1.25pt;
+%  cmd/rulecolor/ExempleCouleur;
+%  cmd/textcolor/black;
+%  cmd/lefttoprule/1.5em;
+%  cmd/righttoprule/2in;
+%  cmd/titleleftskip/1em;
+%  cmd/titlerightskip/1em;
+%}
+%\newcounter{exemple}[section]
+%\newlength\ftb@letterheight
+%\renewcommand\theexemple{\thesection.\arabic{exemple}}
+%\newenvironment{exemple}[1][]{%
+%\setlength{\leftskip}{1em}
+%  \parindent\z@pt
+%  \ltxkeys@setkeys[FTB]{ruledtxtblk}{#1}%
+%  \settoheight\ftb@letterheight{\textbf{\ftb@title}}%
+%  \addtolength\ftb@letterheight{-\ftb@framerule}%
+%  \settowidth\@tempdima{\ftb@title\ \theexemple}%
+%  \def\FrameCommand{%
+%    \hspace{-\ftb@leftgap}%
+%    {\color{\ftb@rulecolor}%
+%      \vrule width \ftb@framerule
+%    }%
+%    \hspace{\dimexpr\ftb@leftgap-\ftb@framerule\relax}%
+%  }%
+%  \MakeFramed{\advance\hsize-\width}%
+%  \refstepcounter{exemple}%
+%  \makebox[0pt][l]{%
+%    \hspace{\dimexpr-\parindent+\ftb@framerule\relax}%
+%    \hspace{\ftb@topruleskip}%
+%    {\color{\ftb@rulecolor}%
+%      \rule{\ftb@lefttoprule}{\ftb@framerule}%
+%    }%
+%    \hspace{\ftb@titleleftskip}%
+%    \raisebox{-.5\ftb@letterheight}[0pt]{%
+%      \textcolor{ExempleCouleur}{\textbf{\ftb@title\ \theexemple}}%
+%    }%
+%    \hspace{\ftb@titlerightskip}%
+%    {\color{\ftb@rulecolor}%
+%      \rule{\ftb@righttoprule}{\ftb@framerule}%
+%    }%
+%  }\\[.5\baselineskip]%
+%  \color{\ftb@textcolor}%
+%  \noindent\ignorespaces
+%}{%
+%  \@afterheading\par\noindent
+%  \makebox[0pt][l]{%
+%    \hspace{-\ftb@titleleftskip}%
+%    {\color{\ftb@rulecolor}%
+%      \rule{\dimexpr\columnwidth+\ftb@leftgap}{\ftb@framerule}%
+%    }%
+%  }%
+%  \endMakeFramed
+%  \@ignoretrue
+%}
+

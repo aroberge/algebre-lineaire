@@ -1,0 +1,858 @@
+\chapter{Inverse d'une matrice carrée}
+ 
+
+ 
+ \section{Introduction}
+ Dans les différentes applications de l'algèbre linéaire, plusieurs
+ problèmes se réduisent à résoudre une équation de la forme
+ $\matA\matX = \matB$, où on désire déterminer $\matX$.  Si on traitait avec de simples nombres, la solution
+ serait immédiate: $\matX = \matB/\matA$.  Malheureusement, la division
+ de matrices n'est pas une opération définie.  Par contre, on
+ peut parfois définir une matrice dite \textit{inverse} qui peut jouer
+ un rôle semblable.  Ainsi, au lieu d'avoir une matrice inverse
+$\displaystyle
+ \matA^{-1} = \frac{1}{\matA}
+$
+ on peut avoir une matrice inverse obéissant l'opération suivante:
+ $\displaystyle
+ \matA^{-1}\matA = \matI
+$
+ où $\matI$ est la matrice identité.  \footnote{Dans ce texte, nous allons nous limiter
+ aux matrices carrées; pour les matrices non-carrées, il existe parfois un
+ \textit{inverse à gauche} (ou une infinité d'inverses) ou un \textit{inverse à droite} (ou une infinité d'inverses), selon que le nombre
+ de lignes soit plus grand ou plus petit que le nombre de colonnes.}
+ 
+
+ 
+ \begin{defini}
+Une matrice carrée $\matA$ d'ordre $n$ est dite \index{matrice inversible} \textbf{inversible} ou \index{matrice régulière} \textbf{régulière} ou encore \textbf{non \index{matrice non singulière} singulière}, s'il existe une matrice $\matB$ d'ordre $n$ telle que :
+$\matA\matB = \matB\matA = \matI_n$ où $\matI_n$ désigne la matrice unité d'ordre $n$; $\matB$ est appelé l'\textbf{inverse} de $\matA$ et est normalement désignée par $\matA^{-1}$.
+ \end{defini}
+Une matrice carrée qui n'est pas inversible est dite \textbf{non\notation{matrice inversible} inversible} ou \textbf{singulière}\notation{matrice singulière}.
+
+\begin{exemple}
+Vérifiez que la matrice
+$\displaystyle
+\matB = \begin{pmatrix}
+-2 & 1 \\
+\frac{3}{2} & -\frac{1}{2}
+\end{pmatrix}
+$
+est l'inverse de la matrice
+$\displaystyle
+ \matA = \begin{pmatrix}
+ 1 & 2 \\
+ 3 & 4
+ \end{pmatrix}
+ $
+ \solution
+ En multipliant, on peut facilement vérifier que $\matB\matA = \matA\matB = \matI_2$.
+ \end{exemple}
+ 
+On prouvera au théorème \ref{inverse} que, pour deux matrices carrées, il suffira d'avoir  $\matA\matB=\matI_n$ 
+pour conclure que l'une est l'inverse de l'autre.  En d'autres mots, une fois la démonstration fait, il ne sera
+plus nécessaire de vérifier également que $\matB\matA=\matI_n$. 
+ 
+ \begin{exemple}
+ Démontrez que la matrice
+ \[
+     \matA = \begin{pmatrix}
+     1 & 0 \\
+     0 & 0
+     \end{pmatrix}
+ \]
+ est singulière.
+ \solution
+ Soit $\matB$ une matrice $2\times2$ telle que $\matC=\matB\matA$.  
+ Pour que $\matB$ soit l'inverse de $\matA$, il faudrait que $c_{22}$ soit égal à 1.  Mais $c_{22} = b_{21}a_{12} + b_{22}a_{22} = 0+0 = 0$.  Il est donc impossible que $\matC=\matI_2$ et donc $\matA$ est singulière. 
+ \end{exemple}
+ 
+ Nous avons déjà mentionné, dans une note au bas de page, que pour les matrices non-carrées, le concept d'une matrice inverse ne mène pas à une définition unique.  Par exemple, considérez le cas suivant:
+ \begin{exemple}
+ Soit les matrices $\matA$ et $\matB$ suivantes:
+ \[
+ \matA = \begin{pmatrix}
+ 1 & 0 & 0 \\
+ 0 & 1 & 0
+ \end{pmatrix}
+, \qquad
+\matB = \begin{pmatrix}
+1 & 0\\
+0 & 1 \\
+0 & 0
+\end{pmatrix}
+\]
+On peut facilement vérifier que $\matA\matB = \matI_2$, et donc que
+$\matA$ est l'inverse à gauche de $\matB$  (et que $\matB$ est l'inverse
+à droite de $\matA$.  Par contre:
+\[
+\matB\matA = \begin{pmatrix}
+1 & 0\\
+0 & 1 \\
+0 & 0
+\end{pmatrix}
+\begin{pmatrix}
+ 1 & 0 & 0 \\
+ 0 & 1 & 0
+ \end{pmatrix}
+ = \begin{pmatrix}
+ 1 & 0 & 0\\
+ 0 & 1 & 0\\
+ 0 & 0 & 0
+ \end{pmatrix} \neq \matI_3
+ \]
+ \end{exemple}
+ \begin{theo}
+ L'inverse d'une matrice carrée est unique.
+
+ \proof
+Supposons que $\matA$ a deux inverses, $\matB$ et $\matC$, et donc que
+ $\matB\matA = \matI$ et $\matA\matC=\matI$. Nous allons démontrer que $\matB=\matC$, c'est-à-dire que l'inverse est unique. Nous avons
+ \[
+ \matB = \matB\matI = \matB(\matA\matC) = (\matB\matA)\matC =\matI\matC = \matC
+ \]
+ \cqfd
+ \end{theo}
+ Ayant prouvé l'unicité de l'inverse, nous allons à partir de maintenant le dénoter par $\matA^{-1}$.  Également, pour tout entier $n \geq 1$, nous définissons $\matA^{-n} = (\matA^{-1})^n$.
+ Le théorème suivant donne quelques propriétés utiles des inverses.
+ \begin{theo}
+ Soit $\matA$ et $\matB$ deux matrices carrées de la même taille ($n\times n$).  
+  \parttheorem{a} $\matI$ est inversible et $\matI^{-1} = \matI$.
+  \parttheorem{b} Si $\matA$ est inversible, alors $\matA^{-1}$ est inversible et $(\matA^{-1})^{-1} = \matA$. Notez que ceci satisfait la loi des exposants.
+ \parttheorem{c} Si $\matA$ et $\matB$ sont inversibles, alors $\matA\matB$ est inversible et $(\matA\matB)^{-1} = \matB^{-1}\matA^{-1}$
+ \parttheorem{d} Si $\matA_1, \matA_2, \ldots, \matA_k$ sont inversibles, alors $\matA_1A_2 \ldots \matA_k$ est inversible et $(\matA_1A_2 \ldots \matA_k)^{-1} = \matA_k^{-1}\matA_{k-1}^{-1}\ldots \matA_2^{-1}\matA_1^{-1}$ est son inverse.
+ \parttheorem{e} Si $\matA$ est inversible, alors $\matA^k$ est également inversible et $(\matA^k)^{-1} = (\matA^{-1})^k$.
+ \parttheorem{f} Si $\matA$ est inversible, alors $\transp{\matA}$ est inversible et $(\transp{\matA})^{-1} = \transp{(\matA^{-1})}$.
+ \parttheorem{g} Si $\matA$ est inversible et que $c$ est un nombre
+ différent de zéro, alors $c\matA$ est inversible et son
+ inverse est $\displaystyle (c\matA)^{-1} = \frac{1}{c}\matA^{-1}$.
+\proof
+ \parttheorem{a} Évident puisque $\matI\cdot \matI = \matI$.
+  \parttheorem{b} Puisque $\matA\matA^{-1} = \matA^{-1}\matA=\matI$, alors $\matA$ est l'inverse de $\matA^{-1}$ et donc
+$(\matA^{-1})^{-1} = \matA$.
+ \parttheorem{c} Si $\matA$ et $\matB$ sont inversibles, alors $\matA\matA^{-1} = \matA^{-1}\matA=\matI$ et $\matB\matB^{-1} = \matB^{-1}\matB=\matI$.  Nous avons
+\[
+\begin{matrix}[rclr]
+(\matA\matB)(\matB^{-1}\matA^{-1}) &=& \matA\matB\matB^{-1}\matA^{-1} &\explain{associativité de la multiplication} \\
+                       &=& \matA(\matB\matB^{-1})\matA^{-1}  \\
+                       &=& \matA\matI_n \matA^{-1} \\
+                       &=& \matA\matA^{-1}\\
+                       &=& \matI_n
+\end{matrix} 
+\]
+De la même façon, on peut démontrer que $(\matB^{-1}\matA^{-1}) (\matA\matB) = \matI_n$ et donc que $\matB^{-1}\matA^{-1}$ est 
+l'inverse de $\matA\matB$.
+\parttheorem{d} La démonstration est semblable à celle de \textbf{\color{ExerciceCouleur}{(c)}}.
+\parttheorem{e} La démonstration est semblable à celle de \textbf{\color{ExerciceCouleur}{(c)}}.
+ \parttheorem{f} La transposée de chaque terme de l'équation $\matA\matA^{-1} = \matA^{-1}\matA=\matI$
+ est \[
+ \begin{matrix}[llllll]
+ & \transp{(\matA\matA^{-1})} &=& \transp{(\matA^{-1}\matA)} &=&\transp{\matI}\\
+ \Rightarrow & \transp{(\matA^{-1})}\transp{\matA} &=& \transp{\matA}\transp{(\matA^{-1})} &=& \matI
+ \end{matrix}
+ \]
+ et donc $\transp{\matA}$ est inversible et $(\transp{\matA})^{-1} = \transp{(\matA^{-1})}$.
+  \parttheorem{g} Il est facile de vérifier que
+  $\displaystyle(c\matA)\left(\frac{1}{c}\matA^{-1}\right) = \left(\frac{1}{c}\matA^{-1}\right)(c\matA) = \matI$. \cqfd
+ \end{theo}
+ 
+ \begin{exemple}
+ Sous quelle(s) condition(s) une matrice diagonale est-elle inversible?
+ \solution
+ Soit $\matD=(d_{ij})$ une matrice diagonale $n\times n$ et $\matA$ une matrice quelconque $n \times n$ telle que $\matD\matA = \matI$.  En toute généralité, écrivons $\matD\matA = \matB = (b_{ij})$.  Ainsi, nous avons
+ \[
+ b_{ij} = \sum_{k=1}^n d_{ik} a_{kj} = d_{ii} a_{ij}
+ \]
+ puisque $d_{ik} = 0$ si $i\neq k$.  Mais, $\matB=\matI$ et donc $b_{ij} = 0 $ si $i\neq j$.  Par conséquent, $a_{ij}=0$ si $i\neq j$ et donc $\matA$ est une matrice diagonale.
+
+Puisque $b_{ii} = 1$, on trouve $\displaystyle a_{ii} = \frac{1}{d_{ii}}$ ce qui est possible si et seulement si $d_{ii}\neq 0 \forall i$.
+
+ \end{exemple}
+Sachant que l'inverse d'une matrice diagonale est une autre matrice diagonale, 
+et parce que les manipulations de matrices diagonales (multiplication ou addition) sont relativement plus faciles 
+que celles de matrices arbitraire, il est parfois utile de les considérer en premier lorsqu'on veut démontrer 
+certaines propriétés comme dans l'exemple suivant.
+\begin{exemple}
+Est-ce que la somme de deux matrices inversibles est nécessairement inversibles?
+\solution
+Non.  Par exemple, considérer les deux matrices diagonales (et inversibles)\footnote{Un pur hasard: chacune de ces deux matrices est son propre inverse, i.e. $\matA = \matA^{-1}$.}
+\[
+\begin{pmatrix}
+1 & 0 \\
+0 & -1
+\end{pmatrix}
+\quad\mbox{et}\quad
+\begin{pmatrix}
+-1 & 0 \\
+0 & 1
+\end{pmatrix}
+\]
+Il est facile de vérifier que leur somme est la matrice nulle qui n'est pas inversible.
+\end{exemple}
+
+Ayant défini l'inverse d'une matrice, nous pouvons l'utiliser pour résoudre, en principe, des systèmes d'équations linéaires définies par le biais de matrices, tel qu'indiqué par le théorème suivant.
+
+\begin{theo}
+Si $\matA$ est une matrice inversible $n \times n$ et $\matB$ est un
+vecteur colonne, alors l'équation $\matA\matX=\matB$ a comme solution unique $\matX = \matA^{-1}\matB$.
+\proof
+Puisque $\matA(\matA^{-1}\matB) = (\matA\matA^{-1})\matB = \matI_n \matB = \matB$ alors
+$\matA^{-1}\matB$ est une solution de l'équation $\matA\matX=\matB$.  Supposons
+que $\matY$ soit une solution de cette équation; alors 
+\[
+\matY = \matI_n\matY = (\matA^{-1}\matA)\matY = \matA^{-1}(\matA\matY) = \matA^{-1} \matB
+\]
+c'est-à-dire que c'est la même (et donc la seule) solution.
+\end{theo}
+
+
+
+\section{L'inverse d'une matrice $2\times 2$}
+
+Nous allons maintenant procéder au calcul de l'inverse d'une matrice générale $2 \times 2$ en se servant
+de ce que nous avons appris jusqu'à maintenant.  Dans une prochaine section,
+nous allons voir un algorithme qui nous permettra de calculer plus facilement
+les inverses.
+
+La matrice $2\times 2$ la plus générale peut être écrite de la façon suivante:
+\[
+\matA = \begin{pmatrix}
+a & b \\
+c & d
+\end{pmatrix}
+\]
+Écrivons son inverse comme suit:
+\[
+\matA^{-1} = \begin{pmatrix}
+w & y \\
+x & z
+\end{pmatrix}
+\]
+de telle sorte que
+\[
+\matA\matA^{-1} = \begin{pmatrix}
+a & b \\
+c & d
+\end{pmatrix}
+\begin{pmatrix}
+w & y \\
+x & z
+\end{pmatrix}
+=
+\begin{pmatrix}
+aw + bx & ay + bz \\
+cw + dx & cy + dz
+\end{pmatrix}
+=
+\begin{pmatrix}
+1 & 0 \\
+0 & 1
+\end{pmatrix}
+\]
+Ceci nous donne le système d'équations suivant:
+	\[
+	\left\{ \begin{matrix}
+		aw &+& bx && && &=& 1\\
+		cw &+& dx && && &=& 0 \\
+		&& &&  ay &+& bz &=& 0\\
+		&& &&  cy &+& dz &=& 1
+		\end{matrix}\right.
+	\]
+que l'on peut récrire sous la forme de deux systèmes indépendants:
+	\begin{equation}
+	\left\{ \begin{matrix}
+		aw &+& bx  &=& 1\\
+		cw &+& dx  &=& 0 
+		\end{matrix}\right. \label{inv2a}
+	\end{equation}
+et
+	\begin{equation}
+	\left\{ \begin{matrix}
+		  ay &+& bz &=& 0\\
+		  cy &+& dz &=& 1
+		\end{matrix}\right. \label{inv2b}
+	\end{equation}
+Considérons le premier de ces deux systèmes.  
+En multipliant la première équation par $-c$ et la deuxième par $a$ et additionnant les deux équations résultantes, on trouve
+\[
+(ad - bc) x = -c \qquad\Rightarrow\qquad x = \frac{-c}{ad-bc}
+\]
+ce qui suppose que $ad-bc\neq 0$.  En procédant de façon semblable pour trouver les autres inconnues, on obtient
+\[
+y = \frac{-b}{ad-bc} \qquad w = \frac{d}{ad-bc} \qquad
+z = \frac{a}{ad-bc}
+\]
+qui sont toutes des solutions possibles pourvu que $ad-bc\neq0$.   On en conclut que l'inverse de $\matA$ existe si%
+\footnote{\label{footnote:2par2}Notez que c'est la même condition que nous avions trouvé pour l'\refexercice{ex:2par2}; ceci
+n'est pas un hasard.}
+$ad-bc\neq0$ et est alors donné par 
+\[
+\matA^{-1} = \frac{1}{ad-bc}\begin{pmatrix}
+d & -b \\
+-c & a
+\end{pmatrix}
+\]
+
+Nous avons donc trouvé l'inverse d'une matrice $2\times2$, s'il existe.  Mais, pour ce faire, nous avons dû résoudre un système de 4 équations linéaires. 
+ En suivant cette procédure, pour trouver l'inverse d'une matrice $n\times n$, nous aurions besoin de résoudre un système de $n^2$ équations, ce qui devient rapidement peu pratique à faire.  
+ Il existe une meilleure façon de faire les choses en utilisant les propriétés des matrices élémentaires que nous allons voir dans la section suivante.
+
+\section{Matrices élémentaires}
+Lorsque nous avons discuté de la procédure d'élimination de Gauss,
+nous avons introduit les opérations élémentaires sur les lignes.
+Il est possible de définir des matrices, connues sous le nom
+de \definition{matrices élémentaires} qui, par le biais
+de la multiplication matricielle, jouent le même rôle.
+Une matrice élémentaire est obtenue à partir de la matrice identité en 
+performant \textit{une seule} opération élémentaire sur les lignes.
+
+De façon \textbf{générale}, nous désignerons ces matrices élémentaires
+soit par la lettre $\matE$ ou par cette lettre avec un indice, $\matE_k$,
+lorsqu'il y aura plus d'une matrice élémentaire à considérer.
+
+De façon \textbf{spécifique}, lorsque nous le pourrons, 
+nous désignerons ces matrices élémentaires par une notation spéciale\footnote{
+À noter qu'il n'y a pas de notation standard pour identifier
+les matrices élémentaires.  Nous avons inventé notre propre
+notation pour les besoins de ce manuel.}
+qui donnera l'information complète sur la matrice, à l'exception
+de sa taille qui sera normalement connue de par le contexte.
+C'est ainsi que:
+\marginpar{Une matrice élémentaire est obtenue à partir de la matrice identité en 
+performant \textit{une seule} opération élémentaire sur les lignes.}
+\begin{itemize}
+	\item la matrice qui correspond à l'échange de deux lignes, $L_i \leftrightarrow L_j$,
+	sera désignée par $\matE_{i\leftrightarrow j}$;
+	\item la matrice qui correspond au remplacement d'une ligne donnée par son multiple,
+	$ n L_i \rightarrow L_i, n \ne 0$, sera désignée par $\matE_i (n)$;
+	\item la matrice qui correspond au remplacement d'on ligne donnée par l'addition de celle-ci avec le multiple d'une autre ligne,
+	$L_i + n L_j \rightarrow L_i \quad \mbox{avec } n \ne 0$, sera désignée par $\matE_{ij}(n)$.
+\end{itemize}
+
+\begin{exemple}
+Identifiez les matrices suivantes et écrivez l'opération sur les lignes qui lui correspond.
+\partexemple{a}
+\[
+\begin{pmatrix}
+2 & 0 & 0 \\
+0 & 1 & 0\\
+0 & 0 & 1
+\end{pmatrix}
+\]
+\partexemple{b}
+\[
+\begin{pmatrix}
+1 & 0 & 0 \\
+0 & 0 & 1 \\
+0 & 1 & 0
+\end{pmatrix}
+\]
+\partexemple{c}
+\[
+\begin{pmatrix}
+1 & 0 & 4 \\
+0 & 1 & 0\\
+0 & 0 & 1
+\end{pmatrix}
+\]
+\solution\footnote{
+Avec un peu de pratique, on peut identifier le type de matrice élémentaire sans avoir
+à faire de multiplication avec une autre matrice.  En cas de doute, il suffit de prendre
+un simple vecteur colonne $\matX$ et de multiplier $\matE\matX$. Dans cet exemple, nous
+utilisons des matrices arbitraires plus générale pour trouver la solution.}
+\partexemple{a} $\matE_1(2): \quad 2 L_1\rightarrow L_1$.\\
+  On peut vérifier ceci de la façon suivante:
+\[
+\begin{pmatrix}
+2 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{pmatrix}
+\begin{pmatrix}
+a_1 & a_2 & \cdots \\
+b_1 & b_2 & \cdots \\
+c_1 & c_2 & \cdots
+\end{pmatrix} = 
+\begin{pmatrix}
+2a_1 & 2a_2 & \cdots \\
+b_1 & b_2 & \cdots \\
+c_1 & c_2 & \cdots
+\end{pmatrix}
+\]
+\partexemple{b} $\matE_{2\leftrightarrow 3}: \quad L_2 \leftrightarrow L_3$. \\
+On peut vérifier ceci de la façon suivante:
+\[
+\begin{pmatrix}
+1 & 0 & 0 \\
+0 & 0 & 1 \\
+0 & 1 & 0
+\end{pmatrix}
+\begin{pmatrix}
+a_1 & a_2 & \cdots \\
+b_1 & b_2 & \cdots \\
+c_1 & c_2 & \cdots
+\end{pmatrix} = 
+\begin{pmatrix}
+a_1 & a_2 & \cdots \\
+c_1 & c_2 & \cdots \\
+b_1 & b_2 & \cdots
+\end{pmatrix}
+\]
+\partexemple{c} $\matE_{13}(4):\quad L_1 + 4L_3 \rightarrow L_1$.\\
+ On peut vérifier ceci de la façon suivante:
+\[
+\begin{pmatrix}
+1 & 0 & 4 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{pmatrix}
+\begin{pmatrix}
+a_1 & a_2 & \cdots \\
+b_1 & b_2 & \cdots \\
+c_1 & c_2 & \cdots
+\end{pmatrix} = 
+\begin{pmatrix}[ccc]
+a_1 + 4c_1 & a_2 + 4c_2 & \cdots \\
+b_1 & b_2 & \cdots \\
+c_1 & c_2 & \cdots
+\end{pmatrix}
+\]
+\end{exemple}
+
+On peut également facilement vérifier que cette équivalence entre la multiplication 
+par une matrice élémentaire et les opérations élémentaires sur les rangées d'une matrice $\matA$ est
+toujours vérifiée peu importe la taille de la matrice $\matA$, et aussi bien pour les matrices carrées que rectangulaires. Cependant, en général, nous allons nous limiter aux matrices carrées.
+
+Dans la pratique, nous n'allons pas multiplier par des matrices élémentaires pour résoudre des systèmes d'équations ou trouver l'inverse de matrices.  Cependant, nous allons utiliser
+les matrices élémentaires pour démontrer certains théorèmes parce que la manipulation symbolique de matrices est beaucoup plus simple que l'utilisation d'opérations élémentaires successives.
+
+Pour chaque opération élémentaire sur les lignes, nous pouvons faire une opération inverse;  
+l en découle que chaque matrice élémentaire a un inverse et cet inverse est une matrice élémentaire:
+\begin{itemize}
+	\item Pour l'échange de deux lignes,  \( L_i \leftrightarrow L_j\), l'opération inverse consiste à faire l'échange à nouveau;
+	donc $\matE_{i\leftrightarrow j}^{-1} = \matE_{i\leftrightarrow j}$.
+	\item Pour le remplacement d'une ligne donnée par son multiple
+	\( \alpha L_i\)  avec \(\alpha \ne 0\), l'opération inverse
+	consiste à remplacer cette nouvelle ligne, $L_i'$ par son multiple $\alpha^{-1}L_i' = L_i$;
+	donc $\matE_i^{-1}(n) = \matE_i(n^{-1})$.
+	\item Pour le remplacement d'une ligne donnée par l'addition de celle-ci avec le multiple d'une autre ligne
+	\(L_i + \beta L_j \rightarrow L_i \quad \mbox{avec} \quad\beta \ne 0\), il suffit de remplacer le résultat, $L_i'$ par
+	l'addition de celle-ci avec le multiple $-\beta$ de l'autre,
+	$L_i' - \beta L_j \rightarrow L_i' = L_i$; donc $\matE^{-1}_{ij}(\beta) = \matE_{ij}(-\beta)$.
+\end{itemize}
+\begin{theo}
+Chaque matrice élémentaire a un inverse, et cet inverse est également une matrice élémentaire.
+\proof
+Voir l'explication dans le texte.
+\end{theo}
+\begin{exemple}
+Sans faire de calculs compliqués, et en vous basant uniquement sur la correspondance des opérations élémentaires sur les rangées, déterminez l'inverse des matrices élémentaires suivantes.
+
+\[
+\matE_1 = \begin{pmatrix}
+0 & 1 & 0 \\
+1 & 0 & 0\\
+0 & 0 & 1
+\end{pmatrix}
+\qquad
+\matE_2 = \begin{pmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0\\
+0 & 0 & 2
+\end{pmatrix}
+\qquad
+\matE_3 = \begin{pmatrix}
+1 & 0 & 3 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{pmatrix}
+\]
+\solution
+\[
+\matE_1^{-1} = \matE_1
+\qquad
+\matE_2^{-1} = \begin{pmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0\\
+ 0 & 0 & \frac{1}{2}
+\end{pmatrix}
+\qquad
+\matE_3^{-1} = \begin{pmatrix}
+1 & 0 & -3 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{pmatrix}
+\]
+\end{exemple}
+
+\section{Sur l'existence d'un inverse}
+
+Le théorème qui suit établit des équivalences utiles au sujet des conditions pour établir l'existence de l'inverse d'une matrice.
+
+\begin{theo}
+\label{theo-inverse}
+Si $\matA$ est une matrice carrée $n\times n$, alors les quatre énoncés suivants sont équivalents:
+
+\parttheorem{a} $\matA$ est inversible.
+\parttheorem{b} L'équation $\matA\matX = \zero$ a seulement la solution triviale.
+\parttheorem{c} $\matA$ peut être obtenue de $\matI$ en utilisant seulement des opérations élémentaires sur les lignes.
+\parttheorem{d} $\rang{\matA} = n$.
+\proof
+
+Nous allons démontrer que, si l'une de ces propositions est vraie, alors ceci implique que les autres le sont.  Pour faire cette démonstration, il suffit de prouver que
+\[
+(a) \Rightarrow (b) \Rightarrow (c) \Rightarrow (d) \Rightarrow (a)
+\]
+
+$(a) \Rightarrow (b)$: Supposons que $\matA$ soit inversible et que $\matX_0$ est une solution de l'équation $\matA\matX = \zero$. 
+En d'autres termes, $\matA\matX_0 = \zero$.  En multipliant de chaque côté de cette dernière équation par $\matA^{-1}$, nous avons:
+\[
+\begin{matrix}
+&\matA^{-1}\matA\matX_0 &=& \matA^{-1}\zero \\
+{\color{blue}} \Rightarrow& \matX_0 &=& \zero
+\end{matrix}
+\]
+c'est-à-dire que seule la solution triviale existe.\medskip
+
+$(b) \Rightarrow (c)$: Soit $\matM$ la matrice résultant de la procédure transformant $\matA$ sous une forme échelonnée réduite (donc, en utilisant seulement des opérations élémentaires sur les lignes).  Nous avons deux possibilités: soit que $\matM$ a une, ou plusieurs lignes nulles, ou soit que $\matM$ n'a pas de lignes nulles, et donc que $\matM$ est la matrice identité, $\matI$.  Si $\matM$ a une, ou plusieurs lignes nulles, alors il existe une infinité de solutions pour l'équation $\matA\matX=\zero$, ce qui contredit l'hypothèse $(b)$.  Par conséquent, $\matM=\matI$.\medskip
+
+$(c) \Rightarrow (d)$: $\rang{\matA} = \rang{\matI} = n$.\medskip
+
+$(d) \Rightarrow (a)$: Supposons que $\rang{\matA} = n$.  Ceci veut dire que $\matA$ peut être obtenue à partir de $\matI$ en faisant des opérations élémentaires sur les rangées.  Puisque les opérations élémentaires sur les rangées sont équivalentes à multiplier par des matrices élémentaires, nous avons
+\[
+\matE_k \matE_{k-1} \ldots \matE_2 \matE_1 \matA = \matI
+\]
+pour un nombre $k$ fini d'opérations élémentaires.     Appelons ce produit de matrice élémentaires $\matB$.  Nous avons donc
+\[
+\matB\matA = \matI
+\]
+Puisque chaque matrice élémentaire est inversible, le produit de ces matrices élémentaires est également inversible. Donc, $\matA$ est l'inverse de $\matB$ et il découle que $\matB = \matA^{-1}$, et donc que $\matA$ est inversible.
+
+\end{theo}
+
+Il existe un autre énoncé équivalent à ceux du théorème précédent, tel que décrit dans le théorème suivant.
+
+ \begin{theo}\label{inverse}
+ Si $\matA$ et $\matB$ sont deux matrices carrées et que $\matA\matB=\matI$ alors $\matB$ est l'inverse de la matrice carrée $\matA$ (et vice-versa).
+ \proof
+ Étant donné la matrice $\matB$, cherchons un vecteur colonne $\matX$ tel que $\matB\matX=\zero$.
+ En multipliant de chaque côté par $\matA$, on trouve $\matA \matB\matX=\zero$.  
+ Mais, puisque $\matA\matB=\matI$, ceci se réduit à $\matX=\zero$, et donc $\matB\matX=\zero$ a seulement la solution triviale.  
+ Par le \reftheo{theo-inverse}, ceci veut dire que $\matB$ est inversible.  Écrivons l'inverse de $\matB$ comme étant $\matC$.
+ Nous avons donc
+  \[
+  \begin{matrix}[rcll]
+  \matC &=& \matI\matC  &\explain{propriété de l'identité}\\
+   &=& (\matA\matB)\matC &\explain{par définition de $\matA\matB$}\\
+   &=& \matA(\matB\matC)&\explain{propriété de la multiplication}\\
+   &=& \matA &\explain{puisque $\matB\matC=\matI$}\\
+  \end{matrix}
+  \]
+  et donc, $\matA$ est l'inverse de $\matB$.\cqfd
+ \end{theo}
+
+ \section{Algorithme pour trouver un inverse}
+ 
+Une application immédiate des théorèmes de la section précédente, nous permet d'obtenir un
+algorithme pour trouver l'inverse d'une matrice carrée $\matA$ de taille $n\times n$.  Pour 
+ce faire, nous introduisons la matrice augmentée de taille $n \times 2n$
+\[
+\left[ \matA | \matI\right]
+\] 
+
+\noindent En multipliant par la gauche par $\matA^{-1}$, et en utilisant la notation de multiplications par blocs,
+on trouve:
+\[
+\begin{matrix}[rcl]
+\matA^{-1} \left[ \matA | \matI\right] &=& \left[ \matA^{-1}\matA | \matA^{-1}\matI\right] \\
+&=& \left[ \matI | \matA^{-1}\right]
+\end{matrix}
+\]
+De façon complètement équivalente, si on écrit $\matA^{-1} = \matE_k \matE_{k-1} \ldots \matE_2 \matE_1$, on a
+\[
+\begin{matrix}[rcl]
+\matE_k \matE_{k-1} \ldots \matE_2 \matE_1 \left[ \matA | \matI\right] &=& \left[ \matE_k \matE_{k-1} \ldots \matE_2 \matE_1\matA | \matE_k \matE_{k-1} \ldots \matE_2 \matE_1 \matI\right] \\
+&=& \left[ \matI | \matA^{-1}\right]
+\end{matrix}
+\]
+c'est-à-dire qu'en faisant des opérations élémentaires sur les lignes de $[\matA|\matI]$ jusqu'à ce que $\matA$ soit transformée
+en matrice identité, alors $\matI$ sera, par ces mêmes opérations sur les lignes, transformées en l'inverse de $\matA$.
+
+Illustrons ceci par un exemple.
+
+\begin{exemple}\label{bloc-inv}
+Trouvez l'inverse de la matrice suivante:
+\[
+\matA = \begin{pmatrix}
+1 & 2 & 3 \\
+2 & 5 & 3 \\
+1 & 0 & 8
+\end{pmatrix}
+\]
+\solution
+En premier, nous écrivons la matrice augmentée $[\matA|\matI]$
+\[
+\begin{bmatrix}[rrr|rrr]
+1 & 2 & 3 & 1 & 0 & 0\\
+2 & 5 & 3 & 0 & 1 & 0 \\
+1 & 0 & 8 & 0 & 0 & 1
+\end{bmatrix}
+\]
+Puis, nous utilisons des opérations élémentaires successives sur les lignes
+pour transformer le bloc de gauche en la matrice identité
+\[
+\begin{matrix}[rcl]
+    \begin{matrix}
+    L_2 - 2 L_1 \rightarrow L_2 \\
+    L_3 - L_1 \rightarrow L_3
+    \end{matrix}
+    &\Rightarrow&
+    \begin{bmatrix}[rrr|rrr]
+    1 & 2 & 3 & 1 & 0 & 0\\
+    0 & 1 & -3 & -2 & 1 & 0 \\
+    0 & -2 & 5 & -1 & 0 & 1
+    \end{bmatrix}\\[20pt]
+        L_3 + 2 L_2 \rightarrow L_3
+    &\Rightarrow&
+      \begin{bmatrix}[rrr|rrr]
+    1 & 2 & 3 & 1 & 0 & 0\\
+    0 & 1 & -3 & -2 & 1 & 0 \\
+    0 & 0 & -1 & -5 & 2 & 1
+    \end{bmatrix}\\[20pt]  
+    -L_3 \rightarrow L_3
+        &\Rightarrow&
+      \begin{bmatrix}[rrr|rrr]
+    1 & 2 & 3 & 1 & 0 & 0\\
+    0 & 1 & -3 & -2 & 1 & 0 \\
+    0 & 0 & 1 & 5 & -2 & -1
+    \end{bmatrix}\\[20pt]    
+    \begin{matrix}
+    L_1 - 3L_3 \rightarrow L_1 \\
+    L_2 + 3L_3 \rightarrow L_2
+    \end{matrix}      
+            &\Rightarrow&
+      \begin{bmatrix}[rrr|rrr]
+    1 & 2 & 0 & -14 & 6 & 3\\
+    0 & 1 & 0 & 13 & -5 & -3 \\
+    0 & 0 & 1 & 5 & -2 & -1
+    \end{bmatrix}\\[20pt] 
+     L_1 - 2 L_2 \rightarrow L_1
+       &\Rightarrow&
+      \begin{bmatrix}[rrr|rrr]
+    1 & 0 & 0 & -40 & 16 & 9\\
+    0 & 1 & 0 & 13 & -5 & -3 \\
+    0 & 0 & 1 & 5 & -2 & -1
+    \end{bmatrix}    
+\end{matrix}
+\]
+Le bloc de gauche est la matrice identité; le bloc de droite
+est donc la matrice inverse de $\matA$
+\[
+\matA^{-1} = \begin{pmatrix}
+-40 & 16 & 9 \\
+13 & -5 & -3 \\
+5 & -2 & -1
+\end{pmatrix}
+\]
+\end{exemple}
+
+On aurait pu arriver à trouver cet algorithme à partir de ce qu'on avait trouvé pour le cas
+de l'inverse d'une matrice 2 par 2.  Nous avions alors deux équations:
+	\[
+	\left\{ \begin{matrix}
+		aw &+& bx  &=& 1\\
+		cw &+& dx  &=& 0 
+		\end{matrix}\right. \qquad\refeq{inv2a} \qquad\mbox{et}\qquad
+	\left\{ \begin{matrix}
+		  ay &+& bz &=& 0\\
+		  cy &+& dz &=& 1
+		\end{matrix}\right. \qquad\refeq{inv2b}
+	\]
+Ces deux équations correspondent aux matrices augmentées
+\[
+      \begin{bmatrix}[rr|r]
+    a & b & 1\\
+    c & d & 0
+    \end{bmatrix} \qquad\mbox{et}\qquad 
+          \begin{bmatrix}[rr|r]
+        a & b & 0\\
+        c & d & 1
+        \end{bmatrix}
+\]
+qui sont identiques, sauf pour la colonne des termes constants.  L'algorithme que nous utilisons regroupe
+ces deux colonnes de termes constants pour faire une seule matrice augmentée.
+\[
+      \begin{bmatrix}[rr|rr]
+    a & b & 1 & 0\\
+    c & d & 0 & 1
+    \end{bmatrix}
+\]
+
+\begin{TwoCol}
+\section{Exercices divers}
+\begin{exercice}
+Vérifiez en multipliant $\matA$ et son inverse que la réponse trouvée à l'\refexemple{bloc-inv} est correcte.
+\end{exercice}
+
+ \begin{exercice}
+ Si $\matE$ est une matrice élémentaire, démontrez que $\transp{E}$ est également une matrice élémentaire du même type.
+ \end{exercice}
+ 
+  \begin{exercice}
+Trouvez deux matrices $2\times2$ qui sont singulières et dont la somme n'est pas singulière.
+ \end{exercice}
+ 
+   \begin{exercice}
+Trouvez deux matrices $2\times2$ qui sont inversibles et dont la somme n'est pas inversible.
+ \end{exercice}
+ 
+   \begin{exercice}
+Calculez $\matA^{-3}$ si
+\[
+\matA = \begin{pmatrix}
+1 & 2 \\
+1 & 3
+\end{pmatrix}
+\]
+ \end{exercice} 
+ 
+ \begin{exercice}
+ Trouvez $\matA$ si
+ \[
+ A^{-1} = \begin{pmatrix}
+ 2 & -1 \\
+ 3 & 5
+ \end{pmatrix}
+ \]
+ \end{exercice}
+ 
+ \begin{exercice}
+ Soit $\matA$ et $\matB$ deux matrices carrées telles que $\matA\matB = \zero$.
+ Démontrez que si $\matA$ est inversible, alors $\matB=\zero$.
+ \end{exercice}
+ \begin{exercice}
+ Pour chacune des matrices suivantes, identifiez s'il s'agit d'une matrice élémentaire et, si c'est le cas,
+ identifiez la par la notation spécifique (par exemple $\matE_{1\leftrightarrow5}$).
+ S'il ne s'agit pas d'une matrice élémentaire, expliquez pourquoi.
+ \partexercice{a}
+ \[
+ \begin{pmatrix}
+ 1 & 1 & 0 \\
+ 0 & 0 & 1 \\
+ 0 & 1 & 0
+ \end{pmatrix}
+  \]
+   \partexercice{b}
+ \[
+ \begin{pmatrix}
+ 1 & 0 & 0 \\
+ 0 & 1 & 9 \\
+ 0 & 0 & 1
+ \end{pmatrix}
+  \]
+   \partexercice{c}
+ \[
+ \begin{pmatrix}
+ 2 & 0 & 0 & 2\\
+ 0 & 1 & 0 & 0 \\
+ 0 & 0 & 1 & 0 \\
+ 0 & 0 & 0 & 1
+ \end{pmatrix}
+  \]
+     \partexercice{d}
+ \[
+ \begin{pmatrix}
+ 1 & 0 \\
+ -5 & 1 
+ \end{pmatrix}
+  \]
+   \end{exercice}
+   
+   \begin{exercice}
+   Soit $\matA$ une matrice $4\times3$.  Déterminez la matrice élémentaire $\matE$ qui, agissant comme
+   un multiplicateur à gauche sur $\matA$, c'est-à-dire, $\matE\matA$, performe l'opération suivante
+   sur $\matA$:
+   \partexercice{a} Multiplie la deuxième rangée de $\matA$ par -2.
+   \partexercice{b} Ajoute 3 fois la deuxième rangée de $\matA$ à la quatrième rangée de $\matA$. 
+   \partexercice{c} Interchange la première et la troisième rangée de $\matA$.
+   \end{exercice}
+   
+   \begin{exercice}
+   Soit les matrices $\matA, \matB, \matC$ suivantes:
+   \begin{eqnarray*}
+   \matA &=& \begin{pmatrix}
+   3 & 4 & 1\\
+   2 & -7 & -1 \\
+   8 & 1 & 5
+   \end{pmatrix}
+   \qquad
+   \matB = \begin{pmatrix}
+   8 & 1 & 5 \\
+   2 & -7 & -1 \\
+   3 & 4 & 1
+   \end{pmatrix} \\
+   \matC &=& \begin{pmatrix}
+   3 & 4 & 1 \\
+   2 & -7 & -1 \\
+   2 & -7 & 3
+\end{pmatrix}    
+   \end{eqnarray*}
+   Trouvez les matrices élémentaires $\matE_1, \matE_2, \matE_3, \matE_4$ qui font en sorte que:
+   \partexercice{a} $\matE_1 \matA = \matB$.
+   \partexercice{b} $\matE_2 \matB = \matA$.
+   \partexercice{c} $\matE_3 \matA = \matC$.
+   \partexercice{d} $\matE_4 \matC = \matA$.
+   \partexercice{e} Calculez $\matE_1\matE_2\matE_3\matE_4$.
+   \partexercice{f} Calculez $\matE_1\matE_3\matE_2\matE_4$.
+   \end{exercice}
+   
+   \begin{exercice}
+   Trouvez l'inverse de:
+   \[
+   \matA = 
+   \begin{pmatrix}
+   \sin\theta & \cos\theta \\
+   -\cos\theta & \sin\theta
+   \end{pmatrix}
+   \]
+   \end{exercice}
+
+   \begin{exercice}
+   Trouvez l'inverse de:
+   \[
+   \matA = 
+   \begin{pmatrix}
+   1 & 0 & 0 & 0 \\
+   1 & 1 & 0 & 0 \\
+   1 & 1 & 1 & 0 \\
+   1 & 1 & 1 & 1
+   \end{pmatrix}
+   \]
+   \end{exercice}
+   
+      \begin{exercice}
+   Trouvez l'inverse de:
+   \[
+   \matA = 
+   \begin{pmatrix}
+   0 & 1 & 2\\
+   1 & 0 & 3\\
+   4 & -3 & 8
+   \end{pmatrix}
+   \]
+   \end{exercice}
+   
+   \begin{exercice}
+   En utilisant l'algorithme $[\matA|\matI] \Rightarrow [\matI | \matA^{-1}]$ 
+   et en faisant le minimum d'opérations sur les rangées, démontrez que 
+   la matrice suivante n'a pas d'inverse:
+   \[
+   \matA = \begin{pmatrix}
+   1 & 2 & 4 \\
+   0 & -1 & 5 \\
+   1 & 1 & 9
+   \end{pmatrix}
+   \]
+   \end{exercice}
+ %
+ \end{TwoCol}

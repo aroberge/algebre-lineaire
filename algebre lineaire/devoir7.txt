@@ -1,0 +1,17 @@
+Le devoir 7 ne devrait inclure que les exercices suivants:
+
+7.3
+7.7: il y a une façon "intelligente" de calculer cette valeur, qui fait
+en sorte qu'on n'additionne jamais de chiffres supérieurs à 10.
+7.8  Écrivez la matrice donnée comme un produit de la matrice A ou A^T
+ainsi que des matrices élémentaires. Utilisez ceci par la suite pour faire
+le calcul demandé.
+7.9
+7.11  Faites le calcul directement.  Puis, faite le calcul en utilisant
+le résultat de l'exercice 7.16
+7.12
+7.13 Faites le calcul puis répétez après-moi:  On ne peut pas calculer le
+déterminant d'une matrice en la divisant en 4 blocs puis en traitant chaque
+bloc comme s'il s'agissait d'un nombre (scalaire).
+7.14:  on ne peut pas supposer qu'on a des blocs 2x2 comme à l'exercice 7.13.
+7.15

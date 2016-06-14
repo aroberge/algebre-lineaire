@@ -1,0 +1,27 @@
+\documentclass[11pt,oneside]{memoir}
+\usepackage{styles/alglin}	% my own style file that includes links to all other packages used
+
+% % % % % % % % % % % % Introduction to chapter 4
+
+
+\begin{document}
+\thispagestyle{empty}
+\begin{tabular}{rcl}
+Inverse d'une matrice &  & $\matA \matA^{-1} = \matI$\\[1cm]
+Solution unique $\matA\matX = \matB$ && $[\matA | \matB] \longrightarrow [\matI |\matX]$\\[1cm]
+
+Opérations élémentaires sur les lignes & {\color{red}$\Leftrightarrow$} & Multiplication par matrice élémentaire \\
+&& $\matE\matA$ \\[1cm]
+
+&& $\matE_k \cdots \matE_1 [\matA | \matB] = [\matI | \matX]$
+\\[1cm]
+Matrice inverse && $\matE_k \cdots \matE_1 = \matA^{-1}$ \\[1cm]
+&& $\matE_k \cdots \matE_1 [\matA | \matI] = [\matI | \matA^{-1}]$
+\\[1cm]
+
+
+Pas de solution unique pour $\matA\matX = \matB$ & {\color{red}$\Leftrightarrow$} & pas d'inverse pour $\matA$
+\end{tabular}
+
+
+\end{document}

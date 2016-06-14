@@ -1,0 +1,47 @@
+\RequirePackage[l2tabu, orthodox]{nag}  % like lint...
+%\documentclass[11pt,openany,twoside]{memoir}
+\documentclass[11pt,oneside]{memoir}
+\usepackage{checkend}
+\usepackage{styles/alglin}	% my own style file that includes links to all other packages used
+
+\author{André Roberge}
+\title{Algèbre linéaire}
+\date{\small  \today}
+\makeindex
+\raggedbottom
+
+\usepackage{hyperref}
+
+
+\begin{document}
+\include{titre}
+%\listoftodos
+
+\frontmatter
+	\tableofcontents*
+	\include{preface}
+
+\mainmatter
+	\include{revue}
+	\include{matrices}
+	\include{eqlin} 
+    \include{inverse}
+    \include{espaces}
+    \include{transform}
+	\include{determinants}
+	\include{propre}
+	\include{produit} % produit scalaire
+	\include{vecteurs}
+	\include{applications}
+
+%%% do not use \backmatter: it removes ''Appendix from the heading''
+\appendix
+	\include{resume}
+	\include{references}
+	\include{licence}
+
+%remember to make/update the index
+\printindex
+
+
+\end{document}

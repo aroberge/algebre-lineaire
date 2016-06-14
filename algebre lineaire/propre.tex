@@ -1,0 +1,1076 @@
+\chapter{Vecteurs propres et valeurs propres}
+
+\section{Introduction}
+Dans ce chapitre, nous allons étudier certaines propriétés des transformations
+linéaires $T$ d'un espace vectoriel $V$ à lui-même.  
+
+\begin{defini}
+Soit une transformation $T$ faite sur des vecteurs d'un espace vectoriel $V$ sur un corps $\BBK$.
+Un scalaire $\lambda \in \BBK$ est appelé \Definition{valeur propre}\footnote{
+Le mot propre est utilisé dans le sens d'appartenance; en anglais on utilise les termes \textit{eigenvalue} et
+\textit{eigenvector} qui sont dérivés de l'allemand.} de $T$ s'il existe un
+vecteur non nul $\mat{v}\in V$ tel que
+\[
+T(\mat{v}) = \lambda \mat{v}
+\]
+Tout vecteur $\mat{v}$ satisfaisant cette relation est appelé un \Definition{vecteur propre} de $T$
+correspondant à la valeur propre $\lambda$.
+\end{defini}
+On remarque qu'en raison des propriétés des transformations linéaires, tout
+multiple d'un vecteur propre est également un vecteur propre:
+\[
+T(k\mat{v}) = k T(\mat{v}) = k\lambda \mat{v} = k(\lambda\mat{v})
+\]
+\begin{theo}
+Soit $\lambda$ une valeur propre d'un opérateur $T: V \rightarrow V$.  L'ensemble $V_\lambda$ de
+tous les vecteurs propres de $T$ correspondant à la valeur propre $\lambda$ est un
+sous-espace de $V$.
+\proof
+Soient $\mat{u}, \mat{v} \in V_\lambda$, c'est-à-dire $T(\mat{u}) = \lambda\mat{u}$ et 
+ $T(\mat{v}) = \lambda\mat{v}$. Soient $a, b \in \BBK$ et $\mat{w} = a\mat{u} + b\mat{v}$ Alors
+ \[
+T(\mat{w}) = T(a\mat{u} + b\mat{v}) = aT(\mat{u}) + bT(\mat{v}) = a(\lambda\mat{u}) + b(\lambda\mat{v}) = \lambda(a\mat{u} + b\mat{v}) =\lambda\mat{w}
+ \]
+ et donc $\mat{w} \in V_\lambda$.
+\end{theo}
+
+\begin{theo}
+Soient $\mat{v}_1, \ldots, \mat{v}_n$ les vecteurs propres non-nuls d'un opérateur $T: V \rightarrow V$ correspondant aux valeurs propres \textbf{distinctes} $\lambda_1, \ldots, \lambda_n$. Alors $\mat{v}_1, \ldots, \mat{v}_n$ sont linéairement indépendants.
+\proof
+La démonstration de ce théorème se fait par récurrence.  Si $n=1$, alors $\mat{v}_1$ est
+linéairement indépendant puisqu'il est non-nul et donc la seule façon que l'équation
+$\beta_1 \mat{v}_1$ peut être satisfaite est si $\beta_1=0$.
+
+Supposons que les $n-1$ premiers vecteurs propres soient linéairement indépendants, 
+c'est-à-dire que la seule solution possible pour
+\[
+\beta_1\mat{v}_1 + \cdots + \beta_{n-1}\mat{v}_{n-1} = 0 
+\]
+est telle que tous les $\beta_j$ soient égaux à zéro.  Considérons l'équation
+\[
+\alpha_1\mat{v}_1 + \cdots + \alpha_{n}\mat{v}_{n} = 0 \quad \explain{\normalsize (1)}
+\]
+En appliquant $T$ à cette équation, et en raison de la linéarité de l'opérateur $T$, nous avons
+\[
+\alpha_1T(\mat{v}_1) + \cdots + \alpha_nT(\mat{v}_n) = 0
+\]
+Mais, puisque $T(\mat{v}_j) = \lambda_j\mat{v}_j$, ceci devient
+\[
+\alpha_1\lambda_1\mat{v}_1 + \cdots + \alpha_n\lambda_n\mat{v}_n = 0 \quad \explain{\normalsize (2)}
+\]
+Multiplions l'équation (1) par $\lambda_n$ et soustrayons-la de l'équation (2)
+\[
+\alpha_1(\lambda_1-\lambda_n)\mat{v}_1 + \cdots + \alpha_{n-1}(\lambda_{n-1}-\lambda_n)\mat{v}_{n-1} + {\color{red}\alpha_n(\lambda_n-\lambda_n)\mat{v}_n } = 0
+\]
+Le dernier terme (en rouge) de cette équation est égal à zéro.
+Puisque les valeurs propres sont toutes distinctes, la seule façon possible de satisfaire
+cette équation est si tous les $\alpha_j$, $1\leq j \leq n-1$ sont égaux à zéro 
+puisque, par hypothèse, les $n-1$ premiers vecteurs sont linéairement indépendants.  
+En remplaçant les $n-1$ premiers $\alpha_j$ par
+zéro dans l'équation (1), on trouve que $\alpha_n$ doit également être égal à zéro, et donc que
+tous les vecteurs sont linéairement indépendants.
+\end{theo}
+
+Puisque les vecteurs propres sont linéairement indépendants, le nombre maximal qu'on
+puisse avoir est égal à la dimension de l'espace vectoriel, et ces vecteurs
+formeront alors une base de cet espace vectoriel.
+
+\begin{exemple}
+Soit la matrice 
+\[
+\matA = \begin{pmatrix}
+5 & 0 \\ 0 & 2
+\end{pmatrix}
+\]
+On peut facilement vérifier que cette matrice a 5 comme valeur propre, avec le vecteur propre $\displaystyle \begin{pmatrix}
+1\\0
+\end{pmatrix}$, 
+ainsi que la valeur propre 2 et le vecteur propre 
+$\displaystyle \begin{pmatrix}
+0\\1
+\end{pmatrix}
+$
+\end{exemple}
+
+Le concept de valeurs propres et de vecteurs propres n'est pas limités aux transformations
+linéaires exprimées sous la forme de matrices.  L'exemple suivant illustre ceci dans
+le cas de fonctions réelles et du calcul différentiel
+
+\begin{exemple}
+Soit l'opérateur $\displaystyle \frac{d}{dt}$ sur des fonctions réelles $f$. On note que cet opérateur est un opérateur linéaire:
+\[
+\frac{d (af(t) + bg(t))}{dt} = a \frac{d\,f(t)}{dt} + b\frac{d\, g(t)}{dt}
+\]
+Nous avons
+\[
+\frac{d\, e^{3t}}{dt} = 3 e^{3t}
+\]
+et donc 3 est une valeur propre de $\displaystyle \frac{d}{dt}$, et $e^{3t}$ est un vecteur propre correspondant à cette valeur propre.
+\end{exemple}
+
+\section{Polynôme caractéristique}
+Supposons que nous cherchons les valeurs propres et les vecteurs propres d'une matrice carrée $\matA$, c'est-à-dire qu'on
+cherche des solutions (vecteurs propres) non-nulles à l'équation $\matA\matX = \lambda\matX$.   Une façon de procéder serait
+de choisir un vecteur arbitraire $\matX$ et d'obtenir un système de $n$ équations linéaires ayant $n+1$ inconnues: les $n$ coefficients
+de $\matX$ ainsi que $\lambda$. Comme on aura plus d'inconnues que d'équations, on aura une infinité de solutions \ldots ce qui n'est 
+pas surprenant puisque tout multiple d'un vecteur propre est également un vecteur propre.  À première vue, le problème peut paraître difficile
+à résoudre.  En pratique, il existe une méthode qui facilite la recherche d'une solution.
+
+Reprenons l'équation à résoudre, $\matA\matX = \lambda\matX$; en utilisant la matrice identité, $\matI$, on peut
+réécrire ceci comme:
+\[
+\begin{matrix}[rcl]
+\matA\matX &=& \lambda\matI\matX \\
+{\color{blue} \Rightarrow\quad}(\matA - \lambda\matI) \matX &=& \zero
+\end{matrix}
+\]
+Au \reftheo{theo-inverse}, nous avons démontré que, pour une matrice carrée $\mat{M}$, 
+l'équation $\mat{M}\matX = \zero$ admet seulement la solution
+triviale si $\mat{M}$ est inversible. 
+Inversement, nous aurions pu démontrer que si $\mat{M}$ n'est pas inversible,
+il existe une infinité de solutions.\footnote{Nous rappelons que pour les équations homogènes, nous avons toujours au moins une solution (la solution triviale) ce qui nous laisse deux possibilités: une seule solution ou une infinité de solutions.}  
+Au \reftheo{det0:inv} nous avons démontré que si $\mat{M}$ n'est pas inversible, alors son déterminant est zéro. 
+En combinant ces deux résultats, nous concluons que nous pourrons trouver des vecteurs propres non-nuls si
+\[
+|\matA - \lambda\matI| = \zero
+\]
+Pour une matrice $n\times n$, l'équation ci-dessus résultera en un polynôme de degré $n$ en $\lambda$, appelé
+\definition{polynôme caractéristique} de $\matA$.  Notons que la matrice $\matA - \lambda\matI$ est appelée la
+\definition{matrice caractéristique} de $\matA$.
+\begin{exemple}
+Reprenons l'exemple simple du début du chapitre:
+\[
+\matA = \begin{pmatrix}
+5 & 0 \\ 0 & 2
+\end{pmatrix}
+\]
+La matrice caractéristique de $\matA$ est:
+\[
+\matA - \lambda\matI = \begin{pmatrix}
+5 & 0 \\0 & 2
+\end{pmatrix} - \lambda\begin{pmatrix}
+1 & 0 \\ 0 & 1
+\end{pmatrix}
+=
+\begin{pmatrix}[cc]
+5-\lambda & 0 \\ 0 & 2-\lambda
+\end{pmatrix}
+\]
+et son déterminant est $(5-\lambda)(2-\lambda)$.  Le polynôme caractéristique est donc
+\[
+(5-\lambda)(2-\lambda) = 0
+\]
+qui a deux solutions pour $\lambda$ (2 et 5), qui sont donc les deux valeurs propres de $\matA$ comme
+nous l'avions vu auparavant.
+\end{exemple}
+\begin{exemple}\label{ex:propre}
+Trouvez les vecteur propres et les valeurs propres de la matrice
+\[
+\matA = \begin{pmatrix}
+1 & 1 \\ 1 & 1
+\end{pmatrix}
+\]
+\solution
+Le polynôme caractéristique est obtenu en calculant $|\matA - \lambda\matI|=0$:
+\[
+\begin{vmatrix}[cc]
+1-\lambda & 1 \\ 1 & 1-\lambda
+\end{vmatrix} = (1-\lambda)^2 - 1 = \lambda(\lambda-2) = 0
+\]
+On a donc deux solutions: $\lambda = 0$ et $\lambda = 2$, qui sont les deux valeurs propres.
+Trouvons les vecteurs propres correspondant, en utilisant l'équation 
+$\matA \mat{v} = \lambda \mat{v}$ qu'on peut récrire comme 
+$(\matA - \lambda\matI)\mat{v} = 0$.  En premier, considère $\lambda= 2$:
+\[
+\begin{pmatrix}[cc]
+1-2 & 1 \\ 1 & 1-2
+\end{pmatrix} \begin{pmatrix}
+x \\ y
+\end{pmatrix} = \begin{pmatrix}
+-1 & 1 \\ 1 & -1
+\end{pmatrix} \begin{pmatrix}
+x \\ y
+\end{pmatrix} 
+= \begin{pmatrix}
+0 \\ 0
+\end{pmatrix}
+\]
+Ceci nous donne le système homogène
+\begin{eqnarray*}
+-x + y &=& 0 \\
+x - y &=& 0
+\end{eqnarray*}
+On peut voir immédiatement que la deuxième équation nous donne la même information que la première.
+On n'a donc qu'une seule équation et deux variables.  Suivant la convention habituelle,
+on choisit la variable $y$ comme variable libre et la solution générale est de la forme
+\[
+t\begin{pmatrix}
+1 \\ 1
+\end{pmatrix}
+\]
+Comme le multiple d'un vecteur propre est également un vecteur propre, on peut choisir $t$ de
+façon tout à fait arbitraire (en autant que le résultat ne soit pas le vecteur nul).
+Un choix naturel est de prendre $t=1$ et on obtient donc que le vecteur propre qui correspond
+à la valeur propre $2$ est
+\[
+\begin{pmatrix}
+1 \\ 1
+\end{pmatrix}
+\]
+\end{exemple}
+\begin{exerciceB}
+Vérifiez qu'un vecteur propre qui correspond à la valeur propre 0 dans
+l'\refexemple{ex:propre} ci-dessus est le vecteur $\displaystyle \begin{pmatrix}
+1 \\ -1
+\end{pmatrix}$.  Vérifiez également que le déterminant est égal au produit
+des valeurs propres ($2\cdot 0 = 0$), et que la trace est égale à la somme des valeurs propres..
+\end{exerciceB}
+
+\pagebreak[2]
+\begin{exerciceB}\label{exercice:propre}
+Trouvez les valeurs propres et les vecteur propres de la matrice \[
+\matA = \begin{pmatrix}
+2 & 4 \\ 3 & 3
+\end{pmatrix}
+\]
+Vérifiez également que le déterminant est égal au produit
+des valeurs propres, et que la trace est égale à la somme des valeurs propres.
+\end{exerciceB}
+
+Puisque la multiplication d'une matrice par un de ses vecteurs propres redonne le même vecteur
+propre multiplié par un scalaire on sait que, sans faire de calculs, la matrice
+de rotation des vecteurs \textbf{réels}
+\[
+\begin{pmatrix}
+\cos\theta & -\sin\theta \\
+\sin\theta & \cos\theta
+\end{pmatrix}
+\]
+n'a pas de valeurs propres réelles, sauf dans le cas trivial où $\theta = 2 n \pi, n\in\BBZ$ et
+cette matrice devient la matrice identité.  L'exemple suivant vérifie ceci dans un cas particulier.
+\begin{exemple}
+Démontrer que la matrice de rotation par un angle de $\pi/2$ n'a pas de valeurs
+propres réelles.
+\solution
+La  matrice de rotation par un angle de $\pi/2$ est
+\[
+\mat{R} = 
+\begin{pmatrix}
+0 & -1 \\ 1 & 0
+\end{pmatrix}
+\]
+Pour trouver les valeurs propres, nous trouvons les solutions de $|\mat{R} - \lambda \matI|=0$:
+\[
+\begin{vmatrix}
+-\lambda & -1 \\ 1 & -\lambda
+\end{vmatrix}
+= \lambda^2 + 1 = 0
+\]
+Comme le carré d'un nombre réel est un nombre positif, cette équation n'a pas de solutions réelles.
+\end{exemple}
+\begin{exerciceC}
+En considérant les nombres complexes, trouvez les deux valeurs propres et les vecteurs propres
+correspondant de la matrice de rotation\footnote{Une observation potentiellement intéressante: 
+si on représente les nombres complexes dans un
+plan, avec deux axes perpendiculaires, l'un correspondant à la partie réelle et l'autre à
+la partie complexe, la multiplication par $i$ d'un nombre complexe correspond à
+une rotation de $\pi/2$ dans le plan complexe.}:
+\[
+\mat{R} = 
+\begin{pmatrix}
+0 & -1 \\ 1 & 0
+\end{pmatrix}
+\]
+
+\end{exerciceC}
+
+\begin{defini}
+La \textbf{multiplicité algébrique} d'une valeur propre $\lambda$ est l'ordre de la racine
+correspondante dans le polynôme caractéristique.  Par exemple, si le polynôme caractéristique
+est
+\[
+(\lambda - 2)^3 (\lambda+4)^5 (\lambda-6)= 0
+\]
+alors la multiplicité algébrique de la valeur propre 2 sera 3, la multiplicité algébrique de la valeur
+propre -4 sera 5, et la multiplicité algébrique de la valeur propre 6 sera 1. 
+\end{defini}
+On remarque que, si on remplace $\lambda$ par zéro dans le polynôme caractéristique,
+l'expression qui reste est égale au produits des valeurs propres élevées à leur ordre
+de multiplicité algébrique; cette expression est également égale au déterminant de la matrice.
+
+\begin{defini}
+La \textbf{multiplicité géométrique} d'une valeur propre $\lambda$ est le nombre de
+vecteurs propres linéairement indépendants correspondant à cette valeur propre. 
+\end{defini}
+
+Comme des vecteurs linéairement indépendants permettent de définir une base d'un espace, la
+multiplicité géométrique sera égale à la dimension de l'espace propre associé à une valeur propre.
+
+\section{Diagonalisation}
+Soit l'équation $\matA\matX = \lambda\matX$ où la matrice $\matA$ est une matrice $n\times n$.  
+Supposons que nous ayons trouvé un ensemble linéairement indépendant de $n$ vecteurs propres $\{\matX_i\}$.
+Construisons la matrice $\mat{P}$ en utilisant les vecteurs propres de $\matA$, avec un vecteur propre différent pour chaque colonne:
+\[
+\mat{P} = (\matX_1 \cdots \matX_n)
+\]
+Nous avons donc
+\[
+ \matA \mat{P} = \matA (\matX_1 \cdots \matX_n) = ( \matA\matX_1 \cdots  \matA\matX_n) =  ( \lambda_1\matX_1 \cdots  \lambda_n\matX_n)
+\]
+Puisque les colonnes de $\mat{P}$ sont linéairement indépendantes, ceci veut dire qu'elle est inversible. 
+Écrivons son inverse comme une collection de vecteurs lignes:
+\[
+\mat{P}^{-1} = \begin{pmatrix}[c]
+\mat{Y}_1 \\ \vdots \\ \mat{Y}_n
+\end{pmatrix}
+\]
+tels que $\mat{Y}_i \matX_j = \delta_{ij}$, où $ \delta_{ij}$ est le symbole de Kronecker. 
+Nous avons alors:
+\[
+\mat{P}^{-1} \matA \mat{P} = \begin{pmatrix}[c]
+\mat{Y}_1 \\ \vdots \\ \mat{Y}_n
+\end{pmatrix} \matA (\matX_1 \cdots \matX_n) 
+=   \begin{pmatrix}[c]
+\mat{Y}_1 \\ \vdots \\ \mat{Y}_n
+\end{pmatrix} ( \lambda_1\matX_1 \cdots  \lambda_n\matX_n) = (\lambda_j \delta_{ij}) = \mat{D}
+\]
+c'est-à-dire que le produit $\mat{D} = \mat{P}^{-1} \matA \mat{P}$ est une matrice diagonale, 
+avec les valeurs propres de $\matA$ comme éléments non-nuls.  Les vecteurs propres de $\mat{D}$ peuvent
+être choisis comme étant:
+\[
+\{\matZ_i\} = \left\{ 
+\begin{pmatrix}[c]
+1\\0\\ \vdots \\ 0
+\end{pmatrix}
+,\cdots,
+\begin{pmatrix}[c]
+0\\ \vdots\\ 0 \\ 1
+\end{pmatrix}
+\right\}
+\]
+En fait, on a\footnote{En fait, ce n'est pas nécessairement tout à fait exact: il est probable que les vecteurs obtenus dans
+la nouvelle base utilisant la matrice de passage seront des multiples différents de la base ci-dessus, où tous les coefficients non-nuls étaient
+égaux à 1.}:
+\[
+\begin{matrix}[rcl]
+\matA\matX &=& \lambda\matX \\
+\textcolor{blue}{\matI}\matA\textcolor{blue}{\matI}\matX &=& \lambda\textcolor{blue}{\matI}\matX \\
+\textcolor{blue}{\mat{P}\mat{P}^{-1}}\matA\textcolor{blue}{\mat{P}\mat{P}^{-1}}\matX &=& \lambda\textcolor{blue}{\mat{P}\mat{P}^{-1}}\matX \\
+\textcolor{blue}{\mat{P}}\mat{P}^{-1}\matA\mat{P} \textcolor{red}{\mat{P}^{-1}\matX} &=& \lambda\textcolor{blue}{\mat{P}}\textcolor{red}{(\mat{P}^{-1}\matX)} \\
+\textcolor{blue}{\mat{P}} \mat{D} \textcolor{red}{\matZ} &=& \lambda\textcolor{blue}{\mat{P}} \textcolor{red}{\matZ} \\
+\mat{D} \matZ &=& \lambda \matZ
+\end{matrix}
+\]
+La matrice $\mat{P}^{-1}$, qui permet de changer de la base $\{\matX_i\}$ à la base 
+$\{\matZ_i\}$ est connue sous le nom de \definition{matrice de passage}: ceci est le
+nom qu'on donne à toute matrice qui permet de changer la base d'un espace vectoriel.
+Ainsi, $\mat{P}$ est également une matrice de passage (de la base $\{\matZ_i\}$ à la base $\{\matX_i\}$).
+
+\begin{defini}
+Les matrices $\matA$ et $\matB$ sont des \index{matrices semblables}
+\textbf{matrices semblables} s'il existe une
+matrice de passage $\mat{P}$ telle que $\matB = \mat{P}^{-1}\matA\mat{P}$
+\end{defini}
+
+\begin{theo}
+Des matrices semblables ont le même polynôme caractéristique.
+\proof
+Le polynôme caractéristique de $\matB$ est donné par l'équation
+\[
+|\matB -\lambda\matI| = 0
+\]
+Puisque $\matB$ et $\matA$ sont des matrices semblables, et que
+$\matI = \mat{P}^{-1}\matI\mat{P}$, nous pouvons remplacer récrire le membre
+de gauche de l'équation
+ci-dessus comme
+\[
+|\matB -\lambda\matI| = |\mat{P}^{-1}\matA\mat{P} -\lambda\mat{P}^{-1}\matI\mat{P}| = |\mat{P}^{-1}| |\matA -\lambda\matI| |\mat{P}| = |\matA -\lambda\matI| 
+\]
+\end{theo}
+
+\begin{exemple}
+Soit la matrice $\matA$ de l'\refexemple{ex:propre}: 
+\[
+ \matA = \begin{pmatrix}
+1 & 1 \\ 1 & 1
+\end{pmatrix}
+\]
+Cette matrice a comme valeurs propres 0 et 2, et les vecteurs propres 
+$\mat{v}_\lambda$ correspondant
+\[
+\mat{v}_0 = \begin{pmatrix}
+1 \\ -1
+\end{pmatrix}\qquad \mat{v}_2 = \begin{pmatrix}
+1 \\ 1
+\end{pmatrix}
+\]
+En utilisant ces vecteurs, on peut obtenir la matrice de passage\footnote{Le choix de l'ordre
+des colonnes est arbitraire.}
+\[
+\mat{P} = (\mat{v}_2 \mat{v}_0) = \left( 
+\color{black!20}\left(\color{black}\begin{matrix}
+1 \\ 1
+\end{matrix}
+\color{black!20}\right)\color{black}
+\color{black!20}\left(\color{black}\begin{matrix}
+1 \\ -1
+\end{matrix}
+\color{black!20}\right)\color{black}
+\right)
+= \begin{pmatrix}
+1 & 1 \\ 1 & -1
+\end{pmatrix}
+\]
+On peut vérifier que l'inverse de cette matrice est
+\[
+\mat{P}^{-1} = \begin{pmatrix}
+\frac12 & \frac12 \\[7pt]
+\frac12 & -\frac12
+\end{pmatrix}
+\]
+et que l'on peut diagonaliser $\matA$ de la façon suivante:
+\[
+\mat{P}^{-1}\matA\mat{P} = \begin{pmatrix}
+\frac12 & \frac12 \\[7pt]
+\frac12 & -\frac12
+\end{pmatrix}
+\begin{pmatrix}
+1 & 1 \\[7pt] 1 & 1
+\end{pmatrix}
+\begin{pmatrix}
+1 & 1 \\[7pt] 1 & -1
+\end{pmatrix}
+=
+\begin{pmatrix}
+\frac12 & \frac12 \\[7pt]
+\frac12 & -\frac12
+\end{pmatrix}
+\begin{pmatrix}
+2 & 0 \\[7pt] 2 & 0
+\end{pmatrix}
+= \begin{pmatrix}
+2 & 0 \\ 0 & 0
+\end{pmatrix} = \matD
+\]
+\end{exemple}
+
+\begin{exerciceC}
+Soit la matrice \[
+\matA = \begin{pmatrix}
+2 & 4 \\ 3 & 3
+\end{pmatrix}
+\]
+de l'\refexercice{exercice:propre}.
+Trouvez une matrice de passage pour cette matrice et ensuite transformez la matrice $\matA$
+dans une forme diagonale.
+\end{exerciceC}
+
+\begin{exemple}
+Soit la matrice $\matA$ 
+\[
+ \matA = \begin{pmatrix}
+1 & 1 \\ 1 & 1
+\end{pmatrix}
+\]
+Calculez $\matA^{31}$.
+\solution
+On pourrait trouver la réponse en faisant toute une série de multiplications \ldots mais
+il y a une façon plus simple d'obtenir la réponse.  On sait que l'on peut diagonaliser
+la matrice $\matA$ en faisant la transformation
+\[
+\mat{P}^{-1}\matA\mat{P} = \matD
+\]
+Si on multiplie cette équation de la gauche par $\mat{P}$ et de la droite par $\mat{P}^{-1}$,
+on obtient:
+\[
+\matA = \mat{P}\matD\mat{P}^{-1}
+\]
+On observe que l'on a
+\[
+\matA^2 = (\mat{P}\matD\mat{P}^{-1})^2 = \mat{P}\matD\mat{P}^{-1}\mat{P}\matD\mat{P}^{-1} = \mat{P}\matD^2\mat{P}^{-1}
+\]
+et, de façon plus générale
+\[
+\matA^n = \mat{P}\matD^n\mat{P}^{-1}
+\]
+On peut facilement vérifier que, si élève une matrice diagonale à la puissance $n$ la matrice
+résultante sera également une matrice diagonale dont les coefficients seront les coefficients
+de la matrice initiale élevés à cette même puissance $n$:
+\[
+\left(\begin{matrix}
+d_{11} & 0 & \cdots \\
+0 & d_{22} & 0\cdots \\
+\vdots & 0 & \ddots
+\end{matrix}\right)^n
+=
+\begin{pmatrix}
+d_{11}^n & 0 & \cdots \\
+0 & d_{22}^n & 0\cdots \\
+\vdots & 0 & \ddots
+\end{pmatrix}
+\]
+En utilisant les matrices qu'on avait trouvées dans les exemples précédents, on a donc
+\begin{eqnarray*}
+\matA^{31} = \begin{pmatrix}
+1 & 1 \\[7pt] 1 & -1
+\end{pmatrix}
+\begin{pmatrix}
+2 & 0 \\[7pt] 0 & 0
+\end{pmatrix}^{31}
+\begin{pmatrix}
+\frac12 & \frac12 \\[7pt]
+\frac12 & -\frac12
+\end{pmatrix}
+=
+\begin{pmatrix}
+1 & 1 \\[7pt] 1 & -1
+\end{pmatrix}
+\begin{pmatrix}
+2^{31} & 0 \\[7pt] 0 & 0
+\end{pmatrix}
+\begin{pmatrix}
+\frac12 & \frac12 \\[7pt]
+\frac12 & -\frac12
+\end{pmatrix}
+&=&
+\begin{pmatrix}
+1 & 1 \\[7pt] 1 & -1
+\end{pmatrix}
+\begin{pmatrix}
+2^{30} & 2^{30} \\ 0 & 0
+\end{pmatrix}\\
+\matA^{31}&=&\begin{pmatrix}
+2^{30} & 2^{30} \\ 2^{30} & 2^{30}
+\end{pmatrix}
+\end{eqnarray*}
+\end{exemple}
+
+\begin{exerciceC}
+Soit la matrice \[
+\matA = \begin{pmatrix}
+2 & 4 \\ 3 & 3
+\end{pmatrix}
+\]
+de l'\refexercice{exercice:propre}.
+Calculez $\matA^{31}$. Note: vous pouvez laisser les valeurs numériques sous la forme
+$a^b + c^d$, comme par exemple $5^3 + 6^3$, de telle sorte que vous ne devriez pas
+avoir besoin d'utiliser une calculatrice.
+\end{exerciceC}
+
+\begin{exemple}
+Est-il possible de diagonaliser la matrice $\displaystyle\matA= \begin{pmatrix}
+1 & 1 \\ 0 & 1
+\end{pmatrix}$?
+\solution
+La réponse à cette question est non \ldots ce que nous allons démontrer de deux façons.
+Dans un premier temps, nous allons démontrer ceci d'une façon applicable à tout problème
+de ce genre.  Puis, nous allons utiliser des propriétés particulières de cette matrice
+pour faire la démonstration d'une autre façon.
+
+Le polynôme caractéristique de cette matrice est donné par l'équation $0 = |\matA-\lambda\matI|$
+\[
+0 = \begin{vmatrix}[cc]
+1-\lambda & 1 \\ 0 & 1-\lambda
+\end{vmatrix} = (1-\lambda)^2 
+\]
+Nous avons donc une seule valeur propre, $\lambda = 1$, ayant une multiplicité algébrique
+égale à 2.  Calculons le ou les vecteurs propres linéairement indépendants correspondant
+à cette valeur propre en utilisant l'équation $(\matA-\lambda\matI)\matX = \zero$ avec
+$\lambda = 1$
+\[
+\begin{pmatrix}
+0 & 1 \\ 0 & 0
+\end{pmatrix}\begin{pmatrix}
+x \\ y
+\end{pmatrix}= \begin{pmatrix}
+y \\ 0
+\end{pmatrix}=\begin{pmatrix}
+0 \\ 0
+\end{pmatrix} \qquad\Rightarrow y = 0
+\]
+$x$ est donc une variable libre et, si nous choisissons la valeur 1 pour cette variable, on
+obtient le vecteur propre
+\[
+\begin{pmatrix}
+1\\ 0
+\end{pmatrix}
+\]
+Comme on n'a qu'un seul vecteur propre, la multiplicité géométrique de la valeur propre est 1, 
+ce qui est plus petit que sa multiplicité algébrique.  Avec un seul vecteur propre, on ne
+peut pas obtenir une matrice de passage $\mat{P}$ qui soit inversible et donc on ne peut pas
+diagonaliser la matrice $\matA$.
+
+Une autre façon de voir ceci est la suivante.  La seule matrice diagonale $2\times 2$ qui a la
+valeur 1 pour ses deux coefficients sur la diagonale est la matrice identité.  Supposons qu'on
+ait une matrice de passage $\mat{P}$ qu'on utilise pour obtenir une matrice semblable à la 
+matrice diagonale (mais différente d'elle).  La transformation habituelle serait:
+\[
+\mat{P}\matD\mat{P}^{-1} = \matA
+\]
+Dans ce cas-ci, puisque $\matD = \matI$, on obtient:
+\[
+\mat{P}\matI\mat{P}^{-1} = \matI \neq \matA
+\]
+\end{exemple}
+\begin{theo}
+On peut diagonaliser une matrice $\matA$ si la multiplicité algébrique
+de chacune de ses valeurs propres est égale à la multiplicité géométrique de ces mêmes valeurs
+propres.
+\proof 
+On sait que les vecteurs propres qui appartiennent a des valeurs propres distinctes sont
+linéairement indépendants entre eux.  Si la multiplicité algébrique 
+est égale à la multiplicité géométrique pour chacune des valeurs propres, alors ceci veut
+dire (par la définition de la multiplicité géométrique) que les vecteurs propres qui
+ appartiennent à la même valeur propre sont linéairement indépendants.  Donc, tous les
+ vecteurs propres sont linéairement indépendants et, pour une matrice de taille $n\times n$,
+ nous aurons $n$ vecteurs propres linéairement indépendants.
+ Comme ces vecteurs
+sont linéairement indépendants, on peut s'en servir comme colonnes d'une matrice
+$\mat{P}$ de taille $n\times n$ qui sera alors inversible et pourra donc être utilisée
+comme matrice de passage.
+\end{theo}
+
+Bien qu'il ne soit pas toujours possible de diagonaliser une matrice, 
+\marginpar{La trace d'une matrice est égale à la somme de ses valeurs propres; le déterminant
+d'une matrice est égal au produit de ses valeurs propres.}
+on peut démontrer\footnote{Cette démonstration requiert des concepts qui ne sont
+pas inclus dans ce manuel.}
+qu'il est possible de toujours possible de trouver une matrice qui permet de transformer
+cette matrice dans une forme triangulaire de la façon suivante:
+\[
+\mat{P}^{-1}\matA\mat{P} = \mat{T}
+\]
+Comme $\tr(\mat{T})=\tr(\mat{P}^{-1}\matA\mat{P}) = \tr(\matA\mat{P}\mat{P}^{-1}) = \tr(\matA)$
+et que les valeurs propres d'une matrice triangulaire sont les termes sur la diagonale, alors
+la trace d'une matrice carrée est égale à la somme de ses valeurs propres.  De la même
+façon, le déterminant d'une matrice est égal au produit de ses valeurs propres.
+Évidemment, si on peut diagonaliser une matrice, ces deux propriétés sont alors évidentes.
+
+\section{Diagonalisation: un exemple détaillé}
+
+Soit la matrice
+\[
+\matA = \begin{pmatrix}
+2+c & 3 & c+3 \\
+c & -1 & c-3 \\
+-c & -3 & -c-1
+\end{pmatrix}
+\]
+Calculons le polynôme caractéristique
+à partir de l'équation $|\matA-\lambda\matI| = 0$.  Nous allons faire l'expansion suivant
+la première colonne:
+\begin{eqnarray*}
+\begin{vmatrix}
+2+c-\lambda & 3 & c+3 \\
+c & -1-\lambda & c-3 \\
+-c & -3 & -c-1-\lambda
+\end{vmatrix} &=&
+(2+c-\lambda)\begin{vmatrix}
+-1-\lambda & c-3 \\
+-3 & -c-1-\lambda
+\end{vmatrix}
+-c \begin{vmatrix}
+3 & c+3 \\
+-3 & -c-1-\lambda
+\end{vmatrix}
+-c \begin{vmatrix}
+3 & c+3 \\
+-1-\lambda & c-3
+\end{vmatrix} \\
+&=& (2+c-\lambda)((1+\lambda)[c+1+\lambda]+3[c-3]) \\
+&&\qquad -c(-3[c+1+\lambda] + 3[c+3]) -c(3[c-3]+ [c+3](1+\lambda)) \\
+%
+&=& (2+c-\lambda)(4c-8 + (c+2)\lambda + \lambda^2) \\
+&&\qquad -c(-3\lambda + 6) -c(4c -6 + (c+3)\lambda)\\
+%
+&=& 4c^2-16 + (c^2 + 12)\lambda - \lambda^3 \\
+&&\qquad -c^2\lambda - 4c^2\\
+%
+&=& -(\lambda^3 -12\lambda + 16) = 0
+\end{eqnarray*}
+On constate\footnote{Ceci n'est pas un hasard, comme vous vous en doutez peut-être: j'ai
+choisi des valeurs bien particulières pour faire en sorte que ceci soit le cas.}, que le résultat est indépendant de la valeur de $c$.  La valeur du déterminant de la matrice $\matA$ est -16, ce que l'on obtient en remplaçant $\lambda$ par zéro.
+
+Normalement, la factorisation d'un tel polynôme n'est pas chose facile.  
+\textbf{Cependant, pour les exemples et les exercices de ce cours, 
+on peut supposer que les valeurs propres seront des entiers.}
+Comme on sait que le produit des valeurs propres élevées à l'ordre de leur 
+multiplicité algébrique est égal au déterminant, on
+n'a que quelques choix possibles pour les valeurs propres si on suppose qu'on a des
+valeurs entières: $\pm 1, \pm 2, \pm 4, \pm 8, \pm 16$, car ces valeurs doivent être des
+diviseurs de -16.  En substituant dans l'équation, on peut vérifier facilement que les seules
+solutions possibles sont 2 et -4, et on peut vérifier que
+\[
+(\lambda^3 -12\lambda + 16) = (\lambda -2)^2 (\lambda+4)
+\]
+Nous avons donc une valeur propre (-4) avec une multiplicité algébrique de 1, et l'autre (2)
+avec une multiplicité algébrique de 2.
+
+Nous procédons maintenant au calcul des vecteurs propres. Ces vecteurs vont satisfaire 
+l'équation $(\matA -\lambda\matI)\matX = \zero$. Commençons avec la valeur propre -4.
+\[
+(\matA + 4\matI)\matX = \begin{pmatrix}
+6+c & 3 & c+3 \\
+c & 3 & c-3 \\
+-c & -3 & -c+3
+\end{pmatrix}\begin{pmatrix}
+x \\ y \\ z
+\end{pmatrix}
+=
+\begin{pmatrix}
+(6+c)x + 3y + (3+c) z \\
+cx + 3y + (c-3) z \\
+-cx -3y + (3-c)z
+\end{pmatrix}
+=
+\begin{pmatrix}
+0\\ 0\\ 0
+\end{pmatrix}
+\]
+Nous avons donc un système de 3 équations homogènes à résoudre.  On remarque que la
+troisième équation est la négation de la deuxième; nous avons donc seulement deux
+équations différentes et trois variables, ce qui veut dire qu'une de ces variables
+sera une variable libre.\footnote{À noter que l'on doit toujours avoir une
+variable libre puisque le multiple d'un vecteur propre est également un vecteur
+propre; donc, on ne peut pas avoir une solution unique. Cependant, bien que l'on
+ait pu identifier ce fait rapidement dans ce cas-ci, ce ne sera
+pas toujours le cas.}
+
+  Choisissons la variable $z$ comme variable libre
+et écrivons-la comme le paramètre $t$.  Le système d'équations à résoudre devient:
+\[
+\left\{
+\begin{matrix}
+3y &+& (6+c)x  &=& -(3+c)t \\
+3y &+& cx &=& (3-c)t
+\end{matrix}
+\right.
+\]
+où nous avons choisi d'écrire en premier la variable $y$ pour éviter d'avoir
+la constante inconnue $c$ comme coefficient de la première variable 
+dans la première ligne.\footnote{Si on n'avait pas fait ce choix, on aurait eu $6+c$
+comme premier coefficient dans la première ligne.  Pour faire en sorte que l'on
+ait la valeur 1 comme pivot, on aurait eu à diviser par $6+c$, ce qui n'aurait pas 
+été permis si on avait $c=-6$. Nous aurions donc du considérer ce cas séparément,
+et doubler le travail à faire.}
+
+ Écrivons la 
+matrice augmentée correspondant à ce système.
+\[
+\begin{bmatrix}[rr|r]
+3& 6+c & -(3+c)t \\
+3& c  & (3-c)t
+\end{bmatrix}
+\]
+De façon temporaire, écrivons $c=3d$ et divisons les deux lignes par 3:
+\[
+\begin{matrix}
+\begin{bmatrix}[rr|r]
+1& 2+d & -(1+d)t \\
+1& d  & (1-d)t
+\end{bmatrix} & \quad \Rightarrow L_2 - L_1 \rightarrow L_2 \Rightarrow \quad&
+\begin{bmatrix}[rr|r]
+1& 2+d & -(1+d)t \\
+0& -2  & 2t
+\end{bmatrix} \\
+& \quad \Rightarrow -\frac12 L_2 \rightarrow L_2 \Rightarrow \quad&
+\begin{bmatrix}[rr|r]
+1& 2+d & -(1+d)t \\
+0& 1  & -t
+\end{bmatrix} \\
+& \quad \Rightarrow  L_1 - (2+d) L_2 \rightarrow L_1 \Rightarrow \quad&
+\begin{bmatrix}[rr|r]
+1& 0 & t \\
+0& 1  & -t
+\end{bmatrix} \\
+\end{matrix}
+\]
+En se rappelant que la variable $y$ correspond à la première colonne
+de la matrice augmentée, nous avons donc:
+\[
+\begin{matrix}
+x &=& -t \\
+y &=& t \\
+z &=& t
+\end{matrix}
+\]
+Comme tout multiple non nul d'un vecteur propre est également un vecteur propre, nous
+pouvons faire le choix $t=1$ et nous avons qu'un vecteur propre correspondant 
+à la valeur propre -4 est
+\[
+\begin{pmatrix}
+-1 \\
+1  \\
+1
+\end{pmatrix}
+\]
+On observe que ce résultat est indépendant de la valeur de la variable $c$.
+
+Passons maintenant au cas de la valeur propre 2.
+\[
+(\matA -2\matI)\matX = \begin{pmatrix}
+c & 3 & c+3 \\
+c & -3 & c-3 \\
+-c & -3 & -c-3
+\end{pmatrix}\begin{pmatrix}
+x \\ y \\ z
+\end{pmatrix}
+=
+\begin{pmatrix}
+cx + 3y + (c+3)z \\
+cx - 3y + (c-3)z \\
+-cx -3y - (c+3)z
+\end{pmatrix}
+=
+\begin{pmatrix}
+0\\ 0\\ 0
+\end{pmatrix}
+\]
+Ceci correspond à un système de 3 équations homogènes à résoudre.  
+Cependant, on remarque que la troisième équation est la négation
+de la première: nous n'avons donc que deux équations indépendantes
+et nous pouvons choisir une variable comme étant une variable libre.
+Faisons le choix de $x$ comme variable libre que nous paramétrisons par $t$.
+Le système d'équations à résoudre devient:
+\[
+\left\{
+\begin{matrix}
+3y + (c+3)z &=& -ct \\
+-3y + (c-3)z &=& -ct
+\end{matrix}
+\right.
+\]
+Écrivons temporairement $c=3d$ et trouvons la solution en utilisant
+la matrice augmentée de la façon habituelle
+\[
+\begin{matrix}
+\begin{bmatrix}[rc|l]
+3 & 3d+3 & -3dt\\
+-3 & 3d-3 & -3dt
+\end{bmatrix}
+& \quad\Rightarrow \begin{matrix}
+\frac13 L_1 \rightarrow L_1 \\
+\frac13 L_2 \rightarrow L_2
+\end{matrix}
+\quad\Rightarrow & 
+\begin{bmatrix}[rc|l]
+1 & d+1 & -dt\\
+-1 & d-1 & -dt
+\end{bmatrix} \\
+&\quad L_2 + L_1 \rightarrow L_2 \Rightarrow \quad&
+\begin{bmatrix}[rc|l]
+1 & d+1 & -dt\\
+0 & 2d & -2dt
+\end{bmatrix} \\
+\end{matrix}
+\]
+Supposons que $d$ (qui est égal à $\frac{c}{3}$) soit différent de zéro.  Dans ce cas,
+nous pouvons diviser la deuxième ligne par $2d$ et obtenir
+\[
+\begin{bmatrix}[rc|l]
+1 & d+1 & -dt\\
+0 & 1 & -t
+\end{bmatrix}
+\]
+En soustrayant $d+1$ fois la deuxième ligne de la première, on obtient
+\[
+\begin{bmatrix}[rc|l]
+1 & 0 & t\\
+0 & 1 & -t
+\end{bmatrix}
+\]
+et nous avons donc comme solution:
+\[
+\begin{pmatrix}
+x \\ y \\ z
+\end{pmatrix}
+= t\begin{pmatrix}
+1 \\ 1 \\ -1
+\end{pmatrix}
+\]
+Bien que la multiplicité algébrique de la valeur propre 2 soit 2, nous n'avons qu'un
+seul vecteur\footnote{À l'exception d'un facteur multiplicatif, comme toujours.} 
+propre correspondant et sa multiplicité \textbf{géométrique} est 1.  On ne peut
+donc pas trouver de matrice de passage dans ce cas, et diagonaliser la matrice.
+
+Cependant, on se rappelle que, pour obtenir ce résultat, on avait supposé que $d$ était
+différent de zéro.  Qu'arrive-t-il si $d=0$?  Dans ce cas, la matrice augmentée
+devient
+\[
+\begin{bmatrix}[rc|l]
+1 & 1 & 0\\
+0 & 0 & 0
+\end{bmatrix}
+\]
+et on a une deuxième variable libre.  Si on paramétrise $z$ par le scalaire $s$, la
+solution devient:
+\[
+\begin{pmatrix}
+x \\ y \\ z
+\end{pmatrix} = \begin{pmatrix}
+t \\ -s \\ s
+\end{pmatrix}
+\]
+Comme on a deux paramètres, on peut avoir deux vecteurs propres linéairement
+indépendants.  En choisissant les combinaisons $(s,t) = (0,1)$ et $(-1,0)$ on obtient
+\[
+\begin{pmatrix}
+1 \\ 0 \\ 0
+\end{pmatrix}
+\qquad\mbox{et}\qquad
+\begin{pmatrix}
+0 \\ 1 \\ -1
+\end{pmatrix}
+\]
+Si on ajoute le troisième vecteur correspondant à la valeur propre -4,
+\[
+\begin{pmatrix}
+-1\\1\\1
+\end{pmatrix}\]
+on peut former une matrice de passage:
+\[
+\mat{P} = \begin{pmatrix}
+1 & 0 & -1 \\
+0 & 1 & 1 \\
+0 & -1 & 1 
+\end{pmatrix}
+\]
+On peut trouver l'inverse de cette matrice suivant la procédure habituelle
+\[
+\begin{matrix}
+\begin{bmatrix}[rrr|rrr]
+1 & 0 & -1 & 1 & 0 & 0\\
+0 & 1 & 1 & 0 & 1 & 0\\
+0 & -1 & 1 & 0 & 0 & 1
+\end{bmatrix}
+&\Rightarrow L_3 + L_2 \rightarrow L_3 \Rightarrow&
+\begin{bmatrix}[rrr|rrr]
+1 & 0 & -1 & 1 & 0 & 0\\
+0 & 1 & 1 & 0 & 1 & 0\\
+0 & 0 & 2 & 0 & 1 & 1
+\end{bmatrix} \\[10pt]
+&\Rightarrow \frac12 L_3  \rightarrow L_3 \Rightarrow&
+\begin{bmatrix}[rrr|rrr]
+1 & 0 & -1 & 1 & 0 & 0\\
+0 & 1 & 1 & 0 & 1 & 0\\
+0 & 0 & 1 & 0 &\frac12 & \frac12
+\end{bmatrix} \\[10pt]
+&\Rightarrow \begin{matrix}
+ L_1 + L_3  \rightarrow L_1 \\
+  L_2 - L_3  \rightarrow L_2
+\end{matrix}  \Rightarrow&
+\begin{bmatrix}[rrr|rrr]
+1 & 0 & 0 & 1 & \frac12 & \frac12\\[7pt]
+0 & 1 & 0 & 0 & \frac12 & -\frac12\\[7pt]
+0 & 0 & 1 & 0 &\frac12 & \frac12
+\end{bmatrix}
+\end{matrix}
+\]
+Nous avons donc
+\[
+\mat{P}^{-1} = \begin{pmatrix}
+ 1 & \frac12 & \frac12\\[7pt]
+ 0 & \frac12 & -\frac12\\[7pt]
+0 &\frac12 & \frac12
+\end{pmatrix}
+\]
+
+On peut vérifier que
+\begin{eqnarray*}
+\mat{P}^{-1}\matA\mat{P} &=& 
+\begin{pmatrix}
+ 1 & \frac12 & \frac12\\[7pt]
+ 0 & \frac12 & -\frac12\\[7pt]
+0 &\frac12 & \frac12
+\end{pmatrix}
+\begin{pmatrix}
+2+c & 3 & c+3 \\
+c & -1 & c-3 \\
+-c & -3 & -c-1
+\end{pmatrix}
+\begin{pmatrix}
+1 & 0 & -1 \\
+0 & 1 & 1 \\
+0 & -1 & 1 
+\end{pmatrix}\\
+&=&
+\begin{pmatrix}
+ 1 & \frac12 & \frac12\\[7pt]
+ 0 & \frac12 & -\frac12\\[7pt]
+0 &\frac12 & \frac12
+\end{pmatrix}
+\begin{pmatrix}
+2+c & -c & 4 \\
+c & 2-c & -4 \\
+-c & c-2 & -4
+\end{pmatrix}\\
+&=&
+\begin{pmatrix}
+2+c & -c & 0 \\
+c & 2-c & 0 \\
+0 & 0 & -4
+\end{pmatrix}
+\end{eqnarray*}
+Cette matrice est diagonale si et seulement si $c=0$.
+
+\begin{TwoCol}
+\section{Exercices divers}
+Pour chacune des matrices de l'\refexercice{ex:propre-premier} à 
+l'\refexercice{ex:propre-dernier}:
+\begin{enumerate}
+\item Trouvez les valeurs propres et leur multiplicité algébrique.
+\item Pour chaque valeur propre, trouvez ses vecteurs propres et déterminez
+sa multiplicité géométrique.
+\item Si cela est possible, trouvez la matrice de passage permettant de diagonaliser
+la matrice.
+\item Si cela est possible, obtenez la matrice semblable diagonale.
+\end{enumerate}
+Veuillez noter que, si dans un système d'équations linéaires, une variable
+n'apparait nulle part, c'est qu'il s'agit d'une variable libre.
+
+\begin{exercice}\label{ex:propre-premier}
+$\displaystyle
+\matA = \begin{pmatrix}
+2 & -1 & 2 \\
+1 & 0 & 2 \\
+0 & 0 & 3
+\end{pmatrix}
+$
+\end{exercice}
+\begin{exercice}
+$\displaystyle
+\matA = \begin{pmatrix}
+1 & 0 & 6 \\
+0 & 1 & 4 \\
+0 & 0 & 3
+\end{pmatrix}
+$
+\end{exercice}
+\begin{exercice}
+$\displaystyle
+\matA = \begin{pmatrix}
+0 & 0 & -2 \\
+1 & 2 & 1 \\
+1 & 0 & 3
+\end{pmatrix}
+$
+\end{exercice}
+\begin{exercice}
+$\displaystyle
+\matA = \begin{pmatrix}
+1 & 3 & 6 \\
+-3 & -5 & -6 \\
+3 & 3 & 4
+\end{pmatrix}
+$
+\end{exercice}
+\begin{exercice}\label{ex:propre-dernier}
+$\displaystyle
+\matA = \begin{pmatrix}
+-2 & -1 & -1 \\
+6 & 5 & 1 \\
+-6 & -7 & -3
+\end{pmatrix}
+$
+\end{exercice}
+\end{TwoCol}

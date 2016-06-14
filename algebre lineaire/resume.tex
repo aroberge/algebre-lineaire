@@ -1,0 +1,287 @@
+\chapter{Définitions et propriétés utiles}
+
+Ci-dessous, vous trouverez des définitions et propriétés diverses. Ce qui
+distingue une propriété d'une définition, est qu'on peut démontrer qu'une propriété
+est satisfaite à partir des définitions.
+
+Dans toute démonstration d'une propriété, vous pouvez supposer que les
+propriétés qui apparaissent plus tôt dans cette liste sont vraies.  Par exemple,
+pour prouver la propriété 6 d'une liste quelconque, on peut prendre pour acquis que
+la propriété 3 est vraie; on ne peut pas faire l'inverse.
+
+\begin{adjmulticols}{1}{0in}{-2in}
+
+\renewcommand{\labelenumi}{\textcolor{MainRed}{\footnotesize\thesection.\arabic{enumi}}}
+\section{Définitions des scalaires}
+
+\begin{enumerate}
+\item Nombre complexe: $z\in\BBC: z = a + bi; \qquad a,b\in\BBR; \qquad i=\sqrt{-1}$
+\item Conjugué: $\bar{z} = \overline{a+bi} = a-bi$
+\item Forme polaire d'un nombre complexe: $z=r\,e^{i\theta}\qquad r, \theta \in \BBR$
+\item Conjugué, forme polaire: $\overline{r\,e^{i\theta}} = r\,e^{-i\theta}$
+\item Module d'un nombre complexe: $|a + bi| = \sqrt{a^2 + b^2} \qquad a,b \in \BBR$
+\item Module d'un nombre complexe: $|r\,e^{i\theta}| = r \qquad r,\theta \in \BBR$
+\end{enumerate}
+
+\section{Propriétés des scalaires ($\BBR$ ou $\BBC$)}
+\begin{enumerate}
+\item $a+b = b+a$ \qquad \explain{commutativité de l'addition}
+\item $(a+b) + c = a + (b+c)$ \qquad \explain{associativité de l'addition}
+\item $ab = ba$ \qquad \explain{commutativité de la multiplication}
+\item $(ab)c = a(bc)$ \qquad \explain{associativité de la multiplication}
+\item $a + 0 = a$ \qquad \explain{élément neutre de l'addition}
+\item $a + (-a) = 0$ \explain{inverse additif}
+\item $1a = a$ \qquad \explain{élément neutre de la multiplication}
+\item $a a^{-1} = 1$ \explain{inverse multiplicatif}
+\item $a(b+c) = ab + ac$ \qquad \explain{distributivité de la multiplication sur l'addition}
+\item $\left(a^b\right)^c = a^{bc}$ \qquad \explain{puissance d'une puissance}
+\item $a^b a^c = a^{b+c}$ \qquad \explain{produit des puissances}
+\item $\overline{\overline{z}} = z$
+\item Relation d'Euler (ou de \textit{de Moivre}): $e^{i\theta} = \cos\theta + i\sin\theta$
+\item Relation d'Euler (cas particulier): $e^{i\pi} = -1$
+\end{enumerate}
+
+Note: Il existe des généralisations des nombres complexes. Le plus simple est celui des quaternions $\mathbb{H}$ et le suivant est celui des octonions $\mathbb{O}$.  La multiplication des quaternions ne respecte pas toujours la commutativité, c'est-à-dire qu'on peut avoir $ab\neq ba$.  La multiplication des octonions ne respecte
+pas toujours ni la commutativité, ni l'associativité, c'est-à-dire qu'on peut avoir $ab\neq ba$ et $(ab)c \neq a(bc)$.
+Sachant ceci, vous comprendrez peut-être pourquoi on doit démontrer certaines propriétés des matrices qui nous
+paraissent évidentes. Dans ce qui suit, on suppose toujours que les coefficients des matrices sont soit des nombres réels ou des nombres complexes.
+
+\section{Définitions des matrices}
+
+\begin{enumerate}
+\item Matrice quelconque: $\matA_{m\times n} = [a_{ij}]_{m\times n}$
+\item Coefficient d'une matrice: $a_{ij} = [A]_{ij}$
+\item Matrice nulle (taille $m\times n$ sous-entendue): $\zero = [0]$
+\item Matrice diagonale: $[\matA]_{ij} = 0 \quad\mbox{si}\quad i\neq j$.
+\item Symbole de Kronecker: $\displaystyle \delta_{ij} = \left\{
+\begin{matrix}
+1 \qquad\mbox{si $i=j$} \\
+0 \qquad\mbox{si $i\neq j$}
+\end{matrix}
+\right. $
+\item Matrice identité $n\times n$: $\matI_n = [\delta_{ij}]$
+\item Addition de matrices: $\matA+\matB = \matC \quad {\color{red}\Longleftrightarrow} \quad [a_{ij}] + [b_{ij}] = [a_{ij} + b_{ij}] = [c_{ij}]$
+\item Multiplication de matrice par un scalaire: $c\matA = c[a_{ij}] = [ca_{ij}]$
+\item Négation d'une matrice: $-\matA = (-1)\matA$ 
+\item Soustraction de matrices: $\matA - \matB = \matA + (-\matB)$
+\item Multiplication de matrices: $\matA_{m\times n}\matB_{n\times p} = \matC_{m\times p} \quad {\color{red}\Longleftrightarrow} \quad (c_{ij}) = \displaystyle\left(\sum_{k=1}^{n} a_{ik} b_{kj}\right)$
+\item Trace d'une matrice: $\displaystyle\tr(\matA_{n\times n}) = \sum_{i=1}^n a_{ii}$
+\item Transposée: $\matA = \left[a_{ij}\right] \quad{\color{red}\Longleftrightarrow}\quad  \transp{\matA} = [a_{ji}]$
+\item Conjuguée: $\matA = \left[a_{ij}\right] \quad{\color{red}\Longleftrightarrow}\quad  \overline{\matA} = [\overline{a_{ij}}]$
+\item Conjuguée de la transposée: $\matA = \left[a_{ij}\right] \quad{\color{red}\Longleftrightarrow}\quad  \matA^* = \overline{\transp{\matA}} = [\overline{a_{ji}}]$
+\item Matrice symétrique: $\matA = \transp{\matA} \quad{\color{red}\Longleftrightarrow}\quad a_{ij} = a_{ji}$
+\item Matrice antisymétrique: $\matA = -\transp{\matA}\quad{\color{red}\Longleftrightarrow}\quad a_{ij} = -a_{ji}$
+\item Matrice hermitienne: $\matA = \matA^* \quad{\color{red}\Longleftrightarrow}\quad a_{ij} = \overline{a_{ji}}$
+\item Matrice transconjuguée: $\matA = -\matA^* \quad{\color{red}\Longleftrightarrow}\quad a_{ij} = -\overline{a_{ji}}$
+\item $\matA_{n\times n}^0 = \matI_n$
+\item $k\in\BBN, k \geq 2$: \quad $\matA^k_{n\times n} = (\matA_{n\times n}^{k-1}) \matA_{n\times n}$
+\item Commutateur: $[\matA, \matB] = \matA\matB - \matB\matA$
+\item Matrice idempotente: $\matA^2 = \matA$
+\item Soit $\matA\matX = \matB$, la matrice augmentée est $[\matA |\matB]$
+\item Rang: $\rang(\matA) = $ nombre de rangées non-nulles de $\matA$ lorsque $\matA$ est sous
+une forme échelonnée.
+\item Matrice inverse (si elle existe): $\matA \matA^{-1} = \matI$
+\end{enumerate}
+
+\section{Propriétés des matrices}
+
+Dans ce qui suit, lorsqu'on écrit $\matA^{-1}$, c'est parce qu'on suppose que l'inverse existe.
+
+\begin{enumerate}
+\item $\matA = \matB \quad {\color{red}\Longleftrightarrow} \quad [a_{ij}] = [b_{ij}]  \quad \forall i, j$ \qquad\explain{égalité des matrices}
+\item $\matA + \matB = \matB + \matA$ \qquad \explain{commutativité de l'addition}
+\item $(\matA + \matB) + \matC = \matA + (\matB + \matC)$ \qquad \explain{associativité de l'addition}
+\item $(\matA\matB)\matC = \matA(\matB\matC)$ \qquad \explain{associativité de la multiplication}
+\item $\matA+\zero = \matA$ \qquad \explain{élément neutre de l'addition}
+\item $\matA + (-\matA) = \zero$ \explain{inverse additif}
+\item $\matI\matA = \matA$ \qquad \explain{élément neutre de la multiplication}
+\item $c(\matA+\matB) = c\matA + c\matB$
+\item $(c+d) \matA = c\matA + d\matA$
+\item $(cd) \matA = c (d\matA)$
+\item $(\matA + \matB)(\matC+\matD) = \matA\matC + \matA\matD + \matB\matC + \matB\matD$
+\item $\transp{\left(\transp{\matA}\right)} = \matA$
+\item $\overline{\overline{\matA}} = \matA$
+\item $\left(\matA^*\right)^* = \matA$
+\item $\overline{(\matA+\matB)} = \overline{\matA} + \overline{\matB}$
+\item $\transp{(\matA+\matB)} = \transp{\matA} + \transp{\matB}$
+\item $(\matA+\matB)^* = \matA^* + \matB^*$
+\item $\matA^{s+t}_{n\times n} = \matA^s_{n\times n} \matA^t_{n\times n}$
+\item $\tr(\matA\matB) = \tr(\matB\matA)$
+\item $\tr{(\matA\matB\matC)} = \tr{(\matC\matA\matB)} = \tr{(\matB\matC\matA)}$.
+\item $
+\tr{(\matA_1 \matA_2 \matA_3 \ldots \matA_p)} = \tr{(\matA_p \matA_1 \matA_2 \matA_3 \ldots \matA_{p-1})} 
+= \tr{(\matA_q \ldots \matA_{p-1} \matA_p \matA_1 \matA_2 \ldots \matA_{q-1})}$
+\item $\transp{(\matA\matB)} = \transp{\matB}\transp{\matA}$
+\item $\left(\matA\matB\right)^{-1} = \matB^{-1}\matA^{-1}$
+\item $\left(\matA^k\right)^{-1} = \left(\matA^{-1}\right)^k$; par convention, ceci est égal à $\matA^{-k}$.
+\item $\transp{(\matA^{-1})} = \left(\transp{\matA}\right)^{-1}$
+\item Si $c\neq 0$, $(c\matA)^{-1} = \frac{1}{c}\matA^{-1}$
+\end{enumerate}
+
+\section{Définition d'un espace vectoriel}
+
+Un \textbf{espace vectoriel} est un ensemble $V$ d'objets appelés \textit{vecteurs}, sur lesquels on définit
+deux opérations, soit \textit{l'addition} ainsi que \textit{la multiplication par un scalaire}, et pour lequel
+les axiomes suivant sont satisfaits pour tous les vecteurs $\mat{u}, \mat{v}, \mat{w}$ dans $V$
+et pour tous les scalaires $\alpha, \beta \in \BBK$.
+\begin{enumerate}
+\item Fermeture sous l'addition: $\mat{u}+\mat{v}\in V$.
+\item Commutativité de l'addition: $\mat{u} + \mat{v} = \mat{v} + \mat{u}$
+\item Associativité de l'addition: $ (\mat{u} + \mat{v}) + \mat{w} = \mat{u} + (\mat{v} + \mat{w})$
+\item Existence d'un élément neutre de l'addition: $\exists\zero\in V:  \mat{u} + \zero = \mat{u}$.
+\item Existence d'un inverse additif: $\forall \mat{u}\in V\quad \exists-\mat{u}\in V: \mat{u} + (-\mat{u}) = \zero$.
+\item Fermeture sous la multiplication: $\alpha\mat{u} \in V$.
+\item Distributivité sur l'addition de vecteurs: $\alpha(\mat{u} + \mat{v}) = \alpha\mat{u} + \alpha\mat{v}$
+\item Distributivité de l'addition de scalaires: $ (\alpha + \beta)\mat{u} = \alpha\mat{u} + \beta\mat{u}$
+\item Associativité de la multiplication de scalaires: $\alpha(\beta\mat{u}) = (\alpha\beta)\mat{u}$
+\item Élément neutre de la multiplication par un scalaire: $1\mat{u} = \mat{u}$
+\end{enumerate}
+
+
+Soit $W$ un sous-ensemble d'un espace vectoriel $V$.  
+On appellera $W$ un sous-espace vectoriel de $V$ si
+les trois propriétés suivantes sont satisfaites:
+\begin{enumerate}
+\item Le vecteur zéro de $V$ est dans $W$.
+\item $W$ est fermé pour l'addition: $\mat{u}, \mat{w} \in W \Rightarrow \mat{u} + \mat{w} \in W$.
+\item $W$ est fermé pour la multiplication par un scalaire: $\mat{w}\in W \Rightarrow k\mat{w}\in W$
+\end{enumerate}
+
+\section{Propriétés des espaces vectoriels}
+Soit $V$ un espace vectoriel $\alpha$ un réel et $\mat{u}$ un élément de $V$.  
+Les propriétés suivantes sont satisfaites.
+\begin{enumerate}
+\item $\zero + \mat{u} = \mat{u}$.
+\item $-\mat{u} + \mat{u} = \zero$.
+\item $0\mat{u} = \zero$.
+\item $\alpha\zero = \zero$.
+\item $(-1)\mat{u} = -\mat{u}$.
+\item Si $\alpha\mat{u} = \zero$ alors soit $\alpha=0$ ou $\mat{u}=\zero$.
+\item $\alpha\zero = \zero$
+\item $(-1)\mat{u} = -\mat{u}$
+\item $-\mat{u}$ est l'unique vecteur dans $V$ tel que $\mat{u} + (-\mat{u}) = \zero$.
+\end{enumerate}
+
+
+\section{Définition des déterminants}
+Soient des matrices carrées.  De plus, $\mat{M}_{ij}$ est définie dans ce qui sut
+comme étant la matrice carrée $(n-1)\times (n-1)$ obtenue en
+supprimant la ligne $i$ et la colonne $j$ de $\matA$
+\begin{enumerate}
+\item $\det \matA = |\matA|$
+\item Mineur de l'élément $a_{ij} = |\matM_{ij}|$
+\item $\Cof_{ij}(\matA) = (-1)^{i+j} |\mat{M}_{ij}|$
+\item $\displaystyle |\matA| = \sum_{i=1}^n a_{pi} \Cof_{pi}(\matA) = \sum_{j=1}^n a_{j\ell} \Cof_{j\ell}(\matA)$
+\item Règle de Cramer: la solution de $\matA\mat{x} = \mat{b}$ est donnée par 
+$\displaystyle x_j = \frac{\det \matA_j(\mat{b})}{\det \matA}, \qquad j=1, 2, \ldots, n$
+\item Règle de Cramer: $\displaystyle (\matA^{-1})_{ij} = \frac{\Cof_{ji}(\matA)}{\det\matA} {\quad\color{red}\Leftrightarrow\quad} \matA^{-1} = \frac{1}{\det\matA} \adj\matA$
+\end{enumerate}
+
+\section{Propriétés des déterminants}
+
+\begin{enumerate}
+\item $\displaystyle \begin{vmatrix} a & b \\ c & d \end{vmatrix} = ad - bc$  
+si $a, b, c, d$ sont des scalaires.
+\item Matrice diagonale: $\displaystyle \det \matD = \prod_{i=1}^n d_{ii}$
+\item $|\matA| = |\transp{\matA}|$
+\item $\det(\matA\matB) = (\det\matA) (\det\matB)$
+\item $\det(\matA_1 \matA_2 \ldots \matA_p) = (\det\matA_1)(\det\matA_2)\ldots(\det\matA_p)$
+\item $ \det(\matA) = \displaystyle\frac{1}{\det\matA^{-1}} $
+\end{enumerate}
+
+\section{Vecteurs et valeurs propres}
+
+\begin{enumerate}
+\item $T(\mat{v}) = \lambda\mat{v}$
+\item Polynôme caractéristique: $|\matA - \lambda\matI| = \zero$
+\item Si $\matB = \mat{P}^{-1} \matA \mat{P}$, alors $\matA$ et $\matB$ sont des matrices semblables.
+\item Diagonalisation: si $\matA\matX_i = \lambda\matX_i$ et si 
+$\mat{P} = (\matX_1 \ldots\matX_n)$ est inversible, alors $\matD = \mat{P}^{-1} \matA \mat{P}$
+\end{enumerate}
+
+\section{Produit scalaire}
+
+Soit $V$ un espace vectoriel sur le corps $\BBR$. 
+Pour chaque paire de vecteurs $\mat{u}, \mat{v}$ 
+on peut associer un scalaire dénoté par 
+$\langle\mat{u}, \mat{v}\rangle $,
+qu'on désigne sous le nom de \Definition{produit scalaire} de ces deux vecteurs et 
+satisfaisant les axiomes suivants:
+\begin{enumerate}
+\item $\langle a\mat{u} + b\mat{v}, \mat{w} \rangle = a \langle\mat{u}, \mat{w}\rangle + b\langle\mat{v}, \mat{w}\rangle $ pour 
+$\mat{u}, \mat{v}, \mat{w} \in V$ et $a, b \in \BBR$.
+\item$ \langle\mat{u}, \mat{v}\rangle = \langle\mat{v}, \mat{u}\rangle$
+\item $\langle \mat{u}, \mat{u}\rangle \geq 0$
+\item $\langle \mat{u}, \mat{u}\rangle = 0$ si et seulement si $\mat{u} = \zero$.
+
+
+Quelques autres définitions et propriétés suivent.
+
+\item Norme de vecteurs: $\norm{\mat{u}} = \sqrt{\langle\mat{u}, \mat{u} \rangle}$
+\item Inégalité de Cauchy-Schwarz $ \abs{\langle\mat{u}, \mat{v}\rangle} \leq \norm{\mat{u}} \, \norm{\mat{v}}$
+\item Inégalité triangulaire:
+	$\norm{\mat{u} + \mat{v}} \leq \norm{\mat{u}} + \norm{\mat{v}}$
+\item Vecteurs orthogonaux si $\langle \mat{u}, \mat{v}\rangle = 0$
+\item Théorème de Pythagore: $\mat{u}$ et $\mat{v}$ sont orthogonaux  
+$\Leftrightarrow\quad \norm{\mat{u}+\mat{v}}^2 = \norm{\mat{u}}^2 + \norm{\mat{v}}^2$
+\item Vecteurs orthonormés: $\displaystyle \langle \mat{v}_i, \mat{v}_j \rangle = \delta_{ij} = \left\{
+\begin{matrix}
+0 \, \mbox{si} \, i \neq j \\
+1 \, \mbox{si} \, i = j
+\end{matrix}\right.$
+\end{enumerate}
+
+
+\section{Géométrie vectorielle}
+
+\begin{enumerate}
+\item Vecteurs unitaires: $\iunit = (1, 0, 0), \quad 
+	\junit = (0, 1, 0), \quad
+	\kunit = (0, 0, 1)$ 
+\item Produit scalaire: $\vect{u}\cdot\vect{v} = u_1 v_1 + u_2 v_2 + u_3 v_3 = uv\cos\theta$
+\item Produit vectoriel: $\displaystyle \vect{v}\times \vect{w} =
+	  \begin{vmatrix}[ccc]
+	\iunit &\junit &\kunit \\
+	 v_1 & v_2 & v_3 \\
+	 w_1 & w_2 & w_3
+	 \end{vmatrix}$
+\item $\norm{\vect{v}\times \vect{w}} = vw\sin\theta$
+\item Produit mixte: $\displaystyle \vect{u}\cdot (\vect{v} \times \vect{w}) = \begin{vmatrix}
+	 u_1 & u_2 & u_3 \\
+	 v_1 & v_2 & v_3 \\
+	 w_1 & w_2 & w_3
+	\end{vmatrix}$ 
+\item Produits vectoriels des vecteurs unitaires: $\displaystyle \begin{cases}
+	\iunit\times\junit=\kunit = -\junit\times\iunit\\
+	\junit\times\kunit=\iunit = -\kunit\times\junit\\
+	\kunit\times\iunit=\junit = -\iunit\times\kunit\\
+\iunit\times\iunit=\junit\times\junit=\kunit\times\kunit=0\end{cases} $
+\item Équation paramétrique d'une droite: $\vect{r} = \vect{v}_0 + t \vect{v}$
+\item Équation symétrique d'une droite: 
+      $\displaystyle \frac{x-x_0}{x_1-x_0} =\frac{y-y_0}{y_1-y_0} =\frac{z-z_0}{z_1-z_0}$
+\item Distance d'un point à une droite $\displaystyle
+	d = \frac{\norm{\vect{v} \times \overrightarrow{P_0 P}}}{\norm{\overrightarrow{P_0 P}}}$
+\item Équation paramétrique d'un plan: $\Pi: \vect{r} = \vect{v}_0 + s\vect{v}_1 + t\vect{v}_2 $
+\item Équation cartésienne d'un plan: 
+   $Ax + By + Cz + D = 0$ avec \[
+   \begin{matrix}[rcl]
+   A &=& \begin{vmatrix}
+   y_1 & z_1\\
+   y_2 & z_2
+   \end{vmatrix}\\
+   B &=& - \begin{vmatrix}
+   x_1 & z_1 \\
+   x_2 & z_2
+   \end{vmatrix} \\
+   C&=& \begin{vmatrix}
+   x_1 & y_1 \\
+   x_2 & y_2
+   \end{vmatrix}\\
+   D &=& - (Ax_0 + By_0 + Cz_0)
+   \end{matrix}
+   \]
+\item Distance d'un point à une droite $\displaystyle
+	d = \frac{|Ax + By + Cz + D|}{\sqrt{A^2 + B^2 + C^2}}$
+\end{enumerate}
+
+\end{adjmulticols}
