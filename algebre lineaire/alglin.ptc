@@ -68,7 +68,7 @@
 \contentsline {section}{\numberline {4.3}Matrices \IeC {\'e}l\IeC {\'e}mentaires}{66}{section.4.3}
 \contentsline {section}{\numberline {4.4}Sur l'existence d'un inverse}{68}{section.4.4}
 \contentsline {section}{\numberline {4.5}Algorithme pour trouver un inverse}{70}{section.4.5}
-\contentsline {section}{\numberline {4.6}Exercices divers}{72}{section.4.6}
+\contentsline {section}{\numberline {4.6}Exercices divers}{71}{section.4.6}
 \ttl@stoptoc {chapters@7}
 \ttl@starttoc {chapters@8}
 \contentsline {chapter}{\chapternumberline {5}Espaces vectoriels}{73}{chapter.5}
@@ -126,62 +126,62 @@
 \contentsline {section}{\numberline {8.5}Exercices divers}{143}{section.8.5}
 \ttl@stoptoc {chapters@11}
 \ttl@starttoc {chapters@12}
-\contentsline {chapter}{\chapternumberline {9}Produit scalaire et orthogonalit\IeC {\'e}}{144}{chapter.9}
-\contentsline {section}{\numberline {9.1}Introduction}{144}{section.9.1}
-\contentsline {subsection}{\numberline {9.1.1}Exemples}{147}{subsection.9.1.1}
-\contentsline {section}{\numberline {9.2}Orthogonalit\IeC {\'e}}{148}{section.9.2}
+\contentsline {chapter}{\chapternumberline {9}Produit scalaire et orthogonalit\IeC {\'e}}{145}{chapter.9}
+\contentsline {section}{\numberline {9.1}Introduction}{145}{section.9.1}
+\contentsline {subsection}{\numberline {9.1.1}Exemples}{148}{subsection.9.1.1}
+\contentsline {section}{\numberline {9.2}Orthogonalit\IeC {\'e}}{149}{section.9.2}
 \ttl@stoptoc {chapters@12}
 \ttl@starttoc {chapters@13}
-\contentsline {chapter}{\chapternumberline {10}G\IeC {\'e}ometrie vectorielle}{155}{chapter.10}
-\contentsline {section}{\numberline {10.1}Notation utilis\IeC {\'e}e dans ce chapitre}{155}{section.10.1}
-\contentsline {section}{\numberline {10.2}Produit scalaire}{156}{section.10.2}
-\contentsline {section}{\numberline {10.3}Produit vectoriel}{156}{section.10.3}
-\contentsline {subsection}{\numberline {10.3.1}Interpr\IeC {\'e}tation g\IeC {\'e}om\IeC {\'e}trique de la norme du produit vectoriel}{160}{subsection.10.3.1}
-\contentsline {section}{\numberline {10.4}\IeC {\'E}quation param\IeC {\'e}trique d'une droite}{161}{section.10.4}
-\contentsline {subsection}{\numberline {10.4.1}Sous-espace vectoriel \IeC {\`a} une dimension}{161}{subsection.10.4.1}
-\contentsline {subsection}{\numberline {10.4.2}Droite dans l'espace euclidien \IeC {\`a} trois dimensions}{162}{subsection.10.4.2}
-\contentsline {section}{\numberline {10.5}Distance d'un point \IeC {\`a} une droite}{164}{section.10.5}
-\contentsline {section}{\numberline {10.6}\IeC {\'E}quation d'un plan}{166}{section.10.6}
-\contentsline {section}{\numberline {10.7}Distance d'un point \IeC {\`a} un plan}{168}{section.10.7}
+\contentsline {chapter}{\chapternumberline {10}G\IeC {\'e}ometrie vectorielle}{156}{chapter.10}
+\contentsline {section}{\numberline {10.1}Notation utilis\IeC {\'e}e dans ce chapitre}{156}{section.10.1}
+\contentsline {section}{\numberline {10.2}Produit scalaire}{157}{section.10.2}
+\contentsline {section}{\numberline {10.3}Produit vectoriel}{157}{section.10.3}
+\contentsline {subsection}{\numberline {10.3.1}Interpr\IeC {\'e}tation g\IeC {\'e}om\IeC {\'e}trique de la norme du produit vectoriel}{161}{subsection.10.3.1}
+\contentsline {section}{\numberline {10.4}\IeC {\'E}quation param\IeC {\'e}trique d'une droite}{162}{section.10.4}
+\contentsline {subsection}{\numberline {10.4.1}Sous-espace vectoriel \IeC {\`a} une dimension}{162}{subsection.10.4.1}
+\contentsline {subsection}{\numberline {10.4.2}Droite dans l'espace euclidien \IeC {\`a} trois dimensions}{163}{subsection.10.4.2}
+\contentsline {section}{\numberline {10.5}Distance d'un point \IeC {\`a} une droite}{165}{section.10.5}
+\contentsline {section}{\numberline {10.6}\IeC {\'E}quation d'un plan}{167}{section.10.6}
+\contentsline {section}{\numberline {10.7}Distance d'un point \IeC {\`a} un plan}{169}{section.10.7}
 \ttl@stoptoc {chapters@13}
 \ttl@starttoc {chapters@14}
-\contentsline {chapter}{\chapternumberline {11}Applications diverses}{171}{chapter.11}
-\contentsline {section}{\numberline {11.1}\IeC {\'E}quilibrage des r\IeC {\'e}actions chimiques}{171}{section.11.1}
-\contentsline {subsection}{\numberline {11.1.1}Combustion incompl\IeC {\`e}te}{173}{subsection.11.1.1}
-\contentsline {section}{\numberline {11.2}Courbes dans le plan}{174}{section.11.2}
-\contentsline {subsection}{\numberline {11.2.1}\IeC {\'E}quation d'une droite dans le plan}{174}{subsection.11.2.1}
-\contentsline {subsection}{\numberline {11.2.2}\IeC {\'E}quation d'un cercle dans le plan}{175}{subsection.11.2.2}
-\contentsline {subsection}{\numberline {11.2.3}Mouvement des corps c\IeC {\'e}lestes}{177}{subsection.11.2.3}
-\contentsline {section}{\numberline {11.3}S\IeC {\'e}rie de Fourier}{178}{section.11.3}
-\contentsline {subsection}{\numberline {11.3.1}\IeC {\'E}quations diff\IeC {\'e}rentielles}{179}{subsection.11.3.1}
-\contentsline {subsection}{\numberline {11.3.2}Application \IeC {\`a} la musique}{180}{subsection.11.3.2}
-\contentsline {section}{\numberline {11.4}Suite de Fibonacci}{180}{section.11.4}
-\contentsline {section}{\numberline {11.5}Dynamique des populations}{182}{section.11.5}
-\contentsline {section}{\numberline {11.6}Visages propres}{185}{section.11.6}
-\contentsline {section}{\numberline {11.7}R\IeC {\'e}gression lin\IeC {\'e}aire}{188}{section.11.7}
-\contentsline {subsection}{\numberline {11.7.1}G\IeC {\'e}n\IeC {\'e}ralisation \IeC {\`a} d'autres types de courbes}{192}{subsection.11.7.1}
+\contentsline {chapter}{\chapternumberline {11}Applications diverses}{172}{chapter.11}
+\contentsline {section}{\numberline {11.1}\IeC {\'E}quilibrage des r\IeC {\'e}actions chimiques}{172}{section.11.1}
+\contentsline {subsection}{\numberline {11.1.1}Combustion incompl\IeC {\`e}te}{174}{subsection.11.1.1}
+\contentsline {section}{\numberline {11.2}Courbes dans le plan}{175}{section.11.2}
+\contentsline {subsection}{\numberline {11.2.1}\IeC {\'E}quation d'une droite dans le plan}{175}{subsection.11.2.1}
+\contentsline {subsection}{\numberline {11.2.2}\IeC {\'E}quation d'un cercle dans le plan}{176}{subsection.11.2.2}
+\contentsline {subsection}{\numberline {11.2.3}Mouvement des corps c\IeC {\'e}lestes}{178}{subsection.11.2.3}
+\contentsline {section}{\numberline {11.3}S\IeC {\'e}rie de Fourier}{179}{section.11.3}
+\contentsline {subsection}{\numberline {11.3.1}\IeC {\'E}quations diff\IeC {\'e}rentielles}{180}{subsection.11.3.1}
+\contentsline {subsection}{\numberline {11.3.2}Application \IeC {\`a} la musique}{181}{subsection.11.3.2}
+\contentsline {section}{\numberline {11.4}Suite de Fibonacci}{181}{section.11.4}
+\contentsline {section}{\numberline {11.5}Dynamique des populations}{183}{section.11.5}
+\contentsline {section}{\numberline {11.6}Visages propres}{186}{section.11.6}
+\contentsline {section}{\numberline {11.7}R\IeC {\'e}gression lin\IeC {\'e}aire}{189}{section.11.7}
+\contentsline {subsection}{\numberline {11.7.1}G\IeC {\'e}n\IeC {\'e}ralisation \IeC {\`a} d'autres types de courbes}{193}{subsection.11.7.1}
 \ttl@stoptoc {chapters@14}
 \ttl@starttoc {chapters@15}
-\contentsline {appendix}{\chapternumberline {A}D\IeC {\'e}finitions et propri\IeC {\'e}t\IeC {\'e}s utiles}{194}{appendix.A}
-\contentsline {section}{\numberline {A.1}D\IeC {\'e}finitions des scalaires}{194}{section.A.1}
-\contentsline {section}{\numberline {A.2}Propri\IeC {\'e}t\IeC {\'e}s des scalaires ($\mathbb {R}$ ou $\mathbb {C}$)}{194}{section.A.2}
-\contentsline {section}{\numberline {A.3}D\IeC {\'e}finitions des matrices}{195}{section.A.3}
-\contentsline {section}{\numberline {A.4}Propri\IeC {\'e}t\IeC {\'e}s des matrices}{196}{section.A.4}
-\contentsline {section}{\numberline {A.5}D\IeC {\'e}finition d'un espace vectoriel}{197}{section.A.5}
-\contentsline {section}{\numberline {A.6}Propri\IeC {\'e}t\IeC {\'e}s des espaces vectoriels}{197}{section.A.6}
-\contentsline {section}{\numberline {A.7}D\IeC {\'e}finition des d\IeC {\'e}terminants}{197}{section.A.7}
-\contentsline {section}{\numberline {A.8}Propri\IeC {\'e}t\IeC {\'e}s des d\IeC {\'e}terminants}{198}{section.A.8}
-\contentsline {section}{\numberline {A.9}Vecteurs et valeurs propres}{198}{section.A.9}
-\contentsline {section}{\numberline {A.10}Produit scalaire}{198}{section.A.10}
-\contentsline {section}{\numberline {A.11}G\IeC {\'e}om\IeC {\'e}trie vectorielle}{199}{section.A.11}
+\contentsline {appendix}{\chapternumberline {A}D\IeC {\'e}finitions et propri\IeC {\'e}t\IeC {\'e}s utiles}{195}{appendix.A}
+\contentsline {section}{\numberline {A.1}D\IeC {\'e}finitions des scalaires}{195}{section.A.1}
+\contentsline {section}{\numberline {A.2}Propri\IeC {\'e}t\IeC {\'e}s des scalaires ($\mathbb {R}$ ou $\mathbb {C}$)}{195}{section.A.2}
+\contentsline {section}{\numberline {A.3}D\IeC {\'e}finitions des matrices}{196}{section.A.3}
+\contentsline {section}{\numberline {A.4}Propri\IeC {\'e}t\IeC {\'e}s des matrices}{197}{section.A.4}
+\contentsline {section}{\numberline {A.5}D\IeC {\'e}finition d'un espace vectoriel}{198}{section.A.5}
+\contentsline {section}{\numberline {A.6}Propri\IeC {\'e}t\IeC {\'e}s des espaces vectoriels}{198}{section.A.6}
+\contentsline {section}{\numberline {A.7}D\IeC {\'e}finition des d\IeC {\'e}terminants}{198}{section.A.7}
+\contentsline {section}{\numberline {A.8}Propri\IeC {\'e}t\IeC {\'e}s des d\IeC {\'e}terminants}{199}{section.A.8}
+\contentsline {section}{\numberline {A.9}Vecteurs et valeurs propres}{199}{section.A.9}
+\contentsline {section}{\numberline {A.10}Produit scalaire}{199}{section.A.10}
+\contentsline {section}{\numberline {A.11}G\IeC {\'e}om\IeC {\'e}trie vectorielle}{200}{section.A.11}
 \ttl@stoptoc {chapters@15}
 \ttl@starttoc {chapters@16}
-\contentsline {appendix}{\chapternumberline {B}R\IeC {\'e}f\IeC {\'e}rences}{200}{appendix.B}
-\contentsline {section}{\numberline {B.1}Source des images}{200}{section.B.1}
+\contentsline {appendix}{\chapternumberline {B}R\IeC {\'e}f\IeC {\'e}rences}{201}{appendix.B}
+\contentsline {section}{\numberline {B.1}Source des images}{201}{section.B.1}
 \ttl@stoptoc {chapters@16}
 \ttl@starttoc {chapters@17}
-\contentsline {appendix}{\chapternumberline {C}Licence {\fontencoding {U}\fontfamily {ccicons}\fontseries {m}\fontshape {n}\selectfont \ignorespaces \char 0}{\fontencoding {U}\fontfamily {ccicons}\fontseries {m}\fontshape {n}\selectfont \ignorespaces \char 1}{\fontencoding {U}\fontfamily {ccicons}\fontseries {m}\fontshape {n}\selectfont \ignorespaces \char 4}{\fontencoding {U}\fontfamily {ccicons}\fontseries {m}\fontshape {n}\selectfont \ignorespaces \char 2}}{201}{appendix.C}
+\contentsline {appendix}{\chapternumberline {C}Licence {\fontencoding {U}\fontfamily {ccicons}\fontseries {m}\fontshape {n}\selectfont \ignorespaces \char 0}{\fontencoding {U}\fontfamily {ccicons}\fontseries {m}\fontshape {n}\selectfont \ignorespaces \char 1}{\fontencoding {U}\fontfamily {ccicons}\fontseries {m}\fontshape {n}\selectfont \ignorespaces \char 4}{\fontencoding {U}\fontfamily {ccicons}\fontseries {m}\fontshape {n}\selectfont \ignorespaces \char 2}}{202}{appendix.C}
 \ttl@stoptoc {chapters@17}
 \ttl@starttoc {chapters@18}
-\contentsline {chapter}{Index}{202}{section*.6}
+\contentsline {chapter}{Index}{203}{section*.6}
 \contentsfinish 

@@ -1,0 +1,39 @@
+\usetheme{Boadilla}
+\usefonttheme{structuresmallcapsserif}
+
+% % %  default French language settings
+\usepackage[utf8]{inputenc}			% enable input of accented letters
+\usepackage[T1]{fontenc}				% related to above
+\usepackage[french]{babel}			% French language support
+
+
+\usepackage{tikz}					% for drawing figures
+\usetikzlibrary{positioning}
+\tikzset{>=stealth}
+\newcommand{\tikzmark}[3][]{\tikz[overlay,remember picture,baseline] \node [anchor=base,#1](#2) {#3};}
+
+\usepackage{pgfplots}
+
+\definecolor{MyBackground}{RGB}{252,252,255}
+\setbeamercolor*{block body}{bg=MyBackground}
+
+% from https://tex.stackexchange.com/questions/170394/modify-beamer-footer-portions?rq=1
+\setbeamertemplate{footline}
+{
+	\leavevmode%
+	\hbox{%
+		\begin{beamercolorbox}[wd=.3\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+			\usebeamerfont{author in head/foot}\insertshortauthor
+		\end{beamercolorbox}%
+		\begin{beamercolorbox}[wd=.6\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+			\usebeamerfont{title in head/foot}\insertshorttitle
+		\end{beamercolorbox}%
+		\begin{beamercolorbox}[wd=.1\paperwidth,ht=2.25ex,dp=1ex,center]{date in head/foot}%
+			\insertframenumber{} / \inserttotalframenumber\hspace*{1ex}
+	\end{beamercolorbox}}%
+	\vskip0pt%
+}
+\makeatletter
+\setbeamertemplate{navigation symbols}{}
+
+	

@@ -50,6 +50,7 @@ acs-*.bib
 *.nav
 *.snm
 *.vrb
+*.ptc  # partial table of content
 
 # cprotect
 *.cpt

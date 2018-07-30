@@ -1,0 +1,72 @@
+%\documentclass[french, handout]{beamer}
+\documentclass[french]{beamer}
+
+\usepackage{diapos}
+
+\title{Opérations matricielles}
+\author{Math 1253} % shows on bottom of each page by default; students do not care about
+	% my name, nor the date in which this was written however, if a revision needs to 
+	% be done, having a version number could be useful
+\date{version 1}   % shows on bottom of page
+
+\begin{document}
+	\frame{\titlepage}
+	
+	\begin{frame}
+	\begin{block}{Matrice}
+	Soit $m$ et $n$ deux entier positifs; une matrice de taille\footnote{Au lieu de \textbf{taille}, 
+		certains utilisent parfois le mot \textbf{dimension}.  
+		Cependant, le mot dimension peut également désigner une autre caractéristique importante en algèbre linéaire et,
+		pour cette raison, nous n'utilisons pas le mot dimension comme synonyme de taille. 
+		À noter que \textit{taille $m\times n$} se lit \textit{taille m par n}.} $m\times n$
+	est une collection de $mn$ nombres arrangés dans un tableau rectangulaire:
+	\[
+	\begin{matrix}
+	&\text{$n$ colonnes} \\
+	\text{$m$ lignes}& \begin{bmatrix}
+	a_{11} & a_{12} & \ldots & a_{1n}\\
+	a_{21} & a_{22} & \ldots & a_{2n}\\
+	\vdots & \vdots & \vdots & \vdots \\
+	a_{m1} & a_{m2} & \ldots & a_{mn}
+	\end{bmatrix}
+	\end{matrix}
+	\]
+	\end{block}
+	\end{frame}
+	
+	\begin{frame}
+		\begin{block}{Coefficient}
+		$a_{ij}$ est le coefficient qui apparait dans la ligne $i$ et dans la colonne $j$:
+		\[
+		\begin{matrix}
+		j\hspace*{1.1cm} \\
+		\begin{matrix}\\ \\ i \\ \\ \\ \\ \\ \end{matrix}
+		\begin{pmatrix}
+		&&&\cdot&&&&&& \\
+		\cdot&\cdot&\cdot&a_{ij}&\cdot&\cdot&\cdot&\cdot&\cdot&\cdot\\
+		&&&\cdot&&&&&&\\
+		&&&\cdot&&&&&&\\
+		&&&\cdot&&&&&&
+		\end{pmatrix}
+		\end{matrix}
+		\]
+		Pour une matrice $A$, on écrira parfois $(A)_{ij}$ au lieu de $a_{ij}$ pour dénoter ce coefficient.
+	\end{block}
+	Note: on peut utiliser soit des crochets, $[...]$, ou des parenthèses, $(...)$, autour des coefficients d'une matrice : le choix de l'un ou de l'autre est sans importance.
+	\end{frame}
+
+	\begin{frame}{}
+		\begin{block}{Notation}
+		\begin{itemize}
+			\item Matrice carrée: taille $n \times n$
+			\item Coefficient diagonaux: $a_{ii}$
+			\item Diagonale principale: tous les coefficients diagonaux 
+			\item Matrice nulle $O$: matrice dont tous les coefficients sont nuls.
+			\item Vecteur\footnote{On va surtout utiliser des matrices carrées et des vecteurs.} (ou vecteur colonne): matrice de taille $n \times 1$
+		\end{itemize}
+		\end{block}		
+
+	\end{frame}
+
+
+\end{document}

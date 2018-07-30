@@ -1,0 +1,140 @@
+%\documentclass[french, handout]{beamer}
+\documentclass[french]{beamer}
+
+\usetheme{Boadilla}
+\usefonttheme{structuresmallcapsserif}
+
+% % %  default French language settings
+\usepackage[utf8]{inputenc}			% enable input of accented letters
+\usepackage[T1]{fontenc}				% related to above
+\usepackage[french]{babel}			% French language support
+
+
+\usepackage{tikz}					% for drawing figures
+\usetikzlibrary{positioning}
+\tikzset{>=stealth}
+\newcommand{\tikzmark}[3][]{\tikz[overlay,remember picture,baseline] \node [anchor=base,#1](#2) {#3};}
+
+	
+\title{Notation}
+\author{Math 1253} % shows on bottom of each page by default; students do not care about
+    % my name, nor the date in which this was written however, if a revision needs to 
+    % be done, having a version number could be useful
+\date{version 1}   % shows on bottom of page
+
+\begin{document}
+	\frame{\titlepage}
+	
+	\begin{frame}{Équation}
+		Une \textbf{équation} nous donne de l'\textbf{information} sur
+		des \textbf{inconnues} (également appelées \textbf{variables}).
+		\begin{example}<2>
+			L'équation d'un cercle de rayon unitaire est
+			\[x^2 + y^2 = 1\]
+			Les variables ici sont $x$ et $y$.
+		\end{example}
+	\end{frame}
+	
+	\begin{frame}{Convention souvent utilisée : inconnues}
+		On représente habituellement les inconnues (variables) par des lettres minuscules près de la fin de l'alphabet avec ou sans indices.
+			\begin{example}
+				\[
+				x, y, z, u, v, \ldots
+				\]
+				\[
+				x_1, x_2, x_3, \ldots
+				\]
+				\[
+				3x + 2y = 5
+				\]
+			\end{example}
+	\end{frame}
+
+	\begin{frame}{Convention souvent utilisée : constantes}
+		On représente habituellement les constantes  par des lettres minuscules près du début de l'alphabet, avec ou sans indices, ou par des lettres grecques.
+		\begin{example}
+			Les constantes ci-dessous sont écrites en rouge.
+			\[
+			{\color{red}a}x + {\color{red}b}y = {\color{red}c}
+			\]
+			\[
+				{\color{red}\alpha}x + {\color{red}\beta}y = {\color{red}\gamma}
+			\]		
+			\[
+			   {\color{red}a_1}x_1 + {\color{red}a_2}x_2 + \dots
+			\]
+		Les constantes qui multiplient les inconnues sont appelées des \textit{coefficients}.			
+		\end{example}
+	
+	\end{frame}
+
+	\begin{frame}{Convention souvent utilisée : matrices et vecteurs}
+		On représente habituellement les matrices par des lettres majuscules et
+		les vecteurs par des lettres en caractères gras.
+		\begin{example}
+			\[
+				\tikzmark{Amatrix}{A}\quad \tikzmark{xvec}{\textbf{x}}\quad=\quad 
+				\tikzmark{bvec}{\textbf{b}}
+			\]
+			\begin{tikzpicture}[overlay, remember picture,node distance =1.5cm]
+				\node (Amatrixdesc) [below left=of Amatrix ]{Matrice};
+				\draw[,->,thick] (Amatrixdesc) to [in=-90,out=90] (Amatrix);
+				\node[red] (xvecdesc) [below =of xvec]{vecteur inconnu};
+				\draw[red,->,thick] (xvecdesc) to [in=-90,out=90] (xvec);
+				\node[blue] (bvecdesc) [below right =of bvec]{vecteur constant};
+				\draw[blue,->,thick] (bvecdesc) to [in=-90,out=90] (bvec);
+			\end{tikzpicture}
+			\vspace*{2cm}
+		\end{example}
+	
+	\end{frame}
+
+	\begin{frame}{Équation linéaire avec une variable $x$}
+		\[ax = c\]
+		\begin{itemize}
+			\item<1-> Terme constant: $c$
+			\begin{example}<2>
+				$3,\quad \frac12,\quad \pi $
+			\end{example}
+			\item<1-> Terme linéaire : $ax^{\color{red}1}$
+			\begin{example}<3>
+				$x,\quad 2x,\quad \pi x$
+			\end{example}
+			\item<1-> Termes non-linéaires
+			\begin{example}<4>
+				$x^2,\quad \sqrt{x},\quad 3\sin x$
+			\end{example}			
+		\end{itemize}
+	\end{frame}
+
+	\begin{frame}{Système d'équations linéaires avec deux variables}
+	\begin{example}
+		\[
+		\begin{matrix}
+		    x&-&y &=& 1 \\
+		    x&+&2y&=& 4
+		\end{matrix}
+		\]
+		Solution: $(x, y) = (2, 1)$
+	\end{example}		
+	\end{frame}
+
+	\begin{frame}{Interprétation graphique}
+		\begin{tikzpicture}
+			% les axes
+			\draw[->] (-1,0) -- (5,0) node[anchor=west]{\color{gray}x};
+			\draw[->] (0,-1) -- (0,5) node[anchor=south]{\color{gray}y};
+			% les deux droites
+			\draw[-, thick, blue] (0,-1) -- (5,4) node[anchor=east]{\color{blue}\small $x-y=1$};
+			\draw[-, thick, purple] (-1,2.5) --(5,-0.5) node[anchor= north]{\color{purple}\small $x+2y=4$};
+			% le point d'intersection
+			\coordinate (A) at (2,1);
+			\draw[-] (2, -0.1) node[anchor=north]{\small 2} -- (2, 0.1);
+			\draw[-] (-0.1, 1) node[anchor=east]{\small 1} -- (0.1, 1);
+			\draw [dashed, gray] (2, 0.2) -- (A);
+			\draw [dashed, gray] (0.2, 1) -- (A);
+			\node [fill=black,inner sep=2pt,label=0:$\mbox{\quad(2,1)}$] at (2, 1) {};
+		\end{tikzpicture}
+	\end{frame}
+
+\end{document}
