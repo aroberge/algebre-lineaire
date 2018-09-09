@@ -36,4 +36,57 @@
 \makeatletter
 \setbeamertemplate{navigation symbols}{}
 
-	
+%%%%%%
+% augmented matrix from http://tex.stackexchange.com/questions/2233/whats-the-best-way-make-an-augmented-coefficient-matrix
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols r]{%
+	\hskip -\arraycolsep
+	\let\@ifnextchar\new@ifnextchar
+	\array{#1}}
+\makeatother
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%                Non-standard commands and symbols
+\newcommand{\BBZ}{\mathbb{Z}}
+\newcommand{\BBR}{\mathbb{R}}
+\newcommand{\BBN}{\mathbb{N}}
+\newcommand{\BBC}{\mathbb{C}}
+\newcommand{\BBK}{\mathbb{K}}
+\newcommand{\etc}{{\em etc.\/}}
+\newcommand{\bra}[1]{\langle #1 |}
+\newcommand{\ket}[1]{| #1 \rangle}
+\newcommand{\braket}[2]{\langle #1 | #2 \rangle}
+\newcommand{\ppp}{\hphantom{+}}
+\newcommand{\zero}{\mbox{\textsf{\textbf{{0}}}}}
+
+\newcommand{\vect}[1]{\vec{\boldsymbol{#1}}}
+\newcommand{\iunit}{\vect{\imath}}
+\newcommand{\junit}{\vect{\jmath}}
+\newcommand{\kunit}{\vect{k}}
+
+\providecommand{\abs}[1]{\lvert#1\rvert}
+\providecommand{\norm}[1]{\lVert#1\rVert}
+
+\newcommand{\mat}[1]{\boldsymbol{#1}}
+\newcommand{\matA}{\mat{A}}
+\newcommand{\matB}{\mat{B}}
+\newcommand{\matC}{\mat{C}}
+\newcommand{\matD}{\mat{D}}
+\newcommand{\matE}{\mat{E}}
+\newcommand{\matI}{\mat{I}}
+\newcommand{\matM}{\mat{M}}
+\newcommand{\matX}{\mat{X}}
+\newcommand{\matY}{\mat{Y}}
+\newcommand{\matZ}{\mat{Z}}
+
+\DeclareMathOperator{\tr}{Tr}
+\DeclareMathOperator{\rang}{rg}
+\DeclareMathOperator{\Vect}{Vect}
+\DeclareMathOperator{\Cof}{Cof}
+\DeclareMathOperator{\adj}{adj}
+
+\usepackage{relsize}
+\newcommand{\transp}[1]{#1^{\mathsmaller \top}}
+
+\newcommand{\explain}[1]{\mbox{\tiny\sffamily\upshape\color{blue} #1}}

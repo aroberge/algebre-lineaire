@@ -3,7 +3,7 @@
 
 \usepackage{diapos}
 
-\title{Opérations matricielles}
+\title{Les matrices et les opérations de base}
 \author{Math 1253} % shows on bottom of each page by default; students do not care about
 	% my name, nor the date in which this was written however, if a revision needs to 
 	% be done, having a version number could be useful
@@ -12,61 +12,548 @@
 \begin{document}
 	\frame{\titlepage}
 	
-	\begin{frame}
-	\begin{block}{Matrice}
+\begin{frame}{Rappel: propriétés des entiers}
+Soit $a, b, c$ trois entiers (par exemple: 2, 3, 5).
+\begin{itemize}
+\item $a+b = b+a$ \qquad \explain{commutativité de l'addition}
+\item $(a+b) + c = a + (b+c)$ \qquad \explain{associativité de l'addition}
+\item $ab = ba$ \qquad \explain{commutativité de la multiplication}
+\item $(ab)c = a(bc)$ \qquad \explain{associativité de la multiplication}
+\item $a + \textcolor{red}{0} = a$ \qquad \explain{élément neutre de l'addition}
+\item $a + (-a) = 0$ \explain{inverse additif - pour les entiers relatifs}
+\item $\textcolor{red}{1}a = a$ \qquad \explain{élément neutre de la multiplication}
+\item $a(b+c) = ab + ac$ \qquad \explain{distributivité de la multiplication sur l'addition}
+\item $\left(a^b\right)^c = a^{bc}$ \qquad \explain{puissance d'une puissance}
+\item $a^b a^c = a^{b+c}$ \qquad \explain{produit des puissances}
+\end{itemize}
+
+\end{frame}	
+
+\begin{frame}{Rappel: propriétés des nombres réels}
+Soit $a, b, c$ trois nombres réels. Les réels ont les mêmes propriétés que les entiers;
+ils ont également la propriété additionnelle suivante
+\begin{itemize}
+\item $a a^{-1} = \textcolor{red}{1}$ \explain{inverse multiplicatif}
+\end{itemize}
+\vfill
+L'inverse multiplicatif d'un entier n'est pas un entier.\newline
+L'élément neutre de l'addition (0) n'a pas d'inverse multiplicatif.
+
+\end{frame}
+	
+	\begin{frame}{Matrice}
+	Une matrice est une collection de nombres arrangés dans un tableau rectangulaire
+		\[
+\mat{A} = \begin{pmatrix}
+1 & 2 \\
+3 & 0 
+\end{pmatrix} \qquad 
+\mat{B} = \begin{bmatrix}
+1 & 0 & 9 \\
+2 & 1 & 0 
+\end{bmatrix} \qquad
+\mat{C} = \begin{pmatrix}
+2 & 1 & 3 & 4\\
+1 & 2 & 3 & 4
+\end{pmatrix} \]
+\[
+\mat{D} = \begin{bmatrix}
+1 & 0  \\
+0 & 1  \\
+1 & 1
+\end{bmatrix} \qquad
+\mat{E} = \begin{pmatrix}
+1 & 1 & 1 \\
+2 & 2 & 2 \\
+3 & 3 & 3
+\end{pmatrix} \qquad
+	\]
+\end{frame}		
+	
+	\begin{frame}{Matrice}
 	Soit $m$ et $n$ deux entier positifs; une matrice de taille\footnote{Au lieu de \textbf{taille}, 
 		certains utilisent parfois le mot \textbf{dimension}.  
 		Cependant, le mot dimension peut également désigner une autre caractéristique importante en algèbre linéaire et,
 		pour cette raison, nous n'utilisons pas le mot dimension comme synonyme de taille. 
 		À noter que \textit{taille $m\times n$} se lit \textit{taille m par n}.} $m\times n$
 	est une collection de $mn$ nombres arrangés dans un tableau rectangulaire:
-	\[
-	\begin{matrix}
-	&\text{$n$ colonnes} \\
-	\text{$m$ lignes}& \begin{bmatrix}
-	a_{11} & a_{12} & \ldots & a_{1n}\\
-	a_{21} & a_{22} & \ldots & a_{2n}\\
-	\vdots & \vdots & \vdots & \vdots \\
-	a_{m1} & a_{m2} & \ldots & a_{mn}
-	\end{bmatrix}
-	\end{matrix}
-	\]
-	\end{block}
+\[
+\begin{matrix}[cc]
+&\text{$n$ colonnes} \\
+\text{$m$ lignes}& \begin{pmatrix}
+a_{11} & a_{12} & \ldots & a_{1n}\\
+a_{21} & a_{22} & \ldots & a_{2n}\\
+\vdots & \vdots & \vdots & \vdots \\
+a_{m1} & a_{m2} & \ldots & a_{mn}
+\end{pmatrix}
+\end{matrix}
+\]
 	\end{frame}
 	
-	\begin{frame}
-		\begin{block}{Coefficient}
-		$a_{ij}$ est le coefficient qui apparait dans la ligne $i$ et dans la colonne $j$:
+	\begin{frame}{Taille d'une matrice}
+	On indique parfois la taille des matrices en ajoutant un indice de la forme\\
+	\textbf{nombre de lignes} $\times$ \textbf{nombre de colonnes}.
 		\[
-		\begin{matrix}
-		j\hspace*{1.1cm} \\
-		\begin{matrix}\\ \\ i \\ \\ \\ \\ \\ \end{matrix}
-		\begin{pmatrix}
-		&&&\cdot&&&&&& \\
-		\cdot&\cdot&\cdot&a_{ij}&\cdot&\cdot&\cdot&\cdot&\cdot&\cdot\\
-		&&&\cdot&&&&&&\\
-		&&&\cdot&&&&&&\\
-		&&&\cdot&&&&&&
-		\end{pmatrix}
-		\end{matrix}
-		\]
+\mat{A}_{\color{red}2\times2} = \begin{pmatrix}
+1 & 2 \\
+3 & 0 
+\end{pmatrix} \qquad 
+\mat{B}_{2\times3} = \begin{pmatrix}
+1 & 0 & 9 \\
+2 & 1 & 0 
+\end{pmatrix} \qquad
+\mat{C}_{2\times4} = \begin{pmatrix}
+2 & 1 & 3 & 4\\
+1 & 2 & 3 & 4
+\end{pmatrix} \]
+\[
+\mat{D}_{3\times2} = \begin{pmatrix}
+1 & 0  \\
+0 & 1  \\
+1 & 1
+\end{pmatrix} \qquad
+\mat{E}_{3\times3} = \begin{pmatrix}
+1 & 1 & 1 \\
+2 & 2 & 2 \\
+3 & 3 & 3
+\end{pmatrix} \qquad
+	\]
+\end{frame}		
+		
+\begin{frame}{Vecteur dans $\BBR^n$}
+Une matrice (colonne) de taille $n\times 1$ est appelée un \textbf{vecteur} de $\BBR^n$.
+
+\[
+\begin{pmatrix}[c] x\\y
+\end{pmatrix}
+\]
+
+$\BBR$: l'axe des réels
+
+$\BBR^2$: le plan
+
+$\BBR^3$: l'espace (à trois dimensions).
+
+\vfill
+N.B. On utilisera plus tard le mot \textbf{vecteur} pour désigner d'autres types d'objets.
+
+\end{frame}
+	
+	\begin{frame}
+		\begin{block}{Coefficient (ou élément d'une matrice)}
+		$a_{ij}$ est le coefficient qui apparait dans la ligne $i$ et dans la colonne $j$:
+\[
+\begin{matrix}[c]
+j\hspace*{1.1cm} \\
+\begin{matrix}[c]\\ \\ i \\ \\ \\ \\ \\ \end{matrix}
+\begin{pmatrix}[cccccccccc]
+&&&\cdot&&&&&& \\
+\cdot&\cdot&\cdot&a_{ij}&\cdot&\cdot&\cdot&\cdot&\cdot&\cdot\\
+&&&\cdot&&&&&&\\
+&&&\cdot&&&&&&\\
+&&&\cdot&&&&&&
+\end{pmatrix}
+\end{matrix}
+\]
 		Pour une matrice $A$, on écrira parfois $(A)_{ij}$ au lieu de $a_{ij}$ pour dénoter ce coefficient.
 	\end{block}
-	Note: on peut utiliser soit des crochets, $[...]$, ou des parenthèses, $(...)$, autour des coefficients d'une matrice : le choix de l'un ou de l'autre est sans importance.
+	Note: on peut utiliser soit des crochets, $[...]$, ou des parenthèses, $(...)$, autour des coefficients d'une matrice : le choix de l'un ou de l'autre est sans importance. Également, on utilise une lettre majuscule pour la matrice, et la même lettre minuscule pour ses coefficients.
 	\end{frame}
 
-	\begin{frame}{}
-		\begin{block}{Notation}
-		\begin{itemize}
-			\item Matrice carrée: taille $n \times n$
-			\item Coefficient diagonaux: $a_{ii}$
-			\item Diagonale principale: tous les coefficients diagonaux 
-			\item Matrice nulle $O$: matrice dont tous les coefficients sont nuls.
-			\item Vecteur\footnote{On va surtout utiliser des matrices carrées et des vecteurs.} (ou vecteur colonne): matrice de taille $n \times 1$
-		\end{itemize}
-		\end{block}		
+	\begin{frame}{Coefficient (ou élément d'une matrice)}
+	Soit
+		\[
+\mat{C}_{2\times4} = \begin{bmatrix}
+2 & 1 & 7 & 4\\
+1 & 2 & {\color{red}3} & 4
+\end{bmatrix} \]
+On a $c_{23} = (\mat{C})_{23} = 3$.
+\end{frame}		
 
-	\end{frame}
+\begin{frame}{Égalité}
+On dit de deux matrices qu'elles sont égales si elles ont la même taille
+et que leur coefficients sont égaux deux à deux, c'est-à-dire\footnote{Le symbole $\forall$ veut dire 
+``quoi que ce soit'' ou ``pour tout''.}
+\[
+\matA = \matB \quad {\color{red}\Longleftrightarrow} \quad [a_{ij}] = [b_{ij}]  \quad \forall i, j
+\]
 
+\begin{example}
+Soient les matrices
+    \[
+    \matA = \begin{pmatrix}
+        2 & 1 \\
+        3 & 4
+        \end{pmatrix}
+    \qquad
+    \matB = \begin{pmatrix}
+        2 & x \\
+        3 & 4
+        \end{pmatrix}
+        \qquad
+    \matC = \begin{pmatrix}
+        x & 1 \\
+        3 & x
+        \end{pmatrix}
+    \]
+Avec un choix approprié pour la variable $x$, est-il possible que $\matA =\matB$?
+Est-il possible que $\matA = \matC$?
+\end{example}
+Réponse: ?
+\end{frame}		
+		
+	\begin{frame}{Résumé des opérations de base}
+\begin{itemize}
+	\item Addition de deux matrices: $\matA + \matB = \matC$
+	\item Multiplication par un scalaire (nombre): ${\color{red}c}\matA = \matB$
+	\begin{itemize}
+		\item La soustraction de deux matrices est un combinaison de
+		deux opérations:  $\matA - \matB = \matA + ({\color{red}-1}\matC)$
+	\end{itemize}
+	\item Multiplication de deux matrices: $\matA\matB = \matC$
+	\item IMPORTANT: On ne peut pas diviser deux matrices.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Addition}
+Si \textbf{et seulement si deux matrices}, $\matA$ et $\matB$, sont de la même taille, alors il est possible
+de les additionner.  
+\begin{definition}
+Soit, deux matrices, $\matA$ et $\matB$ ayant la même taille.  L'addition de
+ces matrices est une matrice $\matC$ de la même taille dont les coefficients sont
+la somme des coefficients correspondants des matrices $\matA$ et $\matB$.
+\[
+\matA + \matB = \matC \quad {\color{red}\Longleftrightarrow} \quad [a_{ij}] + [b_{ij}] = [a_{ij} + b_{ij}] = [c_{ij}]
+\]
+\end{definition}
+\end{frame}
+
+\begin{frame}{Addition}
+\begin{example}
+    Soient les matrices \[
+    \matA = \begin{pmatrix}
+        2 & 1 \\
+        3 & 4
+        \end{pmatrix}
+    \qquad
+    \matB = \begin{pmatrix}
+        2 & 1 \\
+        3 & 5
+        \end{pmatrix}
+        \qquad
+    \matC = \begin{pmatrix}
+        2 & 1 & 0\\
+        3 & 4 & 0
+        \end{pmatrix}
+    \]
+    Calculez, si possible, $\matA+\matB, \matA+\matC$ et $\matB+\matC$.
+\end{example}
+\begin{block}{Solution}<2>
+    Nous avons $\displaystyle
+    \matA+\matB = \begin{pmatrix}
+                {\color{red}2} & 1\\
+                3 & 4
+                \end{pmatrix} + 
+                \begin{pmatrix}
+                {\color{red}2} & 1\\
+                3 & 5
+                \end{pmatrix} = \begin{pmatrix}
+                {\color{red}2+2} & 1+1\\
+                3+3 & 4+5
+                \end{pmatrix} = \begin{pmatrix}
+            {\color{red}4} & 2\\
+            6 & 9
+            \end{pmatrix}
+    $.\\[5pt]   
+    Les sommes $\matA+\matC$ et $\matB+\matC$ sont indéfinies parce que les matrices ne
+    sont pas de la même taille.
+    \end{block}
+\end{frame}
+
+\begin{frame}{Multiplication par un scalaire}
+Par \textbf{scalaire}, on entend un nombre arbitraire, qui sera
+habituellement un réel ou qui pourrait être un nombre complexe (selon
+le contexte).   
+\begin{definition}
+Lorsqu'une matrice $\matA$ est multipliée par un scalaire $c$,
+la matrice résultante est telle que chaque coefficient est multiplié par $c$
+\[
+c(a_{ij}) = (ca_{ij})
+\]
+\end{definition}
+
+À noter que l'on écrit habituellement $(-1) \matA = -\matA$.
+\end{frame}
+
+\begin{frame}{Multiplication par un scalaire}
+\begin{example}
+    Soit la matrice \[
+    \matC = \begin{pmatrix}
+        2 & 1 & 0\\
+        3 & 4 & 0
+        \end{pmatrix}
+    \]
+    Calculez $2\matC$.
+\end{example}
+\begin{block}{Solution}<2>
+\[
+    2\matC = \begin{pmatrix}
+        4 & 2 & 0\\
+        6 & 8 & 0
+        \end{pmatrix}
+    \]
+    \end{block}
+\end{frame}
+
+\begin{frame}{Multiplication par un scalaire}
+\begin{example}
+	Soit $\matM$ une matrice $m\times n$ et $c$ un scalaire.  Démontrez que si $c\matM = \zero$, alors
+	soit $c=0$ ou $\matM=\zero$.
+\end{example}
+\begin{block}{Solution}<2->
+	Écrivons $\matM=[m_{ij}]$; par conséquent, $c\matM = [cm_{ij}]$.  Supposons que $c\matM = \zero$.  Ceci implique que,
+	$ cm_{ij}=0\,\forall i, j $.  Ceci est vrai si $c=0$ ou que tous les $m_{ij}$ sont égaux à zéro; dans ce dernier
+	cas, nous aurions $\matM=\zero$.
+\end{block}
+\begin{itemize}
+\item<3-> Une matrice nulle, $O$, est une matrice dont tous les coefficients sont nuls.
+\item<4> \alert{Pourquoi ai-je écrit \textit{\textbf{une}} matrice nulle et non pas \textit{\textbf{la}} matrice nulle?}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Soustraction}
+\begin{definition}
+On définit la soustraction de deux matrices
+à partir de l'addition et en utilisant la multiplication par un scalaire comme suit:
+\[
+\matA-\matB = \matA + (-\matB)
+\]
+\end{definition}
+
+En vertu des définitions de l'addition de matrices et de multiplication par un scalaire, la
+soustraction de matrices peut être faite directement de la façon suivante:
+\[
+\matA - \matB = \matC \quad {\color{red}\Longleftrightarrow} \quad [a_{ij}] - [b_{ij}] = [a_{ij} - b_{ij}] = [c_{ij}]
+\]
+\end{frame}
+
+\begin{frame}{Soustraction}
+\begin{example}
+    Soit les matrices
+    \[
+    \matA = \begin{pmatrix}
+        2 & 3 & 4 \\
+        1 & 2 & 1
+        \end{pmatrix}
+    \qquad \mbox{et} \qquad
+    \matB = \begin{pmatrix}
+        0 & 2 & 7 \\
+        1 & -3 & 5
+        \end{pmatrix}
+    \]
+    Calculez $\matA-3\matB$.
+\end{example}
+    On vérifiera facilement que la réponse est
+    \[
+    \matA - 3\matB = \begin{pmatrix}
+            2 & -3 & -17 \\
+            -2 & 11 & -14
+            \end{pmatrix}
+    \]
+\end{frame}
+
+\begin{frame}{Propriétés}
+Soient $\matA, \matB$ et $\matC$ des matrices $m\times n$ et soient $c$ et $d$ des
+scalaires.
+\begin{itemize}
+\item $\matA + \matB = \matB + \matA$
+\item $(\matA + \matB) + \matC = \matA + (\matB + \matC) = \matA + \matB + \matC$
+\item $\matA + \zero = \zero + \matA = \matA$
+\item $\matA + (-\matA) = \zero$
+\item $c(\matA+\matB) = c\matA + c\matB$
+\item $(c+d) \matA = c\matA + d\matA$
+\item $(cd) \matA = c (d\matA)$
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Multiplication de deux matrices}
+Pour que l'on puisse multiplier une matrice de taille $m\times a$ 
+par une matrice
+de taille $b\times p$
+ il faut que $b=c$ autrement la multiplication n'est pas possible.  
+Si la multiplication est possible, on dit que les matrices sont \textbf{compatibles}.
+
+Exemple:\huge
+\[
+\matA_{m\times \textcolor{red}{n}} \matB_{\textcolor{red}{n}\times p} = \matC_{m\times p}
+\]
+\end{frame}
+
+\begin{frame}{Multiplication de deux matrices}
+Soit
+\[
+\matA_{1 \times 1} = (2)
+\]
+\[
+\matB_{1\times 1} = \begin{pmatrix}
+1
+\end{pmatrix}
+\]
+Calculez $AB$.
+\[
+\matA_{\textcolor{blue}{1} \times \textcolor{red}{1}}\matB_{\textcolor{red}{1} \times \textcolor{blue}{1}} =  C_{\textcolor{blue}{1} \times \textcolor{blue}{1}}
+\]
+\[
+\matA\matB = [2 \cdot 1] = [2]_{1\times 1}
+\]
+\end{frame}
+
+\begin{frame}{Multiplication de deux matrices}
+Soit
+\[
+\matA_{1 \times 2} = (2 \quad 5)
+\]
+\[
+\matB_{2\times 1} = \begin{pmatrix}
+1 \\ 2
+\end{pmatrix}
+\]
+Calculez $AB$.
+\[
+\matA_{\textcolor{blue}{1} \times \textcolor{red}{2}}\matB_{\textcolor{red}{2} \times \textcolor{blue}{1}} = C_{\textcolor{blue}{1} \times \textcolor{blue}{1}}
+\]
+\[
+\matA\matB = [2 \cdot 1 + 5\cdot 2] = [12]_{\textcolor{blue}{1}\times \textcolor{blue}{1}}
+\]
+\end{frame}
+
+\begin{frame}{Multiplication de deux matrices}
+Soit
+\[
+\matA_{1 \times 3} = (2 \quad 5 \quad -3)
+\]
+\[
+\matB_{3\times 1} = \begin{pmatrix}
+1 \\ 2 \\ 4
+\end{pmatrix}
+\]
+Calculez $AB$.
+\[
+\matA_{\textcolor{blue}{1} \times \textcolor{red}{3}}\matB_{\textcolor{red}{3} \times \textcolor{blue}{1}}
+= C_{\textcolor{blue}{1} \times \textcolor{blue}{1}}
+\]
+\[
+\matA\matB = [2 \cdot 1 + 5\cdot 2 + (-3)\cdot 4] = [0]_{1\times 1}
+\]
+\end{frame}
+
+\begin{frame}{Multiplication de deux matrices}
+Soit une matrice $\matA_{1\times p}$ et une matrice $\matB_{p\times 1}$.  
+Le \textbf{produit} de ces deux matrices, 
+$\matA_{1\times\textcolor{red}{p}}\matB_{\textcolor{red}{p}\times 1}$ est une matrice $\matC_{1\times 1}$ dont le seul coefficient est
+\huge
+\[
+[c_{11}] = \left[\sum_{k=1}^{p} a_{1k} b_{k1}\right]
+\]
+\end{frame}
+
+
+\begin{frame}{Multiplication de deux matrices}
+Pour des matrices plus générales, on procède de la même façon, en considérant chaque ligne
+de la première matrice multipliée par chaque colonne de la seconde.\vfill
+
+Soit une matrice $\matA_{m\times p}$ et une matrice $\matB_{p\times n}$.  
+Le \textbf{produit} de ces deux matrices, 
+$\matA_{m\times\textcolor{red}{p}}\matB_{\textcolor{red}{p}\times n}$ est une matrice $\matC_{m\times n}$ telle que
+\huge
+\[
+[c_{ij}] = \left[\sum_{k=1}^{p} a_{ik} b_{kj}\right]
+\]
+\end{frame}
+
+\begin{frame}{Multiplication de deux matrices}
+Soit les matrices
+$\displaystyle
+\matA = \begin{pmatrix}
+	1 & 2 & 4 \\
+	2 & 6 & 0
+	\end{pmatrix}
+\qquad
+\matB = \begin{pmatrix}
+	4 & 1 & 4 & 3\\
+	0 & -1 & 3 & 1 \\
+	2 & 7 & 5 & 2
+	\end{pmatrix}
+$;
+calculez, si possible, $\matA\matB$ et $\matB\matA$.
+
+\begin{block}{Solution}<2>
+Nous avons
+\[
+\begin{matrix}[rcl]
+\matA_{2\times\textcolor{red}{3}}\matB_{\textcolor{red}{3}\times 4} & = & \begin{pmatrix}
+	\textcolor{blue}{1} & \textcolor{blue}{2} & \textcolor{blue}{4} \\
+	2 & 6 & 0
+	\end{pmatrix}
+	\begin{pmatrix}
+	4 & \textcolor{blue}{1} & 4 & 3\\
+	0 & \textcolor{blue}{-1} & 3 & 1 \\
+	2 & \textcolor{blue}{7} & 5 & 2
+	\end{pmatrix} \\
+	\\
+	&=& \begin{pmatrix}[cccc]
+	4+0+8 & \textcolor{blue}{1-2+28} & 4+6+20 & 3 + 2 + 8 \\
+	8+0+0 & 2-6+0 & 8+18+0 & 6+6+0
+	\end{pmatrix}\\
+	\\
+	&=& \begin{pmatrix}
+	12 & \textcolor{blue}{27} & 30 & 13 \\
+	8 & -4 & 26 & 12
+	\end{pmatrix}
+	\end{matrix}
+\]
+\end{block}
+\end{frame}
+
+\begin{frame}{Multiplication de deux matrices}
+Soit les matrices
+$\displaystyle
+\matA = \begin{pmatrix}
+	1 & 2 & 4 \\
+	2 & 6 & 0
+	\end{pmatrix}
+\qquad
+\matB = \begin{pmatrix}
+	4 & 1 & 4 & 3\\
+	0 & -1 & 3 & 1 \\
+	2 & 7 & 5 & 2
+	\end{pmatrix}
+$;
+calculez, si possible, $\matA\matB$ et $\matB\matA$.
+
+\begin{block}{Solution}
+$
+\matB_{3\times \textcolor{red}{4}}\matA_{\textcolor{red}{2}\times3}$ : les matrices ne sont 
+pas compatibles, et le produit n'est pas défini.
+\end{block}
+\end{frame}
+
+\begin{frame}{Multiplication de deux matrices}
+Même dans les cas où $\matA\matB$ et $\matB\matA$ sont tous les deux définis, la plupart du temps on aura
+$\matA\matB \neq \matB\matA$.
+\end{frame}
+
+\begin{frame}{Propriétés}
+Soit $\matA$ une matrice $m \times n$, et $m, n, p, q$ des entiers arbitraires plus grand ou égal à 1; alors
+\begin{itemize}
+\item $\matA(\matB\matC) = (\matA\matB)\matC$ \explain{où $\matB$ est une matrice $n\times p$ et $\matC$ est une matrice $p\times q$}
+\item $\matA(\matB+\matC) = \matA\matB + \matA\matC$ \explain{où $\matB$ et $\matC$ sont des matrices $n\times q$}
+\item $(\matB+\matC)\matA$ = $\matB\matA + \matC\matA$ \explain{où $\matB$ et $\matC$ sont des matrices $p\times m$}
+\item $k(\matA\matB) = (k\matA)\matB = \matA(k\matB)$ \explain{où $k$ est un scalaire quelconque}
+\end{itemize}
+
+\end{frame}
 
 \end{document}
