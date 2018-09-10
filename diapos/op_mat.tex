@@ -1,5 +1,5 @@
-%\documentclass[french, handout]{beamer}
-\documentclass[french]{beamer}
+\documentclass[french, handout]{beamer}
+%\documentclass[french]{beamer}
 
 \usepackage{diapos}
 
@@ -12,16 +12,26 @@
 \begin{document}
 	\frame{\titlepage}
 	
+\begin{frame}
+\begin{itemize}
+\item Résultat du sondage
+\item Brève revue du premier devoir
+\item Propriétés des nombres
+\item Matrices: taille, coefficient, égalité
+\item Opérations: addition, soustraction, etc.
+\end{itemize}
+\end{frame}
+	
 \begin{frame}{Rappel: propriétés des entiers}
 Soit $a, b, c$ trois entiers (par exemple: 2, 3, 5).
-\begin{itemize}
+\begin{itemize}[<+-|alert@+>]
 \item $a+b = b+a$ \qquad \explain{commutativité de l'addition}
 \item $(a+b) + c = a + (b+c)$ \qquad \explain{associativité de l'addition}
 \item $ab = ba$ \qquad \explain{commutativité de la multiplication}
 \item $(ab)c = a(bc)$ \qquad \explain{associativité de la multiplication}
-\item $a + \textcolor{red}{0} = a$ \qquad \explain{élément neutre de l'addition}
+\item $a + \textcolor{blue}{0} = a$ \qquad \explain{élément neutre de l'addition}
 \item $a + (-a) = 0$ \explain{inverse additif - pour les entiers relatifs}
-\item $\textcolor{red}{1}a = a$ \qquad \explain{élément neutre de la multiplication}
+\item $\textcolor{blue}{1}a = a$ \qquad \explain{élément neutre de la multiplication}
 \item $a(b+c) = ab + ac$ \qquad \explain{distributivité de la multiplication sur l'addition}
 \item $\left(a^b\right)^c = a^{bc}$ \qquad \explain{puissance d'une puissance}
 \item $a^b a^c = a^{b+c}$ \qquad \explain{produit des puissances}
@@ -34,10 +44,11 @@ Soit $a, b, c$ trois nombres réels. Les réels ont les mêmes propriétés que 
 ils ont également la propriété additionnelle suivante
 \begin{itemize}
 \item $a a^{-1} = \textcolor{red}{1}$ \explain{inverse multiplicatif}
+\item<2-> Sauf pour 1 et -1, l'inverse multiplicatif d'un entier n'est pas un entier.
+\item<2-> L'élément neutre de l'addition (0) n'a pas d'inverse multiplicatif.
 \end{itemize}
-\vfill
-L'inverse multiplicatif d'un entier n'est pas un entier.\newline
-L'élément neutre de l'addition (0) n'a pas d'inverse multiplicatif.
+\begin{block}{Questions?}<3>
+\end{block}
 
 \end{frame}
 	
@@ -168,6 +179,8 @@ j\hspace*{1.1cm} \\
 1 & 2 & {\color{red}3} & 4
 \end{bmatrix} \]
 On a $c_{23} = (\mat{C})_{23} = 3$.
+\begin{block}{Questions?}<2>
+\end{block}
 \end{frame}		
 
 \begin{frame}{Égalité}
@@ -203,6 +216,7 @@ Réponse: ?
 \end{frame}		
 		
 	\begin{frame}{Résumé des opérations de base}
+	\begin{block}{}<2>
 \begin{itemize}
 	\item Addition de deux matrices: $\matA + \matB = \matC$
 	\item Multiplication par un scalaire (nombre): ${\color{red}c}\matA = \matB$
@@ -213,6 +227,7 @@ Réponse: ?
 	\item Multiplication de deux matrices: $\matA\matB = \matC$
 	\item IMPORTANT: On ne peut pas diviser deux matrices.
 \end{itemize}
+	\end{block}
 \end{frame}
 
 \begin{frame}{Addition}
@@ -248,7 +263,7 @@ la somme des coefficients correspondants des matrices $\matA$ et $\matB$.
     \]
     Calculez, si possible, $\matA+\matB, \matA+\matC$ et $\matB+\matC$.
 \end{example}
-\begin{block}{Solution}<2>
+\begin{block}{Solution}<2->
     Nous avons $\displaystyle
     \matA+\matB = \begin{pmatrix}
                 {\color{red}2} & 1\\
@@ -303,6 +318,8 @@ c(a_{ij}) = (ca_{ij})
         \end{pmatrix}
     \]
     \end{block}
+\begin{block}{Questions?}<3>
+\end{block}   
 \end{frame}
 
 \begin{frame}{Multiplication par un scalaire}
@@ -365,20 +382,21 @@ soustraction de matrices peut être faite directement de la façon suivante:
 \begin{frame}{Propriétés}
 Soient $\matA, \matB$ et $\matC$ des matrices $m\times n$ et soient $c$ et $d$ des
 scalaires.
-\begin{itemize}
-\item $\matA + \matB = \matB + \matA$
-\item $(\matA + \matB) + \matC = \matA + (\matB + \matC) = \matA + \matB + \matC$
-\item $\matA + \zero = \zero + \matA = \matA$
-\item $\matA + (-\matA) = \zero$
-\item $c(\matA+\matB) = c\matA + c\matB$
-\item $(c+d) \matA = c\matA + d\matA$
-\item $(cd) \matA = c (d\matA)$
+\begin{itemize}[<+-|alert@+>]
+\item $\matA + \matB = \matB + \matA$ \explain{commutativité}
+\item $(\matA + \matB) + \matC = \matA + (\matB + \matC) = \matA + \matB + \matC$ \explain{associativité}
+\item $\matA + \zero = \zero + \matA = \matA$ \explain{élément neutre}
+\item $\matA + (-\matA) = \zero$ \explain{inverse additif}
+\item $c(\matA+\matB) = c\matA + c\matB$ \explain{distributivité}
+\item $(c+d) \matA = c\matA + d\matA$ \explain{distributivité}
+\item $(cd) \matA = c (d\matA)$ \explain{distributivité}
 \end{itemize}
 
 \end{frame}
 
 
 \begin{frame}{Multiplication de deux matrices}
+\begin{block}{}<2>
 Pour que l'on puisse multiplier une matrice de taille $m\times a$ 
 par une matrice
 de taille $b\times p$
@@ -389,17 +407,19 @@ Exemple:\huge
 \[
 \matA_{m\times \textcolor{red}{n}} \matB_{\textcolor{red}{n}\times p} = \matC_{m\times p}
 \]
+\end{block}
+
 \end{frame}
 
 \begin{frame}{Multiplication de deux matrices}
 Soit
 \[
-\matA_{1 \times 1} = (2)
+\matA_{1 \times 1} = [2]
 \]
 \[
-\matB_{1\times 1} = \begin{pmatrix}
+\matB_{1\times 1} = \begin{bmatrix}
 1
-\end{pmatrix}
+\end{bmatrix}
 \]
 Calculez $AB$.
 \[
@@ -413,12 +433,12 @@ Calculez $AB$.
 \begin{frame}{Multiplication de deux matrices}
 Soit
 \[
-\matA_{1 \times 2} = (2 \quad 5)
+\matA_{1 \times 2} = [2 \quad 5]
 \]
 \[
-\matB_{2\times 1} = \begin{pmatrix}
+\matB_{2\times 1} = \begin{bmatrix}
 1 \\ 2
-\end{pmatrix}
+\end{bmatrix}
 \]
 Calculez $AB$.
 \[
@@ -432,12 +452,12 @@ Calculez $AB$.
 \begin{frame}{Multiplication de deux matrices}
 Soit
 \[
-\matA_{1 \times 3} = (2 \quad 5 \quad -3)
+\matA_{1 \times 3} = [2 \quad 5 \quad -3]
 \]
 \[
-\matB_{3\times 1} = \begin{pmatrix}
+\matB_{3\times 1} = \begin{bmatrix}
 1 \\ 2 \\ 4
-\end{pmatrix}
+\end{bmatrix}
 \]
 Calculez $AB$.
 \[
@@ -447,6 +467,14 @@ Calculez $AB$.
 \[
 \matA\matB = [2 \cdot 1 + 5\cdot 2 + (-3)\cdot 4] = [0]_{1\times 1}
 \]
+\begin{block}{}<2>
+\[
+\matA\matB = [a_{\textcolor{blue}{1}\textcolor{red}{1}} \cdot b_{\textcolor{red}{1}\textcolor{blue}{1}} 
+  + a_{\textcolor{blue}{1}\textcolor{red}{2}}\cdot b_{\textcolor{red}{2}\textcolor{blue}{1}} 
+  + a_{\textcolor{blue}{1}\textcolor{red}{3}}\cdot b_{\textcolor{red}{3}\textcolor{blue}{1}}] 
+  = [0]_{\textcolor{blue}{1}\times \textcolor{blue}{1}}
+\]
+\end{block}
 \end{frame}
 
 \begin{frame}{Multiplication de deux matrices}
@@ -455,7 +483,9 @@ Le \textbf{produit} de ces deux matrices,
 $\matA_{1\times\textcolor{red}{p}}\matB_{\textcolor{red}{p}\times 1}$ est une matrice $\matC_{1\times 1}$ dont le seul coefficient est
 \huge
 \[
-[c_{11}] = \left[\sum_{k=1}^{p} a_{1k} b_{k1}\right]
+[c_{\textcolor{blue}{11}}] = \left[\sum_{\textcolor{red}{k}=1}^{\textcolor{red}{p}} 
+a_{\textcolor{blue}{1}\textcolor{red}{k}} 
+b_{\textcolor{red}{k}\textcolor{blue}{1}}\right]
 \]
 \end{frame}
 
@@ -469,7 +499,9 @@ Le \textbf{produit} de ces deux matrices,
 $\matA_{m\times\textcolor{red}{p}}\matB_{\textcolor{red}{p}\times n}$ est une matrice $\matC_{m\times n}$ telle que
 \huge
 \[
-[c_{ij}] = \left[\sum_{k=1}^{p} a_{ik} b_{kj}\right]
+[c_{\textcolor{blue}{ij}}] = \left[\sum_{\textcolor{red}{k}=1}^{\textcolor{red}{p}} 
+a_{\textcolor{blue}{i}\textcolor{red}{k}} 
+b_{\textcolor{red}{k}\textcolor{blue}{j}}\right]
 \]
 \end{frame}
 
@@ -538,6 +570,8 @@ $
 \matB_{3\times \textcolor{red}{4}}\matA_{\textcolor{red}{2}\times3}$ : les matrices ne sont 
 pas compatibles, et le produit n'est pas défini.
 \end{block}
+\begin{block}{Questions?}<2>
+\end{block}
 \end{frame}
 
 \begin{frame}{Multiplication de deux matrices}
@@ -547,13 +581,16 @@ $\matA\matB \neq \matB\matA$.
 
 \begin{frame}{Propriétés}
 Soit $\matA$ une matrice $m \times n$, et $m, n, p, q$ des entiers arbitraires plus grand ou égal à 1; alors
-\begin{itemize}
+\begin{itemize}[<+-|alert@+>]
 \item $\matA(\matB\matC) = (\matA\matB)\matC$ \explain{où $\matB$ est une matrice $n\times p$ et $\matC$ est une matrice $p\times q$}
 \item $\matA(\matB+\matC) = \matA\matB + \matA\matC$ \explain{où $\matB$ et $\matC$ sont des matrices $n\times q$}
 \item $(\matB+\matC)\matA$ = $\matB\matA + \matC\matA$ \explain{où $\matB$ et $\matC$ sont des matrices $p\times m$}
 \item $k(\matA\matB) = (k\matA)\matB = \matA(k\matB)$ \explain{où $k$ est un scalaire quelconque}
 \end{itemize}
-
+\begin{block}{Questions?}<5>
+\end{block}
+\begin{block}{Démonstration avec calculatrice en ligne}<6>
+\end{block}
 \end{frame}
 
 \end{document}
