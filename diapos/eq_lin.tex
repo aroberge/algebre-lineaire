@@ -1,0 +1,559 @@
+%\documentclass[french, handout]{beamer}
+\documentclass[french]{beamer}
+
+\usetheme{Boadilla}
+\usefonttheme{structuresmallcapsserif}
+
+% % %  default French language settings
+\usepackage[utf8]{inputenc}			% enable input of accented letters
+\usepackage[T1]{fontenc}				% related to above
+\usepackage[french]{babel}			% French language support
+
+\usepackage{diapos}
+
+%\usepackage{tikz}					% for drawing figures
+%\usetikzlibrary{positioning}
+%\tikzset{>=stealth}
+%\newcommand{\tikzmark}[3][]{\tikz[overlay,remember picture,baseline] \node [anchor=base,#1](#2) {#3};}
+
+	
+\title{Système d'équations linéaires}
+\author{Math 1253} % shows on bottom of each page by default; students do not care about
+    % my name, nor the date in which this was written however, if a revision needs to 
+    % be done, having a version number could be useful
+\date{version 1}   % shows on bottom of page
+
+\begin{document}
+	\frame{\titlepage}
+	
+	\begin{frame}{Système d'équations linéaires}
+	\visible<2->{\color{red}2 équations (lignes)}
+	\begin{example}
+		\[
+		\left\{
+		\begin{matrix}
+		    x &=& 2\visible<2->{\qquad\scriptstyle\color{red}{1}} \\
+		    y&=& 1\visible<2->{\qquad\scriptstyle\color{red}{2}}
+		\end{matrix}
+		\right.
+		\]
+		\visible<3>{\small\color{blue}Solution: $(x, y) = (2, 1)$}
+	\end{example}		
+	\end{frame}
+
+	\begin{frame}{Interprétation graphique}
+		\begin{tikzpicture}
+			% les axes
+			\draw[->] (-1,0) -- (5,0) node[anchor=west]{\color{gray}x};
+			\draw[->] (0,-1) -- (0,5) node[anchor=south]{\color{gray}y};
+			% les deux droites
+			\draw[-, thick, blue] (-1,1) -- (5,1) node[anchor=north]{\color{blue}\small $y=1$};
+			\draw[-, thick, purple] (2,-1) --(2,5) node[anchor= east]{\color{purple}\small $x=2$};
+			% le point d'intersection
+			\coordinate (A) at (2,1);
+			\draw[-] (2, -0.1) node[anchor=north]{\small 2} -- (2, 0.1);
+			\draw[-] (-0.1, 1) node[anchor=east]{\small 1} -- (0.1, 1);
+			\node [fill=black,inner sep=2pt,label=30:$\mbox{\quad(2,1)}$] at (2,1) {};
+		\end{tikzpicture}
+	\end{frame}
+
+\begin{frame}{Opérations élémentaires sur les lignes}
+On peut effectuer des opérations élémentaires sur les lignes pour obtenir un système d'équations
+linéaires équivalent (c'est-à-dire ayant la même solution).
+
+Il y a 3 type d'opérations élémentaires sur les lignes.
+\end{frame}
+
+	\begin{frame}{1. Échange de deux lignes}
+	\begin{example}
+		\[
+		\left\{
+		\begin{matrix}
+		    x &=& 2{\qquad\scriptstyle\color{red}{1}} \\
+		    y&=& 1{\qquad\scriptstyle\color{red}{2}}
+		\end{matrix}
+		\right.
+		\]		
+		
+		\[
+		L_1 \leftrightarrow L_2 \qquad \Rightarrow \qquad
+		\left\{
+		\begin{matrix}
+		    y&=& 1{\qquad\scriptstyle\color{red}{1}}\\
+		    x &=& 2{\qquad\color{red}{\scriptstyle 2}}
+		\end{matrix}
+		\right.
+		\]		
+		{\tiny\color{blue}Solution: $(x, y) = (2, 1)$}
+	\end{example}		
+	\end{frame}
+	
+	
+	\begin{frame}{2. Remplacement ou combinaison linéaire}
+	On remplace une ligne donnée par l'addition de celle-ci avec le multiple
+	d'une autre ligne.
+	\begin{example}
+		\[
+		\left\{
+		\begin{matrix}
+		    y&=& 1\\
+		    x &=& 2
+		\end{matrix}
+		\right.
+		\]		
+		
+
+		\[
+		{{\color{red}L_2} - L_1 \rightarrow \color{red}L_2}  \qquad \Rightarrow \qquad
+		\left\{
+		\begin{matrix}
+		    &&y&=& 1	\\	
+		    x&-&y &=& 1
+		\end{matrix}
+		\right.
+		\]		
+			
+		{\tiny\color{blue}Solution: $(x, y) = (2, 1)$}
+	\end{example}		
+	\end{frame}	
+	
+	
+	\begin{frame}{3. Multiplication par un scalaire}
+	On multiplie une ligne donnée par une constante (scalaire) différente de zéro.
+	\begin{example}
+		\[
+		\left\{
+		\begin{matrix}
+		    &&y&=& 1	\\	
+		    x&-&y &=& 1
+		\end{matrix}
+		\right.
+		\]		
+		
+		\[
+		{3{\color{red}L_1}\rightarrow \color{red}L_1}  \qquad \Rightarrow \qquad
+		\left\{
+		\begin{matrix}
+		    &&3y&=& 3	\\	
+		    x&-&y &=& 1
+		\end{matrix}
+		\right.
+		\]		
+			
+		{\tiny\color{blue}Solution: $(x, y) = (2, 1)$}
+	\end{example}		
+	\end{frame}		
+	
+	\begin{frame}{2. Remplacement}
+	On remplace une ligne donnée par l'addition de celle-ci avec le multiple
+	d'une autre ligne.	\begin{example}
+		\[
+		\left\{
+		\begin{matrix}
+		    &&3y&=& 3	\\	
+		    x&-&y &=& 1
+		\end{matrix}
+		\right.
+		\]		
+		
+		\[
+		{{\color{red}L_1} + 3 L_2 \rightarrow \color{red}L_1}  \qquad \Rightarrow \qquad
+		\left\{
+		\begin{matrix}
+		    x&+&2y&=& 4 \\
+		    x&-&y &=& 1
+		\end{matrix}
+		\right.
+		\]		
+			
+		{\tiny\color{blue}Solution: $(x, y) = (2, 1)$}
+	\end{example}		
+	\end{frame}		
+
+
+	\begin{frame}{Interprétation graphique}
+		\begin{tikzpicture}
+			% les axes
+			\draw[->] (-1,0) -- (5,0) node[anchor=west]{\color{gray}x};
+			\draw[->] (0,-1) -- (0,5) node[anchor=south]{\color{gray}y};
+			% les deux droites
+			\draw[-, thick, blue] (0,-1) -- (5,4) node[anchor=east]{\color{blue}\small $x-y=1$};
+			\draw[-, thick, purple] (-1,2.5) --(5,-0.5) node[anchor= north]{\color{purple}\small $x+2y=4$};
+			% le point d'intersection
+			\coordinate (A) at (2,1);
+			\draw[-] (2, -0.1) node[anchor=north]{\small 2} -- (2, 0.1);
+			\draw[-] (-0.1, 1) node[anchor=east]{\small 1} -- (0.1, 1);
+			\draw [dashed, gray] (2, 0.2) -- (A);
+			\draw [dashed, gray] (0.2, 1) -- (A);
+			\node [fill=black,inner sep=2pt,label=0:$\mbox{\quad(2,1)}$] at (2, 1) {};
+		\end{tikzpicture}
+	\end{frame}
+
+
+\begin{frame}{Opération élémentaire sur les lignes}
+\begin{itemize}
+	\item on échange deux lignes :  $ L_i \leftrightarrow L_j$
+	\item on remplace une ligne donnée par son multiple
+	$ \alpha L_i  \quad \mbox{avec} \quad\alpha \ne 0$
+	\item  on remplace une ligne donnée par l'addition de celle-ci avec le multiple d'une autre ligne
+	$L_i + \beta L_j \rightarrow L_i$
+\end{itemize}
+\visible<2->{
+À noter qu'à chaque étape, on peut transformer plus qu'une ligne sujet aux conditions suivantes:
+\begin{itemize}
+	\item on ne fait pas plus qu'une transformation pour une ligne donnée;
+	\item on n'utilise pas une ligne sur laquelle on fait une transformation.
+\end{itemize}
+}
+\end{frame}
+
+	\begin{frame}{Notation matricielle}
+		\begin{itemize}
+		\item Notation habituellement plus compacte
+		\item Plus utile pour les démonstrations (preuves)
+		\end{itemize}
+	
+	\end{frame}
+
+	\begin{frame}{Notation matricielle}
+		\begin{block}{}
+					\[
+				\tikzmark{Amatrix}{A}\quad \tikzmark{xvec}{\textbf{x}}\quad=\quad 
+				\tikzmark{bvec}{\textbf{b}}
+			\]
+			\begin{tikzpicture}[overlay, remember picture,node distance =1.5cm]
+				\node (Amatrixdesc) [below left=of Amatrix ]{Matrice des coefficients};
+				\draw[,->,thick] (Amatrixdesc) to [in=-90,out=90] (Amatrix);
+				\node[red] (xvecdesc) [below =of xvec]{vecteur inconnu};
+				\draw[red,->,thick] (xvecdesc) to [in=-90,out=90] (xvec);
+				\node[blue] (bvecdesc) [below right =of bvec]{vecteur constant};
+				\draw[blue,->,thick] (bvecdesc) to [in=-90,out=90] (bvec);
+			\end{tikzpicture}
+			\vspace*{2cm}
+		\end{block}
+		\begin{block}{Matrice augmentée}
+		$$[\matA | \textbf{b}]$$
+		\end{block}
+	\end{frame}
+
+    \begin{frame}{Rappel: Égalité de matrices}
+		\[
+\begin{pmatrix}
+x + 2y\\
+x - y
+\end{pmatrix}		
+		= \begin{pmatrix}
+		4\\ 1
+		\end{pmatrix}
+		\qquad\Leftrightarrow\qquad
+		\left\{
+		\begin{matrix}
+		    x&+&2y&=& 4 \\
+		    x&-&y &=& 1
+		\end{matrix}
+		\right.
+		\]	        
+    \end{frame}
+    
+   \begin{frame}{Multiplication de matrices\footnote{Rappel: taille}}
+   \begin{block}{}
+   \[
+   \begin{pmatrix}
+   a & b \\
+   c & d
+   \end{pmatrix}
+   \begin{pmatrix}
+   x \\ y
+   \end{pmatrix}
+   =
+   \begin{pmatrix}
+   ax + by \\
+   cx + dy
+   \end{pmatrix}
+   \]
+   \end{block}
+   \begin{example}<2->
+   \[
+   \begin{pmatrix}
+   1 & 2 \\
+   1 & -1
+   \end{pmatrix}
+   \begin{pmatrix}
+   x \\ y
+   \end{pmatrix}
+   =
+   \begin{pmatrix}
+   x + 2y \\
+   x - y
+   \end{pmatrix}
+   \]
+   \visible<3->{%
+      \[
+\begin{pmatrix}
+x + 2y\\
+x - y
+\end{pmatrix}		
+		= \begin{pmatrix}
+		4\\ 1
+		\end{pmatrix}
+		\qquad\Leftrightarrow\qquad
+		\left\{
+		\begin{matrix}
+		    x&+&2y&=& 4 \\
+		    x&-&y &=& 1
+		\end{matrix}
+		\right.
+		\]
+		}   \visible<4->{%
+		\[  
+   {\color{blue}\Rightarrow}
+   \begin{pmatrix}
+   1 & 2 \\
+   1 & -1
+   \end{pmatrix}
+   \begin{pmatrix}
+   x \\ y
+   \end{pmatrix}
+   =
+   \begin{pmatrix}
+  4 \\1
+   \end{pmatrix}
+   \]   
+   \[\matA\textbf{x} = \textbf{b}\]
+   }
+   \visible<5>{%
+   Matrice augmentée:$\displaystyle\hspace{2cm}
+   \begin{bmatrix}[rr|r]
+   1 & 2 & 4\\
+   1 & -1 & 1
+   \end{bmatrix}
+   $
+   }
+   \end{example}   
+   \end{frame}
+
+\begin{frame}{Solution avec la matrice augmentée}
+\begin{example}
+\[
+   \begin{bmatrix}[rr|r]
+   1 & 2 & 4\\
+   1 & -1 & 1
+   \end{bmatrix}
+\]
+   \visible<2->{$L_2 - L_1 \rightarrow L_2$}
+   \visible<3->{\[
+   \begin{bmatrix}[rr|r]
+   1 & 2 & 4\\
+   0 & -3 & -3
+   \end{bmatrix}   
+   \]}
+\end{example}
+\end{frame}
+
+\begin{frame}{Solution avec la matrice augmentée}
+\begin{example}
+\[
+   \begin{bmatrix}[rr|r]
+   1 & 2 & 4\\
+   0 & -3 & -3
+   \end{bmatrix} 
+\]
+   \visible<2->{$L_2\rightarrow -\frac13 L_2$}
+   \visible<3->{\[
+   \begin{bmatrix}[rr|r]
+   1 & 2 & 4\\
+   0 & 1 & 1
+   \end{bmatrix}   
+   \]}
+\end{example}
+\end{frame}
+
+
+\begin{frame}{Solution avec la matrice augmentée}
+\begin{example}
+\[
+   \begin{bmatrix}[rr|r]
+   1 & 2 & 4\\
+   0 & 1 & 1
+   \end{bmatrix} 
+\]
+   \visible<2->{$L_1 - 2L_2 \rightarrow L_1$}
+   \visible<3->{\[
+   \begin{bmatrix}[rr|r]
+   1 & 0 & 2\\
+   0 & 1 & 1
+   \end{bmatrix}   
+   \]}
+\visible<4->{\color{blue}\[
+		\left\{
+		\begin{matrix}
+		    x&\color{lightgray}+&\color{lightgray}0y&=& 2	\\	
+		    \color{lightgray}0x&\color{lightgray}+&y &=& 1
+		\end{matrix}
+		\right.		
+\]
+		{\color{blue}\tiny Solution: $(x, y) = (2, 1)$}
+}   
+   
+\end{example}
+\end{frame}
+
+\begin{frame}{Exemple avec 3 équations}
+\[
+	\left\{
+	\begin{matrix}
+	x &+& 2y &-& z &=& -3\\
+	2x &+& y &+& z &=& 6\\
+	3x &+& 4y &+& z &=& 5
+	\end{matrix}\right.
+\]
+\visible<2>{%
+\[
+\begin{bmatrix}[rrr|r]
+1 & 2 & -1 & -3 \\
+2 & 1 & 1 & 6 \\
+3 & 4 & 1 & 5
+\end{bmatrix}
+\]
+}
+\end{frame}
+
+\begin{frame}{Exemple avec 3 équations}
+\[
+L_2 -2L_1 \rightarrow L_2 \Rightarrow
+\color{red}
+\left\{
+	\begin{matrix}
+	x &+& 2y &-& z &=& -3\\
+	 &-& 3y &+& 3z &=& 12\\
+	3x &+& 4y &+& z &=& 5
+	\end{matrix}\right.
+	\qquad\color{black}
+	\begin{bmatrix}[rrr|r]
+1 & 2 & -1 & -3 \\
+0 & -3 & 3 & 12 \\
+3 & 4 & 1 & 5
+\end{bmatrix}
+\]
+\end{frame}
+
+\begin{frame}{Exemple avec 3 équations}
+\[
+L_3 -3L_1 \rightarrow L_3 \Rightarrow
+\color{red}
+\left\{
+	\begin{matrix}
+	x &+& 2y &-& z &=& -3\\
+	&-& 3y &+& 3z &=& 12\\
+	&-& 2y &+& 4z &=& 14
+	\end{matrix}\right.
+	\qquad\color{black}
+	\begin{bmatrix}[rrr|r]
+1 & 2 & -1 & -3 \\
+0 & -3 & 3 & 12 \\
+0 & -2 & 4 & 14
+\end{bmatrix}
+\]
+\end{frame}
+
+\begin{frame}{Exemple avec 3 équations}
+\[
+\begin{matrix}
+\frac{-1}{3}L_2 \rightarrow L_2 \\
+\\
+\frac{1}{2}L_3 \rightarrow L_3
+\end{matrix}
+ \Rightarrow
+\color{red}
+\left\{
+	\begin{matrix}
+	x &+& 2y &-& z &=& -3\\
+	&& y &-& z &=& -4\\
+	&-& y &+& 2z &=& 7
+	\end{matrix}\right.
+	\qquad\color{black}
+	\begin{bmatrix}[rrr|r]
+1 & 2 & -1 & -3 \\
+0 & 1 & -1 & -4 \\
+0 & -1 & 2 & 7
+\end{bmatrix}
+\]
+\end{frame}
+
+\begin{frame}{Exemple avec 3 équations}
+\[
+L_3 + L_2 \rightarrow L_3 \Rightarrow
+ \Rightarrow
+\color{red}
+\left\{
+	\begin{matrix}
+	x &+& 2y &-& z &=& -3\\
+	&& y &-& z &=& -4\\
+	&&  && z &=& 3
+	\end{matrix}\right.
+	\qquad\color{black}
+	\begin{bmatrix}[rrr|r]
+1 & 2 & -1 & -3 \\
+0 & 1 & -1 & -4 \\
+0 & 0 & 1 & 3
+\end{bmatrix}
+\]
+Ceci est la forme échelonnée.
+\end{frame}
+
+\begin{frame}{Exemple avec 3 équations}
+\[
+		\begin{matrix}
+		L_1 + L_3 \rightarrow L_1\\
+		L_2 + L_3 \rightarrow L_2\\
+		\end{matrix}
+ \Rightarrow
+\color{red}
+\left\{
+	\begin{matrix}
+		x &+& 2y && &=& 0\\
+		 && y && &=& -1\\
+		 &&  && z &=& 3
+	\end{matrix}\right.
+	\qquad\color{black}
+	\begin{bmatrix}[rrr|r]
+        1 & 2 & 0 & 0 \\
+        0 & 1 & 0 & -1 \\
+        0 & 0 & 1 & 3
+\end{bmatrix}
+\]
+\end{frame}
+
+\begin{frame}{Exemple avec 3 équations}
+\[
+	L_1 -2 L_2 \rightarrow L_1
+ \Rightarrow
+\color{red}
+\left\{
+	\begin{matrix}
+	x & && =& 2\\
+	 & y &&=& -1\\
+	  && z &=& 3
+	\end{matrix}\right.
+	\qquad\color{black}
+	\begin{bmatrix}[rrr|r]
+        1 & 0 & 0 & 2 \\
+        0 & 1 & 0 & -1 \\
+        0 & 0 & 1 & 3
+\end{bmatrix}
+\]
+Solution: $(x, y, z) = (2, -1, 3)$.  [Vérifier.]
+
+\color{blue}
+\[
+	\left\{
+	\begin{matrix}
+	x &+& 2y &-& z &=& -3\\
+	2x &+& y &+& z &=& 6\\
+	3x &+& 4y &+& z &=& 5
+	\end{matrix}\right.
+	\]
+
+\end{frame}
+
+\end{document}
