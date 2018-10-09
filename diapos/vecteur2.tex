@@ -1,0 +1,525 @@
+\documentclass[french, handout]{beamer}
+%\documentclass[french]{beamer}
+
+\usepackage{hyperref}
+
+\usetheme{Boadilla}
+\usefonttheme{structuresmallcapsserif}
+
+% % %  default French language settings
+\usepackage[utf8]{inputenc}			% enable input of accented letters
+\usepackage[T1]{fontenc}				% related to above
+\usepackage[french]{babel}			% French language support
+
+\usepackage{diapos}
+
+%\usepackage{tikz}					% for drawing figures
+%\usetikzlibrary{positioning}
+%\tikzset{>=stealth}
+%\newcommand{\tikzmark}[3][]{\tikz[overlay,remember picture,baseline] \node [anchor=base,#1](#2) {#3};}
+
+	
+\title{Base, image, espace vectoriels}
+\author{Math 1253} % shows on bottom of each page by default; students do not care about
+    % my name, nor the date in which this was written however, if a revision needs to 
+    % be done, having a version number could be useful
+\date{version 1}   % shows on bottom of page
+
+\begin{document}
+	\frame{\titlepage}
+	
+	\begin{frame}
+	\begin{itemize}
+	\item Questions?
+	\item Revue de la méthode de Gauss-Jordan
+	\item Revue: ensembles, éléments, sous-ensembles
+	\item Image d'une matrice
+	\item Noyau d'une matrice
+	\item Espace vectoriel
+	\item Sous-espace vectoriel
+	\end{itemize}
+\end{frame}	
+
+
+\begin{frame}{Revue: méthode de Gauss-Jordan}
+
+Important: je ne montre ici que la \textbf{matrice des coefficients.}
+\vfill
+
+Au besoin, on fait un échange de ligne pour s'assurer
+que $p_1$ est différent de zéro.
+
+\[
+\begin{pmatrix}
+p_1 & *  & * & * & * & * & * & * & * \\
+* & *  & * & * & * & * & * & * & * \\
+* & *  & * & * & * & * & * & * & * \\
+* & *  & * & * & * & * & * & * & * \\
+* & *  & * & * & * & * & * & * & * \\
+* & *  & * & * & * & * & * & * & *
+\end{pmatrix}
+\]
+
+\end{frame}	
+	
+\begin{frame}{Revue: méthode de Gauss-Jordan}
+
+On fait des opérations sur les lignes de la forme 
+\Huge
+\[
+ L_j + a L_{\color{red}1} \rightarrow L_j
+\]
+\normalsize
+pour avoir des zéros dans la première colonne sous le premier pivot.
+
+\[
+\begin{pmatrix}
+p_1 & *  & * & * & * & * & * & * & * \\
+{\color{red}{0}} & * & * & * & * & * & * & * & * \\
+{\color{red}{0}} & * & * & * & * & * & * & * & * \\
+{\color{red}{0}} & * & * & * & * & * & * & * & * \\
+{\color{red}{0}} & * & * & * & * & * & * & * & * \\
+{\color{red}{0}} & * & * & * & * & * & * & * & * 
+\end{pmatrix}
+\]
+\end{frame}	
+
+\begin{frame}{Revue: méthode de Gauss-Jordan}
+
+On identifie une ligne avec le deuxième pivot; ici,
+il y a deux candidats possibles ($a$, $b$ et $c$ sont
+différents de zéro)
+
+\[
+\begin{pmatrix}
+p_1 & *  & * & * & * & * & * & * & * \\
+{\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & * & * & * & * & * & * \\
+{\color{red}{0}} & {\color{red}{0}} & a & * & * & * & * & * & * \\
+{\color{red}{0}} & {\color{red}{0}} & b & * & * & * & * & * & * \\
+{\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & * & * & * & * & * & * \\
+{\color{red}{0}} & {\color{red}{0}} & c & * & * & * & * & * & * 
+\end{pmatrix}
+\]
+Ici on peut faire l'échange suivant:
+\Huge
+\[
+ L_3 \leftrightarrow L_2
+\]
+\normalsize
+et on va écrire $p_2$ au lieu de $a$
+\end{frame}	
+	
+\begin{frame}{Revue: méthode de Gauss-Jordan}
+\[
+\begin{pmatrix}
+p_1 & *  & * & * & * & * & * & * & * \\
+{\color{red}{0}} & {\color{red}{0}} & p_2 & * & * & * & * & * & * \\
+{\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & * & * & * & * & * & * \\
+
+{\color{red}{0}} & {\color{red}{0}} & b & * & * & * & * & * & * \\
+{\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & * & * & * & * & * & * \\
+{\color{red}{0}} & {\color{red}{0}} & c & * & * & * & * & * & * 
+\end{pmatrix}
+\]
+\end{frame}		
+	
+\begin{frame}{Revue: méthode de Gauss-Jordan}
+On fait des opérations sur les lignes de la forme 
+\Huge
+\[
+ L_j + a L_{\color{red}2} \rightarrow L_j \qquad(j > 2)
+\]
+\normalsize
+pour avoir des zéros dans la colonne sous le deuxième pivot.
+\[
+\begin{pmatrix}
+p_1 & *  & * & * & * & * & * & * & * \\
+{\color{red}{0}} & {\color{red}{0}} & p_2 & * & * & * & * & * & * \\
+{\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & * & * & * & * & * & * \\
+
+{\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}}  & * & * & * & * & * & * \\
+{\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & * & * & * & * & * & * \\
+{\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}}  & * & * & * & * & * & * 
+\end{pmatrix}
+\]
+\end{frame}		
+	
+\begin{frame}{Revue: méthode de Gauss-Jordan}
+On continue ainsi en faisant uniquement les opérations suivantes: 
+(Ligne de pivot: $p$)
+\Huge
+\[
+\begin{matrix}[lr]
+ L_j + a L_{\color{red}p} \rightarrow L_j &\qquad(j > p)\\[25pt]
+ L_i \leftrightarrow L_j &\qquad(i, j >= p)\\
+ a L_i \rightarrow L_i &\qquad(i >= p)
+\end{matrix}
+\]
+\normalsize
+\end{frame}			
+	
+	
+\begin{frame}{Revue: méthode de Gauss-Jordan}
+On continue jusqu'à avoir une forme échelonnée	
+\[
+\begin{pmatrix}
+p_1 & *  & * & * & * & * & * & * & * \\
+{\color{red}{0}} & {\color{red}{0}} & p_2 & * & * & * & * & * & * \\
+{\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & p_3 & * & * & * & * & * \\ 
+{\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & p_4 & * & * \\ 
+{\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & p_5 \\ 
+{\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} 
+\end{pmatrix}
+\]	
+\end{frame}	
+
+\begin{frame}{Revue: méthode de Gauss-Jordan}
+Si la matrice des coefficients a une, ou plusieurs lignes nulles	
+\[
+\begin{pmatrix}[rrrrrrrrr|r]
+p_1 & *  & * & * & * & * & * & * & * &* \\
+{\color{red}{0}} & {\color{red}{0}} & p_2 & * & * & * & * & * & * & * \\
+{\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & p_3 & * & * & * & * & * & *\\ 
+{\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & p_4 & * & * & * \\ 
+{\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & p_5 & * \\ 
+{\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & b
+\end{pmatrix}
+\]	
+Chaque ligne nulle correspond à une équation de la forme $0=b$. Si $b\neq 0$, une telle équation est fausse et on a un système incompatible. Il est inutile de poursuivre les calculs
+\vfill
+{\color{red}Super important:} Avant de conclure quoi que ce soit, \textbf{toujours} exprimer l'information sous forme d'équation \textbf{avec} les variables (inconnues).
+\end{frame}	
+
+
+
+\begin{frame}{Revue: méthode de Gauss-Jordan}
+Par la suite, on procède de gauche à droite avec des transformations comme\footnote{On peut attendre à plus 
+tard avant de s'assurer que chaque pivot soit égal à 1.}
+\Large
+\[
+\frac{1}{p_i} L_i \rightarrow L_i
+\]
+\normalsize
+À partir d'ici, on peut ignorer (omettre) toute ligne nulle	
+\[
+\begin{pmatrix}
+1 & *  & * & * & * & * & * & * & * \\
+{\color{red}{0}} & {\color{red}{0}} & 1 & * & * & * & * & * & * \\
+{\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & 1 & * & * & * & * & * \\ 
+{\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & 1 & * & * \\ 
+{\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & 1 \\ 
+\end{pmatrix}
+\]	
+\end{frame}	
+
+\begin{frame}{Revue: méthode de Gauss-Jordan}
+Pour chaque ligne avec un pivot, $p_i$, en commençant avec le pivot
+le plus à droite ($i=5$ ici), on fera
+\Large
+\[
+ L_j + a L_{\color{red}i} \rightarrow L_j \qquad(j <i)
+\]
+\normalsize
+	
+\[
+\begin{pmatrix}
+1 & *  & * & * & * & * & * & * & {\color{blue}{0}} \\
+{\color{red}{0}} & {\color{red}{0}} & 1 & * & * & * & * & * & {\color{blue}{0}} \\
+{\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & 1 & * & * & * & * & {\color{blue}{0}} \\ 
+{\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & 1 & * & {\color{blue}{0}} \\ 
+{\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & 1
+\end{pmatrix}
+\]	
+\end{frame}	
+	
+	
+\begin{frame}{Revue: méthode de Gauss-Jordan}
+On continue jusqu'à avoir obtenu la forme échelonnée réduite
+	
+\[
+\begin{pmatrix}
+1 & * & {\color{blue}{0}} & {\color{blue}{0}} & * & * & {\color{blue}{0}} & * & {\color{blue}{0}}  \\
+{\color{red}{0}} & {\color{red}{0}} & 1 & {\color{blue}{0}} & * & * & {\color{blue}{0}} & * & {\color{blue}{0}}  \\
+{\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & 1 & * & * & {\color{blue}{0}} & * & {\color{blue}{0}}  \\ 
+{\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & 1 & * & {\color{blue}{0}}  \\ 
+{\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & {\color{red}{0}} & 1
+\end{pmatrix}
+\]	
+\vfill
+
+On identifie les variables libres ($x_2, x_5, x_6, x_8$) pouvant prendre n'importe quelle valeur, et les variables dépendantes ($x_1, x_3, x_4, x_7, x_9$).
+\end{frame}	
+		
+\begin{frame}{Méthode de Gauss-Jordan: une suggestion}
+
+Supposons que j'ai
+\[
+\begin{bmatrix}[rrr|r]
+2 & 3 & -4 & 6\\
+1 & -2 & 3 & 5
+\end{bmatrix}
+\]
+
+On veut faire $L_2 -2L_1 \rightarrow L_2$. Écrivez "en marge"
+\[
+\begin{matrix}[rrrr|r]
+{\color{red}-2L_1:} & -4 & -6 & 8 & -12\\
+{\color{red}L_2:} & 1 & -2 & 3 & 5 \\
+\hline
+& -3 & -8 & 11 & -7
+\end{matrix}
+\]
+
+\vfill
+N'oubliez pas d'inclure \textbf{tous} les coefficients, y compris ceux
+à droite de la barre verticale.
+
+\end{frame}		
+	
+	
+\begin{frame}{Revue}
+
+\begin{itemize}
+\item Ensembles
+	\begin{itemize}
+	\item $\mathbb{E} = \{ 1, 3, 5, 7, 9\}$
+	\item $\mathbb{F} = \{3, 9\}$
+	\item $\mathbb{G} = \{2, 3, 4\}$
+	\end{itemize}
+\item Appartenance
+	\begin{itemize}
+	\item Un élément \textbf{appartient} ou n'appartient pas à un ensemble
+		\begin{itemize}
+		\item $5 \in \mathbb{E}$
+		\item $5 \notin \mathbb{G}$
+		\end{itemize}
+	\item Un ensemble peut être un \textbf{sous-ensemble} d'un autre ensemble.
+		\begin{itemize}
+		\item $\mathbb{F} \subset \mathbb{E}$
+		\item $\mathbb{G} \not \subset \mathbb{E}$
+		\item $\mathbb{E} \subset \mathbb{E}$		
+		\end{itemize}
+	\end{itemize}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Revue}
+
+\begin{itemize}
+\item  $\mathbb{V} = \{\mat{a}_1, \ldots, \mat{a}_n\}$ est l'ensemble des
+vecteurs $\mat{a}_1$, $\mat{a}_2$, \ldots, $\mat{a}_n$
+	\begin{itemize}
+	\item  $\mathbb{V}$ a $n$ éléments
+	\end{itemize}
+\item $\mathbb{W} = \operatorname{Vect}\{\mat{a}_1, \ldots, \mat{a}_n\}$ est l'ensemble de toutes les \textbf{combinaisons linéaires} des
+vecteurs $\mat{a}_1$ à $\mat{a}_n$
+	\begin{itemize}
+	\item Combinaison linéaire: $x_1\mat{a}_1 + \ldots + x_n\mat{a}_n$
+	\item $x_1$ peut prendre n'importe quelle valeur; c'est la même chose pour tous les $x_i$.
+		\begin{itemize}
+		\item Il y a un nombre infini de combinaisons linéaires possibles
+		\item $\mathbb{W}$ a un nombre infini d'éléments
+		\end{itemize}
+	\end{itemize}
+\item $\mathbb{V} \subset \mathbb{W}$
+\end{itemize}
+
+\end{frame}		
+	
+	
+\begin{frame}{Image}
+L'\textbf{image} d'une matrice $\mat{A}$, dénoté par $\operatorname{Im}\mat{A}$, est l'ensemble de toutes les combinaisons linéaires
+des colonnes de $\mat{A}$.
+
+Exemple:
+\[
+\mat{A} = \begin{bmatrix}
+1 & 4 & 7\\
+2 & 5 & 8\\
+3 & 6 & 9
+\end{bmatrix}
+=
+\begin{bmatrix}
+\mat{a}_1 & \mat{a}_2 & \mat{a}_3
+\end{bmatrix}
+\]
+
+\[
+\mat{a}_1 = \begin{bmatrix}
+1 \\ 2 \\ 3
+\end{bmatrix}
+\qquad
+\mat{a}_2 = \begin{bmatrix}
+4 \\ 5\\6
+\end{bmatrix}
+\qquad
+\mat{a}_3 = \begin{bmatrix}
+7\\8\\9
+\end{bmatrix}
+\]
+\[
+\operatorname{Im}\mat{A} = \operatorname{Vect}\{\mat{a}_1, \mat{a}_2, \mat{a}_3\}
+\]
+\end{frame}	
+
+
+\begin{frame}{Image}
+
+Question typique: Est-ce que le vecteur $\mat{b}$ appartient à l'image
+de $\mat{A}$?
+\vfill
+
+Ceci revient à poser la question suivante: Est-ce qu'on peut écrire
+$\mat{b}$ comme une combinaison linéaire des vecteurs $\mat{a}_1, \mat{a}_2, \mat{a}_3$?
+
+\vfill
+Ceci est équivalent à la question suivante: Existe-t-il des valeurs de
+$x_1, x_2, x_3$ telle que l'on peut écrire
+\[
+\mat{b} = x_1\mat{a}_1 + x_2 \mat{a}_2 + x_3 \mat{a}_3
+\]
+\end{frame}		
+
+\begin{frame}{Noyau}
+
+On appelle \textbf{noyau}\footnote{En anglais, on dit le \textit{kernel}.} d'une matrice $\mat{A}$ l'ensemble $\operatorname{Ker}\mat{A}$ des solutions
+de l'équation homogène
+\[
+\mat{A}\mat{x} = \mat{0}
+\]
+
+\vfill
+Question typique: {\color{blue} Trouvez le noyau de $\mat{A}$}
+ou encore {\color{blue} Trouvez $\operatorname{Ker}\mat{A}$} veut dire la
+même chose que \textit{Trouvez toutes les solutions de l'équation} 
+$\mat{A}\mat{x} = \mat{0}$.
+\end{frame}		
+	
+\begin{frame}{Espace vectoriel}
+Un \textbf{espace vectoriel} est un ensemble $V$ d'objets appelés \textit{vecteurs}, sur lesquels on définit
+deux opérations, soit \textit{l'addition} ainsi que \textit{la multiplication par un scalaire}, et pour lequel
+les axiomes suivant sont satisfaits pour tous les vecteurs $\mat{u}, \mat{v}, \mat{w}$ dans $V$
+et pour tous les scalaires $\alpha, \beta$.
+\begin{enumerate}
+\item {\color{red} $\mat{u}+\mat{v}\in V$}
+\item  $\mat{u} + \mat{v} = \mat{v} + \mat{u}$
+\item  $ (\mat{u} + \mat{v}) + \mat{w} = \mat{u} + (\mat{v} + \mat{w})$
+\item {\color{red} $\exists\zero\in V:$} $ \mat{u} + \zero = \mat{u}$
+\item $\forall \mat{u}\in V\quad \exists-\mat{u}\in V: \mat{u} + (-\mat{u}) = \zero$.
+\item {\color{red} $\alpha\mat{u} \in V$}
+\item $\alpha(\mat{u} + \mat{v}) = \alpha\mat{u} + \alpha\mat{v}$
+\item  $ (\alpha + \beta)\mat{u} = \alpha\mat{u} + \beta\mat{u}$
+\item  $\alpha(\beta\mat{u}) = (\alpha\beta)\mat{u}$
+\item  $1\mat{u} = \mat{u}$
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Espace vectoriel}
+\begin{itemize}
+\item $\BBR^n$ est un espace vectoriel
+\item $\displaystyle
+\operatorname{Vect}\left\{
+\begin{bmatrix}
+1 \\ 0
+\end{bmatrix}
+,\begin{bmatrix}
+0 \\ 1
+\end{bmatrix}
+\right\}
+$
+est un espace vectoriel (en fait, ceci est $\BBR^2$)
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Sous-espace vectoriel}
+Soit $W$ un \textit{sous-ensemble} d'un espace vectoriel $V$.  
+On appellera $W$ un \textbf{sous-espace vectoriel}\footnote{On omet parfois le mot \textit{vectoriel}
+pour simplement écrire \textbf{sous-espace} pour signifier la même chose.} de $V$ si
+les trois propriétés suivantes sont satisfaites:
+\begin{enumerate}
+\item Le vecteur nul de $V$ est dans $W$.
+\item $W$ est fermé pour l'addition; $\mat{u}, \mat{w} \in W \Rightarrow \mat{u} + \mat{w} \in W$.
+\item $W$ est fermé pour la multiplication par un scalaire: $\mat{w}\in W \Rightarrow a\mat{w}\in W$ pour $a\in \BBR$,
+l'ensemble de scalaires utilisés pour la définition de $V$.
+\end{enumerate}
+
+On peut facilement vérifier qu'un \textbf{sous-ensemble} $W$ de $V$ qui satisfait les trois propriétés mentionnées dans la définition ci-dessus est un espace vectoriel.
+\end{frame}
+
+\begin{frame}{Sous-espace vectoriel}
+Note: on peut vérifier les propriétés trois dans une seule étape:
+\[
+\left.
+\begin{matrix}
+\mat{u}, \mat{w} \in W \\
+a, b \in \BBR
+\end{matrix}
+\right\}
+\Rightarrow a\mat{u} + b\mat{w} \in W
+\]
+\end{frame}
+
+\begin{frame}{Sous-espace vectoriel}
+Exemple: l'ensemble de tous les points dans le plan $x-y$ est
+un sous-espace de $\BBR^3$
+
+\[
+\operatorname{Vect}\left\{
+\begin{bmatrix}
+1\\0\\0
+\end{bmatrix},
+\begin{bmatrix}
+0\\1\\0
+\end{bmatrix}
+\right\}
+\]
+\end{frame}
+
+\begin{frame}{Sous-espace vectoriel}
+Exemple: $\BBR^2$ est un espace vectoriel mais ce n'est pas 
+un sous-espace vectoriel de $\BBR^3$
+
+\[
+\begin{bmatrix}
+x \\ y
+\end{bmatrix}
+\notin \BBR^3
+\]
+\end{frame}
+
+\begin{frame}{Sous-espace vectoriel}
+L'ensemble des vecteurs de la forme
+$\displaystyle
+\begin{bmatrix}[c]
+t\\
+t+1
+\end{bmatrix}
+$ correspondant à la droite $y=x+1$ ne forme pas un sous-espace de $\BBR^2$.
+		\begin{tikzpicture}
+			% les axes
+			\draw[->] (-1,0) -- (4,0) node[anchor=west]{\color{gray}x};
+			\draw[->] (0,-1) -- (0,5) node[anchor=south]{\color{gray}y};
+			% la droite
+			\draw[-, thick, blue] (0,-1) -- (5,4) node[anchor=east]{\color{blue}\small $y=x+1$};
+		\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Sous-espace vectoriel}
+L'ensemble des vecteurs de la forme
+$\displaystyle
+\begin{bmatrix}
+t\\
+2t
+\end{bmatrix}
+$ correspondant à la droite $y=2x$ forme un sous-espace de $\BBR^2$.
+		\begin{tikzpicture}
+			% les axes
+			\draw[->] (-2,0) -- (3,0) node[anchor=west]{\color{gray}x};
+			\draw[->] (0,-2) -- (0,4) node[anchor=south]{\color{gray}y};
+			% la droite
+			\draw[-, thick, blue] (-1,-2) -- (2,4) node[anchor=east]{\color{blue}\small $y=2x$};
+		\end{tikzpicture}
+\end{frame}
+
+\end{document}

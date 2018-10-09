@@ -1,0 +1,341 @@
+\documentclass[french, handout]{beamer}
+%\documentclass[french]{beamer}
+
+\usepackage{hyperref}
+
+\usetheme{Boadilla}
+\usefonttheme{structuresmallcapsserif}
+
+% % %  default French language settings
+\usepackage[utf8]{inputenc}			% enable input of accented letters
+\usepackage[T1]{fontenc}				% related to above
+\usepackage[french]{babel}			% French language support
+
+\usepackage{diapos}
+
+%\usepackage{tikz}					% for drawing figures
+%\usetikzlibrary{positioning}
+%\tikzset{>=stealth}
+%\newcommand{\tikzmark}[3][]{\tikz[overlay,remember picture,baseline] \node [anchor=base,#1](#2) {#3};}
+
+	
+\title{Les vecteurs}
+\author{Math 1253} % shows on bottom of each page by default; students do not care about
+    % my name, nor the date in which this was written however, if a revision needs to 
+    % be done, having a version number could be useful
+\date{version 1}   % shows on bottom of page
+
+\begin{document}
+	\frame{\titlepage}
+	
+	\begin{frame}{Les vecteurs}
+	\begin{itemize}
+	\item Questions?
+	\item Démonstration sur \url{http://immersivemath.com}
+	\begin{itemize}
+	    \item Vecteur $\rightarrow$ flèche (élément de $\BBR^n$)
+	    \item Addition
+	    \item Soustraction
+	    \item Multiplication par un scalaire
+	    \item Propriétés de l'addition
+	\end{itemize}
+	\item Rappel: système d'équations linéaires
+	\begin{itemize}
+	    \item Forme traditionnelle
+	    \item Interprétation graphique
+	    \item Multiplication de matrices
+	    \item Égalité de matrices
+	\end{itemize}
+	\item Nouveau: {\color{red}combinaison linéaire de vecteurs}
+	\begin{itemize}
+	    \item Interprétation graphique
+	\end{itemize}
+	\item Propriétés des vecteurs (chapitre 1)
+	\item Propriétés des vecteurs (chapitre 4)
+	\end{itemize}
+\end{frame}	
+
+\begin{frame}
+
+\begin{itemize}
+\item Question 2 (e): Si l'une des lignes d'une forme échelonnée d'une matrice complète est 
+	$[\quad 0\quad 0\quad 0\quad 5\quad |\quad 0\quad ]$, alors le système associé est incompatible.\\ 
+		\textit{\color{blue} Faux; ceci correspond à une équation comme $5x_4 = 0$ qui a une solution ($x_4=0$).}
+\item Démonstration
+\item Expliquer ce que sont $\BBR^2$, $\BBR^3$, $\BBR^n$.
+\end{itemize}
+
+
+
+\end{frame}
+	
+\begin{frame}{Système d'équations linéaires}
+	Forme traditionnelle
+	\begin{example}			
+		\[
+		\left\{
+		\begin{matrix}
+		    x&+&2y&=& 4 \\
+		    x&-&y &=& 1
+		\end{matrix}
+		\right.
+		\]		
+			
+		{\small\color{blue}Solution: $(x, y) = (2, 1)$}
+	\end{example}		
+	\end{frame}		
+
+
+	\begin{frame}{Interprétation graphique}
+		\begin{tikzpicture}
+			% les axes
+			\draw[->] (-1,0) -- (5,0) node[anchor=west]{\color{gray}x};
+			\draw[->] (0,-1) -- (0,5) node[anchor=south]{\color{gray}y};
+			% les deux droites
+			\draw[-, thick, blue] (0,-1) -- (5,4) node[anchor=east]{\color{blue}\small $x-y=1$};
+			\draw[-, thick, purple] (-1,2.5) --(5,-0.5) node[anchor= north]{\color{purple}\small $x+2y=4$};
+			% le point d'intersection
+			\coordinate (A) at (2,1);
+			\draw[-] (2, -0.1) node[anchor=north]{\small 2} -- (2, 0.1);
+			\draw[-] (-0.1, 1) node[anchor=east]{\small 1} -- (0.1, 1);
+			\draw [dashed, gray] (2, 0.2) -- (A);
+			\draw [dashed, gray] (0.2, 1) -- (A);
+			\node [fill=black,inner sep=2pt,label=0:$\mbox{\quad(2,1)}$] at (2, 1) {};
+		\end{tikzpicture}
+	\end{frame}
+
+   \begin{frame}{Rappel: multiplication de matrices}
+    \[\matA\textbf{x} = \textbf{b}\]
+	\[  
+   \begin{pmatrix}
+   1 & 2 \\
+   1 & -1
+   \end{pmatrix}
+   \begin{pmatrix}
+   x \\ y
+   \end{pmatrix}
+   =
+   \begin{pmatrix}
+  4 \\1
+   \end{pmatrix}
+   \]   
+   \vfill
+   Matrice augmentée:$\displaystyle\hspace{2cm}
+   \begin{bmatrix}[rr|r]
+   1 & 2 & 4\\
+   1 & -1 & 1
+   \end{bmatrix}
+   $
+   \end{frame}
+
+    \begin{frame}{Rappel: Égalité de matrices}
+		\[
+\begin{pmatrix}
+x + 2y\\
+x - y
+\end{pmatrix}		
+		= \begin{pmatrix}
+		4\\ 1
+		\end{pmatrix}
+		\qquad\Leftrightarrow\qquad
+		\left\{
+		\begin{matrix}
+		    x&+&2y&=& 4 \\
+		    x&-&y &=& 1
+		\end{matrix}
+		\right.
+		\]	        
+    \end{frame}
+    
+
+
+\begin{frame}{Nouveau: combinaison linéaire}
+\[
+	\begin{pmatrix}
+x + 2y\\
+x - y
+\end{pmatrix}
+=
+\begin{pmatrix}
+4 \\ 1
+\end{pmatrix}
+{\color{blue}\qquad\Leftrightarrow\qquad}
+x \begin{pmatrix}
+1 \\ 1
+\end{pmatrix}
++ y \begin{pmatrix}
+2 \\ -1
+\end{pmatrix}
+=
+\begin{pmatrix}
+4 \\ 1
+\end{pmatrix}
+	\]		
+
+
+\[
+\hspace*{4.5cm} x\,\mat{a}_1\quad +\quad y\,\mat{a}_2\quad = \quad\mat{b}
+\]
+
+\[
+\hspace*{4.5cm} r\,\mat{a}_1\quad +\quad s\,\mat{a}_2\quad = \quad\mat{b}
+\]
+\end{frame}
+
+\begin{frame}{Combinaison linéaire: interprétation graphique}
+	\begin{tikzpicture}
+	% les axes
+	\draw[->] (-1,0) -- (6,0) node[anchor=west]{x};
+	\draw[->] (0,-2) -- (0,4) node[anchor=south]{y};
+	% labels and "grid"
+	\draw[-] (1, -0.1) node[anchor=north]{\small 1} -- (1, 0.1);
+	\draw[-] (2, -0.1) node[anchor=north]{\small 2} -- (2, 0.1);	
+	\draw[-] (4, -0.1) node[anchor=north]{\small 4} -- (4, 0.1);
+	\draw[-] (-0.1, 1) node[anchor=east]{\small 1} -- (0.1, 1);
+	\draw[-] (-0.1, -1) node[anchor=east]{\small -1} -- (0.1, -1);
+	\draw [dashed] (1, 0.2) -- (1, 1);
+	\draw [dashed] (0.2, 1) -- (1, 1);
+	\draw [dashed] (2, 0.2) -- (2, -1);
+	\draw [dashed] (0.2, -1) -- (2, -1);
+	\draw[->,thick,blue] (0,0) -- node[anchor=south]{$\mat{a}_1$} (1, 1);
+	\draw[->,thick,red] (0,0) -- node[anchor=north]{$\mat{a}_2$} (2, -1);
+	\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Combinaison linéaire: interprétation graphique {\tiny 2}}
+	\begin{tikzpicture}
+	% les axes
+	\draw[->] (-1,0) -- (6,0) node[anchor=west]{x};
+	\draw[->] (0,-2) -- (0,4) node[anchor=south]{y};
+	% labels and "grid"
+	\draw[-] (1, -0.1) node[anchor=north]{\small 1} -- (1, 0.1);
+	\draw[-] (2, -0.1) node[anchor=north]{\small 2} -- (2, 0.1);	
+	\draw[-] (4, -0.1) node[anchor=north]{\small 4} -- (4, 0.1);
+	\draw[-] (-0.1, 1) node[anchor=east]{\small 1} -- (0.1, 1);
+	\draw[-] (-0.1, -1) node[anchor=east]{\small -1} -- (0.1, -1);
+	\draw [dashed] (4, 0.2) -- (4, 1);
+	\draw [dashed] (0.2, 1) -- (4, 1);
+	\draw[->,thick,blue] (0,0) -- node[anchor=south]{$\mat{a}_1$} (1, 1);
+	\draw[->,thick,red] (0,0) -- node[anchor=north]{$\mat{a}_2$} (2, -1);
+	\draw[->,thick,cyan] (0,0) -- node[anchor=north]{$\mat{b}$} (4, 1);
+	\end{tikzpicture}
+	On veut $r\mat{a}_1 + s\mat{a}_2 = \mat{b}$
+\end{frame}
+
+\begin{frame}{Combinaison linéaire: interprétation graphique {\tiny 3}}
+	\begin{tikzpicture}
+	% les axes
+	\draw[->] (-1,0) -- (6,0) node[anchor=west]{x};
+	\draw[->] (0,-2) -- (0,4) node[anchor=south]{y};
+	% labels and "grid"
+	\draw[-] (1, -0.1) node[anchor=north]{\small 1} -- (1, 0.1);
+	\draw[-] (2, -0.1) node[anchor=north]{\small 2} -- (2, 0.1);	
+	\draw[-] (4, -0.1) node[anchor=north]{\small 4} -- (4, 0.1);
+	\draw[-] (-0.1, 1) node[anchor=east]{\small 1} -- (0.1, 1);
+	\draw[-] (-0.1, -1) node[anchor=east]{\small -1} -- (0.1, -1);
+	\draw[->,thick,blue] (0,0) -- node[anchor=south]{$\mat{a}_1$} (1, 1);
+	\draw[->,thick,red] (0,0) -- node[anchor=north]{$\mat{a}_2$} (2, -1);
+	\draw[->,thick,cyan] (0,0) -- node[anchor=north]{$\mat{b}$} (4, 1);
+	\draw[->,thick,blue] (1,1) -- node[anchor=south]{$\mat{a}_1$} (2, 2);
+	\draw[->,thick,red] (2, 2) -- node[anchor=north]{$\mat{a}_2$} (4, 1);
+	\end{tikzpicture}
+	Solution: $2\mat{a}_1 + \mat{a}_2 = \mat{b}$
+\end{frame}
+
+
+\begin{frame}{Combinaison linéaire}
+\[
+x \begin{pmatrix}
+1 \\ 1
+\end{pmatrix}
++ y \begin{pmatrix}
+2 \\ -1
+\end{pmatrix}
+=
+\begin{pmatrix}
+4 \\ 1
+\end{pmatrix}
+	\]		
+\[
+x\mat{a}_1 + y\mat{a}_2 = \mat{b}
+\]
+\vfill
+\[
+\mat{a}_1x + \mat{a}_2y = \mat{b}
+\]
+
+\end{frame}
+
+\begin{frame}{Combinaison linéaire}
+
+\[
+\mat{a}_1x + \mat{a}_2y = \mat{b}
+\]
+\vfill
+Multiplication par blocs\footnote{Section 2.4 du manuel}
+\[
+[\mat{a}_1 \quad \mat{a}_2] \begin{bmatrix}
+x\\y
+\end{bmatrix}
+= \mat{b}
+\]\vfill
+    \[\matA\textbf{x} = \textbf{b}\]
+
+\end{frame}
+
+\begin{frame}{Propriétés des vecteurs}
+$\mat{u}$, $\mat{v}$, $\mat{w}$ sont trois vecteurs.\\
+$\alpha$ et $\beta$ sont des scalaires.
+\begin{enumerate}
+\item $\mat{u} + \mat{v} = \mat{v} + \mat{u}$
+\item $ (\mat{u} + \mat{v}) + \mat{w} = \mat{u} + (\mat{v} + \mat{w})$
+\item $\mat{u} + \zero = \mat{u}$
+\item $ \mat{u} + (-\mat{u}) = \zero$
+\item $\alpha(\mat{u} + \mat{v}) = \alpha\mat{u} + \alpha\mat{v}$
+\item $ (\alpha + \beta)\mat{u} = \alpha\mat{u} + \beta\mat{u}$
+\item $\alpha(\beta\mat{u}) = (\alpha\beta)\mat{u}$
+\item $1\mat{u} = \mat{u}$
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Propriétés des vecteurs}
+\begin{itemize}
+\item Propriétés de $\BBR^n$ (chapitre 1, p:30)
+\item Espace vectoriel (chapitre 4, p:206)
+\end{itemize}
+On observe les mêmes propriétés des "vecteurs".
+\vfill À noter que l'on ne définit pas la multiplication
+d'un vecteur par un autre vecteur
+\end{frame}
+
+\begin{frame}{Espace vectoriel}
+Un \textbf{espace vectoriel} est un ensemble $V$ d'objets appelés \textit{vecteurs}, sur lesquels on définit
+deux opérations, soit \textit{l'addition} ainsi que \textit{la multiplication par un scalaire}, et pour lequel
+les axiomes suivant sont satisfaits pour tous les vecteurs $\mat{u}, \mat{v}, \mat{w}$ dans $V$
+et pour tous les scalaires $\alpha, \beta$.
+\begin{enumerate}
+\item Fermeture sous l'addition: $\mat{u}+\mat{v}\in V$.
+\item Commutativité de l'addition: $\mat{u} + \mat{v} = \mat{v} + \mat{u}$
+\item Associativité de l'addition: $ (\mat{u} + \mat{v}) + \mat{w} = \mat{u} + (\mat{v} + \mat{w})$
+\item Existence d'un élément neutre de l'addition: $\exists\zero\in V:  \mat{u} + \zero = \mat{u}$.
+\item Existence d'un inverse additif: $\forall \mat{u}\in V\quad \exists-\mat{u}\in V: \mat{u} + (-\mat{u}) = \zero$.
+\item Fermeture sous la multiplication: $\alpha\mat{u} \in V$.
+\item Distributivité sur l'addition de vecteurs: $\alpha(\mat{u} + \mat{v}) = \alpha\mat{u} + \alpha\mat{v}$
+\item Distributivité de l'addition de scalaires: $ (\alpha + \beta)\mat{u} = \alpha\mat{u} + \beta\mat{u}$
+\item Associativité de la multiplication de scalaires: $\alpha(\beta\mat{u}) = (\alpha\beta)\mat{u}$
+\item Élément neutre de la multiplication par un scalaire: $1\mat{u} = \mat{u}$
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Exemple}
+
+Articles sur Wikipédia
+\begin{itemize}
+\item \href{https://fr.wikipedia.org/wiki/Orbitale_atomique}{Orbitale atomique} : vecteurs
+\item \href{https://fr.wikipedia.org/wiki/Combinaison_lin\%C3\%A9aire_d\%27orbitales_atomiques}{Combinaison linéaire d'orbitales atomiques}
+\end{itemize}
+
+\end{frame}
+
+
+\end{document}

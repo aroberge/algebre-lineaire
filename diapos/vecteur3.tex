@@ -1,0 +1,123 @@
+\documentclass[french, handout]{beamer}
+%\documentclass[french]{beamer}
+
+\usepackage{hyperref}
+
+\usetheme{Boadilla}
+\usefonttheme{structuresmallcapsserif}
+
+% % %  default French language settings
+\usepackage[utf8]{inputenc}			% enable input of accented letters
+\usepackage[T1]{fontenc}				% related to above
+\usepackage[french]{babel}			% French language support
+
+\usepackage{diapos}
+
+
+	
+\title{Base, image, espace vectoriels}
+\author{Math 1253} % shows on bottom of each page by default; students do not care about
+    % my name, nor the date in which this was written however, if a revision needs to 
+    % be done, having a version number could be useful
+\date{version 1}   % shows on bottom of page
+
+\begin{document}
+
+% Quick addendum to hand-written class notes.
+
+\begin{frame}{Exemple 1}
+\begin{example}
+Soit le système d'équations linéaires
+\[
+\left\{ \begin{matrix}
+x &=& 1\\
+y &=& 2
+\end{matrix}\right.
+\]
+Quelle est la dimension de l'espace des solutions?  S'agit-il d'un espace vectoriel?
+\end{example}
+
+La solution unique de ce système est un point dans $\BBR^2$;
+la dimension de cet espace est donc 0.  Ce point peut être représenté par un vecteur unique
+qui n'est pas le vecteur nul; par conséquent, ce n'est pas un espace vectoriel.
+
+\end{frame}
+
+\begin{frame}{Exemple 2}
+
+\begin{example}
+Soit l'équation linéaire
+\[
+x + y = b
+\]
+Quelle est la dimension de l'espace des solutions?  S'agit-il d'un espace vectoriel?
+\end{example}
+
+
+Ceci est l'équation d'une droite; l'espace des solutions est donc de dimension 1.
+
+On peut écrire la matrice augmentée ainsi:
+\[
+\begin{bmatrix}[rr|r]
+\textcircled{1} & 1 & b\\
+\end{bmatrix}
+\]
+On a une variable libre ($y$) qu'on peut paramétrer par $t$.
+
+On a donc $x = -t + b$.
+
+Sous forme paramétrique vectorielle, la solution est
+
+\[
+\begin{pmatrix}
+x \\ y
+\end{pmatrix}
+= \begin{pmatrix}
+b-t \\
+t
+\end{pmatrix}
+=
+\begin{pmatrix}
+b\\0
+\end{pmatrix}
++ t\begin{pmatrix}
+-1 \\ 1
+\end{pmatrix}
+\]
+
+\end{frame}
+
+\begin{frame}{Exemple 2 - suite}
+On a
+\[
+\begin{pmatrix}
+x \\ y
+\end{pmatrix}
+= 
+\begin{pmatrix}
+b\\0
+\end{pmatrix}
++ t\begin{pmatrix}
+-1 \\ 1
+\end{pmatrix}
+\]
+
+Pour que ceci soit un espace vectoriel, il faut que le vecteur nul appartienne à l'espace des solutions, 
+ce qui est possible seulement si $b=0$.  Dans ce cas, l'espace des solutions sera engendré par le vecteur
+$\displaystyle
+\begin{pmatrix}
+-1 \\ 1
+\end{pmatrix}
+$
+
+\begin{block}{Important}
+L'espace des \textbf{solutions} de $\mat{A}\mat{x} = \mat{b}$ n'est
+pas un espace vectoriel, sauf si $\mat{b}=\mat{0}$, auquel
+cas cet espace des solutions est dénoté par
+ $\operatorname{Ker}\mat{A}$.
+\end{block}
+
+\end{frame}
+
+
+\end{document}
